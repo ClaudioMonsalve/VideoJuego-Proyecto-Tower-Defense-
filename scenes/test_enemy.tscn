@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://4bprnwur45fy"]
+
+[ext_resource type="Material" uid="uid://cq24ukwwjb6d8" path="res://materials/enemy.tres" id="1_h17bh"]
+[ext_resource type="Script" uid="uid://776ubffj511l" path="res://scenes/test_enemy.gd" id="1_mkyue"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_mkyue"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_mkyue"]
+
+[node name="TestEnemy" type="PathFollow3D"]
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+script = ExtResource("1_mkyue")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00221169, -0.00684714, 0.000776768)
+shape = SubResource("SphereShape3D_mkyue")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+layers = 513
+material_override = ExtResource("1_h17bh")
+mesh = SubResource("SphereMesh_mkyue")
+skeleton = NodePath("../..")
