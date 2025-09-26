@@ -16,7 +16,6 @@ func _ready() -> void:
 
 func ouch(damage):
 	hp -= damage
-	print(hp/maxhp)
 	progBar.value = hp/maxhp * 100
 	if hp == 0:
 		queue_free()

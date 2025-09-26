@@ -6,22 +6,34 @@ extends Node3D
 @export var damage = 2
 @export var attkspeed = 10
 
+var attacking = false
+
 var creepQueue = []
 
 func _ready() -> void:
 	enemyColl.body_entered.connect(_on_enemy_enter)
 	enemyColl.body_exited.connect(_on_enemy_exit)
 
+func attack():
+	while !creepQueue.is_empty():
+		creepQueue[0].ouch(damage)
+		await get_tree().create_timer(1.0).timeout
+	attacking = false
+	print(creepQueue)
+
 func _on_enemy_enter(body):
-	creepQueue.append(body)
+	if body is enemy:
+		creepQueue.append(body)
+		if !attacking:
+			attack()
 
 func _on_enemy_exit(body):
 	if body in creepQueue:
 		creepQueue.pop_front()
+		if !attacking:
+			attack()
 	pass
 
+
 func _process(delta: float) -> void:
-	while !creepQueue.is_empty():
-		creepQueue[0].ouch(damage)
-		await get_tree().create_timer(1.0).timeout
-		
+	pass

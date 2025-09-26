@@ -5,6 +5,9 @@ extends Node3D
 @onready var label = $Label
 
 @export var camera_sens = 0.01
+@export var zoomSens = 2
+@export var minH = 8
+@export var maxH = 30
 
 var dragging := false
 var last_pos := Vector2.ZERO
@@ -15,6 +18,13 @@ func _unhandled_input(event: InputEvent) -> void:
 			dragging = event.pressed
 			if dragging:
 				last_pos = event.position
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			position.y = clamp(position.y - zoomSens, minH, maxH)
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and position.y < 20:
+			position.y = clamp(position.y + zoomSens, minH, maxH)
+	
+	
+	
 	elif event is InputEventScreenTouch:
 		dragging = event.pressed
 		if dragging:

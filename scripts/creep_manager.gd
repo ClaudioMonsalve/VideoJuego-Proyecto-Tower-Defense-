@@ -4,16 +4,24 @@ extends Node3D
 
 @onready var path1 = $"../Map/path1"
 
+var postWaveTimer = 5.0
+var spanwDelay = 2
+
+var waves = [[2],[5]]
+
+func waveManager():
+	for wave in waves:
+		for amount in waves:
+			for i in range(amount[0]):
+				var creep = enemy1.instantiate()
+				path1.add_child(creep)
+				await get_tree().create_timer(spanwDelay).timeout
+				
 func spawnonenibbler():
 	var creep = enemy1.instantiate()
 	path1.add_child(creep)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	spawnonenibbler()
+	waveManager()
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
