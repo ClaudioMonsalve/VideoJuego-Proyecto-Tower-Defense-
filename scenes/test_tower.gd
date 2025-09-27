@@ -25,12 +25,14 @@ func _on_enemy_enter(body):
 	if body is enemy:
 		creepQueue.append(body)
 		if !attacking:
+			attacking = true
 			attack()
 
 func _on_enemy_exit(body):
 	if body in creepQueue:
 		creepQueue.pop_front()
 		if !attacking:
+			attacking = true
 			attack()
 	pass
 

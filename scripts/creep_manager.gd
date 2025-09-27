@@ -4,8 +4,8 @@ extends Node3D
 
 @onready var path1 = $"../Map/path1"
 
-var postWaveTimer = 5.0
-var spanwDelay = 2
+var waveDelay = 5.0
+var spanwDelay = 0.1
 
 var waves = [[2],[5]]
 
@@ -16,7 +16,10 @@ func waveManager():
 				var creep = enemy1.instantiate()
 				path1.add_child(creep)
 				await get_tree().create_timer(spanwDelay).timeout
-				
+			await get_tree().create_timer(waveDelay).timeout
+
+
+
 func spawnonenibbler():
 	var creep = enemy1.instantiate()
 	path1.add_child(creep)
