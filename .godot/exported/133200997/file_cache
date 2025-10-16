@@ -1,8 +1,0 @@
-res://materials/base.tres::98bd62a9b719da07f5cebd5909c885fb::1758812300::res://.godot/exported/133200997/export-39fff2532dbb11713677e0258faf46ff-base.res
-res://materials/enemy.tres::740b462518cb1f7151cb55645ea6062b::1758812300::res://.godot/exported/133200997/export-51a15b41d8a74ac3cb73e7d9adb75f0d-enemy.res
-res://materials/ground.tres::32e2d567cb8e9f637bf4a6a9af47f0a2::1758812300::res://.godot/exported/133200997/export-1d0d5c718c6837bc4e7475fcd521ce48-ground.res
-res://materials/wall.tres::98eb90a70bf3a0e604b252c6a2704dd4::1758435135::res://.godot/exported/133200997/export-1c84afdd05f518f898d96b6833632398-wall.res
-res://scenes/Base.tscn::9293eb5c9f769236f389ca9c31b29ae6::1758811679::res://.godot/exported/133200997/export-aa902d5b3642cce4f18a9e230c1d67f8-Base.scn
-res://scenes/test_enemy.tscn::c391d2b04b9bdc9eddc7f890bc14c0d0::1758811679::res://.godot/exported/133200997/export-4600291db3ada49482657843d79d3ffc-test_enemy.scn
-res://scenes/test_scene.tscn::f499ea454bc9220f4e557457dc5a4720::1758811679::res://.godot/exported/133200997/export-448090ec41b8fba68177e789cb5fd95a-test_scene.scn
-res://scenes/test_tower.tscn::4f9c7448a791799b24040bc3a2a783d8::1758811679::res://.godot/exported/133200997/export-7a04e030cc0cf2de2e0a56b6deb95630-test_tower.scn
