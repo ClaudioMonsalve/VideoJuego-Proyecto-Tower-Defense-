@@ -6,11 +6,18 @@ extends Node3D
 
 @export var camera_sens = 0.01
 @export var zoomSens = 2
-@export var minH = 8
+@export var minH = 8 
 @export var maxH = 30
-
+var rotSens = 0.04
+var minRot = 50
+var maxRot = 30
 var dragging := false
 var last_pos := Vector2.ZERO
+
+
+func handle_click_or_tap(event_pos: Vector2):
+	pass
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -18,13 +25,17 @@ func _unhandled_input(event: InputEvent) -> void:
 			dragging = event.pressed
 			if dragging:
 				last_pos = event.position
+			else:
+				handle_click_or_tap(event.position)
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
+			camera.rotate_x(rotSens)
+			camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, maxRot, minRot)
 			position.y = clamp(position.y - zoomSens, minH, maxH)
-		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and position.y < 20:
+		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN and position.y < maxH:
+			camera.rotate_x(-rotSens)
+			camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, maxRot, minRot)
 			position.y = clamp(position.y + zoomSens, minH, maxH)
-	
-	
-	
+	 
 	elif event is InputEventScreenTouch:
 		dragging = event.pressed
 		if dragging:
