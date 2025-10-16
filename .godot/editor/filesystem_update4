@@ -1,0 +1,9 @@
+res://scenes/test_scene.tscn
+res://materials/ground.tres
+res://materials/enemy.tres
+res://materials/base.tres
+res://scenes/test_enemy.tscn
+res://scenes/Base.tscn
+res://scenes/test_tower.tscn
+res://scripts/cam_node.gd
+res://scripts/creep_manager.gd
