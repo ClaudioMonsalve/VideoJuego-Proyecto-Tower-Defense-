@@ -3,6 +3,7 @@ extends Node3D
 @onready var camera = $Camera3D
 @onready var baseobj = $"../Map/Base"
 @onready var label = $Label
+@onready var debug = $"../debug"
 
 @export var camera_sens = 0.01
 @export var zoomSens = 2
@@ -16,6 +17,25 @@ var last_pos := Vector2.ZERO
 
 
 func handle_click_or_tap(event_pos: Vector2):
+	var spaceState = get_world_3d().direct_space_state
+	
+	var rayOrigin = camera.project_ray_origin(event_pos)
+	var rayDir = camera.project_ray_normal(event_pos)
+	var rayEnd = rayOrigin + rayDir * 1000
+	
+	var query = PhysicsRayQueryParameters3D.create(rayOrigin, rayEnd)
+	query.collide_with_areas = true
+	query.collision_mask = 1
+	var result = spaceState.intersect_ray(query)
+	
+	if result:
+		var interactPos = result.position
+		var interactedObjct = result.collider
+		debug.position = interactPos
+		print("clicked at:", interactPos, "on:", interactedObjct)
+	
+	
+	print("this is a click")
 	pass
 
 
@@ -25,8 +45,9 @@ func _unhandled_input(event: InputEvent) -> void:
 			dragging = event.pressed
 			if dragging:
 				last_pos = event.position
-			else:
+			elif !dragging:
 				handle_click_or_tap(event.position)
+		
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP and event.pressed:
 			camera.rotate_x(rotSens)
 			camera.rotation_degrees.x = clamp(camera.rotation_degrees.x, maxRot, minRot)

@@ -89,6 +89,7 @@ curve = SubResource("Curve3D_j8ivh")
 
 [node name="CreepManager" type="Node3D" parent="."]
 script = ExtResource("3_nd71p")
+enemy1 = null
 
 [node name="CamNode" type="Node3D" parent="."]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)

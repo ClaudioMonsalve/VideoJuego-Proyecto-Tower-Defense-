@@ -7,22 +7,33 @@ extends Node3D
 var waveDelay = 5.0
 var spanwDelay = 0.1
 
-var waves = [[2],[5]]
+var wavesArr = [
+	{
+			"enemy1": 2
+	},
+	{
+			"enemy1": 5
+	},
+	{
+			"enemy1": 3
+	}
+]
 
 func waveManager():
-	for wave in waves:
-		for amount in waves:
-			for i in range(amount[0]):
-				var creep = enemy1.instantiate()
+	for wave in wavesArr:
+		for key in wave:
+			for i in range(wave[key]):
+				var creep = returnCreep(key)
 				pathHolder.get_child(0).add_child(creep)
 				await get_tree().create_timer(spanwDelay).timeout
 			await get_tree().create_timer(waveDelay).timeout
 
-
-
-func spawnonenibbler():
-	var creep = enemy1.instantiate()
-	pathHolder.get_child(0).add_child(creep)
+func returnCreep(type):
+	match type:
+		"enemy1":
+			return enemy1.instantiate()
+		"enemy2":
+			return null
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

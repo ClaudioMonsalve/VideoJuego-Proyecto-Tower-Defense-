@@ -7,11 +7,15 @@ class_name enemy
 @export var worth = 4
 @export var maxhp =  10.0
 @export var speed = 30
+var radius = 3
 var hp = maxhp
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hp = clamp(hp,0,maxhp)
+	var offset = Vector3(randf_range(-radius, radius), 0, randf_range(-radius, radius))
+	position.x += offset.x
+	position.y += offset.y
 	pass # Replace with function body.
 
 func ouch(damage):
