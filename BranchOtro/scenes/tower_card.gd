@@ -19,8 +19,4 @@ func _gui_input(event: InputEvent) -> void:
 				Input.set_default_cursor_shape(Input.CURSOR_ARROW)
 				global_position = originalPos
 	elif event is InputEventMouseMotion and dragging:
-		
-		
-		
-		s
 		global_position = get_global_mouse_position() - drag_offset
