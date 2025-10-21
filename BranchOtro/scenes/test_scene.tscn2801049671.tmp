@@ -1,0 +1,86 @@
+[gd_scene load_steps=11 format=3 uid="uid://c3u5apsja5mw3"]
+
+[ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://materials/ground.tres" id="1_j8ivh"]
+[ext_resource type="Material" uid="uid://c6qq2ks8r7h83" path="res://materials/wall.tres" id="3_7ddre"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://scenes/creep_manager.gd" id="3_nd71p"]
+[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://scenes/Base.tscn" id="3_qjeyg"]
+[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://scenes/cam_node.gd" id="5_qjeyg"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ddre"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_qjeyg"]
+sky_material = SubResource("ProceduralSkyMaterial_7ddre")
+
+[sub_resource type="Environment" id="Environment_3qnke"]
+background_mode = 2
+sky = SubResource("Sky_qjeyg")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6adnx"]
+size = Vector2(128, 128)
+
+[sub_resource type="Curve3D" id="Curve3D_j8ivh"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -8.71306, -0.454662, -9.742, 0, 0, 0, 0, 0, 0, 19.2048, -0.580173, 21.6305, 0, 0, -4, 0, 0, 4, 28.2048, -0.580173, 33.6305, 0, 0, 0, 0, 0, 0, 28.2048, -0.580173, 60.6305, 7.1, 0, -0.2, -7.1, 0, 0.2, 22.2048, -0.580173, 67.6305, 0, 0, 0, 0, 0, 0, -14.8364, -0.522297, 67.6309),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3qnke")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 13, -29)
+shadow_enabled = true
+
+[node name="Map" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_j8ivh")
+mesh = SubResource("PlaneMesh_6adnx")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107151, 1.44685, -0.856628)
+material_override = ExtResource("3_7ddre")
+size = Vector3(127.736, 5.0542, 133.246)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Map/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05649, 3.37517, 0.815622)
+operation = 2
+size = Vector3(16, 16, 16)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.843, 2.53901, 0.94183)
+operation = 2
+size = Vector3(42.032, 8, 8)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map/CSGBox3D"]
+transform = Transform3D(-0.00586427, 0, -0.999983, 0, 1, 0, 0.999983, 0, -0.00586427, 42.7812, 1.73854, -16.3246)
+operation = 2
+size = Vector3(42.032, 8, 8)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map/CSGBox3D"]
+transform = Transform3D(-0.679326, 0, 0.733837, 0, 1, 0, -0.733837, 0, -0.679326, 27.0431, 2.10401, -52.9325)
+operation = 2
+size = Vector3(50.0865, 8, 8)
+
+[node name="path1" type="Path3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7952, 1.58017, -67.6305)
+curve = SubResource("Curve3D_j8ivh")
+
+[node name="Base" parent="Map" instance=ExtResource("3_qjeyg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50227, 0)
+
+[node name="CreepManager" type="Node3D" parent="."]
+script = ExtResource("3_nd71p")
+
+[node name="CamNode" type="Node3D" parent="."]
+transform = Transform3D(-3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0.707107, -1, 0, -4.37114e-08, 56, 21, -11)
+script = ExtResource("5_qjeyg")
+
+[node name="Camera3D" type="Camera3D" parent="CamNode"]

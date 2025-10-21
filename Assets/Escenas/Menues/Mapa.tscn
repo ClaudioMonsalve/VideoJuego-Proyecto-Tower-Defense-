@@ -1,0 +1,177 @@
+[gd_scene load_steps=14 format=3 uid="uid://7cho3hc7rrk0"]
+
+[ext_resource type="Script" uid="uid://0nhun5tfoha1" path="res://Assets/Escenas/Menues/mapa.gd" id="1_ydl5s"]
+[ext_resource type="Script" uid="uid://dxi3sng1g4wqh" path="res://Assets/Escenas/Menues/reino_button.gd" id="2_h4g45"]
+[ext_resource type="Texture2D" uid="uid://c4gpqo0ptbpk6" path="res://Assets/Fondos/fondo.jpg" id="2_l7s4p"]
+[ext_resource type="Script" uid="uid://d16xfu1b7tftn" path="res://Assets/Escenas/Menues/info_panel.gd" id="3_jd542"]
+[ext_resource type="Texture2D" uid="uid://cv4mgl5aitl6g" path="res://Assets/Fondos/ChatGPT Image 16 oct 2025, 03_59_25 p.m..png" id="4_veu8e"]
+[ext_resource type="Script" uid="uid://dvbnrqawl4kgs" path="res://Assets/Escenas/Menues/reino_button_2.gd" id="5_e123j"]
+[ext_resource type="FontFile" uid="uid://b1eio0nx46t83" path="res://Assets/Fonts/Mjolnir.otf" id="7_fn0si"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="8_wwe7q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd542"]
+size = Vector2(72, 69)
+
+[sub_resource type="Theme" id="Theme_l7s4p"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7s4p"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_veu8e"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e123j"]
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Yggdrasil Map" type="Node2D"]
+script = ExtResource("1_ydl5s")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+ignore_rotation = false
+limit_left = -100000000
+limit_top = -100000000
+limit_right = 100000000
+limit_bottom = 100000000
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(1151, 648)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -536.0
+offset_top = -464.0
+offset_right = 708.0
+offset_bottom = 496.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_l7s4p")
+stretch_mode = 5
+
+[node name="ReinosContainer" type="Node2D" parent="."]
+
+[node name="ReinoButton" type="Area2D" parent="ReinosContainer"]
+modulate = Color(0.137255, 1, 1, 1)
+script = ExtResource("2_h4g45")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReinosContainer/ReinoButton"]
+position = Vector2(-415, 35.5)
+shape = SubResource("RectangleShape2D_jd542")
+debug_color = Color(1, 1, 1, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="ReinosContainer/ReinoButton"]
+position = Vector2(-415, 36)
+scale = Vector2(0.129111, 0.120139)
+texture = ExtResource("4_veu8e")
+
+[node name="ReinoButton2" type="Area2D" parent="ReinosContainer"]
+modulate = Color(0.137255, 1, 1, 1)
+script = ExtResource("5_e123j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ReinosContainer/ReinoButton2"]
+position = Vector2(490, -119)
+shape = SubResource("RectangleShape2D_jd542")
+debug_color = Color(1, 1, 1, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="ReinosContainer/ReinoButton2"]
+position = Vector2(490, -117)
+scale = Vector2(0.129111, 0.120139)
+texture = ExtResource("4_veu8e")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="InfoPanel" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -86.0
+offset_top = -18.0
+offset_right = 214.0
+offset_bottom = 282.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_jd542")
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/InfoPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.840096, 0.43695, 0.230814, 1)
+
+[node name="Nombre" type="Label" parent="CanvasLayer/InfoPanel"]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 300.0
+offset_bottom = 150.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_fn0si")
+theme_override_font_sizes/font_size = 40
+text = "
+"
+horizontal_alignment = 1
+
+[node name="Niveles" type="Label" parent="CanvasLayer/InfoPanel"]
+layout_mode = 0
+offset_left = 46.0
+offset_top = 132.0
+offset_right = 256.0
+offset_bottom = 190.0
+theme_override_fonts/font = ExtResource("8_wwe7q")
+theme_override_font_sizes/font_size = 25
+horizontal_alignment = 1
+
+[node name="Jugar" type="Button" parent="CanvasLayer/InfoPanel"]
+layout_mode = 0
+offset_left = 29.0
+offset_top = 214.0
+offset_right = 132.0
+offset_bottom = 266.0
+theme = SubResource("Theme_l7s4p")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_wwe7q")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_l7s4p")
+text = "Jugar
+"
+
+[node name="Cerrar" type="Button" parent="CanvasLayer/InfoPanel"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 177.0
+offset_top = 214.0
+offset_right = 279.0
+offset_bottom = 266.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("8_wwe7q")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_veu8e")
+text = "Volver 
+"
+
+[node name="Button" type="Button" parent="."]
+offset_left = -566.0
+offset_top = -320.0
+offset_right = -415.0
+offset_bottom = -259.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 18
+theme_override_styles/normal = SubResource("StyleBoxFlat_e123j")
+text = "Volver al menu"

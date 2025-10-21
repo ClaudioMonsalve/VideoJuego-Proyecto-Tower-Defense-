@@ -1,0 +1,67 @@
+[gd_scene load_steps=5 format=3 uid="uid://dui6pduprwsc"]
+
+[ext_resource type="Script" uid="uid://mkjsw3g607hd" path="res://Assets/Escenas/Menues/main_menu.gd" id="1_vw44o"]
+[ext_resource type="Texture2D" uid="uid://b8u6uoxfuntud" path="res://Assets/Fondos/mi_imagen_redimensionada.png" id="2_axdlp"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="3_8sy1q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ckro"]
+bg_color = Color(0.729412, 0.729412, 0.729412, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_vw44o")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+modulate = Color(0.412152, 0.412153, 0.412152, 1)
+custom_minimum_size = Vector2(648, 0)
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_axdlp")
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 489.0
+offset_top = 280.0
+offset_right = 699.0
+offset_bottom = 477.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8sy1q")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ckro")
+text = "Jugar
+"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 324.0
+offset_right = 390.0
+offset_bottom = 437.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8sy1q")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ckro")
+text = "Opciones"
+
+[node name="Button3" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 805.0
+offset_top = 330.0
+offset_right = 952.0
+offset_bottom = 438.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_8sy1q")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_5ckro")
+text = "Logros
+"

@@ -1,0 +1,40 @@
+[gd_scene load_steps=3 format=3 uid="uid://xfywmvw8mhtk"]
+
+[ext_resource type="Script" uid="uid://djtx1n233iks8" path="res://Assets/Escenas/Menues/control.gd" id="1_b5t0o"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="2_ttlob"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_b5t0o")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 197.0
+offset_right = 828.0
+offset_bottom = 307.0
+theme_override_fonts/font = ExtResource("2_ttlob")
+theme_override_font_sizes/font_size = 100
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 388.0
+offset_right = 1097.0
+offset_bottom = 485.0
+theme_override_fonts/font = ExtResource("2_ttlob")
+theme_override_font_sizes/font_size = 50

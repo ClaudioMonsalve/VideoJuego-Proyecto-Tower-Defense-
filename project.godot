@@ -10,10 +10,32 @@ config_version=5
 
 [application]
 
-config/name="YLS"
-run/main_scene="uid://c3u5apsja5mw3"
+config/name="Yggdrasil"
+run/main_scene="uid://dui6pduprwsc"
 config/features=PackedStringArray("4.4", "Mobile")
 config/icon="res://icon.svg"
+
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+MusicPlayer="*res://Assets/Escenas/Menues/MusicPlayer.tscn"
+TestScene="*res://BranchOtro/scripts/test_scene.gd"
+
+[dialogue_manager]
+
+runtime/balloon_path="res://Assets/Dialogos/balloon.tscn"
+
+[display]
+
+window/stretch/mode="viewport"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://Assets/Dialogos/Dialogo.dialogue")
 
 [rendering]
 
