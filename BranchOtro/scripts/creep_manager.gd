@@ -1,7 +1,8 @@
 extends Node3D
 
-@export var enemy1 = preload("res://Assets/Escenas/Enemigos/test_enemy.tscn")
-@export var enemy2 = preload("res://Assets/Escenas/Enemigos/big_bertha.tscn")
+@export var enemy1: PackedScene
+@export var enemy2: PackedScene
+@export var base: Area3D
 
 @onready var pathHolder = $"../Map/Paths"
 
@@ -28,6 +29,7 @@ func waveManager():
 		for key in wave:
 			for i in range(wave[key]):
 				var creep = returnCreep(key)
+				creep.get_child(0).linkBase(base)
 				pathHolder.get_child(0).add_child(creep)
 				await get_tree().create_timer(spanwDelay).timeout
 			await get_tree().create_timer(waveDelay).timeout

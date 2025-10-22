@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c3u5apsja5mw3"]
+[gd_scene load_steps=18 format=3 uid="uid://c3u5apsja5mw3"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_j8ivh"]
 [ext_resource type="Material" uid="uid://c6qq2ks8r7h83" path="res://BranchOtro/materials/wall.tres" id="3_7ddre"]
@@ -7,7 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_3qnke"]
 [ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_wtsjf"]
+[ext_resource type="PackedScene" uid="uid://4bprnwur45fy" path="res://Assets/Escenas/Enemigos/test_enemy.tscn" id="7_pkttg"]
 [ext_resource type="Script" uid="uid://cfh87ij8difnx" path="res://BranchOtro/scenes/tower_card.gd" id="8_12hkd"]
+[ext_resource type="PackedScene" uid="uid://c0u4v6lcabk8s" path="res://Assets/Escenas/Enemigos/big_bertha.tscn" id="8_bkxxp"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ddre"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -94,37 +96,44 @@ curve = SubResource("Curve3D_j8ivh")
 [node name="TowerPlatform" parent="Map" instance=ExtResource("5_wtsjf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2399, 3.99648, -18.7437)
 
-[node name="CreepManager" type="Node3D" parent="."]
+[node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
 script = ExtResource("3_nd71p")
+enemy1 = ExtResource("7_pkttg")
+enemy2 = ExtResource("8_bkxxp")
+base = NodePath("../Map/Base")
 
-[node name="Player" type="Node3D" parent="."]
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)
 script = ExtResource("5_qjeyg")
+baseobj = NodePath("../Map/Base")
 camera_sens = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0)
 
-[node name="Label" type="Label" parent="Player"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -35.0
+[node name="Health" type="Label" parent="Player"]
 offset_right = 40.0
-grow_vertical = 0
+offset_bottom = 35.0
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="Money" type="Label" parent="Player"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 35.0
+grow_horizontal = 0
 text = "dih"
 label_settings = SubResource("LabelSettings_qjeyg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Player"]
-anchors_preset = -1
-anchor_left = 0.031
-anchor_top = 0.049
-anchor_right = 0.031
-anchor_bottom = 0.049
-offset_left = 0.287998
-offset_top = 0.247999
-offset_right = 143.288
-offset_bottom = 82.248
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -82.0
+offset_right = 143.0
+grow_vertical = 0
 
 [node name="TowerCard" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2

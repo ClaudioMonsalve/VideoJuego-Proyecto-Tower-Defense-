@@ -2,8 +2,8 @@ extends Area3D
 class_name base
 
 @onready var progBar = $SubViewport/CanvasLayer/ProgressBar
-
-var maxhp = 30.0
+@export var muni = 0
+@export var maxhp = 30.0
 var hp = maxhp
 var gd = 0
 
@@ -17,7 +17,7 @@ func _ready() -> void:
 func _on_body_entered(body):
 	print("lol")
 	if body is enemy:
-		hp -= 1
+		hp -= body.dmg
 		progBar.value = hp/maxhp * 100
 		body.get_parent().call_deferred("queue_free")
 

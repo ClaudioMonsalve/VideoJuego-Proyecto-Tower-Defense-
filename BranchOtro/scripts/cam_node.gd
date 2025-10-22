@@ -1,14 +1,16 @@
 extends Node3D
 
 @onready var camera = $Camera3D
-@onready var baseobj = $"../Map/Base"
-@onready var label = $Label
+@export var baseobj: Area3D
+@onready var hpLabel = $Health
+@onready var mnLabel = $Money
 @onready var debug = $"../debug"
 
 @export var camera_sens = 0.01
 @export var zoomSens = 2
 @export var minH = 8 
 @export var maxH = 30
+@export var muni = 0
 var rotSens = 0.04
 var minRot = 50
 var maxRot = 30
@@ -78,5 +80,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	label.text = str(baseobj.hp)
+	hpLabel.text = str(baseobj.hp)
+	mnLabel.text = str(baseobj.muni)
 	pass
