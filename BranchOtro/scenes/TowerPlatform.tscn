@@ -13,6 +13,8 @@ size = Vector3(5, 0.2, 5)
 script = ExtResource("1_6xowl")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 255
+collision_mask = 255
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
 material_override = ExtResource("1_ir24i")

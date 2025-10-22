@@ -69,6 +69,7 @@ func _on_reino_seleccionado(data: Dictionary):
 
 # --- Cerrar panel ---
 func _on_InfoPanel_Cerrar_pressed():
+	ButtonSound.play()
 	if active_tween and active_tween.is_valid():
 		active_tween.kill()
 
@@ -90,6 +91,7 @@ func _on_InfoPanel_Cerrar_pressed():
 
 # --- Jugar ---
 func _on_InfoPanel_Jugar_pressed():
+	ButtonSound.play()
 	if reino_seleccionado_data.size() == 0:
 		return
 	print("Cargando niveles del reino: ", reino_seleccionado_data["nombre"])
@@ -103,6 +105,7 @@ func _on_InfoPanel_Jugar_pressed():
 	
 # --- Volver al menú ---
 func _on_MenuBtn_pressed():
+	ButtonSound.play()
 	get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
 
 # --- Centrar InfoPanel ---

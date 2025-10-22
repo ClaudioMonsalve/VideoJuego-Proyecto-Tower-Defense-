@@ -1,6 +1,7 @@
 extends Node3D
 
-@export var enemy1 = preload("res://BranchOtro/scenes/test_enemy.tscn")
+@export var enemy1 = preload("res://Assets/Escenas/Enemigos/test_enemy.tscn")
+@export var enemy2 = preload("res://Assets/Escenas/Enemigos/big_bertha.tscn")
 
 @onready var pathHolder = $"../Map/Paths"
 
@@ -9,13 +10,16 @@ var spanwDelay = 0.1
 
 var wavesArr = [
 	{
-			"enemy1": 2
+		"enemy1": 2
 	},
 	{
-			"enemy1": 5
+		"enemy1": 5
 	},
 	{
-			"enemy1": 3
+		"enemy1": 3
+	},
+	{
+		"enemy2": 1
 	}
 ]
 
@@ -33,7 +37,7 @@ func returnCreep(type):
 		"enemy1":
 			return enemy1.instantiate()
 		"enemy2":
-			return null
+			return enemy2.instantiate()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

@@ -116,16 +116,26 @@ text = "dih"
 label_settings = SubResource("LabelSettings_qjeyg")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Player"]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = -1
+anchor_left = 0.031
+anchor_top = 0.049
+anchor_right = 0.031
+anchor_bottom = 0.049
+offset_left = 0.287998
+offset_top = 0.247999
+offset_right = 143.288
+offset_bottom = 82.248
 
 [node name="TowerCard" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 script = ExtResource("8_12hkd")
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 20
 text = "test_tower"
+horizontal_alignment = 1
 
 [node name="debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)

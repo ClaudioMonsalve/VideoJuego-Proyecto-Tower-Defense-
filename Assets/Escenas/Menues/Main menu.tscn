@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://dui6pduprwsc"]
+[gd_scene load_steps=6 format=3 uid="uid://dui6pduprwsc"]
 
 [ext_resource type="Script" uid="uid://mkjsw3g607hd" path="res://Assets/Escenas/Menues/main_menu.gd" id="1_vw44o"]
 [ext_resource type="Texture2D" uid="uid://b8u6uoxfuntud" path="res://Assets/Fondos/mi_imagen_redimensionada.png" id="2_axdlp"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="3_8sy1q"]
+[ext_resource type="FontFile" uid="uid://b1eio0nx46t83" path="res://Assets/Fonts/Mjolnir.otf" id="4_axdlp"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ckro"]
 bg_color = Color(0.729412, 0.729412, 0.729412, 1)
@@ -21,7 +22,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="TextureRect" type="TextureRect" parent="Control"]
-modulate = Color(0.412152, 0.412153, 0.412152, 1)
+modulate = Color(0.277527, 0.277528, 0.277527, 1)
 custom_minimum_size = Vector2(648, 0)
 layout_mode = 0
 offset_right = 40.0
@@ -30,38 +31,65 @@ texture = ExtResource("2_axdlp")
 
 [node name="Button" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 489.0
-offset_top = 280.0
-offset_right = 699.0
-offset_bottom = 477.0
+offset_left = 498.0
+offset_top = 379.0
+offset_right = 692.0
+offset_bottom = 560.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8sy1q")
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 60
 theme_override_styles/normal = SubResource("StyleBoxFlat_5ckro")
 text = "Jugar
 "
 
 [node name="Button2" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 242.0
-offset_top = 324.0
-offset_right = 390.0
-offset_bottom = 437.0
+offset_left = 267.0
+offset_top = 430.0
+offset_right = 415.0
+offset_bottom = 543.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8sy1q")
-theme_override_font_sizes/font_size = 25
+theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("StyleBoxFlat_5ckro")
 text = "Opciones"
 
 [node name="Button3" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 805.0
-offset_top = 330.0
-offset_right = 952.0
-offset_bottom = 438.0
+offset_left = 780.0
+offset_top = 432.0
+offset_right = 927.0
+offset_bottom = 540.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8sy1q")
-theme_override_font_sizes/font_size = 30
+theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("StyleBoxFlat_5ckro")
 text = "Logros
 "
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 190.0
+offset_top = 104.0
+offset_right = 1014.0
+offset_bottom = 291.0
+theme_override_colors/font_color = Color(0.92549, 0.917647, 0, 1)
+theme_override_constants/outline_size = 70
+theme_override_fonts/font = ExtResource("4_axdlp")
+theme_override_font_sizes/font_size = 150
+text = "Yggdrasil"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 474.0
+offset_top = 258.0
+offset_right = 712.0
+offset_bottom = 317.0
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_8sy1q")
+theme_override_font_sizes/font_size = 45
+text = "The Last Stand"
+horizontal_alignment = 1
+vertical_alignment = 1

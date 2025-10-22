@@ -6,7 +6,7 @@ extends Control
 var dot_count: int = 0
 var dot_timer: Timer
 var total_time: float = 0.0
-var duration: float = 2  # duración total en segundos
+var duration: float = 1  # duración total en segundos
 var next_scene: String = "res://BranchOtro/scenes/test_scene.tscn"
 
 func _ready():

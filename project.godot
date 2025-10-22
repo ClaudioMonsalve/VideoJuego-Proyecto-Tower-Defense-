@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MusicPlayer="*res://Assets/Escenas/Menues/MusicPlayer.tscn"
 TestScene="*res://BranchOtro/scripts/test_scene.gd"
+ButtonSound="*res://Assets/Escenas/Audios/ButtonSound.tscn"
 
 [dialogue_manager]
 
@@ -28,6 +29,7 @@ runtime/balloon_path="res://Assets/Dialogos/balloon.tscn"
 [display]
 
 window/stretch/mode="viewport"
+window/handheld/orientation=4
 
 [editor_plugins]
 
