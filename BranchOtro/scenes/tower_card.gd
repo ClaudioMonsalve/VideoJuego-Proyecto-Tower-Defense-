@@ -3,7 +3,10 @@ extends PanelContainer
 @onready var camera = $"../../Camera3D"
 var dragging = false
 var drag_offset = Vector2.ZERO
-var originalPos = global_position
+var originalPos = Vector2.ZERO
+
+func _ready() -> void:
+	originalPos = global_position
 
 func _gui_input(event: InputEvent) -> void:
 	

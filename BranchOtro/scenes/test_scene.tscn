@@ -96,6 +96,9 @@ curve = SubResource("Curve3D_j8ivh")
 [node name="TowerPlatform" parent="Map" instance=ExtResource("5_wtsjf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2399, 3.99648, -18.7437)
 
+[node name="TowerPlatform2" parent="Map" instance=ExtResource("5_wtsjf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2892, 4.00083, -24.7554)
+
 [node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
 script = ExtResource("3_nd71p")
 enemy1 = ExtResource("7_pkttg")

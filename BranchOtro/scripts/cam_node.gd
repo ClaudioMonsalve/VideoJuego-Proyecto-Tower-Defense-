@@ -17,7 +17,6 @@ var maxRot = 30
 var dragging := false
 var last_pos := Vector2.ZERO
 
-
 func handle_click_or_tap(event_pos: Vector2):
 	var spaceState = get_world_3d().direct_space_state
 	
@@ -35,10 +34,7 @@ func handle_click_or_tap(event_pos: Vector2):
 		var interactedObjct = result.collider
 		debug.position = interactPos
 		print("clicked at:", interactPos, "on:", interactedObjct.get_parent())
-		
-	
-	
-	print("this is a click")
+
 	pass
 
 
@@ -70,16 +66,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		
 		var dx = delta.x * camera_sens
 		var dy = delta.y * camera_sens
-		
+
 		translate(Vector3(-dx,dy,0))
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	print(position.x)
 	hpLabel.text = str(baseobj.hp)
 	mnLabel.text = str(baseobj.muni)
 	pass
