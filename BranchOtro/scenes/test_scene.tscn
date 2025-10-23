@@ -105,10 +105,17 @@ enemy1 = ExtResource("7_pkttg")
 enemy2 = ExtResource("8_bkxxp")
 base = NodePath("../Map/Base")
 
-[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj")]
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "card1", "card2", "card3", "card4", "card5", "card6")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)
 script = ExtResource("5_qjeyg")
 baseobj = NodePath("../Map/Base")
+card1 = NodePath("HBoxContainer/TowerCard")
+card2 = NodePath("HBoxContainer/TowerCard2")
+card3 = NodePath("HBoxContainer/TowerCard3")
+card4 = NodePath("HBoxContainer/TowerCard4")
+card5 = NodePath("HBoxContainer/TowerCard5")
+card6 = NodePath("HBoxContainer/TowerCard6")
+torre_test = ExtResource("4_3qnke")
 camera_sens = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -142,8 +149,69 @@ grow_vertical = 0
 layout_mode = 2
 size_flags_horizontal = 3
 script = ExtResource("8_12hkd")
+myTowerType = "test_tower"
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "test_tower"
+horizontal_alignment = 1
+
+[node name="TowerCard2" type="PanelContainer" parent="Player/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_12hkd")
+myTowerType = "mitorre2"
+
+[node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "test_tower"
+horizontal_alignment = 1
+
+[node name="TowerCard3" type="PanelContainer" parent="Player/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_12hkd")
+myTowerType = "example"
+
+[node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard3"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "test_tower"
+horizontal_alignment = 1
+
+[node name="TowerCard4" type="PanelContainer" parent="Player/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_12hkd")
+myTowerType = "example"
+
+[node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard4"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "test_tower"
+horizontal_alignment = 1
+
+[node name="TowerCard5" type="PanelContainer" parent="Player/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_12hkd")
+myTowerType = "example"
+
+[node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 20
+text = "test_tower"
+horizontal_alignment = 1
+
+[node name="TowerCard6" type="PanelContainer" parent="Player/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+script = ExtResource("8_12hkd")
+myTowerType = "example"
+
+[node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard6"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 20
 text = "test_tower"

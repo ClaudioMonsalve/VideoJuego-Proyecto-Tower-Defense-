@@ -3,6 +3,7 @@ extends Node3D
 @onready var enemyColl = $AttackRange
 @onready var clickColl = $Interactable
 
+@export var price = 5.0
 @export var damage = 2.0
 @export var attkspeed = 2.0
 var attkSpeedCalculated = 1.0/attkspeed

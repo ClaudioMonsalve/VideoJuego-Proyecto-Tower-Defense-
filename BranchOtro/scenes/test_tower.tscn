@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://bbc4j71oom35u"]
 
-[ext_resource type="Material" uid="uid://beiqhi0ikhf06" path="res://materials/base.tres" id="1_6w6ls"]
-[ext_resource type="Script" uid="uid://dqvouv4jg7bja" path="res://scenes/test_tower.gd" id="1_mwxkw"]
+[ext_resource type="Material" uid="uid://beiqhi0ikhf06" path="res://BranchOtro/materials/base.tres" id="1_6w6ls"]
+[ext_resource type="Script" uid="uid://dqvouv4jg7bja" path="res://BranchOtro/scenes/test_tower.gd" id="1_mwxkw"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6w6ls"]
 height = 30.0
