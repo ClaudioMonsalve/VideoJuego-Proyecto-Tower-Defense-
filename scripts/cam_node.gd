@@ -4,7 +4,13 @@ extends Node3D
 @onready var baseobj = $"../Map/Base"
 @onready var label = $Label
 
-@export var camera_sens = 0.01
+#Limites
+@export var min_x: float = 0.0
+@export var max_x: float = 80.0
+@export var min_z: float = -50.0
+@export var max_z: float = 50.0
+
+@export var camera_sens = 0.05
 @export var zoomSens = 2
 @export var minH = 8 
 @export var maxH = 30
@@ -15,7 +21,7 @@ var dragging := false
 var last_pos := Vector2.ZERO
 
 
-func handle_click_or_tap(event_pos: Vector2):
+func handle_click_or_tap(_event_pos: Vector2):
 	pass
 
 
@@ -48,6 +54,11 @@ func _unhandled_input(event: InputEvent) -> void:
 		var dy = delta.y * camera_sens
 		
 		translate(Vector3(-dx,dy,0))
+		
+		var new_pos = global_position
+		new_pos.x = clamp(new_pos.x, min_x, max_x)
+		new_pos.z = clamp(new_pos.z, min_z, max_z)
+		global_position = new_pos
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -55,6 +66,6 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	label.text = str(baseobj.hp)
 	pass
