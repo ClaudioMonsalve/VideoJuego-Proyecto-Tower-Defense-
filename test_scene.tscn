@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [gd_scene load_steps=18 format=3 uid="uid://c3u5apsja5mw3"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_j8ivh"]
@@ -10,6 +11,29 @@
 [ext_resource type="PackedScene" uid="uid://4bprnwur45fy" path="res://Assets/Escenas/Enemigos/test_enemy.tscn" id="7_pkttg"]
 [ext_resource type="Script" uid="uid://cfh87ij8difnx" path="res://BranchOtro/scenes/tower_card.gd" id="8_12hkd"]
 [ext_resource type="PackedScene" uid="uid://c0u4v6lcabk8s" path="res://Assets/Escenas/Enemigos/big_bertha.tscn" id="8_bkxxp"]
+=======
+[gd_scene load_steps=31 format=3 uid="uid://c3u5apsja5mw3"]
+
+[ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_6ordq"]
+[ext_resource type="Material" uid="uid://c6qq2ks8r7h83" path="res://BranchOtro/materials/wall.tres" id="2_0tjxx"]
+[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_frwph"]
+[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_cwrts"]
+[ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_kk4qk"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://BranchOtro/scripts/creep_manager.gd" id="6_p7qgw"]
+[ext_resource type="PackedScene" uid="uid://4bprnwur45fy" path="res://Assets/Escenas/Enemigos/test_enemy.tscn" id="7_6o2bu"]
+[ext_resource type="PackedScene" uid="uid://c0u4v6lcabk8s" path="res://Assets/Escenas/Enemigos/big_bertha.tscn" id="8_3jt5h"]
+[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="9_uuoxu"]
+[ext_resource type="Script" uid="uid://cfh87ij8difnx" path="res://BranchOtro/scenes/tower_card.gd" id="10_sasr1"]
+[ext_resource type="Script" uid="uid://wrqkq70shukf" path="res://BranchOtro/scripts/node_2d.gd" id="11_d6e2f"]
+[ext_resource type="Script" uid="uid://cd5atcyghs7lq" path="res://BranchOtro/scenes/buttonPausa.gd" id="12_ll625"]
+[ext_resource type="Script" uid="uid://b4ents5jh77wl" path="res://BranchOtro/scripts/button.gd" id="13_iknwm"]
+[ext_resource type="Texture2D" uid="uid://sjgw0ch64cmf" path="res://Assets/Escenas/Sprites (Dialogue)/Main/bababa_0001.png" id="14_480w3"]
+[ext_resource type="Texture2D" uid="uid://deomio8qd06fu" path="res://Assets/Escenas/Sprites (Dialogue)/bababa_0002.png" id="15_306eq"]
+[ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="16_w7eqy"]
+[ext_resource type="Texture2D" uid="uid://dsnlqk6qj4il4" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_1.png" id="17_bqnx0"]
+[ext_resource type="Texture2D" uid="uid://duynrta1abyxy" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_3.png" id="18_acvd1"]
+[ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="19_gfhcy"]
+>>>>>>> 8e21fc2 (El pepe)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ddre"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -43,6 +67,57 @@ outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3qnke"]
 
+<<<<<<< HEAD
+=======
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jsdxy"]
+bg_color = Color(0.454524, 0.454524, 0.454524, 1)
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xy37l"]
+bg_color = Color(0.329158, 0.329158, 0.329158, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dkmi8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_480w3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_306eq")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3deb7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_w7eqy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bqnx0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_acvd1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_gfhcy")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+>>>>>>> 8e21fc2 (El pepe)
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -53,12 +128,20 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Map" type="MeshInstance3D" parent="."]
+<<<<<<< HEAD
 material_override = ExtResource("1_j8ivh")
+=======
+material_override = ExtResource("1_6ordq")
+>>>>>>> 8e21fc2 (El pepe)
 mesh = SubResource("PlaneMesh_6adnx")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107151, 1.44685, -0.856628)
+<<<<<<< HEAD
 material_override = ExtResource("3_7ddre")
+=======
+material_override = ExtResource("2_0tjxx")
+>>>>>>> 8e21fc2 (El pepe)
 size = Vector3(127.736, 5.0542, 133.246)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map/CSGBox3D"]
@@ -81,10 +164,17 @@ transform = Transform3D(-0.679326, 0, 0.733837, 0, 1, 0, -0.733837, 0, -0.679326
 operation = 2
 size = Vector3(50.0865, 8, 8)
 
+<<<<<<< HEAD
 [node name="Base" parent="Map" instance=ExtResource("3_qjeyg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50227, 0)
 
 [node name="testTower" parent="Map" instance=ExtResource("4_3qnke")]
+=======
+[node name="Base" parent="Map" instance=ExtResource("3_frwph")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50227, 0)
+
+[node name="testTower" parent="Map" instance=ExtResource("4_cwrts")]
+>>>>>>> 8e21fc2 (El pepe)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7682, 5.823, -8.49089)
 
 [node name="Paths" type="Node3D" parent="Map"]
@@ -93,6 +183,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7682, 5.823, -8.49089)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.7952, 1.58017, -67.6305)
 curve = SubResource("Curve3D_j8ivh")
 
+<<<<<<< HEAD
 [node name="TowerPlatform" parent="Map" instance=ExtResource("5_wtsjf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2399, 3.99648, -18.7437)
 
@@ -103,11 +194,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2892, 4.00083, -24.7554)
 script = ExtResource("3_nd71p")
 enemy1 = ExtResource("7_pkttg")
 enemy2 = ExtResource("8_bkxxp")
+=======
+[node name="TowerPlatform" parent="Map" instance=ExtResource("5_kk4qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2399, 3.99648, -18.7437)
+
+[node name="TowerPlatform2" parent="Map" instance=ExtResource("5_kk4qk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.2892, 4.00083, -24.7554)
+
+[node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
+script = ExtResource("6_p7qgw")
+enemy1 = ExtResource("7_6o2bu")
+enemy2 = ExtResource("8_3jt5h")
+>>>>>>> 8e21fc2 (El pepe)
 base = NodePath("../Map/Base")
 
 [node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "card1", "card2", "card3", "card4", "card5", "card6")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)
+<<<<<<< HEAD
 script = ExtResource("5_qjeyg")
+=======
+script = ExtResource("9_uuoxu")
+>>>>>>> 8e21fc2 (El pepe)
 baseobj = NodePath("../Map/Base")
 card1 = NodePath("HBoxContainer/TowerCard")
 card2 = NodePath("HBoxContainer/TowerCard2")
@@ -115,7 +222,11 @@ card3 = NodePath("HBoxContainer/TowerCard3")
 card4 = NodePath("HBoxContainer/TowerCard4")
 card5 = NodePath("HBoxContainer/TowerCard5")
 card6 = NodePath("HBoxContainer/TowerCard6")
+<<<<<<< HEAD
 torre_test = ExtResource("4_3qnke")
+=======
+torre_test = ExtResource("4_cwrts")
+>>>>>>> 8e21fc2 (El pepe)
 camera_sens = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -148,7 +259,11 @@ grow_vertical = 0
 [node name="TowerCard" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+<<<<<<< HEAD
 script = ExtResource("8_12hkd")
+=======
+script = ExtResource("10_sasr1")
+>>>>>>> 8e21fc2 (El pepe)
 myTowerType = "test_tower"
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard"]
@@ -160,7 +275,11 @@ horizontal_alignment = 1
 [node name="TowerCard2" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+<<<<<<< HEAD
 script = ExtResource("8_12hkd")
+=======
+script = ExtResource("10_sasr1")
+>>>>>>> 8e21fc2 (El pepe)
 myTowerType = "mitorre2"
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard2"]
@@ -172,7 +291,11 @@ horizontal_alignment = 1
 [node name="TowerCard3" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+<<<<<<< HEAD
 script = ExtResource("8_12hkd")
+=======
+script = ExtResource("10_sasr1")
+>>>>>>> 8e21fc2 (El pepe)
 myTowerType = "example"
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard3"]
@@ -184,7 +307,11 @@ horizontal_alignment = 1
 [node name="TowerCard4" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+<<<<<<< HEAD
 script = ExtResource("8_12hkd")
+=======
+script = ExtResource("10_sasr1")
+>>>>>>> 8e21fc2 (El pepe)
 myTowerType = "example"
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard4"]
@@ -196,7 +323,11 @@ horizontal_alignment = 1
 [node name="TowerCard5" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+<<<<<<< HEAD
 script = ExtResource("8_12hkd")
+=======
+script = ExtResource("10_sasr1")
+>>>>>>> 8e21fc2 (El pepe)
 myTowerType = "example"
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard5"]
@@ -208,7 +339,11 @@ horizontal_alignment = 1
 [node name="TowerCard6" type="PanelContainer" parent="Player/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+<<<<<<< HEAD
 script = ExtResource("8_12hkd")
+=======
+script = ExtResource("10_sasr1")
+>>>>>>> 8e21fc2 (El pepe)
 myTowerType = "example"
 
 [node name="Label" type="Label" parent="Player/HBoxContainer/TowerCard6"]
@@ -220,3 +355,75 @@ horizontal_alignment = 1
 [node name="debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)
 mesh = SubResource("BoxMesh_3qnke")
+<<<<<<< HEAD
+<<<<<<<< HEAD:BranchOtro/scenes/test_scene.tscn
+========
+
+[node name="Node2D" type="Node2D" parent="."]
+=======
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("11_d6e2f")
+>>>>>>> 8e21fc2 (El pepe)
+
+[node name="Button" type="Button" parent="Node2D"]
+offset_right = 99.0
+offset_bottom = 72.0
+text = "Pausar"
+<<<<<<< HEAD
+script = ExtResource("11_kn5to")
+=======
+script = ExtResource("12_ll625")
+>>>>>>> 8e21fc2 (El pepe)
+
+[node name="Panel" type="Panel" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 268.0
+offset_top = 67.0
+offset_right = 919.0
+offset_bottom = 576.0
+grow_horizontal = 2
+grow_vertical = 2
+<<<<<<< HEAD
+>>>>>>>> 8e21fc2 (El pepe):BranchOtro/test_scene.tscn727928850.tmp
+=======
+theme_override_styles/panel = SubResource("StyleBoxFlat_jsdxy")
+
+[node name="Button" type="Button" parent="Node2D/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -116.5
+offset_top = -131.0
+offset_right = 118.5
+offset_bottom = -29.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxFlat_xy37l")
+text = "Continuar"
+script = ExtResource("13_iknwm")
+
+[node name="Sprites" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite1" type="AnimatedSprite2D" parent="Node2D/Sprites"]
+position = Vector2(231, 373)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_dkmi8")
+frame_progress = 0.719075
+
+[node name="Sprite2" type="AnimatedSprite2D" parent="Node2D/Sprites"]
+position = Vector2(931, 704)
+scale = Vector2(0.4, 0.338)
+sprite_frames = SubResource("SpriteFrames_3deb7")
+>>>>>>> 8e21fc2 (El pepe)
