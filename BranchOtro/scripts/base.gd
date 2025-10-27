@@ -1,27 +1,35 @@
 extends Area3D
-class_name base
+class_name Base
 
-@onready var progBar = $SubViewport/CanvasLayer/ProgressBar
-@export var muni = 0
-@export var maxhp = 30.0
-var hp = maxhp
-var gd = 0
+@onready var prog_bar: ProgressBar = $SubViewport/CanvasLayer/ProgressBar
+
+@export var muni: int = 0
+@export var maxhp: float = 30.0
+var hp: float
+var gd: int = 0
 
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	self.body_entered.connect(_on_body_entered)
-	print(hp)
-	pass # Replace with function body.
+	hp = maxhp
+	body_entered.connect(_on_body_entered)
+	_update_bar()
+	print("HP inicial:", hp)
 
-func _on_body_entered(body):
-	print("lol")
+
+func _on_body_entered(body: Node) -> void:
 	if body is enemy:
 		hp -= body.dmg
-		progBar.value = hp/maxhp * 100
+		hp = clamp(hp, 0, maxhp)
+		_update_bar()
+
+		# Espera un frame antes de liberar el enemigo
 		body.get_parent().call_deferred("queue_free")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	
-	pass
+		if hp <= 0:
+			print("Base destruida!")
+			queue_free()
+
+
+func _update_bar() -> void:
+	if is_instance_valid(prog_bar):
+		prog_bar.value = (hp / maxhp) * 100

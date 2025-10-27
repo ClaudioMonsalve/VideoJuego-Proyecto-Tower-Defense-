@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0u4v6lcabk8s"]
+[gd_scene load_steps=9 format=3 uid="uid://c0u4v6lcabk8s"]
 
 [ext_resource type="Script" uid="uid://cq48faafvdaek" path="res://Assets/Escenas/Enemigos/bigBertha.gd" id="1_qm467"]
 [ext_resource type="Texture2D" uid="uid://dmc53836ol1bj" path="res://Assets/Escenas/Enemigos/big bertha.jpg" id="2_qm467"]
+[ext_resource type="AudioStream" uid="uid://bvaevhob6gnjg" path="res://Assets/Musica/19 2000 instrumental low quality.mp3" id="3_vjro1"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mkyue"]
 radius = 2.0
@@ -61,3 +62,6 @@ offset_right = 160.0
 offset_bottom = 30.0
 theme = SubResource("Theme_mkyue")
 value = 100.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_vjro1")

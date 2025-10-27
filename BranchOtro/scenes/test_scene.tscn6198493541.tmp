@@ -1,21 +1,19 @@
-[gd_scene load_steps=32 format=3 uid="uid://c3u5apsja5mw3"]
+[gd_scene load_steps=30 format=3 uid="uid://c3u5apsja5mw3"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_j8ivh"]
 [ext_resource type="Material" uid="uid://c6qq2ks8r7h83" path="res://BranchOtro/materials/wall.tres" id="3_7ddre"]
-[ext_resource type="Script" path="res://BranchOtro/scripts/creep_manager.gd" id="3_nd71p"]
-[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scripts/Base.tscn" id="3_qjeyg"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://BranchOtro/scripts/creep_manager.gd" id="3_nd71p"]
+[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_3qnke"]
 [ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_wtsjf"]
 [ext_resource type="PackedScene" uid="uid://4bprnwur45fy" path="res://Assets/Escenas/Enemigos/test_enemy.tscn" id="7_pkttg"]
-[ext_resource type="Script" path="res://BranchOtro/scenes/tower_card.gd" id="8_12hkd"]
+[ext_resource type="Script" uid="uid://cfh87ij8difnx" path="res://BranchOtro/scenes/tower_card.gd" id="8_12hkd"]
 [ext_resource type="PackedScene" uid="uid://c0u4v6lcabk8s" path="res://Assets/Escenas/Enemigos/big_bertha.tscn" id="8_bkxxp"]
-[ext_resource type="Script" path="res://BranchOtro/scripts/pause.gd" id="11_bkxxp"]
+[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://BranchOtro/scripts/pause.gd" id="11_bkxxp"]
 [ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://BranchOtro/scripts/node_2d.gd" id="11_f0tot"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://BranchOtro/scripts/button.gd" id="12_xjys7"]
-[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="14_0tjxx"]
 [ext_resource type="Texture2D" uid="uid://0on5fyk4gcl7" path="res://Assets/Dialogos/Sprites/Jaime/sprite_0.png" id="14_si2yt"]
-[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://BranchOtro/scripts/button_2.gd" id="15_frwph"]
 [ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="15_yqh8d"]
 [ext_resource type="Texture2D" uid="uid://cogvbhtod0561" path="res://Assets/Dialogos/Sprites/Jaime/sprite_2.png" id="16_6ordq"]
 [ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="17_0tjxx"]
@@ -156,6 +154,8 @@ enemy1 = ExtResource("7_pkttg")
 enemy2 = ExtResource("8_bkxxp")
 base = NodePath("../Map/Base")
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CreepManager"]
+
 [node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "card1", "card2", "card3", "card4", "card5", "card6")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)
 script = ExtResource("5_qjeyg")
@@ -276,12 +276,8 @@ mesh = SubResource("BoxMesh_3qnke")
 script = ExtResource("11_f0tot")
 
 [node name="Pause" type="Button" parent="Node2D"]
-offset_left = 20.0
-offset_top = 14.0
-offset_right = 118.0
-offset_bottom = 81.0
-text = "Regresar
-"
+offset_right = 98.0
+offset_bottom = 67.0
 script = ExtResource("11_bkxxp")
 
 [node name="Panel" type="Panel" parent="Node2D"]
@@ -311,38 +307,8 @@ offset_right = 103.5
 offset_bottom = -26.0
 grow_horizontal = 2
 grow_vertical = 0
-theme_override_font_sizes/font_size = 20
 text = "Continuar"
 script = ExtResource("12_xjys7")
-
-[node name="HSlider" type="HSlider" parent="Node2D/Panel"]
-layout_mode = 0
-offset_left = 211.0
-offset_top = 170.0
-offset_right = 412.0
-offset_bottom = 192.0
-scale = Vector2(2, 2)
-max_value = 2.0
-step = 0.1
-
-[node name="Label" type="Label" parent="Node2D/Panel/HSlider"]
-layout_mode = 0
-offset_left = -82.5
-offset_top = -1.0
-offset_right = -27.5
-offset_bottom = 22.0
-theme_override_fonts/font = ExtResource("14_0tjxx")
-text = "Musica"
-
-[node name="Button2" type="Button" parent="Node2D/Panel"]
-layout_mode = 0
-offset_left = 230.0
-offset_top = 329.0
-offset_right = 433.0
-offset_bottom = 394.0
-theme_override_font_sizes/font_size = 20
-text = "Regresar al Mapa"
-script = ExtResource("15_frwph")
 
 [node name="Sprites" type="Control" parent="Node2D"]
 layout_mode = 3

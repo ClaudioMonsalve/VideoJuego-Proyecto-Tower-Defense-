@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://c41bsewnspn04"]
 
-[ext_resource type="Script" uid="uid://csrdnufbyfhew" path="res://BranchOtro/scenes/tower_platform.gd" id="1_6xowl"]
+[ext_resource type="Script" path="res://BranchOtro/scenes/tower_platform.gd" id="1_6xowl"]
 [ext_resource type="Material" uid="uid://cpgtyjh50686p" path="res://BranchOtro/materials/PlatformPlaceholder.tres" id="1_ir24i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uwcsu"]

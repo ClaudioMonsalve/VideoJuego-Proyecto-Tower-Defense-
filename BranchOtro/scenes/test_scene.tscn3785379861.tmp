@@ -2,15 +2,15 @@
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_j8ivh"]
 [ext_resource type="Material" uid="uid://c6qq2ks8r7h83" path="res://BranchOtro/materials/wall.tres" id="3_7ddre"]
-[ext_resource type="Script" path="res://BranchOtro/scripts/creep_manager.gd" id="3_nd71p"]
-[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scripts/Base.tscn" id="3_qjeyg"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://BranchOtro/scripts/creep_manager.gd" id="3_nd71p"]
+[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_3qnke"]
 [ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_wtsjf"]
 [ext_resource type="PackedScene" uid="uid://4bprnwur45fy" path="res://Assets/Escenas/Enemigos/test_enemy.tscn" id="7_pkttg"]
-[ext_resource type="Script" path="res://BranchOtro/scenes/tower_card.gd" id="8_12hkd"]
+[ext_resource type="Script" uid="uid://cfh87ij8difnx" path="res://BranchOtro/scenes/tower_card.gd" id="8_12hkd"]
 [ext_resource type="PackedScene" uid="uid://c0u4v6lcabk8s" path="res://Assets/Escenas/Enemigos/big_bertha.tscn" id="8_bkxxp"]
-[ext_resource type="Script" path="res://BranchOtro/scripts/pause.gd" id="11_bkxxp"]
+[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://BranchOtro/scripts/pause.gd" id="11_bkxxp"]
 [ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://BranchOtro/scripts/node_2d.gd" id="11_f0tot"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://BranchOtro/scripts/button.gd" id="12_xjys7"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="14_0tjxx"]
@@ -336,10 +336,10 @@ text = "Musica"
 
 [node name="Button2" type="Button" parent="Node2D/Panel"]
 layout_mode = 0
-offset_left = 230.0
-offset_top = 329.0
-offset_right = 433.0
-offset_bottom = 394.0
+offset_left = 228.0
+offset_top = 325.0
+offset_right = 437.0
+offset_bottom = 390.0
 theme_override_font_sizes/font_size = 20
 text = "Regresar al Mapa"
 script = ExtResource("15_frwph")
@@ -351,11 +351,13 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Sprite1" type="AnimatedSprite2D" parent="Node2D/Sprites"]
+visible = false
 position = Vector2(967, 693)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_frwph")
 
 [node name="Sprite2" type="AnimatedSprite2D" parent="Node2D/Sprites"]
+visible = false
 position = Vector2(224, 390)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_cwrts")

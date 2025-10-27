@@ -3,5 +3,5 @@
 [ext_resource type="Script" uid="uid://bh7fbqvalmbmf" path="res://Assets/Escenas/Menues/music_player.gd" id="1_qhq6t"]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
-volume_db = 0.349
+volume_db = -4.685
 script = ExtResource("1_qhq6t")

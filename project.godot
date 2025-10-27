@@ -24,7 +24,7 @@ ButtonSound="*res://Assets/Escenas/Audios/ButtonSound.tscn"
 
 [dialogue_manager]
 
-runtime/balloon_path="res://BranchOtro/scenes/Dialogos/balloon.tscn"
+runtime/balloon_path="res://Assets/Dialogos/balloon.tscn"
 
 [display]
 

@@ -1,7 +1,7 @@
 extends Node3D
 
 @onready var camera = $Camera3D
-@export var baseobj: Area3D
+@export var baseobj: Base
 @onready var hpLabel = $Health
 @onready var mnLabel = $Money
 @onready var debug = $"../debug"

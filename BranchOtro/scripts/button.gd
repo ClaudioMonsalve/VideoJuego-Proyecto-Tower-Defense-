@@ -1,8 +1,9 @@
 extends Button
-@onready var button: Button = $"../../Button"
+@onready var pause: Button = $"../../Pause"
 
 func _ready():
 	pressed.connect(_on_pressed)
-
+	
 func _on_pressed():
-	button.cambiar(false)
+	pause.cambiar(false)
+	
