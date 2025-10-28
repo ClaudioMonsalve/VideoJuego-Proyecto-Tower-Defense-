@@ -1,10 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqdc4d0a6watr"]
+[gd_scene load_steps=7 format=3 uid="uid://dqdc4d0a6watr"]
 
 [ext_resource type="Script" uid="uid://c5mrtfka4pu8q" path="res://scripts/base.gd" id="1_bd46k"]
-[ext_resource type="Material" uid="uid://beiqhi0ikhf06" path="res://materials/base.tres" id="1_nfj5t"]
-
-[sub_resource type="BoxMesh" id="BoxMesh_7ddre"]
-size = Vector3(7, 7, 7)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ddre"]
 size = Vector3(7, 7, 7)
@@ -33,11 +29,6 @@ ProgressBar/styles/fill = SubResource("StyleBoxFlat_j2xnf")
 
 [node name="Area3D" type="Area3D"]
 script = ExtResource("1_bd46k")
-
-[node name="base" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_nfj5t")
-mesh = SubResource("BoxMesh_7ddre")
-skeleton = NodePath("../..")
 
 [node name="basecol" type="CollisionShape3D" parent="."]
 shape = SubResource("BoxShape3D_7ddre")
