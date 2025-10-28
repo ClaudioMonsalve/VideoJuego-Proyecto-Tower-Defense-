@@ -1,7 +1,7 @@
-[gd_scene load_steps=13 format=3 uid="uid://c3u5apsja5mw3"]
+[gd_scene load_steps=18 format=3 uid="uid://c3u5apsja5mw3"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://materials/ground.tres" id="1_j8ivh"]
-[ext_resource type="Material" uid="uid://c6qq2ks8r7h83" path="res://materials/wall.tres" id="3_7ddre"]
+[ext_resource type="PackedScene" uid="uid://dynl1kpnyhqc1" path="res://scenes/Suelo_Nivel1.blend" id="2_3qnke"]
 [ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://scripts/creep_manager.gd" id="3_nd71p"]
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://scenes/Base.tscn" id="3_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://scenes/test_tower.tscn" id="4_3qnke"]
@@ -27,7 +27,42 @@ size = Vector2(128, 128)
 
 [sub_resource type="Curve3D" id="Curve3D_j8ivh"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -8.71306, -0.454662, -9.742, 0, 0, 0, 0, 0, 0, -34.22109, -0.580173, -37.11139, 0, 0, -4, 0, 0, 4, -34.78989, -0.580173, -62.855064, 0, 0, 0, 0, 0, 0, -34.234608, -0.580173, -75.338104, 7.1, 0, -0.2, -7.1, 0, 0.2, -20.63683, -0.580173, -74.795166, 0, 0, 0, 0, 0, 0, 9.655943, -0.522297, -74.362686),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -8.71306, -0.454662, -9.742, 0, 0, 0, 0, 0, 0, -7.552696, -0.580173, -28.620487, 0, 0, -4, 0, 0, 4, -2.2482529, -0.580173, -43.475006, 0, 0, 0, 0, 0, 0, 3.483408, -0.46228027, -55.809925, -2.0901203, -0.23788786, 0.4649887, 2.0901203, 0.23788786, -0.4649887, 8.241119, -0.580173, -75.182846, 0, 0, 0, 0, 0, 0, 28.506021, -0.522297, -75.340546),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_3qnke"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -70.341675, 5, 47.633354, 0, 0, 0, 0, 0, 0, -52.61059, 5, 39.91705, 0, 0, 0, 0, 0, 0, -37.834698, 5, 35.97681, 0, 0, 0, 0, 0, 0, -26.013966, 5, 33.349983, 0, 0, 0, 0, 0, 0, -25.521435, 5, 18.245728, 0, 0, 0, 0, 0, 0, -25.68562, 5, 1.1713481, 0, 0, 0, 0, 0, 0, 0.09012222, 5, -0.14206554),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_wtsjf"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 68.687836, 5, 21.310349, 0, 0, 0, 0, 0, 0, 54.24027, 5, 20.161112, 0, 0, 0, 0, 0, 0, 41.92702, 5, 11.131393, 0, 0, 0, 0, 0, 0, 35.031597, 5, 3.415087, 0, 0, 0, 0, 0, 0, 20.912395, 5, -0.19680129, 0, 0, 0, 0, 0, 0, 0.5544777, 5, -0.36097798),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_rnaij"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 27.655243, 5, 68.88987, 0, 0, 0, 0, 0, 0, 16.655403, 5, 50.666256, 0, 0, 0, 0, 0, 0, 13.700218, 5, 42.293243, 0, 0, 0, 0, 0, 0, -10.926292, 5, 39.99477, 0, 0, 0, 0, 0, 0, -24.71714, 5, 37.367943, 0, 0, 0, 0, 0, 0, -25.702202, 5, 0.92070514, 0, 0, 0, 0, 0, 0, -0.09062195, 5, -0.39270848),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_h3xc6"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -69.83263, 5, -32.096073, 0, 0, 0, 0, 0, 0, -60.474552, 5, -26.185709, 0, 0, 0, 0, 0, 0, -53.57913, 5, -23.723059, 0, 0, 0, 0, 0, 0, -32.892864, 5, -24.379765, 0, 0, 0, 0, 0, 0, -24.519848, 5, -14.857512, 0, 0, 0, 0, 0, 0, -25.50491, 5, 0.9034532, 0, 0, 0, 0, 0, 0, -0.38586807, 5, -0.08160657),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 7
+
+[sub_resource type="Curve3D" id="Curve3D_s36qc"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -21.145964, 5, -69.943825, 0, 0, 0, 0, 0, 0, -21.990686, 5, -58.359035, 0, 0, 0, 0, 0, 0, -24.524855, 5, -46.41223, 0, 0, 0, 0, 0, 0, -31.230967, 5, -31.361588, 0, 0, 0, 0, 0, 0, -34.36851, 5, -24.362448, 0, 0, 0, 0, 0, 0, -24.47318, 5, -14.346442),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
@@ -45,51 +80,15 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Map" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5, 0)
 material_override = ExtResource("1_j8ivh")
 mesh = SubResource("PlaneMesh_6adnx")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107151, 1.44685, -0.856628)
-material_override = ExtResource("3_7ddre")
-size = Vector3(127.736, 5.0542, 133.246)
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Map/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05649, 3.37517, 0.815622)
-operation = 2
-size = Vector3(16, 16, 16)
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.843, 2.53901, 0.94183)
-operation = 2
-size = Vector3(42.032, 8, 8)
-
-[node name="CSGBox3D5" type="CSGBox3D" parent="Map/CSGBox3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.151957, 2.53901, 0.94183)
-operation = 2
-size = Vector3(42.032, 8, 8)
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map/CSGBox3D"]
-transform = Transform3D(-0.00586427, 0, -0.999983, 0, 1, 0, 0.999983, 0, -0.00586427, 42.7812, 1.73854, -16.3246)
-operation = 2
-size = Vector3(42.032, 8, 8)
-
-[node name="CSGBox3D6" type="CSGBox3D" parent="Map/CSGBox3D"]
-transform = Transform3D(-0.00586427, 0, -0.999983, 0, 1, 0, 0.999983, 0, -0.00586427, -45.33121, 1.73854, 18.256107)
-operation = 2
-size = Vector3(42.032, 8, 8)
-
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map/CSGBox3D"]
-transform = Transform3D(-0.679326, 0, 0.733837, 0, 1, 0, -0.733837, 0, -0.679326, 27.0431, 2.10401, -52.9325)
-operation = 2
-size = Vector3(50.0865, 8, 8)
-
-[node name="CSGBox3D7" type="CSGBox3D" parent="Map/CSGBox3D"]
-transform = Transform3D(-0.679326, 0, 0.733837, 0, 1, 0, -0.733837, 0, -0.679326, -30.20065, 2.10401, 52.958687)
-operation = 2
-size = Vector3(50.0865, 8, 8)
+[node name="Suelo_Nivel1" parent="Map" instance=ExtResource("2_3qnke")]
+transform = Transform3D(70, 0, 0, 0, 70, 0, 0, 0, 70, 0, 4, 0)
 
 [node name="Base" parent="Map" instance=ExtResource("3_qjeyg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.50227, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 
 [node name="testTower" parent="Map" instance=ExtResource("4_3qnke")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7682, 5.823, -8.49089)
@@ -101,12 +100,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -34.735523, 5.823, 9.739594)
 [node name="Paths" type="Node3D" parent="Map"]
 
 [node name="path1" type="Path3D" parent="Map/Paths"]
-transform = Transform3D(-0.99998134, 0, 0.0061086356, 0, 1, 0, -0.0061086356, 0, -0.99998134, 8.414524, 1.58017, -75.37845)
+transform = Transform3D(-0.99998134, 0, 0.0061086356, 0, 1, 0, -0.0061086356, 0, -0.99998134, 28.652733, 5, -75.378)
 curve = SubResource("Curve3D_j8ivh")
 
 [node name="path2" type="Path3D" parent="Map/Paths"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.407696, 1.58017, 74.59973)
-curve = SubResource("Curve3D_j8ivh")
+curve = SubResource("Curve3D_3qnke")
+
+[node name="path3" type="Path3D" parent="Map/Paths"]
+curve = SubResource("Curve3D_wtsjf")
+
+[node name="path4" type="Path3D" parent="Map/Paths"]
+curve = SubResource("Curve3D_rnaij")
+
+[node name="path5" type="Path3D" parent="Map/Paths"]
+curve = SubResource("Curve3D_h3xc6")
+
+[node name="path 6" type="Path3D" parent="Map/Paths"]
+curve = SubResource("Curve3D_s36qc")
 
 [node name="CreepManager" type="Node3D" parent="."]
 script = ExtResource("3_nd71p")
@@ -121,6 +131,6 @@ transform = Transform3D(1, 0, 0, 0, 0.64278793, -0.7660448, 0, 0.7660448, 0.6427
 
 [node name="Label" type="Label" parent="CamNode"]
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 35.0
 text = "dih"
 label_settings = SubResource("LabelSettings_qjeyg")
