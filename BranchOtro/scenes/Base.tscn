@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://dqdc4d0a6watr"]
+
+[ext_resource type="Script" uid="uid://cgk6ddcibxnkv" path="res://BranchOtro/scripts/base.gd" id="1_gbvf7"]
+[ext_resource type="Material" uid="uid://beiqhi0ikhf06" path="res://BranchOtro/materials/base.tres" id="1_nfj5t"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_7ddre"]
+size = Vector3(7, 7, 7)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ddre"]
+size = Vector3(7, 7, 7)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_bd46k"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bd46k"]
+bg_color = Color(0, 0, 0.27451, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_j2xnf"]
+bg_color = Color(0, 0.1837, 1, 1)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
+[sub_resource type="Theme" id="Theme_j2xnf"]
+ProgressBar/fonts/font = null
+ProgressBar/styles/background = SubResource("StyleBoxFlat_bd46k")
+ProgressBar/styles/fill = SubResource("StyleBoxFlat_j2xnf")
+
+[node name="Base" type="Area3D"]
+script = ExtResource("1_gbvf7")
+
+[node name="base" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_nfj5t")
+mesh = SubResource("BoxMesh_7ddre")
+skeleton = NodePath("../..")
+
+[node name="basecol" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_7ddre")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.68987, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_bd46k")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(800, 120)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
+
+[node name="ProgressBar" type="ProgressBar" parent="SubViewport/CanvasLayer"]
+offset_right = 200.0
+offset_bottom = 30.0
+scale = Vector2(4, 4)
+theme = SubResource("Theme_j2xnf")
+value = 100.0
