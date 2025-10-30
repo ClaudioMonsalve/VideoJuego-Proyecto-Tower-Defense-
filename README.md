@@ -9,6 +9,6 @@ Branch RV desarrollo yls
 
 # Por Hacer
 - Falta sistema para variedad de enemigos
-- Falta aleatorizar posicion de enemigos
+- Falta aleatorizar posicion de enemigos (en proceso)
 - Falta sistema de construcción y mejora de torres
-- Falta interface
+- Falta interface (en proceso)
