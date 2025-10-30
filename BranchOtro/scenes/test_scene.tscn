@@ -108,7 +108,7 @@ material_override = ExtResource("1_j8ivh")
 mesh = SubResource("PlaneMesh_6adnx")
 
 [node name="Base" parent="Map" instance=ExtResource("2_frwph")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49462, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.49636, 0)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Map"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.107151, 1.44685, -0.856628)
