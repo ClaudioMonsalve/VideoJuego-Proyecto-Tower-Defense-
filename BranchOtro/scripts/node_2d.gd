@@ -13,43 +13,39 @@ const MOTORHEAD = preload("res://Assets/Musica/Motörhead - Ace Of Spades (druml
 
 var escena_musica_res = preload("res://Assets/Escenas/Enemigos/big_bertha.tscn")
 var escena_musica_escena: Node = null
-var lista_sonidos: Array = []  # 👈 aquí guardaremos todos los AudioStreamPlayer
+var lista_sonidos: Array = []
+
 
 func _ready() -> void:
-	# Instanciar la escena
+	# Instanciar escena de enemigos / efectos
 	escena_musica_escena = escena_musica_res.instantiate()
 	add_child(escena_musica_escena)
 
-	# Buscar todos los sonidos dentro de la escena
+	# Buscar todos los AudioStreamPlayers dentro
 	lista_sonidos = buscar_todos_los_audio_streams(escena_musica_escena)
-
-	if lista_sonidos.size() > 0:
-		print("🎧 Se encontraron", lista_sonidos.size(), "sonidos:")
-		for s in lista_sonidos:
-			print("  •", s.name)
-	else:
-		print("⚠️ No se encontraron AudioStreamPlayers en la escena.")
-
-	# Configurar sliders
-	volume_slider.value = db_to_linear(MusicPlayer.volume_db)
+	# --- CONFIGURAR SLIDERS ---
+	volume_slider.min_value = 0
+	volume_slider.max_value = 1
+	volume_slider.step = 0.01
+	volume_slider.value = 1.0  # 1 = volumen máximo
 	volume_slider.value_changed.connect(_on_volume_changed)
 
-	if lista_sonidos.size() > 0:
-		sfx_slider.value = db_to_linear(lista_sonidos[0].volume_db)
+	sfx_slider.min_value = 0
+	sfx_slider.max_value = 1
+	sfx_slider.step = 0.01
+	sfx_slider.value = 1.0  # 1 = volumen máximo
 	sfx_slider.value_changed.connect(_on_sfx_changed)
 
 	panel.visible = false
 	escena()
 
 
-# 🔍 Función recursiva para encontrar *todos* los AudioStreamPlayer y AudioStreamPlayer3D
-func buscar_todos_los_audio_streams(nodo: Node) -> Array:
-	var lista: Array = []
-	if nodo is AudioStreamPlayer or nodo is AudioStreamPlayer3D:
+# 🔍 Busca todos los AudioStreamPlayers dentro de la escena
+func buscar_todos_los_audio_streams(nodo: Node, lista: Array = []) -> Array:
+	if nodo is AudioStreamPlayer or nodo is AudioStreamPlayer2D or nodo is AudioStreamPlayer3D:
 		lista.append(nodo)
 	for hijo in nodo.get_children():
-		lista += buscar_todos_los_audio_streams(hijo)
-	print(lista)
+		buscar_todos_los_audio_streams(hijo, lista)
 	return lista
 
 
@@ -63,26 +59,30 @@ func escena():
 
 func _on_dialogue_ended(resource):
 	MusicPlayer.stream = MOTORHEAD
+	MusicPlayer.bus = "Music"
 	MusicPlayer.play_music()
 	sprite_1.stop()
 	sprite_2.stop()
 	sprite_1.visible = false
 	sprite_2.visible = false
-	print("✅ Diálogo terminado.")
 	panel.visible = true
 	Cartas.visible = true
 	button.cambiar(false)
 
 
-# 🎵 Controla el volumen global (música)
+# 🎵 CONTROL DE MÚSICA (bus MUSIC)
 func _on_volume_changed(value: float) -> void:
-	MusicPlayer.volume_db = linear_to_db(value)
+	var db = lerp(-40.0, 0.0, value)  # 0 = silencio, 1 = máximo
+	var music_bus := AudioServer.get_bus_index("Music")
+	if music_bus == -1:
+		music_bus = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(music_bus, db)
 
 
-# 🔊 Controla el volumen de *todos* los sonidos encontrados
+# 💥 CONTROL DE EFECTOS (bus SFX)
 func _on_sfx_changed(value: float) -> void:
-	var db = linear_to_db(value)
-	for sonido in lista_sonidos:
-		if is_instance_valid(sonido):
-			sonido.volume_db = db
-	print("🔈 Volumen SFX ajustado a:", db, "dB")
+	var db = lerp(-40.0, 0.0, value)  # 0 = silencio, 1 = máximo
+	var sfx_bus := AudioServer.get_bus_index("SFX")
+	if sfx_bus == -1:
+		sfx_bus = AudioServer.get_bus_index("Master")
+	AudioServer.set_bus_volume_db(sfx_bus, db)

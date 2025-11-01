@@ -4,4 +4,5 @@
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer"]
 volume_db = -4.685
+bus = &"Music"
 script = ExtResource("1_qhq6t")

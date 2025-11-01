@@ -6,6 +6,7 @@ extends Node3D
 @onready var mnLabel = $Money
 @onready var debug = $"../debug"
 
+
 #tarjetas de torres
 #============================
 @export var card1: PanelContainer

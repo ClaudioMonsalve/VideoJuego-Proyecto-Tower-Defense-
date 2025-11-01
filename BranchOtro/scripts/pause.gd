@@ -31,6 +31,7 @@ func cambiar(decision,mostrar_panel: bool = true):
 		h_box_container.visible = false
 		money.visible = false
 		health.visible = false
+		MusicPlayer.stream_paused = true
 			
 		if mostrar_panel:
 			panel.visible = true
@@ -46,3 +47,4 @@ func cambiar(decision,mostrar_panel: bool = true):
 		health.visible = true
 		test_tower.reanudar()
 		creep_manager.reanudar()
+		MusicPlayer.stream_paused = false

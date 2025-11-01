@@ -65,3 +65,4 @@ value = 100.0
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vjro1")
+bus = &"SFX"

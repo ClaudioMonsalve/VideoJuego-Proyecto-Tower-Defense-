@@ -31,7 +31,7 @@ ProgressBar/fonts/font = null
 ProgressBar/styles/background = SubResource("StyleBoxFlat_bd46k")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_j2xnf")
 
-[node name="Base" type="Area3D"]
+[node name="Area3D" type="Area3D"]
 script = ExtResource("1_gbvf7")
 
 [node name="base" type="MeshInstance3D" parent="."]
