@@ -6,7 +6,7 @@ extends Button
 @onready var panel: Panel = $"../Panel"
 @onready var h_box_container: HBoxContainer = $"../../Player/HBoxContainer"
 @onready var health: Label = $"../../Player/Health"
-@onready var money: Label = $"../../Player/Money"
+@onready var money: Label = $"../../Player/Money/MoneyLabel"
 @onready var pause: Button = $"."
 
 # Variable local para saber si está pausado

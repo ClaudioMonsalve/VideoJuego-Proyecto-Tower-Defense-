@@ -3,6 +3,9 @@ class_name enemy
 
 @onready var pathfollow: PathFollow3D = get_parent()
 @onready var progBar: ProgressBar = $"../SubViewport/CanvasLayer/ProgressBar"
+@onready var animationPlayer: AnimationPlayer = $"../AnimationPlayer"
+@onready var collider = $CollisionShape3D
+@onready var meshOrSprite = $MeshInstance3D
 
 @export var worth: int = 4
 @export var maxhp: float = 10.0
@@ -28,7 +31,14 @@ func ouch(damage: float):
 	if hp <= 0:
 		if base:
 			base.muni += worth
-		queue_free()
+		if animationPlayer:
+			paused = true
+			collider.queue_free()
+			meshOrSprite.queue_free()
+			progBar.queue_free()
+			animationPlayer.play("money")
+			await animationPlayer.animation_finished
+		get_parent().queue_free()
 
 func _process(delta: float) -> void:
 	if not paused and is_instance_valid(pathfollow):

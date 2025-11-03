@@ -3,7 +3,7 @@ extends Node3D
 @onready var camera = $Camera3D
 @export var baseobj: Base
 @onready var hpLabel = $Health
-@onready var mnLabel = $Money
+@onready var mnLabel = $Money/MoneyLabel
 @onready var debug = $"../debug"
 
 
