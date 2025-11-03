@@ -1,36 +1,41 @@
 extends RigidBody3D
 class_name enemy
 
-@onready var pathfollow = $".."
-@onready var progBar = $"../SubViewport/CanvasLayer/ProgressBar"
+@onready var pathfollow: PathFollow3D = get_parent()
+@onready var progBar: ProgressBar = $"../SubViewport/CanvasLayer/ProgressBar"
+
+@export var worth: int = 4
+@export var maxhp: float = 10.0
+@export var speed: float = 10.0
+@export var dmg: int = 1
+var radius: float = 3.0
+
+var hp: float
 var base: Area3D
+var paused: bool = false
 
-@export var worth = 4
-@export var maxhp =  10.0
-@export var speed = 10
-@export var dmg = 1
-var radius = 3
-var hp = maxhp
-var spawned = false
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	hp = clamp(hp,0,maxhp)
+	hp = maxhp
 	var offset = Vector3(randf_range(-radius, radius), 0, randf_range(-radius, radius))
-	position.x += offset.x
-	position.y += offset.y
-	pass # Replace with function body.
+	position += offset
 
-func linkBase(baseobj):
+func linkBase(baseobj: Area3D):
 	base = baseobj	
 
-func ouch(damage):
+func ouch(damage: float):
 	hp -= damage
-	progBar.value = hp/maxhp * 100
-	if hp == 0:
-		base.muni += worth
+	progBar.value = (hp / maxhp) * 100
+	if hp <= 0:
+		if base:
+			base.muni += worth
 		queue_free()
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pathfollow.progress += delta * speed
+	if not paused and is_instance_valid(pathfollow):
+		pathfollow.progress += delta * speed
+
+func pausar():
+	paused = true
+
+func reanudar():
+	paused = false
