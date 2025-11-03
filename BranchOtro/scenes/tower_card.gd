@@ -2,10 +2,14 @@ extends PanelContainer
 
 
 
-@export var myTowerType = ""
+@export var TowerData: tower_data
 
-@onready var nameLabel = $"Label"
+@onready var nameLabel = $VBoxContainer/Name
+@onready var costLabel = $VBoxContainer/HBoxContainer/Cost
 @onready var camera = $"../../Camera3D"
+
+var myTowerType = ""
+var towerCost = ""
 var dragging = false
 var drag_offset = Vector2.ZERO
 var originalPos = Vector2.ZERO
@@ -13,8 +17,12 @@ var parent: HBoxContainer
 var index = 0
 
 func _ready() -> void:
+	if TowerData:
+		myTowerType = TowerData.tower_name
+		towerCost = str(TowerData.tower_cost)
+		nameLabel.text = myTowerType
+		costLabel.text = towerCost
 	index = get_index()
-	nameLabel.text = myTowerType
 	originalPos = global_position
 
 func _gui_input(event: InputEvent) -> void:

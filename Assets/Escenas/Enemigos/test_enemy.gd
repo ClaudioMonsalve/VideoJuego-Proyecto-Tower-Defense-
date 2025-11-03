@@ -6,12 +6,14 @@ class_name enemy
 @onready var animationPlayer: AnimationPlayer = $"../AnimationPlayer"
 @onready var collider = $CollisionShape3D
 @onready var meshOrSprite = $MeshInstance3D
+@onready var barSprite = $Sprite3D
 
 @export var worth: int = 4
 @export var maxhp: float = 10.0
 @export var speed: float = 10.0
 @export var dmg: int = 1
 var radius: float = 3.0
+signal aditionalAction
 
 var hp: float
 var base: Area3D
@@ -28,14 +30,15 @@ func linkBase(baseobj: Area3D):
 func ouch(damage: float):
 	hp -= damage
 	progBar.value = (hp / maxhp) * 100
+	aditionalAction.emit()
 	if hp <= 0:
 		if base:
 			base.muni += worth
-		if animationPlayer:
+		if animationPlayer and self:
 			paused = true
 			collider.queue_free()
 			meshOrSprite.queue_free()
-			progBar.queue_free()
+			barSprite.queue_free()
 			animationPlayer.play("money")
 			await animationPlayer.animation_finished
 		get_parent().queue_free()

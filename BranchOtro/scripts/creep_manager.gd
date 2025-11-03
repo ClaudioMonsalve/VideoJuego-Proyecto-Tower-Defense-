@@ -6,11 +6,19 @@ class_name CreepManager
 @export var base: Area3D
 
 @onready var pathHolder = $"../Map/Paths"
+@onready var paths := pathHolder.get_children()
 
 var waveDelay = 5.0
 var spawnDelay = 0.1
 var pausa = false
 var spawning = false
+
+var wavesArrNew = [
+	[{"enemy1": 2, "path": 0}],
+	[{"enemy1": 5, "path": 0}],
+	[{"enemy1": 3, "path": 0}, {"enemy2": 1, "path": 1}],
+	[{"enemy1": 4, "path": 0}, {"enemy1": 3, "path": 1}]
+	]
 
 var wavesArr = [
 	{"enemy1": 2, "path": 0},
@@ -30,21 +38,19 @@ func waveManager() -> void:
 	for wave in wavesArr:
 		for key in wave:
 			for i in range(wave[key]):
+				await get_tree().process_frame
 				while pausa:
 					await get_tree().process_frame
 				var creep = returnCreep(key)
 				var path = pathHolder.get_child(wave["path"])
 				if creep:
 					var enemyNode = creep.get_child(0)
-					print("spawning " + key)
 					if enemyNode:
 						enemyNode.linkBase(base)
 						enemyNode.add_to_group("Creeps")
 					path.add_child(creep)
 				await waitWhileNotPaused(spawnDelay)
-
 		await waitWhileNotPaused(waveDelay)
-
 	spawning = false
 
 # Función auxiliar: espera que pase el tiempo sin avanzar si está en pausa
@@ -53,7 +59,8 @@ func waitWhileNotPaused(seconds: float) -> void:
 	while elapsed < seconds:
 		if not pausa:
 			elapsed += get_process_delta_time()
-		await get_tree().create_timer(0.01).timeout
+		await get_tree().process_frame
+		#await get_tree().create_timer(0.01).timeout old implementation in case of breaking
 
 
 # Retorna la instancia del creep correspondiente

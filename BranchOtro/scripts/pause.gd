@@ -4,9 +4,8 @@ extends Button
 @onready var creep_manager: Node = $"../../CreepManager"
 @onready var test_tower: Node3D = $"../../Map/testTower"
 @onready var panel: Panel = $"../Panel"
-@onready var h_box_container: HBoxContainer = $"../../Player/HBoxContainer"
-@onready var health: Label = $"../../Player/Health"
-@onready var money: Label = $"../../Player/Money/MoneyLabel"
+@onready var hbox_Cards: HBoxContainer = $"../../Player/HBox Cards"
+@onready var player_Data: VBoxContainer = $"../../Player/VBox playerdata"
 @onready var pause: Button = $"."
 
 # Variable local para saber si está pausado
@@ -28,9 +27,8 @@ func cambiar(decision,mostrar_panel: bool = true):
 		creep_manager.pausar()
 		pause.visible = false
 		text = ""
-		h_box_container.visible = false
-		money.visible = false
-		health.visible = false
+		hbox_Cards.visible = false
+		player_Data.visible = false
 		MusicPlayer.stream_paused = true
 			
 		if mostrar_panel:
@@ -40,11 +38,10 @@ func cambiar(decision,mostrar_panel: bool = true):
 		
 	else:
 		text = "Pausar"
-		h_box_container.visible = true
-		money.visible = true	
+		hbox_Cards.visible = true
+		player_Data.visible = true
 		panel.visible = false
 		pause.visible = true
-		health.visible = true
 		test_tower.reanudar()
 		creep_manager.reanudar()
 		MusicPlayer.stream_paused = false

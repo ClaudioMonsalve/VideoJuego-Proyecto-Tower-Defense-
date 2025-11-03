@@ -2,8 +2,8 @@ extends Node3D
 
 @onready var camera = $Camera3D
 @export var baseobj: Base
-@onready var hpLabel = $Health
-@onready var mnLabel = $Money/MoneyLabel
+@onready var hpLabel = $"VBox playerdata/HBox Health/Health"
+@onready var mnLabel = $"VBox playerdata/HBox Money/MoneyLabel"
 @onready var debug = $"../debug"
 
 
@@ -108,7 +108,7 @@ func _on_tower_card_input(event: InputEvent, card):
 func buyTower(towerName):
 	var tower = getTower(towerName)
 	print(baseobj.muni)
-	if  tower.price <= baseobj.muni:
+	if  tower and tower.price <= baseobj.muni:
 		baseobj.muni -= tower.price
 		return tower
 	else:
@@ -116,8 +116,10 @@ func buyTower(towerName):
 
 func getTower(towerName):
 	match towerName:
-		"test_tower":
+		"Test tower":
 			return torre_test.instantiate()
+		_:
+			return null
 
 func handle_click_or_tap(event_pos: Vector2):
 	var spaceState = get_world_3d().direct_space_state

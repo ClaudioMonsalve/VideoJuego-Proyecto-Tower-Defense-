@@ -110,7 +110,7 @@ animations = [{
 environment = SubResource("Environment_3qnke")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0.791145, 12.2761, -32.5975)
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 13, -29)
 shadow_enabled = true
 
 [node name="Map" type="MeshInstance3D" parent="."]
@@ -181,7 +181,6 @@ grow_horizontal = 0
 
 [node name="HBox Money" type="HBoxContainer" parent="Player/VBox playerdata"]
 layout_mode = 2
-size_flags_horizontal = 8
 
 [node name="MoneyLabel" type="Label" parent="Player/VBox playerdata/HBox Money"]
 layout_mode = 2
@@ -196,7 +195,6 @@ expand_mode = 2
 
 [node name="HBox Health" type="HBoxContainer" parent="Player/VBox playerdata"]
 layout_mode = 2
-size_flags_horizontal = 8
 
 [node name="Health" type="Label" parent="Player/VBox playerdata/HBox Health"]
 layout_mode = 2
@@ -240,6 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)
 mesh = SubResource("BoxMesh_3qnke")
 
 [node name="Node2D" type="Node2D" parent="."]
+visible = false
 script = ExtResource("11_f0tot")
 
 [node name="Pause" type="Button" parent="Node2D"]
@@ -341,11 +340,8 @@ offset_bottom = 40.0
 position = Vector2(967, 693)
 scale = Vector2(0.3, 0.3)
 sprite_frames = SubResource("SpriteFrames_frwph")
-frame_progress = 0.0577059
 
 [node name="Sprite2" type="AnimatedSprite2D" parent="Node2D/Sprites"]
 position = Vector2(224, 390)
 scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_cwrts")
-frame = 1
-frame_progress = 0.0459249

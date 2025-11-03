@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var panel: Panel = $Panel
-@onready var Cartas: HBoxContainer = $"../Player/HBoxContainer"
+@onready var Cartas: HBoxContainer = $"../Player/HBox Cards"
 @onready var button: Button = $Pause
 @onready var sprite_1: AnimatedSprite2D = $Sprites/Sprite1
 @onready var sprite_2: AnimatedSprite2D = $Sprites/Sprite2

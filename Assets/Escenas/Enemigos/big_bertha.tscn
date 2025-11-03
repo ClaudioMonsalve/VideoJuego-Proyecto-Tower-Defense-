@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c0u4v6lcabk8s"]
+[gd_scene load_steps=12 format=3 uid="uid://c0u4v6lcabk8s"]
 
 [ext_resource type="Script" uid="uid://cq48faafvdaek" path="res://Assets/Escenas/Enemigos/bigBertha.gd" id="1_qm467"]
 [ext_resource type="Texture2D" uid="uid://dmc53836ol1bj" path="res://Assets/Escenas/Enemigos/big bertha.jpg" id="2_qm467"]
@@ -27,6 +27,44 @@ corner_radius_bottom_left = 20
 [sub_resource type="Theme" id="Theme_mkyue"]
 ProgressBar/styles/background = SubResource("StyleBoxFlat_mkyue")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_fpxyv")
+
+[sub_resource type="Animation" id="Animation_vjro1"]
+resource_name = "ouch"
+length = 0.3
+capture_included = true
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody3D/Sprite3D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 2,
+"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4b4hj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("RigidBody3D/Sprite3D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vccdf"]
+_data = {
+&"RESET": SubResource("Animation_4b4hj"),
+&"ouch": SubResource("Animation_vjro1")
+}
 
 [node name="BigBertha" type="PathFollow3D"]
 
@@ -66,3 +104,8 @@ value = 100.0
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_vjro1")
 bus = &"SFX"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_vccdf")
+}
