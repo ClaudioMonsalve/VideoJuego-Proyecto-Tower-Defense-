@@ -17,13 +17,13 @@
 [ext_resource type="Resource" uid="uid://dhpdqis1lah4j" path="res://Assets/Recursos/Rtorres/Test_tower.tres" id="12_kk4qk"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://BranchOtro/scripts/button.gd" id="12_xjys7"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="14_0tjxx"]
-[ext_resource type="Texture2D" uid="uid://0on5fyk4gcl7" path="res://Assets/Dialogos/Sprites/Jaime/sprite_0.png" id="14_si2yt"]
 [ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://BranchOtro/scripts/button_2.gd" id="15_frwph"]
 [ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="15_yqh8d"]
 [ext_resource type="Texture2D" uid="uid://cogvbhtod0561" path="res://Assets/Dialogos/Sprites/Jaime/sprite_2.png" id="16_6ordq"]
 [ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="17_0tjxx"]
 [ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="18_6ordq"]
 [ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="19_0tjxx"]
+[ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="19_p7qgw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ddre"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -74,7 +74,7 @@ corner_radius_bottom_left = 50
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("14_si2yt")
+"texture": ExtResource("19_p7qgw")
 }, {
 "duration": 1.0,
 "texture": ExtResource("15_yqh8d")

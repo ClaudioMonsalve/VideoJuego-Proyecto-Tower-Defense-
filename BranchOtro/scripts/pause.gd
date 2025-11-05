@@ -23,7 +23,7 @@ func _on_pressed():
 func cambiar(decision,mostrar_panel: bool = true):
 	is_paused = decision
 	if is_paused:
-		test_tower.pausar()
+		get_tree().call_group("torres", "pausar")
 		creep_manager.pausar()
 		pause.visible = false
 		text = ""
@@ -42,6 +42,6 @@ func cambiar(decision,mostrar_panel: bool = true):
 		player_Data.visible = true
 		panel.visible = false
 		pause.visible = true
-		test_tower.reanudar()
+		get_tree().call_group("torres", "reanudar")
 		creep_manager.reanudar()
 		MusicPlayer.stream_paused = false

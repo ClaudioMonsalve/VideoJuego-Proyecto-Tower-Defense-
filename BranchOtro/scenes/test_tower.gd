@@ -14,6 +14,7 @@ var paused = false
 var creepQueue = []
 
 func _ready() -> void:
+	add_to_group("torres")
 	enemyColl.body_entered.connect(_on_enemy_enter)
 	enemyColl.body_exited.connect(_on_enemy_exit)
 
