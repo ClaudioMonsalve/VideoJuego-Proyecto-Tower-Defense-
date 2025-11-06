@@ -19,11 +19,11 @@
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="14_0tjxx"]
 [ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://BranchOtro/scripts/button_2.gd" id="15_frwph"]
 [ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="15_yqh8d"]
-[ext_resource type="Texture2D" uid="uid://cogvbhtod0561" path="res://Assets/Dialogos/Sprites/Jaime/sprite_2.png" id="16_6ordq"]
 [ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="17_0tjxx"]
 [ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="18_6ordq"]
 [ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="19_0tjxx"]
 [ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="19_p7qgw"]
+[ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="21_p7qgw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ddre"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -80,7 +80,7 @@ animations = [{
 "texture": ExtResource("15_yqh8d")
 }, {
 "duration": 1.0,
-"texture": ExtResource("16_6ordq")
+"texture": ExtResource("21_p7qgw")
 }, {
 "duration": 1.0,
 "texture": ExtResource("17_0tjxx")
