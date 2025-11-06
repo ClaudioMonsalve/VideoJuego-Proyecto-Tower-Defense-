@@ -64,7 +64,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_8sy1q")
 theme_override_font_sizes/font_size = 34
 theme_override_styles/normal = SubResource("StyleBoxFlat_5ckro")
-text = "Logros
+text = "Multijugador
 "
 
 [node name="Label" type="Label" parent="Control"]
