@@ -5,6 +5,7 @@ extends Node2D
 @onready var atacar_btn: Button = $Button2
 @onready var jugadores_btn: Button = $Button3
 @onready var solicitar_btn: Button = $Button4  # Nuevo botón para solicitud
+@onready var menu: Button = $Menu
 
 var ws := WebSocketPeer.new()
 var url := "ws://localhost:4010/?gameId=I&playerName=Claudio"
@@ -30,6 +31,7 @@ func _ready():
 	atacar_btn.pressed.connect(_on_atacar_pressed)
 	jugadores_btn.pressed.connect(_on_ver_jugadores_pressed)
 	solicitar_btn.pressed.connect(_on_solicitar_pressed)
+	menu.pressed.connect(_on_back_pressed)
 	set_process(true)
 
 func _on_conectar_pressed():
@@ -58,6 +60,14 @@ func _on_solicitar_pressed():
 		estado_label.text = "Enviando solicitud de partida..."
 		solicitar_btn.disabled = true
 
+func _on_back_pressed():
+	if ws.get_ready_state() == WebSocketPeer.STATE_OPEN:
+		ws.close(1000, "Cerrando conexión desde cliente")  # Código 1000 = cierre normal
+		print("🔌 Desconectando del servidor...")
+		
+	get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
+	
+	
 func _enviar_ataque():
 	var ataque = {
 		"event": "send-game-data",
