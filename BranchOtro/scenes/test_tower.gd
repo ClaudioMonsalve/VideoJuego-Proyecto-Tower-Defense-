@@ -22,6 +22,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_enemy_enter(body):
+	print("something at all entered")
 	if body is enemy:
 		creepQueue.append(body)
 		if not attacking and not paused:

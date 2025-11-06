@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://chgfal10ehvra"]
+[gd_scene load_steps=3 format=3 uid="uid://chgfal10ehvra"]
 
 [ext_resource type="Script" uid="uid://de505rlqypquo" path="res://Multijugador/Scripts/multijugador.gd" id="1_13lwt"]
+[ext_resource type="Resource" uid="uid://cafm0tkja6m40" path="res://Assets/Resources/PlayerRes/Player.tres" id="2_hph7k"]
 
 [node name="Multijugador" type="Node2D"]
 script = ExtResource("1_13lwt")
+playerData = ExtResource("2_hph7k")
 
 [node name="Label" type="Label" parent="."]
 offset_left = 2.0
