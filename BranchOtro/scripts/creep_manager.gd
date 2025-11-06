@@ -6,17 +6,37 @@ class_name CreepManager
 @export var base: Area3D
 
 @onready var pathHolder = $"../Map/Paths"
+@onready var paths := pathHolder.get_children()
 
 var waveDelay := 5.0
 var spawnDelay := 0.5
 var pausa := false
 var spawning := false
 
-var wavesArr = [
-	{"enemy1": 2, "path": 0},
-	{"enemy1": 5, "path": 0},
-	{"enemy1": 3, "enemy2": 1, "path": 0},
-	{"enemy2": 2, "path": 1}
+# nuevo manejo de oleadas para permitir distintos carriles por oleada
+# y un tiempo entre oleadas personalizado
+
+#estructura:
+#spawns: [lista con {enemigo1, camino}, {enemigo1, enemigo2, camino} etc]
+#wave_delay: autoexplanatorio 🥀
+
+var newWavesArr = [ 
+	{
+		"spawns": [{"enemy1": 2, "path": 0}], 
+		"wave_delay": 10
+	},
+	{
+		"spawns":[{"enemy1": 3, "path": 0}, {"enemy1": 2, "path": 1}],
+		"wave_delay": 15
+	},
+	{
+		"spawns":[{"enemy1": 2, "path": 2}, {"enemy1": 4, "path": 1}],
+		"wave_delay": 10
+	},
+	{
+		"spawns":[{"enemy1": 3, "enemy2": 1, "path": 1}],
+		"wave_delay": 15
+	}
 ]
 
 # Control interno
@@ -38,78 +58,59 @@ func startWaves():
 	spawning = true
 	phase = "spawning"
 	wave_index = 0
-	setupWave()
+	waveManager()
+
+# === Corutinas para spawnear multiples enemigos paralelamente ===
+func waveManager() -> void:
+	for wave in newWavesArr:
+		
+		# Create a list of async tasks for all spawns
+		var spawn_tasks: Array = []
+		for group in wave["spawns"]:
+			spawn_tasks.append(await spawnGroup(group))
+		
+		# Wait for all groups in this wave to finish spawning
+		for t in spawn_tasks:
+			await t
+		
+		await waitWhileNotPaused(wave["wave_delay"])
+	spawning = false
+
+
+# === Utility: pauses correctly even when paused ===
+func waitWhileNotPaused(seconds: float) -> void:
+	var elapsed := 0.0
+	while elapsed < seconds:
+		if not pausa:
+			elapsed += get_process_delta_time()
+		await get_tree().process_frame
+
+
+# === Spawns a group of enemies (one path) ===
+func spawnGroup(group: Dictionary) -> void:
+	await _spawnGroup(group)
+
+func _spawnGroup(group: Dictionary) -> void:
+	var path_index = group["path"]
+	var path = paths[path_index]
+	
+	# For each enemy type and count in this group
+	for key in group.keys():
+		if key == "path":
+			continue
+		var count = group[key]
+		for i in range(count):
+			while pausa:
+				await get_tree().process_frame
+			
+			spawnEnemy(key, path)
+			await waitWhileNotPaused(spawnDelay)
 
 
 # === Actualización principal ===
 func _process(delta: float) -> void:
 	if pausa or not spawning:
 		return
-
-	match phase:
-		"spawning":
-			handleSpawning(delta)
-		"waiting_wave":
-			handleWaveDelay(delta)
-		_:
-			pass
-
-
-# === Configura la siguiente wave ===
-func setupWave():
-	if wave_index >= wavesArr.size():
-		print("✅ Todas las oleadas terminadas.")
-		spawning = false
-		phase = "done"
-		return
-
-	var wave = wavesArr[wave_index]
-	enemy_types = []
-
-	# Prepara lista como [("enemy1", 2), ("enemy2", 1)] sin incluir "path"
-	for key in wave.keys():
-		if key == "path":
-			continue
-		enemy_types.append({"type": key, "count": wave[key]})
-
-	current_enemy_index = 0
-	spawn_timer = 0.0
-	print("🔥 Iniciando Wave ", wave_index + 1)
-	phase = "spawning"
-
-
-# === Maneja el spawn individual ===
-func handleSpawning(delta: float):
-	spawn_timer += delta
-	if spawn_timer < spawnDelay:
-		return
-	spawn_timer = 0.0
-
-	var wave = wavesArr[wave_index]
-	var path = pathHolder.get_child(wave["path"])
-
-	# Busca el tipo de enemigo actual
-	if current_enemy_index < enemy_types.size():
-		var enemy_info = enemy_types[current_enemy_index]
-		if enemy_info["count"] > 0:
-			spawnEnemy(enemy_info["type"], path)
-			enemy_info["count"] -= 1
-			enemy_types[current_enemy_index] = enemy_info
-		else:
-			current_enemy_index += 1
-	else:
-		# Wave completa → pasar al delay entre oleadas
-		phase = "waiting_wave"
-		wave_timer = 0.0
-		print("⏳ Oleada ", wave_index + 1, " completada.")
-		wave_index += 1
-
-
-# === Delay entre waves ===
-func handleWaveDelay(delta: float):
-	wave_timer += delta
-	if wave_timer >= waveDelay:
-		setupWave()
 
 
 # === Spawnea un enemigo ===
@@ -121,7 +122,6 @@ func spawnEnemy(type: String, path: Node) -> void:
 			enemyNode.linkBase(base)
 			enemyNode.add_to_group("Creeps")
 		path.add_child(creep)
-		print("🧟 Spawneado ", type, " en path ", path.name)
 
 
 func returnCreep(type: String) -> Node:

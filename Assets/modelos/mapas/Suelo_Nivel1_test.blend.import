@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b1cdvu2qt3uah"
-path="res://.godot/imported/Suelo_Nivel1_test.blend-d8a8a4e2e1cdfbee02371c2a28811f89.scn"
+uid="uid://b1y4ndm5w6um8"
+path="res://.godot/imported/Suelo_Nivel1_test.blend-ecd6b01986e6467e30e6e3ac57622624.scn"
 
 [deps]
 
-source_file="res://Suelo_Nivel1_test.blend"
-dest_files=["res://.godot/imported/Suelo_Nivel1_test.blend-d8a8a4e2e1cdfbee02371c2a28811f89.scn"]
+source_file="res://Assets/modelos/mapas/Suelo_Nivel1_test.blend"
+dest_files=["res://.godot/imported/Suelo_Nivel1_test.blend-ecd6b01986e6467e30e6e3ac57622624.scn"]
 
 [params]
 
