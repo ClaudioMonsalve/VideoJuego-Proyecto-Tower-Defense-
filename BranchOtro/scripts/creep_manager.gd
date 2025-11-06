@@ -6,19 +6,11 @@ class_name CreepManager
 @export var base: Area3D
 
 @onready var pathHolder = $"../Map/Paths"
-@onready var paths := pathHolder.get_children()
 
-var waveDelay = 5.0
-var spawnDelay = 0.1
-var pausa = false
-var spawning = false
-
-var wavesArrNew = [
-	[{"enemy1": 2, "path": 0}],
-	[{"enemy1": 5, "path": 0}],
-	[{"enemy1": 3, "path": 0}, {"enemy2": 1, "path": 1}],
-	[{"enemy1": 4, "path": 0}, {"enemy1": 3, "path": 1}]
-	]
+var waveDelay := 5.0
+var spawnDelay := 0.5
+var pausa := false
+var spawning := false
 
 var wavesArr = [
 	{"enemy1": 2, "path": 0},
@@ -27,73 +19,131 @@ var wavesArr = [
 	{"enemy2": 2, "path": 1}
 ]
 
-# Inicia la generación de oleadas
+# Control interno
+var wave_index := 0
+var enemy_types := []
+var current_enemy_index := 0
+var spawn_timer := 0.0
+var wave_timer := 0.0
+var phase := "idle"  # idle | spawning | waiting_wave | done
+
+func _ready():
+	startWaves()
+
+
+# === Inicio de las oleadas ===
 func startWaves():
-	if not spawning:
-		spawning = true
-		await waveManager()
-
-# Manager de las oleadas
-func waveManager() -> void:
-	for wave in wavesArr:
-		for key in wave:
-			for i in range(wave[key]):
-				await get_tree().process_frame
-				while pausa:
-					await get_tree().process_frame
-				var creep = returnCreep(key)
-				var path = pathHolder.get_child(wave["path"])
-				if creep:
-					var enemyNode = creep.get_child(0)
-					if enemyNode:
-						enemyNode.linkBase(base)
-						enemyNode.add_to_group("Creeps")
-					path.add_child(creep)
-				await waitWhileNotPaused(spawnDelay)
-		await waitWhileNotPaused(waveDelay)
-	spawning = false
-
-# Función auxiliar: espera que pase el tiempo sin avanzar si está en pausa
-func waitWhileNotPaused(seconds: float) -> void:
-	var elapsed := 0.0
-	while elapsed < seconds:
-		if not pausa:
-			elapsed += get_process_delta_time()
-		await get_tree().process_frame
-		#await get_tree().create_timer(0.01).timeout old implementation in case of breaking
+	if spawning:
+		return
+	spawning = true
+	phase = "spawning"
+	wave_index = 0
+	setupWave()
 
 
-# Retorna la instancia del creep correspondiente
+# === Actualización principal ===
+func _process(delta: float) -> void:
+	if pausa or not spawning:
+		return
+
+	match phase:
+		"spawning":
+			handleSpawning(delta)
+		"waiting_wave":
+			handleWaveDelay(delta)
+		_:
+			pass
+
+
+# === Configura la siguiente wave ===
+func setupWave():
+	if wave_index >= wavesArr.size():
+		print("✅ Todas las oleadas terminadas.")
+		spawning = false
+		phase = "done"
+		return
+
+	var wave = wavesArr[wave_index]
+	enemy_types = []
+
+	# Prepara lista como [("enemy1", 2), ("enemy2", 1)] sin incluir "path"
+	for key in wave.keys():
+		if key == "path":
+			continue
+		enemy_types.append({"type": key, "count": wave[key]})
+
+	current_enemy_index = 0
+	spawn_timer = 0.0
+	print("🔥 Iniciando Wave ", wave_index + 1)
+	phase = "spawning"
+
+
+# === Maneja el spawn individual ===
+func handleSpawning(delta: float):
+	spawn_timer += delta
+	if spawn_timer < spawnDelay:
+		return
+	spawn_timer = 0.0
+
+	var wave = wavesArr[wave_index]
+	var path = pathHolder.get_child(wave["path"])
+
+	# Busca el tipo de enemigo actual
+	if current_enemy_index < enemy_types.size():
+		var enemy_info = enemy_types[current_enemy_index]
+		if enemy_info["count"] > 0:
+			spawnEnemy(enemy_info["type"], path)
+			enemy_info["count"] -= 1
+			enemy_types[current_enemy_index] = enemy_info
+		else:
+			current_enemy_index += 1
+	else:
+		# Wave completa → pasar al delay entre oleadas
+		phase = "waiting_wave"
+		wave_timer = 0.0
+		print("⏳ Oleada ", wave_index + 1, " completada.")
+		wave_index += 1
+
+
+# === Delay entre waves ===
+func handleWaveDelay(delta: float):
+	wave_timer += delta
+	if wave_timer >= waveDelay:
+		setupWave()
+
+
+# === Spawnea un enemigo ===
+func spawnEnemy(type: String, path: Node) -> void:
+	var creep = returnCreep(type)
+	if creep:
+		var enemyNode = creep.get_child(0)
+		if enemyNode:
+			enemyNode.linkBase(base)
+			enemyNode.add_to_group("Creeps")
+		path.add_child(creep)
+		print("🧟 Spawneado ", type, " en path ", path.name)
+
+
 func returnCreep(type: String) -> Node:
 	match type:
 		"enemy1":
-			if enemy1:
-				return enemy1.instantiate()
-			else:
-				push_error("enemy1 no asignado en el Inspector")
-				return null
+			return enemy1.instantiate() if enemy1 else null
 		"enemy2":
-			if enemy2:
-				return enemy2.instantiate()
-			else:
-				push_error("enemy2 no asignado en el Inspector")
-				return null
+			return enemy2.instantiate() if enemy2 else null
 		_:
 			return null
 
-# Pausar spawn y creeps existentes
+
+# === Pausar / Reanudar ===
 func pausar():
 	pausa = true
 	for creep in get_tree().get_nodes_in_group("Creeps"):
 		if creep.has_method("pausar"):
 			creep.pausar()
 
-# Reanudar spawn y creeps existentes
+
 func reanudar():
 	pausa = false
 	for creep in get_tree().get_nodes_in_group("Creeps"):
 		if creep.has_method("reanudar"):
 			creep.reanudar()
-
-func _ready() -> void:
-	startWaves()
