@@ -1,12 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://4bprnwur45fy"]
+[gd_scene load_steps=13 format=3 uid="uid://cq2tfyebefk6x"]
 
-[ext_resource type="Material" uid="uid://cq24ukwwjb6d8" path="res://BranchOtro/materials/enemy.tres" id="1_h17bh"]
-[ext_resource type="Script" uid="uid://776ubffj511l" path="res://Assets/Escenas/Enemigos/test_enemy.gd" id="1_mkyue"]
-[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="3_bqatt"]
+[ext_resource type="Script" uid="uid://b2ig74aj5r4u8" path="res://Assets/Escenas/Enemigos/test_enemy_big.gd" id="1_po7p5"]
+[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_he2fg"]
+[ext_resource type="Material" uid="uid://cq24ukwwjb6d8" path="res://BranchOtro/materials/enemy.tres" id="3_6bprp"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mkyue"]
+radius = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_mkyue"]
+radius = 2.0
+height = 4.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mkyue"]
 viewport_path = NodePath("SubViewport")
@@ -127,13 +130,13 @@ _data = {
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_mask = 2
 gravity_scale = 0.0
-script = ExtResource("1_mkyue")
+script = ExtResource("1_po7p5")
 
 [node name="coin" type="Sprite3D" parent="RigidBody3D"]
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
-texture = ExtResource("3_bqatt")
+texture = ExtResource("2_he2fg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00221169, -0.00684714, 0.000776768)
@@ -141,12 +144,12 @@ shape = SubResource("SphereShape3D_mkyue")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
 layers = 513
-material_override = ExtResource("1_h17bh")
+material_override = ExtResource("3_6bprp")
 mesh = SubResource("SphereMesh_mkyue")
 skeleton = NodePath("../..")
 
 [node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.706632, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.37302, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_mkyue")
 

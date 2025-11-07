@@ -7,13 +7,13 @@
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_3qnke"]
 [ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_wtsjf"]
-[ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/rat.tscn" id="7_p7qgw"]
+[ext_resource type="PackedScene" uid="uid://4bprnwur45fy" path="res://Assets/Escenas/Enemigos/test_enemy.tscn" id="7_pkttg"]
 [ext_resource type="PackedScene" uid="uid://cq2tfyebefk6x" path="res://Assets/Escenas/Enemigos/test_enemy_big.tscn" id="8_p7qgw"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_cwrts"]
 [ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://BranchOtro/scripts/pause.gd" id="11_bkxxp"]
 [ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://BranchOtro/scripts/node_2d.gd" id="11_f0tot"]
 [ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="11_kk4qk"]
-[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="11_p7qgw"]
+[ext_resource type="Texture2D" uid="uid://bjueedy7trrj7" path="res://icon.svg" id="11_p7qgw"]
 [ext_resource type="Resource" uid="uid://dhpdqis1lah4j" path="res://Assets/Recursos/Rtorres/Test_tower.tres" id="12_kk4qk"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://BranchOtro/scripts/button.gd" id="12_xjys7"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="14_0tjxx"]
@@ -180,7 +180,7 @@ mesh = SubResource("BoxMesh_p7qgw")
 
 [node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
 script = ExtResource("3_nd71p")
-enemy1 = ExtResource("7_p7qgw")
+enemy1 = ExtResource("7_pkttg")
 enemy2 = ExtResource("8_p7qgw")
 base = NodePath("../Map/Base")
 

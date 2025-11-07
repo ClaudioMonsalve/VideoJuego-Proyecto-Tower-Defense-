@@ -10,4 +10,5 @@ func _on_pressed():
 func _cambiar_escena():
 	MusicPlayer.stream = cancion_
 	MusicPlayer.play_music()
+	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Mapa.tscn")
