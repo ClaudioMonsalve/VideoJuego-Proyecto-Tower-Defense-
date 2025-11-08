@@ -8,9 +8,8 @@ extends Node2D
 @onready var menu: Button = $Menu
 @export var playerData: player_data
 
-# 🔹 Cambiá el nombre aquí para cada jugador (Claudio, Benja, etc)
 var ws := WebSocketPeer.new()
-var url : String 
+var url: String
 var game_key := "B2VAFIF18P"
 
 var conectado := false
@@ -20,22 +19,30 @@ var en_partida := false
 var id_jugador := ""
 var id_enemigo := ""
 var nombre_enemigo := ""
+var match_id := ""
 var buscando_oponente := false
+var conectado_a_match := false
+var listo_para_empezar := false
 
 var vida_jugador := 100
 var vida_enemigo := 100
 
+var ready_flags := [false, false]
+var my_index := 0
+var ya_conectado := false
+var match_status := "WAITING_PLAYERS"
 
-# ==============================================================================
-# === Inicialización y Señales ===
-# ==============================================================================
+
+# ============================================================
+# === INICIALIZACIÓN ===
+# ============================================================
 func _ready():
 	if playerData:
 		url = "ws://cross-game-ucn.martux.cl:4010/?gameId=D&playerName=" + playerData.player_name
 	else:
 		url = "ws://cross-game-ucn.martux.cl:4010/?gameId=D&playerName=Unnamed"
-	
-	estado_label.text = "Desconectado"
+
+	estado_label.text = "👋 Bienvenido. Conéctate al servidor para comenzar."
 
 	conectar_btn.text = "Conectar"
 	atacar_btn.text = "Atacar"
@@ -45,7 +52,6 @@ func _ready():
 
 	atacar_btn.disabled = true
 	solicitar_btn.disabled = true
-	menu.disabled = true
 
 	conectar_btn.pressed.connect(_on_conectar_pressed)
 	jugadores_btn.pressed.connect(_on_ver_jugadores_pressed)
@@ -62,77 +68,139 @@ func _process(_delta):
 			_on_mensaje_recibido(msg)
 
 
-# ==============================================================================
-# === Botones ===
-# ==============================================================================
+# ============================================================
+# === BOTONES ===
+# ============================================================
 func _on_conectar_pressed():
 	if not conectado:
 		var err = ws.connect_to_url(url)
 		if err == OK:
-			estado_label.text = "Conectando..."
 			print("🔌 Conectando al servidor...")
+			estado_label.text = "🔌 Conectando al servidor..."
 			conectado = true
 		else:
-			estado_label.text = "Error al conectar"
 			print("❌ No se pudo conectar:", err)
+			estado_label.text = "❌ Error al conectar con el servidor."
 	else:
-		print("⚠️ Ya estás conectado.")
+		estado_label.text = "⚠️ Ya estás conectado al servidor."
 
 
 func _on_ver_jugadores_pressed():
-	var payload = {"event": "online-players"}
-	ws.send_text(JSON.stringify(payload))
-	estado_label.text = "Buscando jugadores..."
+	estado_label.text = "📡 Obteniendo lista de jugadores..."
+	_enviar_lista_jugadores()
 
 
 func _on_solicitar_pressed():
-	if en_partida:
-		estado_label.text = "⚠️ Ya estás en una partida."
-		return
+	match solicitar_btn.text:
+		"Solicitar Partida":
+			if en_partida:
+				estado_label.text = "⚠️ Ya estás en una partida activa."
+				return
+			if buscando_oponente:
+				estado_label.text = "⌛ Ya estás buscando un oponente..."
+				return
+			buscando_oponente = true
+			print("🔍 Buscando oponente disponible...")
+			estado_label.text = "🔍 Buscando oponente disponible..."
+			_enviar_lista_jugadores()
+			return
 
-	buscando_oponente = true
-	ws.send_text(JSON.stringify({"event": "online-players"}))
-	estado_label.text = "Buscando jugador disponible..."
+		"Aceptar Solicitud":
+			if id_enemigo == "":
+				estado_label.text = "⚠️ No hay ninguna solicitud pendiente."
+				return
+			print("🤝 Aceptando solicitud de:", nombre_enemigo)
+			estado_label.text = "🤝 Aceptando solicitud de " + nombre_enemigo + "..."
+			ws.send_text(JSON.stringify({"event": "accept-match"}))
+			return
 
-	await get_tree().create_timer(10.0).timeout
-	if not en_partida and buscando_oponente:
-		estado_label.text = "❌ Ningún jugador respondió al desafío."
-		buscando_oponente = false
+		"Iniciar partida":
+			if conectado_a_match or listo_para_empezar:
+				estado_label.text = "⚠️ Ya marcaste listo. Espera al rival."
+				return
+			print("🎮 Jugador presionó 'Iniciar partida'")
+			solicitar_btn.disabled = true
+			ws.send_text(JSON.stringify({"event": "connect-match"}))
+			estado_label.text = "⌛ Conectando al match... Espera unos segundos."
+			return
 
 
 func _on_atacar_pressed():
-	if not en_partida or id_enemigo == "":
-		estado_label.text = "⚠️ No estás en una partida activa."
+	if not en_partida or match_status != "STARTED":
+		estado_label.text = "⚠️ No puedes atacar todavía. Espera que inicie la partida."
 		return
 
-	var payload = {"event": "attack", "data": {"enemyId": id_enemigo, "damage": 10}}
+	var damage = 10
+	print("💥 Enviando ataque a", nombre_enemigo, "por", damage, "de daño")
+
+	var payload = {
+		"event": "send-game-data",
+		"data": {
+			"matchId": match_id,
+			"type": "ATTACK",
+			"msg": playerData.player_name + " lanzó un ataque",
+			"value": damage
+		}
+	}
 	ws.send_text(JSON.stringify(payload))
-	print("💥 Enviando ataque a", nombre_enemigo)
-	estado_label.text = "💥 ¡Ataque enviado a " + nombre_enemigo + "!"
+	print("📤 Payload de ataque enviado:", JSON.stringify(payload))
+	estado_label.text = "⚔️ ¡Lanzaste un ataque contra " + nombre_enemigo + "!"
 
 
 func _on_volver_pressed():
 	if conectado:
 		ws.close()
-		conectado = false
-		login_enviado = false
-		en_partida = false
-		buscando_oponente = false
-		id_jugador = ""
-		id_enemigo = ""
-		nombre_enemigo = ""
-		vida_jugador = 100
-		vida_enemigo = 100
-		atacar_btn.disabled = true
-		solicitar_btn.disabled = true
-		menu.disabled = true
-		estado_label.text = "Desconectado"
+		_reset_estado()
 		print("🔚 Conexión cerrada.")
+	get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
 
 
-# ==============================================================================
-# === WebSocket y Eventos ===
-# ==============================================================================
+# ============================================================
+# === FUNCIONES AUXILIARES BÁSICAS ===
+# ============================================================
+func _enviar_login():
+	if not login_enviado:
+		ws.send_text(JSON.stringify({"event": "login", "data": {"gameKey": game_key}}))
+		login_enviado = true
+		print("📤 Login enviado...")
+
+
+func _enviar_lista_jugadores():
+	ws.send_text(JSON.stringify({"event": "online-players"}))
+
+
+func _manejar_lista_jugadores(data: Dictionary):
+	if not data.has("data") or typeof(data["data"]) != TYPE_ARRAY:
+		return
+	jugadores = []
+	var texto = "=== Jugadores conectados ===\n"
+	for j in data["data"]:
+		var nombre = str(j.get("name"))
+		var estado = str(j.get("status"))
+		var jid = str(j.get("id"))
+		if nombre == get_player_name_from_url():
+			id_jugador = jid
+			continue
+		jugadores.append(j)
+		texto += "   ->%s | Estado:%s | ID:%s\n" % [nombre, estado, jid]
+	estado_label.text = texto
+	print(texto)
+
+	if buscando_oponente and not en_partida:
+		for j in jugadores:
+			if j.get("status") == "AVAILABLE":
+				id_enemigo = str(j.get("id"))
+				nombre_enemigo = str(j.get("name"))
+				print("📨 Enviando solicitud a:", nombre_enemigo, "| ID:", id_enemigo)
+				var payload = {"event": "send-match-request", "data": {"playerId": id_enemigo}}
+				ws.send_text(JSON.stringify(payload))
+				estado_label.text = "📤 Solicitud enviada a " + nombre_enemigo + ". Esperando respuesta..."
+				break
+
+
+# ============================================================
+# === EVENTOS DEL SERVIDOR ===
+# ============================================================
 func _on_mensaje_recibido(msg: String):
 	print("📩 Recibido:", msg)
 	var data = JSON.parse_string(msg)
@@ -142,94 +210,85 @@ func _on_mensaje_recibido(msg: String):
 	match data["event"]:
 		"connected-to-server":
 			print("✅ Conectado al servidor. Enviando login...")
-			estado_label.text = "Conectado al servidor"
+			estado_label.text = "✅ Conexión establecida. Enviando login..."
 			_enviar_login()
 
 		"login":
 			if data["status"] == "OK":
-				estado_label.text = "Login exitoso ✅"
 				atacar_btn.disabled = false
 				solicitar_btn.disabled = false
 				menu.disabled = false
+				estado_label.text = "🟢 Login exitoso. Listo para jugar."
 			else:
-				estado_label.text = "Error de login ⚠️"
+				estado_label.text = "⚠️ Error al iniciar sesión."
 
 		"online-players":
 			_manejar_lista_jugadores(data)
 
-		# ==============================================================
-		# 🔹 AUTO-ACEPTACIÓN DE PARTIDAS
-		# ==============================================================
+		"player-connected", "player-disconnected", "player-status-changed":
+			print("🔁 Actualizando lista de jugadores...")
+			_enviar_lista_jugadores()
+
 		"match-request-received":
-			if data.has("data") and data["data"].has("matchId"):
-				var rival_id = data["data"].get("playerId", "")
-				print("🎯 Desafío recibido de:", rival_id)
-				var payload = {"event": "accept-match"}
-				ws.send_text(JSON.stringify(payload))
-				print("🤝 Aceptando automáticamente el desafío...")
-				estado_label.text = "🤝 ¡Desafío recibido! Aceptando partida..."
+			if data.has("data") and data["data"].has("playerId"):
+				id_enemigo = str(data["data"]["playerId"])
+				nombre_enemigo = str(data["data"].get("playerName", ""))
+				if nombre_enemigo == "" or nombre_enemigo == "Desconocido":
+					nombre_enemigo = _buscar_nombre_por_id(id_enemigo)
+				print("🎯 Solicitud recibida de:", nombre_enemigo)
+				estado_label.text = "📨 Solicitud de partida recibida de " + nombre_enemigo + ". Presiona 'Aceptar Solicitud'."
+				solicitar_btn.text = "Aceptar Solicitud"
 
-		# ==============================================================
-		# 🔹 ESTADO DE JUGADORES
-		# ==============================================================
-		"player-status-changed":
-			if data.has("data"):
-				var jugador_id = data["data"].get("playerId")
-				var nuevo_estado = data["data"].get("playerStatus")
+		"send-match-request":
+			if data.get("status") == "OK":
+				match_id = data["data"].get("matchId", "")
+				estado_label.text = "📤 Solicitud enviada a " + nombre_enemigo + ". Esperando respuesta..."
+			else:
+				estado_label.text = "⚠️ No se pudo enviar la solicitud."
 
-				# Si soy yo → no hago nada
-				if jugador_id == id_jugador:
-					return
-
-				# Si el enemigo pasa a IN_MATCH → comenzamos
-				if jugador_id == id_enemigo and nuevo_estado == "IN_MATCH":
-					print("⚔️ El rival ha aceptado. ¡Partida activa!")
-					en_partida = true
-					vida_jugador = 100
-					vida_enemigo = 100
-					atacar_btn.disabled = false
-					solicitar_btn.disabled = true
-					estado_label.text = "⚔️ ¡Partida contra " + nombre_enemigo + " iniciada!"
-
-		# ==============================================================
-		# 🔹 CONFIRMACIÓN DE PARTIDA
-		# ==============================================================
 		"accept-match":
 			if data.get("status") == "OK":
-				en_partida = true
-				vida_jugador = 100
-				vida_enemigo = 100
-				atacar_btn.disabled = false
-				solicitar_btn.disabled = true
-				estado_label.text = "⚔️ ¡Partida ACTIVA! ¡A luchar!"
-				print("🎉 Partida aceptada y activa.")
+				match_id = data["data"].get("matchId", "")
+				estado_label.text = "✅ Partida aceptada. Presiona 'Iniciar partida' para comenzar."
+				solicitar_btn.text = "Iniciar partida"
+				solicitar_btn.disabled = false
 
-		# ==============================================================
-		# 🔹 ATAQUES
-		# ==============================================================
-		"attack":
-			if data.has("data") and data["data"].has("damage"):
-				var danio = data["data"]["damage"]
-				vida_jugador -= danio
-				if vida_jugador < 0: vida_jugador = 0
-				print("💥 Ataque recibido. Vida actual:", vida_jugador)
-				estado_label.text = "💥 ¡Recibiste " + str(danio) + " de daño! Vida: " + str(vida_jugador)
+		"match-accepted":
+			print("✅ Rival aceptó la solicitud:", nombre_enemigo)
+			estado_label.text = "🤝 " + nombre_enemigo + " aceptó tu solicitud. Presiona 'Iniciar partida' para comenzar."
+			solicitar_btn.text = "Iniciar partida"
+			solicitar_btn.disabled = false
 
-				# Confirmar el daño al atacante
-				var payload = {"event": "attack-confirmation", "data": {"targetId": id_enemigo, "damage": danio}}
-				ws.send_text(JSON.stringify(payload))
-				print("📤 Confirmando daño recibido:", danio)
+		"connect-match":
+			if data.get("status") == "OK":
+				conectado_a_match = true
+				ya_conectado = true
+				match_status = "WAITING_PLAYERS"
+				match_id = data["data"].get("matchId", "")
+				print("✅ Conectado al match:", match_id)
+				estado_label.text = "🧠 Conectado al match. Esperando que ambos jugadores marquen listo..."
+			else:
+				estado_label.text = "❌ No se pudo conectar al match."
 
-		"attack-confirmation":
-			if data.has("data") and data["data"].has("targetId") and data["data"].has("damage"):
-				var target_id = data["data"]["targetId"]
-				var danio = data["data"]["damage"]
+		"players-ready":
+			print("🟢 Ambos jugadores están listos.")
+			match_status = "READY"
+			estado_label.text = "⚔️ Ambos listos. Iniciando sincronización..."
+			ws.send_text(JSON.stringify({"event": "ping-match"}))
 
-				if target_id == id_enemigo:
-					vida_enemigo -= danio
-					if vida_enemigo < 0: vida_enemigo = 0
-					print("🎯 Ataque confirmado. Vida enemigo:", vida_enemigo)
-					estado_label.text = "⚔️ ¡Golpe a " + nombre_enemigo + "! Vida restante: " + str(vida_enemigo)
+		"match-start":
+			print("🚀 ¡Comienza la partida!")
+			match_status = "STARTED"
+			en_partida = true
+			atacar_btn.disabled = false
+			solicitar_btn.disabled = true
+			estado_label.text = "🔥 ¡Comienza el combate contra " + nombre_enemigo + "!"
+
+		"send-game-data":
+			return
+
+		"receive-game-data":
+			_manejar_datos_recibidos(data)
 
 		"match-finished":
 			_manejar_fin_partida(data)
@@ -238,31 +297,97 @@ func _on_mensaje_recibido(msg: String):
 			print("Evento no manejado:", data["event"])
 
 
-# ==============================================================================
-# === Funciones auxiliares ===
-# ==============================================================================
-func _enviar_login():
-	if not login_enviado:
-		var payload = {"event": "login", "data": {"gameKey": game_key}}
-		ws.send_text(JSON.stringify(payload))
-		login_enviado = true
-		print("📤 Login enviado...")
+# ============================================================
+# === DATOS RECIBIDOS / COMBATE ===
+# ============================================================
+func _manejar_datos_recibidos(data: Dictionary):
+	if not data.has("data") or not data["data"].has("type"):
+		return
+
+	var tipo = str(data["data"]["type"])
+	var mensaje = str(data["data"].get("msg", ""))
+	var valor = int(data["data"].get("value", 0))
+
+	match tipo:
+		"ATTACK":
+			print("💥 Ataque recibido:", valor)
+			vida_jugador -= valor
+			if vida_jugador < 0:
+				vida_jugador = 0
+			estado_label.text = "💥 ¡" + nombre_enemigo + " te atacó con " + str(valor) + " de daño! Vida: " + str(vida_jugador)
+			var confirm_payload = {
+				"event": "send-game-data",
+				"data": {"matchId": match_id, "type": "ATTACK_CONFIRM", "msg": playerData.player_name + " recibió el ataque", "value": valor}
+			}
+			ws.send_text(JSON.stringify(confirm_payload))
+			if vida_jugador <= 0:
+				_manejar_derrota()
+
+		"ATTACK_CONFIRM":
+			print("🎯 Confirmación de daño recibida:", mensaje)
+			vida_enemigo -= valor
+			if vida_enemigo < 0:
+				vida_enemigo = 0
+			estado_label.text = "⚔️ ¡Golpeaste a " + nombre_enemigo + "! Vida estimada: " + str(vida_enemigo)
+			if vida_enemigo <= 0:
+				_manejar_victoria()
 
 
-func _manejar_lista_jugadores(data: Dictionary):
-	if data.has("data") and typeof(data["data"]) == TYPE_ARRAY:
-		jugadores = data["data"]
-		for j in jugadores:
-			if j.get("name") in [get_player_name_from_url()]:
-				id_jugador = str(j.get("id"))
-			elif j.get("status") == "AVAILABLE" and str(j.get("id")) != id_jugador:
-				id_enemigo = str(j.get("id"))
-				nombre_enemigo = str(j.get("name"))
+# ============================================================
+# === RESULTADO ===
+# ============================================================
+func _manejar_fin_partida(data: Dictionary):
+	en_partida = false
+	atacar_btn.disabled = true
+	solicitar_btn.disabled = false
+	solicitar_btn.text = "Solicitar Partida"
+	match_status = "FINISHED"
+	estado_label.text = "🏁 La partida ha finalizado."
 
-		var texto = "👥 Jugadores:\n"
-		for j in jugadores:
-			texto += "• " + str(j.get("name")) + " (" + str(j.get("status")) + ")\n"
-		estado_label.text = texto
+
+func _manejar_victoria():
+	print("🏆 ¡Ganaste la partida!")
+	estado_label.text = "🏆 ¡Victoria! " + nombre_enemigo + " fue derrotado."
+	en_partida = false
+	match_status = "FINISHED"
+	atacar_btn.disabled = true
+	solicitar_btn.disabled = false
+	solicitar_btn.text = "Solicitar Partida"
+
+
+func _manejar_derrota():
+	print("💀 Has sido derrotado...")
+	estado_label.text = "💀 Derrota ante " + nombre_enemigo
+	en_partida = false
+	match_status = "FINISHED"
+	atacar_btn.disabled = true
+	solicitar_btn.disabled = false
+	solicitar_btn.text = "Solicitar Partida"
+
+
+# ============================================================
+# === UTILIDADES ===
+# ============================================================
+func _reset_estado():
+	conectado = false
+	login_enviado = false
+	en_partida = false
+	buscando_oponente = false
+	conectado_a_match = false
+	listo_para_empezar = false
+	id_jugador = ""
+	id_enemigo = ""
+	nombre_enemigo = ""
+	match_id = ""
+	vida_jugador = 100
+	vida_enemigo = 100
+	ready_flags = [false, false]
+	match_status = "WAITING_PLAYERS"
+	ya_conectado = false
+	atacar_btn.disabled = true
+	solicitar_btn.disabled = true
+	menu.disabled = true
+	estado_label.text = "🔌 Desconectado."
 
 
 func get_player_name_from_url() -> String:
@@ -270,19 +395,8 @@ func get_player_name_from_url() -> String:
 	return parts[-1] if parts.size() > 1 else "Desconocido"
 
 
-func _manejar_fin_partida(data: Dictionary):
-	en_partida = false
-	atacar_btn.disabled = true
-	solicitar_btn.disabled = false
-	vida_jugador = 100
-	vida_enemigo = 100
-
-	var ganador = data["data"].get("winnerId", "")
-	var resultado = "🤝 Empate."
-	if ganador == id_jugador:
-		resultado = "🏆 ¡Victoria!"
-	elif ganador != "":
-		resultado = "💀 Derrota."
-
-	estado_label.text = "🏁 Partida terminada: " + resultado
-	print("🔚 Resultado:", resultado)
+func _buscar_nombre_por_id(id: String) -> String:
+	for j in jugadores:
+		if str(j.get("id")) == id:
+			return str(j.get("name"))
+	return "Desconocido"
