@@ -155,13 +155,13 @@ func _on_mensaje_recibido(msg: String):
 # === BOTONES ===
 func _on_enviar_pressed():
 	label.text = "Jugadores conectados"
+	var payload = {"event": "online-players"}
+	ws.send_text(JSON.stringify(payload))
 	btn_enviar.visible = false
 	btn_ver.visible = false
 	scroll.visible = true
 	posicion_menu = 1
-	label.text = "Jugadores conectados"
-	var payload = {"event": "online-players"}
-	ws.send_text(JSON.stringify(payload))
+
 
 func _on_ver_pressed():
 	posicion_menu = 1
