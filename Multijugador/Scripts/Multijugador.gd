@@ -7,37 +7,54 @@ extends Control
 @onready var btn_enviar: Button = $Panel/Enviar
 @onready var btn_ver: Button = $Panel/Ver
 @onready var volver: Button = $Volver
+@onready var lobby: Panel = $Panel/Lobby
 
 # === CONFIGURACIÓN DEL JUEGO ===
-const MY_PLAYER_NAME := "ene0"        # Nombre del jugador local
-const MY_GAME_ID := "B"                # ID del juego
-const MY_GAME_KEY := "V832E2HO8X"      # Clave del juego (asignada por el profe)
+const MY_PLAYER_NAME := "ene0"          # nombre local (se compara case-insensitive)
+const MY_GAME_ID := "A"
+const MY_GAME_KEY := "5NLQK3EMIZ"
 
 # === VARIABLES ===
 var ws := WebSocketPeer.new()
 var conectado := false
-var jugadores: Dictionary = {}         # playerId -> {name, status, game_name}
-var invitaciones: Array = []           # invitaciones recibidas
+var jugadores: Dictionary = {}        # otros jugadores (el servidor no incluye al local)
+var invitaciones: Array = []
 var posicion_menu := 0
-var modo := 0                          # 0=menu, 1=jugadores, 2=invitaciones
+var modo := 0
+var match_id: String = ""
+var match_status: String = "WAITING_PLAYERS"
 
 # === READY ===
 func _ready():
+	lobby.visible = false
+	_limpiar_todo()
+	await get_tree().create_timer(0.2).timeout
 	_conectar_servidor()
+
 	scroll.visible = false
 	label.text = "Modo Multijugador"
+	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+
 	btn_enviar.pressed.connect(_on_enviar_pressed)
 	btn_ver.pressed.connect(_on_ver_pressed)
 	volver.pressed.connect(_on_volver_pressed)
 
 # === LOOP PRINCIPAL ===
 func _process(_delta):
-	if conectado:
-		ws.poll()
-		while ws.get_available_packet_count() > 0:
-			var msg := ws.get_packet().get_string_from_utf8()
-			print("📩 Recibido:", msg)
-			_on_mensaje_recibido(msg)
+	if not conectado:
+		return
+	if ws.get_ready_state() == WebSocketPeer.STATE_CLOSED:
+		print("⚠️ Conexión cerrada, limpiando todo.")
+		conectado = false
+		_limpiar_todo()
+		return
+
+	ws.poll()
+	while ws.get_available_packet_count() > 0:
+		var msg := ws.get_packet().get_string_from_utf8()
+		print("📩 Recibido:", msg)
+		_on_mensaje_recibido(msg)
 
 # === CONEXIÓN ===
 func _conectar_servidor():
@@ -46,330 +63,388 @@ func _conectar_servidor():
 	var err := ws.connect_to_url(url)
 	if err == OK:
 		conectado = true
-	await get_tree().create_timer(0.4).timeout
+
+# === UTILIDADES ===
+func _enviar(dic: Dictionary):
+	if not ws:
+		return
+	ws.send_text(JSON.stringify(dic))
+
+func _crear_panel_estilo(color: Color = Color(0.94, 0.94, 0.94)) -> StyleBoxFlat:
+	var style := StyleBoxFlat.new()
+	style.bg_color = color
+	style.border_color = Color(0.2, 0.2, 0.2)
+	style.set_border_width_all(2)
+	style.set_corner_radius_all(25)
+	return style
+
+func _crear_label(texto: String, size := 22) -> Label:
+	var lbl := Label.new()
+	lbl.text = texto
+	lbl.add_theme_font_size_override("font_size", size)
+	lbl.add_theme_color_override("font_color", Color(0, 0, 0))
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	return lbl
+
+func _crear_boton(texto, size := 18, ancho := 140, alto := 45, accion = null):
+	var btn = Button.new()
+	btn.text = texto
+	btn.custom_minimum_size = Vector2(ancho, alto)
+	btn.add_theme_font_size_override("font_size", size)
+	if accion != null:
+		btn.pressed.connect(accion)
+	return btn
+
+# === LIMPIAR ESTADO GLOBAL ===
+func _limpiar_todo():
+	jugadores.clear()
+	invitaciones.clear()
+	scroll.visible = false
+	btn_enviar.visible = true
+	btn_ver.visible = true
+	posicion_menu = 0
+	modo = 0
+	match_id = ""
+	match_status = "WAITING_PLAYERS"
+	for c in lista.get_children():
+		c.queue_free()
 
 # === MANEJAR MENSAJES ===
 func _on_mensaje_recibido(msg: String):
-	var data: Variant = JSON.parse_string(msg)
-	if data == null:
-		return
-	if not data.has("event"):
+	var data = JSON.parse_string(msg)
+	if typeof(data) != TYPE_DICTIONARY or not data.has("event"):
 		return
 
-	var evento: String = str(data["event"])
-	print("🧩 EVENTO DETECTADO:", evento)
-
+	var evento = str(data["event"])
 	match evento:
 		"connected-to-server":
 			print("✅ Conectado. Enviando login...")
-			var payload = {"event": "login", "data": {"gameKey": MY_GAME_KEY}}
-			ws.send_text(JSON.stringify(payload))
+			_enviar({"event": "login", "data": {"gameKey": MY_GAME_KEY}})
 
 		"login":
-			if data.has("status") and data["status"] == "OK":
+			if data.get("status") == "OK":
 				print("🧠 Sesión iniciada como:", MY_PLAYER_NAME)
+				_enviar({"event": "online-players"})
 
 		"online-players":
-			if data.has("data"):
-				_actualizar_jugadores(data["data"])
+			if data.get("status") == "OK":
+				_actualizar_jugadores(data.get("data", []))
 
 		"player-connected":
-			if data.has("data"):
-				var info = data["data"]
-				if info.has("id"):
-					jugadores[info["id"]] = {
-						"name": info.get("name", "Desconocido"),
-						"status": info.get("status", "UNKNOWN"),
-						"game_name": info.get("game", {}).get("name", "???")
-					}
-				_actualizar_lista()
+			_registrar_jugador(data.get("data", {}))
 
 		"player-disconnected":
-			if data.has("data") and data["data"].has("id"):
-				jugadores.erase(data["data"]["id"])
-			_actualizar_lista()
+			_borrar_jugador(data.get("data", {}))
 
 		"player-status-changed":
-			var info = data.get("data", {})
-			if info.has("playerId") and jugadores.has(info["playerId"]):
-				jugadores[info["playerId"]]["status"] = info.get("playerStatus", "UNKNOWN")
-			_actualizar_lista()
+			_actualizar_estado(data.get("data", {}))
+
+		"match-request-received":
+			_recibir_invitacion(data)
 
 		"send-match-request":
-			if data.get("status", "") == "OK":
-				print("📨 Invitación enviada:", data.get("msg", ""))
+			if data.get("status") == "OK":
+				match_id = data.get("data", {}).get("matchId", "")
+				print("📨 Invitación enviada correctamente. Match ID:", match_id)
 			else:
-				print("⚠️ Error al enviar:", data.get("msg", ""))
+				print("⚠️ Error al enviar invitación:", data.get("msg", ""))
 
-		# === 📥 INVITACIÓN RECIBIDA ===
-		"match-request-received":
-			if data.has("data"):
-				var info = data["data"]
-				var pid: String = info.get("playerId", "")
-				var mid: String = info.get("matchId", "")
-				
-				# 🧩 Intentar extraer el nombre desde el mensaje
-				var nombre: String = "Desconocido"
-				if data.has("msg"):
-					var msg_text: String = str(data["msg"])
-					var inicio := msg_text.find("'")
-					var fin := msg_text.rfind("'")
-					if inicio != -1 and fin > inicio:
-						nombre = msg_text.substr(inicio + 1, fin - inicio - 1)
-				
-				# 🧩 Si no se encontró, intentar con la lista de jugadores
-				if jugadores.has(pid) and jugadores[pid].has("name"):
-					nombre = jugadores[pid]["name"]
-				
-				print("💌 Invitación recibida de:", nombre, " (ID:", pid, ")")
-				
-				invitaciones.append({"playerId": pid, "matchId": mid, "name": nombre})
-				if modo == 2:
-					_actualizar_lista_invitaciones()
+		# === FLUJO DE MATCH ===
+		"accept-match":
+			if data.get("status") == "OK":
+				match_id = data.get("data", {}).get("matchId", "")
+				print("🎮 Invitación aceptada. Match ID:", match_id)
+				print("🔗 Enviando connect-match al servidor (jugador invitado)...")
+				_enviar({"event": "connect-match", "data": {"matchId": match_id}})
+			else:
+				print("⚠️ Error en accept-match:", data.get("msg", ""))
 
-
-
-		# === 🟢 PARTIDA ACEPTADA ===
 		"match-accepted":
-			print("🎮 Partida aceptada:", data.get("msg", ""))
+			match_id = data.get("data", {}).get("matchId", "")
+			print("🎮 Match aceptado (yo envié la invitación).")
+			print("🔗 Enviando connect-match al servidor...")
+			_enviar({"event": "connect-match", "data": {"matchId": match_id}})
 
-		# === 🔴 PARTIDA RECHAZADA ===
-		"match-rejected":
-			print("🚫 Invitación rechazada:", data.get("msg", ""))
+		"connect-match":
+			if data.get("status") == "OK":
+				match_id = data.get("data", {}).get("matchId", match_id)
+				print("🤝 Conexión de match completada:", match_id)
+				match_status = "CONNECTED"
+				for id in jugadores.keys():
+					if jugadores[id]["status"] == "IN_MATCH" and id != MY_PLAYER_NAME:
+						jugadores[id]["status"] = "AVAILABLE"
+				_actualizar_lista()
+			else:
+				print("⚠️ Error en connect-match:", data.get("msg", ""))
 
-		# === 🚫 PARTIDA CANCELADA ===
-		"match-canceled-by-sender":
-			if data.has("data"):
-				var pid = data["data"].get("playerId", "")
-				var nombre = "Desconocido"
-				if jugadores.has(pid):
-					nombre = jugadores[pid].get("name", "Desconocido")
-				print("❌ Solicitud cancelada por:", nombre)
-				invitaciones = invitaciones.filter(func(i): return i.get("playerId", "") != pid)
-				_actualizar_lista_invitaciones()
+		"players-ready":
+			print("✅ Servidor confirmó ambos READY. ¡Partida lista para conectar!")
+			match_status = "READY"
+			_abrir_lobby()
+			await get_tree().create_timer(0.3).timeout
+			print("📡 Enviando ping-match para sincronizar tiempos...")
+			_enviar({"event": "ping-match", "data": {"matchId": match_id}})
 
+		"ping-match":
+			if data.get("status") == "OK":
+				print("📶 Ping enviado correctamente y sincronizado.")
+			else:
+				print("⚠️ Error en ping-match:", data.get("msg", ""))
+
+		"match-start":
+			print("🚀 Partida iniciada.")
+			match_status = "IN_PROGRESS"
+
+		"receive-game-data":
+			var payload = data.get("data", {}).get("payload", {})
+			if payload.has("ready"):
+				var jugador_ready = str(payload["player"])
+				print("🟢 El jugador", jugador_ready, "marcó su estado como listo.")
+				_actualizar_ready_ui_de(jugador_ready)
+				_evaluar_listos_y_arrancar()
 
 		_:
 			print("ℹ️ Evento no manejado:", evento)
 
-# === BOTONES ===
+# === LOBBY (centrado interno, sincronizado y arranque automático) ===
+func _abrir_lobby():
+	print("🪩 Mostrando lobby del editor...")
+	lobby.visible = true
+
+	var box: VBoxContainer = $Panel/Lobby/VBoxContainer
+
+	# Centrado del contenido interno (NO mueve el panel)
+	box.alignment = BoxContainer.ALIGNMENT_CENTER
+	box.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	box.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	box.add_theme_constant_override("separation", 25)
+
+	# Limpiar contenido previo
+	for c in box.get_children():
+		c.queue_free()
+
+	# Título
+	var titulo = _crear_label("🏁 LOBBY DE PARTIDA", 28)
+	titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	box.add_child(titulo)
+
+	# Lista de jugadores (incluye al local)
+	var lista_final: Array = []
+	lista_final.append({"name": MY_PLAYER_NAME, "id": "local"})
+	for id in jugadores.keys():
+		lista_final.append(jugadores[id])
+
+	# Crear fila por jugador
+	for jugador in lista_final:
+		var jugador_nombre: String = str(jugador["name"])
+
+		var fila = HBoxContainer.new()
+		fila.alignment = BoxContainer.ALIGNMENT_CENTER
+		fila.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		fila.add_theme_constant_override("separation", 40)
+
+		var lbl = _crear_label("👤 " + jugador_nombre, 24)
+		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		fila.add_child(lbl)
+
+		var btn_estado = _crear_boton("❌ No listo", 18, 160, 45)
+		btn_estado.name = jugador_nombre   # identificación para actualizar por red
+		btn_estado.toggle_mode = true
+
+		# Solo el local puede tocar su botón (case-insensitive)
+		if jugador_nombre.to_lower() == MY_PLAYER_NAME.to_lower():
+			btn_estado.pressed.connect(func():
+				if btn_estado.text == "❌ No listo":
+					btn_estado.text = "✅ Listo"
+					btn_estado.disabled = true
+					print("🟢 Jugador", MY_PLAYER_NAME, "marcado como listo.")
+					# Notificar al servidor y evaluar estado local
+					_enviar({
+						"event": "send-game-data",
+						"data": {
+							"matchId": match_id,
+							"payload": {"ready": true, "player": MY_PLAYER_NAME}
+						}
+					})
+					_evaluar_listos_y_arrancar()  # por si el rival ya estaba listo
+			)
+		else:
+			btn_estado.disabled = true
+
+		fila.add_child(btn_estado)
+		box.add_child(fila)
+
+	print("🎯 Lobby centrado con", lista_final.size(), "jugadores.")
+
+# Marca como listo en UI al jugador indicado (cuando llega por red)
+func _actualizar_ready_ui_de(jugador_ready: String):
+	var box: VBoxContainer = $Panel/Lobby/VBoxContainer
+	for c in box.get_children():
+		for sub in c.get_children():
+			if sub is Button and sub.name.to_lower() == jugador_ready.to_lower():
+				sub.text = "✅ Listo"
+				sub.disabled = true
+
+# Revisa si todos están listos y arranca la escena automáticamente
+func _evaluar_listos_y_arrancar():
+	var box: VBoxContainer = $Panel/Lobby/VBoxContainer
+	var todos_listos := true
+	for c in box.get_children():
+		for sub in c.get_children():
+			if sub is Button and sub.text.begins_with("❌"):
+				todos_listos = false
+	if todos_listos:
+		print("🚀 Ambos jugadores listos — iniciando partida automáticamente...")
+		await get_tree().create_timer(1.0).timeout
+		lobby.visible = false
+		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/control.tscn")
+
+# === GESTIÓN DE JUGADORES ===
+func _registrar_jugador(info: Dictionary):
+	if info.has("id"):
+		jugadores[info["id"]] = {"name": info.get("name", "Desconocido"), "status": info.get("status", "UNKNOWN")}
+	_actualizar_lista()
+
+func _borrar_jugador(info: Dictionary):
+	if info.has("id"):
+		jugadores.erase(info["id"])
+	_actualizar_lista()
+
+func _actualizar_estado(info: Dictionary):
+	var pid = info.get("playerId")
+	if pid and jugadores.has(pid):
+		jugadores[pid]["status"] = info.get("playerStatus", "UNKNOWN")
+	_actualizar_lista()
+
+func _actualizar_jugadores(lista_servidor: Array):
+	jugadores.clear()
+	for j in lista_servidor:
+		if j.get("name") == MY_PLAYER_NAME:
+			continue
+		if j.has("id") and j.get("status") != "DISCONNECTED":
+			jugadores[str(j["id"])] = {"name": j.get("name", "Sin nombre"), "status": j.get("status", "UNKNOWN")}
+	_actualizar_lista()
+
+# === BOTONES PRINCIPALES ===
 func _on_enviar_pressed():
-	label.text = "Jugadores conectados"
-	var payload = {"event": "online-players"}
-	ws.send_text(JSON.stringify(payload))
+	scroll.visible = true
 	btn_enviar.visible = false
 	btn_ver.visible = false
-	scroll.visible = true
 	posicion_menu = 1
-
+	label.text = "Jugadores conectados"
+	_enviar({"event": "online-players"})
 
 func _on_ver_pressed():
-	posicion_menu = 1
+	scroll.visible = true
 	btn_enviar.visible = false
 	btn_ver.visible = false
-	scroll.visible = true
+	posicion_menu = 1
 	modo = 2
 	label.text = "Invitaciones recibidas"
 	_actualizar_lista_invitaciones()
 
-# === ACTUALIZAR LISTAS ===
-func _actualizar_jugadores(lista_servidor: Array):
-	jugadores.clear()
-	for j in lista_servidor:
-		if not j.has("id"):
-			continue
-		var id = str(j["id"])
-		jugadores[id] = {
-			"name": j.get("name", "Sin nombre"),
-			"status": j.get("status", "UNKNOWN"),
-			"game_name": j.get("game", {}).get("name", "???")
-		}
-	_actualizar_lista()
-
-#Actualizar Lista
+# === LISTA DE JUGADORES ===
 func _actualizar_lista():
 	for c in lista.get_children():
 		c.queue_free()
-
 	if jugadores.is_empty():
-		var lbl := Label.new()
-		lbl.text = "❌ No hay jugadores conectados"
-		lbl.add_theme_font_size_override("font_size", 22)
-		lbl.add_theme_color_override("font_color", Color(0.15, 0.15, 0.15))
-		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		lbl.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		lista.add_child(lbl)
+		lista.add_child(_crear_label("❌ No hay jugadores conectados", 22))
 		return
 
 	for id in jugadores.keys():
 		var j = jugadores[id]
-		if j.get("name", "") == MY_PLAYER_NAME:
-			continue
-
-		# === Panel principal del jugador ===
-		var panel := Panel.new()
+		var panel = Panel.new()
 		panel.custom_minimum_size = Vector2(600, 110)
-		panel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		panel.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		panel.add_theme_stylebox_override("panel", _crear_panel_estilo())
 
-		# 🎨 Estilo visual (borde + color + esquinas redondeadas)
-		var style := StyleBoxFlat.new()
-		style.bg_color = Color(0.95, 0.95, 0.95)
-		style.border_color = Color(0.25, 0.25, 0.25)
-		style.set_border_width_all(2)
-		style.set_corner_radius_all(25)
-		panel.add_theme_stylebox_override("panel", style)
+		var fila = HBoxContainer.new()
+		fila.alignment = BoxContainer.ALIGNMENT_CENTER
+		fila.add_theme_constant_override("separation", 60)
 
-		# === Margen interior para respiración visual ===
-		var margin := MarginContainer.new()
+		var lbl = _crear_label(j["name"], 22)
+		var center = CenterContainer.new()
+		center.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		center.add_child(lbl)
+		fila.add_child(center)
+
+		var estado = j.get("status", "AVAILABLE")
+		var btn: Button
+		if estado == "BUSY" or estado == "IN_MATCH":
+			btn = _crear_boton("🕹️ Ocupado", 20)
+			btn.disabled = true
+		else:
+			btn = _crear_boton("📨 Invitar", 20, 180, 49, func(): _enviar_invitacion(j))
+		fila.add_child(btn)
+
+		var margin = MarginContainer.new()
 		margin.add_theme_constant_override("margin_top", 16)
 		margin.add_theme_constant_override("margin_bottom", 16)
 		margin.add_theme_constant_override("margin_left", 24)
-		margin.add_theme_constant_override("margin_right", 40)
-		margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		margin.size_flags_vertical = Control.SIZE_EXPAND_FILL
-
-		# === Fila centrada con nombre + botón ===
-		var fila := HBoxContainer.new()
-		fila.alignment = BoxContainer.ALIGNMENT_CENTER
-		fila.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		fila.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		fila.add_theme_constant_override("separation", 60)
-		fila.add_theme_constant_override("margin_right", 40)
-
-		# === Etiqueta del jugador ===
-		var lbl := Label.new()
-		lbl.text = "%s  🎮  (%s)" % [j.get("name", "Desconocido"), j.get("game_name", "?")]
-		lbl.add_theme_font_size_override("font_size", 22)
-		lbl.add_theme_color_override("font_color", Color(0, 0, 0))
-		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		fila.add_child(lbl)
-
-		# === Botón de acción ===
-		var btn := Button.new()
-		var estado: String = j.get("status", "AVAILABLE")
-		btn.custom_minimum_size = Vector2(180, 49)
-		btn.add_theme_font_size_override("font_size", 20)
-
-		if estado == "BUSY":
-			btn.text = "🕹️ Ocupado"
-			btn.disabled = true
-		else:
-			btn.text = "📨 Invitar"
-			btn.disabled = false
-			btn.pressed.connect(func(): _enviar_invitacion(id, j))
-
-		fila.add_child(btn)
-
-		# === Ensamblaje final ===
+		margin.add_theme_constant_override("margin_right", 24)
 		margin.add_child(fila)
 		panel.add_child(margin)
 		lista.add_child(panel)
 
+# === INVITACIONES ===
+func _recibir_invitacion(data: Dictionary):
+	var info = data.get("data", {})
+	var pid = info.get("playerId", "")
+	var mid = info.get("matchId", "")
+	var nombre = jugadores.get(pid, {}).get("name", "Desconocido")
+	invitaciones.append({"playerId": pid, "matchId": mid, "name": nombre})
+	_actualizar_lista_invitaciones()
 
+func _enviar_invitacion(jugador: Dictionary):
+	for pid in jugadores.keys():
+		if jugadores[pid] == jugador:
+			print("⚔️ Enviando invitación a:", jugador["name"])
+			_enviar({"event": "send-match-request", "data": {"playerId": pid}})
+			return
 
-# === LISTA DE INVITACIONES ===
+func _aceptar_invitacion(info: Dictionary):
+	print("✅ Aceptando invitación...")
+	_enviar({"event": "accept-match"})
+
+func _rechazar_invitacion(info: Dictionary):
+	_enviar({"event": "reject-match"})
+	invitaciones.erase(info)
+	_actualizar_lista_invitaciones()
+
 func _actualizar_lista_invitaciones():
 	for c in lista.get_children():
 		c.queue_free()
-
 	if invitaciones.is_empty():
-		var lbl := Label.new()
-		lbl.text = "❌ No tienes invitaciones recibidas"
-		lbl.add_theme_font_size_override("font_size", 22)
-		lbl.add_theme_color_override("font_color", Color(0.15, 0.15, 0.15))
-		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		lbl.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		lista.add_child(lbl)
+		lista.add_child(_crear_label("No hay invitaciones", 22))
 		return
 
 	for info in invitaciones:
-		var panel := Panel.new()
+		var panel = Panel.new()
 		panel.custom_minimum_size = Vector2(600, 120)
-		panel.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
-		panel.size_flags_vertical = Control.SIZE_SHRINK_CENTER
+		panel.add_theme_stylebox_override("panel", _crear_panel_estilo())
 
-		# 🎨 Estilo visual mejorado
-		var style := StyleBoxFlat.new()
-		style.bg_color = Color(0.94, 0.94, 0.94)  # fondo gris claro
-		style.border_color = Color(0.2, 0.2, 0.2)  # borde oscuro
-		style.set_border_width_all(2)
-		style.set_corner_radius_all(25)
-		panel.add_theme_stylebox_override("panel", style)
+		var fila = HBoxContainer.new()
+		fila.alignment = BoxContainer.ALIGNMENT_CENTER
+		fila.add_theme_constant_override("separation", 40)
+		fila.add_child(_crear_label(info["name"], 24))
+		fila.add_child(_crear_boton("✅ Aceptar", 18, 140, 45, func(): _aceptar_invitacion(info)))
+		fila.add_child(_crear_boton("❌ Rechazar", 18, 140, 45, func(): _rechazar_invitacion(info)))
 
-		# === Contenedor centrado vertical/horizontal ===
-		var margin := MarginContainer.new()
+		var margin = MarginContainer.new()
 		margin.add_theme_constant_override("margin_top", 16)
 		margin.add_theme_constant_override("margin_bottom", 16)
 		margin.add_theme_constant_override("margin_left", 20)
 		margin.add_theme_constant_override("margin_right", 20)
-		margin.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		margin.size_flags_vertical = Control.SIZE_EXPAND_FILL
-
-		var fila := HBoxContainer.new()
-		fila.alignment = BoxContainer.ALIGNMENT_CENTER
-		fila.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		fila.size_flags_vertical = Control.SIZE_EXPAND_FILL
-		fila.add_theme_constant_override("separation", 40)
-
-		var lbl := Label.new()
-		lbl.text = info["name"]
-		lbl.add_theme_font_size_override("font_size", 24)
-		lbl.add_theme_color_override("font_color", Color(0, 0, 0))
-		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-		lbl.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-		fila.add_child(lbl)
-
-		var btn_aceptar := Button.new()
-		btn_aceptar.text = "✅ Aceptar"
-		btn_aceptar.custom_minimum_size = Vector2(140, 45)
-		btn_aceptar.add_theme_font_size_override("font_size", 18)
-		btn_aceptar.pressed.connect(func(): _aceptar_invitacion(info))
-		fila.add_child(btn_aceptar)
-
-		var btn_rechazar := Button.new()
-		btn_rechazar.text = "❌ Rechazar"
-		btn_rechazar.custom_minimum_size = Vector2(140, 45)
-		btn_rechazar.add_theme_font_size_override("font_size", 18)
-		btn_rechazar.pressed.connect(func(): _rechazar_invitacion(info))
-		fila.add_child(btn_rechazar)
-
 		margin.add_child(fila)
 		panel.add_child(margin)
 		lista.add_child(panel)
 
-
-# === INVITACIONES ===
-func _enviar_invitacion(id: String, jugador: Dictionary):
-	print("⚔️ Enviando invitación a:", jugador.get("name", "?"))
-	var payload = {"event": "send-match-request", "data": {"playerId": id}}
-	ws.send_text(JSON.stringify(payload))
-
-func _aceptar_invitacion(info: Dictionary):
-	print("✅ Aceptando invitación de", info.get("name", "?"))
-	var payload = {"event": "accept-match"}
-	ws.send_text(JSON.stringify(payload))
-
-
-func _rechazar_invitacion(info: Dictionary):
-	print("❌ Rechazando invitación de", info.get("name", "?"))
-	var payload = {"event": "reject-match"}
-	ws.send_text(JSON.stringify(payload))
-	invitaciones.erase(info)
-	_actualizar_lista_invitaciones()
-
-
 # === VOLVER ===
 func _on_volver_pressed():
 	if posicion_menu == 0:
-		ws.close()
+		if ws and conectado:
+			ws.close()
+		_limpiar_todo()
 		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
 	else:
 		scroll.visible = false
