@@ -6,13 +6,21 @@ extends Control
 var dot_count: int = 0
 var dot_timer: Timer
 var total_time: float = 0.0
-var duration: float = 1  # duración total en segundos
-var next_scene: String = "res://BranchOtro/scenes/test_scene.tscn"
+var max: float = 1.0  
+var next_scene: String
+var progress := []
+var loader
 
 func _ready():
+	if Globals.nextLevel == "":
+		push_error("q le paso al nextlevel hmno")
+		return
+	next_scene = Globals.nextLevel
+	ResourceLoader.load_threaded_request(next_scene, "PackedScene")
+	
 	label.text = "Cargando"
 	progress_bar.value = 0
-	progress_bar.max_value = duration
+	progress_bar.max_value = max
 	
 	# Crear un Timer para animar los puntos
 	dot_timer = Timer.new()
@@ -21,17 +29,22 @@ func _ready():
 	add_child(dot_timer)
 	dot_timer.start()
 	dot_timer.timeout.connect(_on_dot_timer_timeout)
+	set_process(true)
 
 func _process(delta):
-	total_time += delta
+	print("hi nigga")
+	var status = ResourceLoader.load_threaded_get_status(next_scene, progress)
 	
-	# Actualizar barra de progreso
-	progress_bar.value = total_time
-	
-	if total_time >= duration:
-		# Detener el timer y cambiar de escena
-		dot_timer.stop()
-		get_tree().change_scene_to_file(next_scene)
+	match status:
+		ResourceLoader.ThreadLoadStatus.THREAD_LOAD_IN_PROGRESS:
+			progress_bar.value = progress[0]
+		ResourceLoader.ThreadLoadStatus.THREAD_LOAD_LOADED:
+			var packed = ResourceLoader.load_threaded_get(next_scene)
+			if packed:
+				get_tree().change_scene_to_packed(packed)
+			set_process(false)
+		ResourceLoader.ThreadLoadStatus.THREAD_LOAD_FAILED:
+			push_error("mano q como que fallo el resourceloader")
 
 func _on_dot_timer_timeout():
 	dot_count = (dot_count + 1) % 4  # de 0 a 3 puntos

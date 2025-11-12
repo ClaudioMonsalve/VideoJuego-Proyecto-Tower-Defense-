@@ -4,6 +4,7 @@ class_name CreepManager
 @export var enemy1: PackedScene
 @export var enemy2: PackedScene
 @export var base: Area3D
+@export var waves: wave_data 
 
 @onready var pathHolder = $"../Map/Paths"
 @onready var paths := pathHolder.get_children()
@@ -20,24 +21,8 @@ var spawning := false
 #spawns: [lista con {enemigo1, camino}, {enemigo1, enemigo2, camino} etc]
 #wave_delay: autoexplanatorio 🥀
 
-var newWavesArr = [ 
-	{
-		"spawns": [{"enemy1": 2, "path": 0}], 
-		"wave_delay": 10
-	},
-	{
-		"spawns":[{"enemy1": 3, "path": 0}, {"enemy1": 2, "path": 1}],
-		"wave_delay": 15
-	},
-	{
-		"spawns":[{"enemy1": 2, "path": 2}, {"enemy1": 4, "path": 1}],
-		"wave_delay": 10
-	},
-	{
-		"spawns":[{"enemy1": 3, "enemy2": 1, "path": 1}],
-		"wave_delay": 15
-	}
-]
+var newWavesArr: Array = []
+
 
 # Control interno
 var wave_index := 0
@@ -48,6 +33,8 @@ var wave_timer := 0.0
 var phase := "idle"  # idle | spawning | waiting_wave | done
 
 func _ready():
+	if waves:
+		var newWavesArr = waves.waves
 	startWaves()
 
 

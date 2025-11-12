@@ -95,8 +95,8 @@ func _on_InfoPanel_Jugar_pressed():
 	if reino_seleccionado_data.size() == 0:
 		return
 	print("Cargando niveles del reino: ", reino_seleccionado_data["nombre"])
-	# get_tree().change_scene_to_file("res://niveles/%s.tscn" % reino_seleccionado_data["id"])
 	
+	Globals.nextLevel = reino_seleccionado_data["id"]
 	 # Abrir la escena del nivel del reino
 	# Ajusta el nombre según la escena que corresponda
 	MusicPlayer.stop_music()

@@ -1,9 +1,0 @@
-[gd_resource type="Resource" script_class="tower_data" load_steps=2 format=3 uid="uid://bsnnuttk2nfl4"]
-
-[ext_resource type="Script" uid="uid://cdr5qv2k147c" path="res://Assets/Resources/TowerRes/tower_data.gd" id="1_3ojpx"]
-
-[resource]
-script = ExtResource("1_3ojpx")
-tower_name = "Axe Tower"
-tower_cost = 6
-metadata/_custom_type_script = "uid://cdr5qv2k147c"

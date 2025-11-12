@@ -1,29 +1,30 @@
-[gd_scene load_steps=38 format=3 uid="uid://c3u5apsja5mw3"]
+[gd_scene load_steps=38 format=3 uid="uid://bj6ruqrmmh8n2"]
 
-[ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_j8ivh"]
-[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="2_frwph"]
-[ext_resource type="PackedScene" uid="uid://b1y4ndm5w6um8" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.blend" id="2_p7qgw"]
-[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://BranchOtro/scripts/creep_manager.gd" id="3_nd71p"]
-[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_3qnke"]
-[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="5_qjeyg"]
-[ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_wtsjf"]
-[ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="7_p7qgw"]
-[ext_resource type="PackedScene" uid="uid://cq2tfyebefk6x" path="res://Assets/Escenas/Enemigos/test_enemy_big.tscn" id="8_p7qgw"]
-[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_cwrts"]
-[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://BranchOtro/scripts/pause.gd" id="11_bkxxp"]
-[ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://BranchOtro/scripts/node_2d.gd" id="11_f0tot"]
-[ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="11_kk4qk"]
-[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="11_p7qgw"]
-[ext_resource type="Resource" uid="uid://dhpdqis1lah4j" path="res://Assets/Recursos/Rtorres/Test_tower.tres" id="12_kk4qk"]
-[ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://BranchOtro/scripts/button.gd" id="12_xjys7"]
-[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="14_0tjxx"]
-[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://BranchOtro/scripts/button_2.gd" id="15_frwph"]
-[ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="15_yqh8d"]
-[ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="17_0tjxx"]
-[ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="18_6ordq"]
-[ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="19_0tjxx"]
-[ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="19_p7qgw"]
-[ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="21_p7qgw"]
+[ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_xhad6"]
+[ext_resource type="PackedScene" uid="uid://b1y4ndm5w6um8" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.blend" id="2_migal"]
+[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_aj57n"]
+[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_iaa1h"]
+[ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_xlml3"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://BranchOtro/scripts/creep_manager.gd" id="6_8a6pp"]
+[ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="7_gsjdr"]
+[ext_resource type="PackedScene" uid="uid://cq2tfyebefk6x" path="res://Assets/Escenas/Enemigos/test_enemy_big.tscn" id="8_i8r2u"]
+[ext_resource type="Resource" uid="uid://ttu2vpk7irco" path="res://Assets/Recursos/R_oleadas/OleadasNivel1_1.tres" id="9_hlfkw"]
+[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="9_oecj2"]
+[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_wb18e"]
+[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="11_ro63v"]
+[ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="12_3y5p2"]
+[ext_resource type="Resource" uid="uid://dhpdqis1lah4j" path="res://Assets/Recursos/Rtorres/Test_tower.tres" id="13_n1unu"]
+[ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://BranchOtro/scripts/node_2d.gd" id="14_qdga2"]
+[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://BranchOtro/scripts/pause.gd" id="15_ovtgn"]
+[ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://BranchOtro/scripts/button.gd" id="16_drqky"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="17_oojqn"]
+[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://BranchOtro/scripts/button_2.gd" id="18_64rh3"]
+[ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="19_wo8mp"]
+[ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="20_r5rkq"]
+[ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="21_qa84f"]
+[ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="22_x2y2j"]
+[ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="23_ompbk"]
+[ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="24_q3h5k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ddre"]
 sky_top_color = Color(0, 0, 0, 1)
@@ -64,9 +65,6 @@ _data = {
 }
 point_count = 9
 
-[sub_resource type="BoxMesh" id="BoxMesh_p7qgw"]
-size = Vector3(12.55, 4.78, 1)
-
 [sub_resource type="LabelSettings" id="LabelSettings_qjeyg"]
 font_size = 25
 outline_size = 10
@@ -84,16 +82,16 @@ corner_radius_bottom_left = 50
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("19_p7qgw")
+"texture": ExtResource("19_wo8mp")
 }, {
 "duration": 1.0,
-"texture": ExtResource("15_yqh8d")
+"texture": ExtResource("20_r5rkq")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_p7qgw")
+"texture": ExtResource("21_qa84f")
 }, {
 "duration": 1.0,
-"texture": ExtResource("17_0tjxx")
+"texture": ExtResource("22_x2y2j")
 }],
 "loop": true,
 "name": &"default",
@@ -104,10 +102,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("18_6ordq")
+"texture": ExtResource("23_ompbk")
 }, {
 "duration": 1.0,
-"texture": ExtResource("19_0tjxx")
+"texture": ExtResource("24_q3h5k")
 }],
 "loop": true,
 "name": &"default",
@@ -124,17 +122,17 @@ transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -
 shadow_enabled = true
 
 [node name="Map" type="MeshInstance3D" parent="."]
-material_override = ExtResource("1_j8ivh")
+material_override = ExtResource("1_xhad6")
 mesh = SubResource("PlaneMesh_6adnx")
 
-[node name="Suelo_Nivel1_test2" parent="Map" instance=ExtResource("2_p7qgw")]
+[node name="Suelo_Nivel1_test2" parent="Map" instance=ExtResource("2_migal")]
 transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, -0.355, -6.165, -12.849)
 
-[node name="Base" parent="Map" instance=ExtResource("2_frwph")]
+[node name="Base" parent="Map" instance=ExtResource("3_aj57n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 muni = 12
 
-[node name="testTower" parent="Map" instance=ExtResource("4_3qnke")]
+[node name="testTower" parent="Map" instance=ExtResource("4_iaa1h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7682, 5.823, -8.49089)
 
 [node name="Paths" type="Node3D" parent="Map"]
@@ -153,40 +151,53 @@ curve = SubResource("Curve3D_kk4qk")
 
 [node name="Plataformas" type="Node3D" parent="Map"]
 
-[node name="TowerPlatform" parent="Map/Plataformas" instance=ExtResource("5_wtsjf")]
+[node name="TowerPlatform" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8645, 2.97595, 10.9611)
 
-[node name="TowerPlatform2" parent="Map/Plataformas" instance=ExtResource("5_wtsjf")]
+[node name="TowerPlatform2" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47911, 3.25953, 35.8654)
 
-[node name="TowerPlatform3" parent="Map/Plataformas" instance=ExtResource("5_wtsjf")]
+[node name="TowerPlatform3" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7174, 3.07235, 24.2025)
 
-[node name="TowerPlatform4" parent="Map/Plataformas" instance=ExtResource("5_wtsjf")]
+[node name="TowerPlatform4" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.0758, 3.13825, 21.5686)
 
-[node name="TowerPlatform5" parent="Map/Plataformas" instance=ExtResource("5_wtsjf")]
+[node name="TowerPlatform5" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.018, 3, -12.1245)
 
-[node name="TowerPlatform6" parent="Map/Plataformas" instance=ExtResource("5_wtsjf")]
+[node name="TowerPlatform6" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5907, 3, -43.4814)
 
-[node name="TowerPlatform7" parent="Map/Plataformas" instance=ExtResource("5_wtsjf")]
+[node name="TowerPlatform7" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5884, 3, -1.29958)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Map"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.412988, 1.73248, -14.3731)
-mesh = SubResource("BoxMesh_p7qgw")
+[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0496, 1.18211, -12.7395)
+size = Vector3(1, 6, 10.9789)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Map"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.0688, 1.18211, 6.13514)
+size = Vector3(1, 6, 14.6628)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.835222, 0, -0.549912, 0, 1, 0, 0.549912, 0, 0.835222, -32.5693, 1.18211, -17.3708)
+size = Vector3(1, 6, 20.4024)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Map"]
+transform = Transform3D(0.998165, 0, -0.0605432, 0, 1, 0, 0.0605432, 0, 0.998165, 27.5969, 1.18211, -65.8189)
+size = Vector3(1, 6, 25.1972)
 
 [node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
-script = ExtResource("3_nd71p")
-enemy1 = ExtResource("7_p7qgw")
-enemy2 = ExtResource("8_p7qgw")
+script = ExtResource("6_8a6pp")
+enemy1 = ExtResource("7_gsjdr")
+enemy2 = ExtResource("8_i8r2u")
 base = NodePath("../Map/Base")
+waves = ExtResource("9_hlfkw")
 
 [node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "card1", "card2", "card3", "card4", "card5", "card6")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)
-script = ExtResource("5_qjeyg")
+script = ExtResource("9_oecj2")
 baseobj = NodePath("../Map/Base")
 card1 = NodePath("HBox Cards/TowerCard")
 card2 = NodePath("HBox Cards/TowerCard2")
@@ -194,7 +205,7 @@ card3 = NodePath("HBox Cards/TowerCard3")
 card4 = NodePath("HBox Cards/TowerCard4")
 card5 = NodePath("HBox Cards/TowerCard5")
 card6 = NodePath("HBox Cards/TowerCard6")
-torre_test = ExtResource("4_3qnke")
+torre_test = ExtResource("4_iaa1h")
 camera_sens = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -220,7 +231,7 @@ label_settings = SubResource("LabelSettings_qjeyg")
 [node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Money"]
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("10_cwrts")
+texture = ExtResource("10_wb18e")
 expand_mode = 2
 
 [node name="HBox Health" type="HBoxContainer" parent="Player/VBox playerdata"]
@@ -234,7 +245,7 @@ label_settings = SubResource("LabelSettings_qjeyg")
 
 [node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Health"]
 layout_mode = 2
-texture = ExtResource("11_p7qgw")
+texture = ExtResource("11_ro63v")
 expand_mode = 2
 
 [node name="HBox Cards" type="HBoxContainer" parent="Player"]
@@ -245,23 +256,23 @@ offset_top = -120.0
 offset_right = 740.0
 grow_vertical = 0
 
-[node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
+[node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
 layout_mode = 2
-TowerData = ExtResource("12_kk4qk")
+TowerData = ExtResource("13_n1unu")
 
-[node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
-layout_mode = 2
-
-[node name="TowerCard3" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
+[node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
 layout_mode = 2
 
-[node name="TowerCard4" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
+[node name="TowerCard3" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
 layout_mode = 2
 
-[node name="TowerCard5" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
+[node name="TowerCard4" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
 layout_mode = 2
 
-[node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
+[node name="TowerCard5" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
+layout_mode = 2
+
+[node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
 layout_mode = 2
 
 [node name="debug" type="MeshInstance3D" parent="."]
@@ -269,7 +280,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)
 mesh = SubResource("BoxMesh_3qnke")
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("11_f0tot")
+script = ExtResource("14_qdga2")
 
 [node name="Pause" type="Button" parent="Node2D"]
 offset_left = 20.0
@@ -278,7 +289,7 @@ offset_right = 118.0
 offset_bottom = 81.0
 text = "Regresar
 "
-script = ExtResource("11_bkxxp")
+script = ExtResource("15_ovtgn")
 
 [node name="Panel" type="Panel" parent="Node2D"]
 anchors_preset = 8
@@ -309,7 +320,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Continuar"
-script = ExtResource("12_xjys7")
+script = ExtResource("16_drqky")
 
 [node name="HSlider" type="HSlider" parent="Node2D/Panel"]
 layout_mode = 0
@@ -327,7 +338,7 @@ offset_left = -82.5
 offset_top = -1.0
 offset_right = -27.5
 offset_bottom = 22.0
-theme_override_fonts/font = ExtResource("14_0tjxx")
+theme_override_fonts/font = ExtResource("17_oojqn")
 text = "Musica"
 
 [node name="Button2" type="Button" parent="Node2D/Panel"]
@@ -338,7 +349,7 @@ offset_right = 433.0
 offset_bottom = 394.0
 theme_override_font_sizes/font_size = 20
 text = "Regresar al Mapa"
-script = ExtResource("15_frwph")
+script = ExtResource("18_64rh3")
 
 [node name="HSlider2" type="HSlider" parent="Node2D/Panel"]
 layout_mode = 0
@@ -356,7 +367,7 @@ offset_left = -74.0
 offset_top = 5.0
 offset_right = -34.0
 offset_bottom = 54.0
-theme_override_fonts/font = ExtResource("14_0tjxx")
+theme_override_fonts/font = ExtResource("17_oojqn")
 text = "SFX
 "
 

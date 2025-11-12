@@ -18,9 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
-MusicPlayer="*res://Assets/Escenas/Menues/MusicPlayer.tscn"
+MusicPlayer="*res://Assets/Escenas/Global/MusicPlayer.tscn"
 TestScene="*res://BranchOtro/scripts/test_scene.gd"
 ButtonSound="*res://Assets/Escenas/Audios/ButtonSound.tscn"
+Globals="*res://Assets/Escenas/Global/Globals.gd"
 
 [dialogue_manager]
 
@@ -39,8 +40,14 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 folder_colors={
 "res://Assets/": "green",
+"res://Assets/Escenas/Enemigos/": "red",
 "res://Multijugador/": "blue"
 }
+
+[input_devices]
+
+pointing/android/enable_pan_and_scale_gestures=true
+pointing/emulate_touch_from_mouse=true
 
 [internationalization]
 

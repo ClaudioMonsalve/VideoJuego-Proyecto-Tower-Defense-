@@ -27,4 +27,4 @@ func _on_button_opciones():
 	
 func _on_button_multijugador():
 	ButtonSound.play()
-	get_tree().change_scene_to_file("res://Multijugador/Escenas/multijugador.tscn")
+	get_tree().change_scene_to_file("res://Multijugador/Escenas/Multijugador.tscn")

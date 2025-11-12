@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bkg0ttdaecsxt"]
 
-[ext_resource type="Script" uid="uid://bghyx3is0dlmc" path="res://Assets/Escenas/Enemigos/rat.gd" id="1_ve1j7"]
+[ext_resource type="Script" uid="uid://bghyx3is0dlmc" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.gd" id="1_ve1j7"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_stpkd"]
 [ext_resource type="Texture2D" uid="uid://fwdru1r4jm03" path="res://Assets/sprites/enemies/rat.png" id="3_ve1j7"]
 [ext_resource type="FontFile" uid="uid://dtgtlfun2nsdm" path="res://Assets/Fonts/Norse.otf" id="4_63n3a"]
@@ -143,7 +143,7 @@ shape = SubResource("SphereShape3D_mkyue")
 [node name="enemySprite" type="Sprite3D" parent="RigidBody3D"]
 layers = 513
 pixel_size = 0.2
-billboard = 2
+billboard = 1
 texture_filter = 0
 texture = ExtResource("3_ve1j7")
 

@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="player_data" load_steps=2 format=3 uid="uid://cafm0tkja6m40"]
-
-[ext_resource type="Script" uid="uid://di5l6hcf00wlw" path="res://Assets/Resources/PlayerRes/player_data.gd" id="1_1ke1i"]
-
-[resource]
-script = ExtResource("1_1ke1i")
-player_name = "el_manuelito_gamer"
-metadata/_custom_type_script = "uid://di5l6hcf00wlw"
