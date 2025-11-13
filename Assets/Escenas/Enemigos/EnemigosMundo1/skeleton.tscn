@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkg0ttdaecsxt"]
+[gd_scene load_steps=13 format=3 uid="uid://ck6y1vhk1y1xu"]
 
-[ext_resource type="Script" uid="uid://bghyx3is0dlmc" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.gd" id="1_ve1j7"]
-[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_stpkd"]
-[ext_resource type="Texture2D" uid="uid://fwdru1r4jm03" path="res://Assets/sprites/enemies/mundo1/rat.png" id="3_ve1j7"]
-[ext_resource type="FontFile" uid="uid://dtgtlfun2nsdm" path="res://Assets/Fonts/Norse.otf" id="4_63n3a"]
+[ext_resource type="Script" uid="uid://bghyx3is0dlmc" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.gd" id="1_gvxft"]
+[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_colrx"]
+[ext_resource type="Texture2D" uid="uid://fwdru1r4jm03" path="res://Assets/sprites/enemies/mundo1/rat.png" id="3_6ukgw"]
+[ext_resource type="FontFile" uid="uid://dtgtlfun2nsdm" path="res://Assets/Fonts/Norse.otf" id="4_nqf2v"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mkyue"]
 
@@ -25,7 +25,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [sub_resource type="Theme" id="Theme_mkyue"]
-ProgressBar/fonts/font = ExtResource("4_63n3a")
+ProgressBar/fonts/font = ExtResource("4_nqf2v")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_mkyue")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_fpxyv")
 
@@ -127,7 +127,7 @@ _data = {
 [node name="RigidBody3D" type="RigidBody3D" parent="."]
 collision_mask = 2
 gravity_scale = 0.0
-script = ExtResource("1_ve1j7")
+script = ExtResource("1_gvxft")
 worth = 2
 maxhp = 6.0
 speed = 12.0
@@ -137,7 +137,7 @@ modulate = Color(1, 1, 1, 0)
 pixel_size = 0.03
 billboard = 1
 texture_filter = 0
-texture = ExtResource("2_stpkd")
+texture = ExtResource("2_colrx")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00221169, -0.00684714, 0.000776768)
@@ -148,7 +148,7 @@ layers = 513
 pixel_size = 0.2
 billboard = 1
 texture_filter = 0
-texture = ExtResource("3_ve1j7")
+texture = ExtResource("3_6ukgw")
 
 [node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.706632, 0)

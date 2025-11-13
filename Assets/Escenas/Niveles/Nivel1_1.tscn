@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_xlml3"]
 [ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://BranchOtro/scripts/creep_manager.gd" id="6_8a6pp"]
 [ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="7_gsjdr"]
-[ext_resource type="PackedScene" uid="uid://cq2tfyebefk6x" path="res://Assets/Escenas/Enemigos/test_enemy_big.tscn" id="8_i8r2u"]
+[ext_resource type="PackedScene" uid="uid://c8vu4hkdw64i0" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/sprite(enemy).tscn" id="8_kuoi0"]
 [ext_resource type="Resource" uid="uid://ttu2vpk7irco" path="res://Assets/Recursos/R_oleadas/OleadasNivel1_1.tres" id="9_hlfkw"]
 [ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="9_oecj2"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_wb18e"]
@@ -150,6 +150,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("Curve3D_6o2bu")
 
 [node name="Path1" type="Path3D" parent="Map/Paths"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 curve = SubResource("Curve3D_hlfkw")
 
 [node name="Path2" type="Path3D" parent="Map/Paths"]
@@ -180,6 +181,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.018, 3, -12.1245)
 [node name="TowerPlatform6" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5907, 3, -43.4814)
 
+[node name="TowerPlatform8" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3131, 3, -51.4338)
+
 [node name="TowerPlatform7" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5884, 3, -1.29958)
 
@@ -202,7 +206,7 @@ size = Vector3(1, 6, 25.1972)
 [node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
 script = ExtResource("6_8a6pp")
 enemy1 = ExtResource("7_gsjdr")
-enemy2 = ExtResource("8_i8r2u")
+enemy2 = ExtResource("8_kuoi0")
 base = NodePath("../Map/Base")
 waves = ExtResource("9_hlfkw")
 

@@ -12,17 +12,18 @@ waves = [{
 "wave_delay": 10
 }, {
 "spawns": [{
-"enemy1": 3,
+"enemy1": 5,
 "path": 0
 }, {
-"enemy1": 2,
+"enemy1": 4,
 "path": 1
 }],
 "wave_delay": 15
 }, {
 "spawns": [{
-"enemy1": 2,
-"path": 2
+"enemy1": 7,
+"enemy2": 5,
+"path": 1
 }, {
 "enemy1": 4,
 "path": 1

@@ -41,6 +41,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 folder_colors={
 "res://Assets/": "green",
 "res://Assets/Escenas/Enemigos/": "red",
+"res://Assets/sprites/enemies/": "red",
 "res://Multijugador/": "blue"
 }
 
