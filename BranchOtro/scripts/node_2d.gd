@@ -7,8 +7,8 @@ extends Node2D
 @onready var sprite_2: AnimatedSprite2D = $Sprites/Sprite2
 @onready var volume_slider: HSlider = $Panel/HSlider
 @onready var sfx_slider: HSlider = $Panel/HSlider2
+@export var DIALOGO: DialogueResource
 
-const DIALOGO = preload("res://Assets/Dialogos/Dialogo.dialogue")
 const MOTORHEAD = preload("res://Assets/Musica/Motörhead - Ace Of Spades (drumless).mp3")
 
 var escena_musica_res = preload("res://Assets/Escenas/Enemigos/big_bertha.tscn")
@@ -17,6 +17,7 @@ var lista_sonidos: Array = []
 
 
 func _ready() -> void:
+	
 	# Instanciar escena de enemigos / efectos
 	escena_musica_escena = escena_musica_res.instantiate()
 	# Buscar todos los AudioStreamPlayers dentro

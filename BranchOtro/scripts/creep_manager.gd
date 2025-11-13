@@ -34,7 +34,7 @@ var phase := "idle"  # idle | spawning | waiting_wave | done
 
 func _ready():
 	if waves:
-		var newWavesArr = waves.waves
+		newWavesArr = waves.waves
 	startWaves()
 
 
@@ -50,7 +50,6 @@ func startWaves():
 # === Corutinas para spawnear multiples enemigos paralelamente ===
 func waveManager() -> void:
 	for wave in newWavesArr:
-		
 		# Create a list of async tasks for all spawns
 		var spawn_tasks: Array = []
 		for group in wave["spawns"]:
