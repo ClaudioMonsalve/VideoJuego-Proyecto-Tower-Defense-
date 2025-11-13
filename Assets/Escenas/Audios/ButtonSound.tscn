@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://b8q5xr2vb2y13"]
+
+[ext_resource type="AudioStream" uid="uid://dewcf7rdmhqjl" path="res://Assets/Musica/342200__christopherderp__videogame-menu-button-click.wav" id="1_k6sn8"]
+[ext_resource type="Script" uid="uid://c152hap68ganr" path="res://Assets/Escenas/Audios/button_sound.gd" id="2_snwdy"]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer"]
+stream = ExtResource("1_k6sn8")
+script = ExtResource("2_snwdy")
