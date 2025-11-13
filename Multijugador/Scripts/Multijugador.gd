@@ -10,9 +10,10 @@ extends Control
 @onready var lobby: Panel = $Panel/Lobby
 
 # === CONFIGURACIÓN DEL JUEGO ===
-const MY_PLAYER_NAME := "RV"      # cambia esto en cada instancia
-const MY_GAME_ID := "A"
-const MY_GAME_KEY := "5NLQK3EMIZ"
+const MY_PLAYER_NAME := "ene0"      # cambia esto en cada instancia
+const MY_GAME_ID := "E"
+const MY_GAME_KEY := "FIBE9DV0C3"
+const MY_GAME_NAME := "Yggdrasil: The Last Stand"
 
 # === VARIABLES ===
 var ws := WebSocketPeer.new()
@@ -211,18 +212,14 @@ func _on_mensaje_recibido(msg: String):
 			if payload.has("ready"):
 				var jugador = str(payload["player"])
 				var listo = payload["ready"]
-
 				print("🔄 Estado recibido:", jugador, "→", listo)
-
 				_actualizar_ready_ui_de(jugador, listo)
 				_evaluar_listos_y_arrancar()
-
 
 			# ✅ CUANDO EL OTRO JUGADOR CIERRA LA PARTIDA
 			if payload.has("close") and payload["close"] == true:
 				print("🚪 rival envió close — cerrando partida por remoto.")
 				await _finalizar_partida_por_rival()
-
 
 		"finish-game":
 			print("📤 Respuesta a finish-game:", data)
@@ -271,7 +268,12 @@ func _finalizar_partida_por_rival():
 
 # === LOBBY ===
 func _abrir_lobby():
-	print("🪩 Mostrando lobby...")
+	print("🪩 Mostrando lobby... (refrescando datos del servidor)")
+
+	# ⚠️ Pedir datos al servidor antes de construir el lobby
+	_enviar({"event": "online-players"})
+	await get_tree().create_timer(0.15).timeout
+
 	lobby.visible = true
 
 	var box: VBoxContainer = $Panel/Lobby/VBoxContainer
@@ -280,52 +282,54 @@ func _abrir_lobby():
 	box.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	box.add_theme_constant_override("separation", 25)
 
+	# limpiar contenido anterior
 	for c in box.get_children():
 		c.queue_free()
 
+	# título del lobby
 	var titulo = _crear_label("🏁 LOBBY DE PARTIDA", 28)
 	titulo.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	box.add_child(titulo)
 
+	# lista final de jugadores (local + rivales)
 	var lista_final: Array = []
-	lista_final.append({"name": MY_PLAYER_NAME, "id": "local"})
+	lista_final.append({
+		"name": MY_PLAYER_NAME,
+		"id": "local",
+		"game_name": MY_GAME_NAME
+	})
+
 	for id in jugadores.keys():
 		lista_final.append(jugadores[id])
 
+	# construir filas del lobby
 	for jugador in lista_final:
-		var jugador_nombre: String = str(jugador["name"])
+		var jugador_nombre: String = str(jugador.get("name", "???"))
 
 		var fila := HBoxContainer.new()
 		fila.alignment = BoxContainer.ALIGNMENT_CENTER
 		fila.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		fila.add_theme_constant_override("separation", 40)
 
-		var game_name := ""
-		if jugador_nombre.to_lower() == MY_PLAYER_NAME.to_lower():
-			game_name = "Guardian del Palafito"    # local
-		else:
-			# buscar el juego desde el diccionario "jugadores"
-			for pid in jugadores.keys():
-				if jugadores[pid]["name"].to_lower() == jugador_nombre.to_lower():
-					game_name = jugadores[pid].get("game_name", "Juego?")
-					break
+		# === NOMBRE DEL JUEGO DESDE EL DICCIONARIO ===
+		var game_name := str(jugador.get("game_name", "???"))
 
-		# Si no estaba aún en el diccionario, lo cargamos desde el servidor
-		if game_name == "" and jugador.has("game") and jugador["game"].has("name"):
-			game_name = jugador["game"]["name"]
+		# fallback por si algo raro pasa
+		if game_name == "":
+			game_name = "???"
 
-		var lbl = _crear_label("👤 " + jugador_nombre + "  |  🎮 " + game_name, 24)
-
+		var texto_fila := "👤 %s  |  🎮 %s" % [jugador_nombre, game_name]
+		var lbl := _crear_label(texto_fila, 24)
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		fila.add_child(lbl)
 
+		# === BOTÓN LISTO / NO LISTO ===
 		var btn_estado := _crear_boton("❌ No listo", 18, 160, 45)
 		btn_estado.name = jugador_nombre
 		btn_estado.toggle_mode = true
 
 		if jugador_nombre.to_lower() == MY_PLAYER_NAME.to_lower():
 			btn_estado.pressed.connect(func():
-				# Cambiar localmente entre listo / no listo
 				var nuevo_estado := btn_estado.text == "❌ No listo"
 
 				if nuevo_estado:
@@ -335,7 +339,6 @@ func _abrir_lobby():
 
 				print("🔄 Cambiando estado:", MY_PLAYER_NAME, "→", btn_estado.text)
 
-				# ENVIAR al rival
 				_enviar({
 					"event": "send-game-data",
 					"data": {
@@ -347,18 +350,17 @@ func _abrir_lobby():
 					}
 				})
 
-				# Ver si ambos están listos
 				_evaluar_listos_y_arrancar()
 			)
 		else:
 			btn_estado.disabled = true
-
 
 		fila.add_child(btn_estado)
 		box.add_child(fila)
 
 	print("🎯 Lobby listo con", lista_final.size(), "jugadores.")
 
+# === ACTUALIZAR READY EN UI ===
 func _actualizar_ready_ui_de(jugador_ready: String, listo: bool):
 	var box: VBoxContainer = $Panel/Lobby/VBoxContainer
 
@@ -371,9 +373,9 @@ func _actualizar_ready_ui_de(jugador_ready: String, listo: bool):
 					sub.text = "❌ No listo"
 				return
 
+# === VER SI AMBOS ESTÁN LISTOS ===
 func _evaluar_listos_y_arrancar():
 	var box: VBoxContainer = $Panel/Lobby/VBoxContainer
-
 	var todos_listos := true
 
 	for c in box.get_children():
@@ -385,7 +387,6 @@ func _evaluar_listos_y_arrancar():
 	if todos_listos:
 		print("🚀 Ambos jugadores listos — iniciando partida…")
 		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/control.tscn")
-
 
 # === GESTIÓN DE JUGADORES ===
 func _registrar_jugador(info: Dictionary):
@@ -405,19 +406,39 @@ func _actualizar_estado(info: Dictionary):
 	var pid = info.get("playerId")
 	if pid and jugadores.has(pid):
 		jugadores[pid]["status"] = info.get("playerStatus", "UNKNOWN")
+		if info.has("game"):
+			var g = info.get("game")
+			if typeof(g) == TYPE_DICTIONARY:
+				jugadores[pid]["game_name"] = g.get("name", jugadores[pid].get("game_name", "Juego?"))
+
 	_actualizar_lista()
 
 func _actualizar_jugadores(lista_servidor: Array):
+	# ⚠️ IMPORTANTE: limpiar antes para evitar duplicados (incluyendo al local)
 	jugadores.clear()
+
 	for j in lista_servidor:
-		if j.get("name") == MY_PLAYER_NAME:
+		# ignorar al jugador local por nombre
+		if str(j.get("name", "")).to_lower() == MY_PLAYER_NAME.to_lower():
 			continue
-		if j.has("id") and j.get("status") != "DISCONNECTED":
-			jugadores[str(j["id"])] = {
+
+		var id := str(j.get("id", ""))
+		if id == "":
+			continue
+
+		var game_name := "Juego NO REPORTADO"
+		if j.has("game"):
+			var g = j.get("game")
+			if typeof(g) == TYPE_DICTIONARY:
+				game_name = str(g.get("name", "Juego NO REPORTADO"))
+
+		jugadores[id] = {
 			"name": j.get("name", "Sin nombre"),
 			"status": j.get("status", "UNKNOWN"),
-			"game_name": j.get("game", {}).get("name", "Juego?")
+			"game_name": game_name
 		}
+
+	print("📌 Jugadores actualizados con game_name correcto:", jugadores)
 	_actualizar_lista()
 
 # === BOTONES PRINCIPALES ===
@@ -438,7 +459,7 @@ func _on_ver_pressed():
 	label.text = "Invitaciones recibidas"
 	_actualizar_lista_invitaciones()
 
-# === LISTA DE JUGADORES ===
+# === LISTA DE JUGADORES (MENÚ PRINCIPAL) ===
 func _actualizar_lista():
 	for c in lista.get_children():
 		c.queue_free()
@@ -509,7 +530,6 @@ func _aceptar_invitacion(info: Dictionary):
 
 	_actualizar_lista_invitaciones()
 
-
 func _rechazar_invitacion(info: Dictionary):
 	_enviar({"event": "reject-match"})
 
@@ -519,7 +539,6 @@ func _rechazar_invitacion(info: Dictionary):
 	)
 
 	_actualizar_lista_invitaciones()
-
 
 func _actualizar_lista_invitaciones():
 	for c in lista.get_children():
