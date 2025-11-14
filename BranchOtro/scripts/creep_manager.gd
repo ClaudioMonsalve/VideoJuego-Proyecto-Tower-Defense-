@@ -1,8 +1,16 @@
 extends Node3D
 class_name CreepManager
 
+
+#==enemigos==
+#dejar vacio si no se utilizan en el nivel
 @export var enemy1: PackedScene
 @export var enemy2: PackedScene
+@export var enemy3: PackedScene
+@export var enemy4: PackedScene
+
+
+
 @export var base: Area3D
 @export var waves: wave_data 
 
@@ -116,6 +124,10 @@ func returnCreep(type: String) -> Node:
 			return enemy1.instantiate() if enemy1 else null
 		"enemy2":
 			return enemy2.instantiate() if enemy2 else null
+		"enemy3":
+			return enemy3.instantiate() if enemy3 else null
+		"enemy4":
+			return enemy4.instantiate() if enemy4 else null
 		_:
 			return null
 

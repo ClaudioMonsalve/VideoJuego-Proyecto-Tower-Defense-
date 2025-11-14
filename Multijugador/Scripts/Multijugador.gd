@@ -10,7 +10,7 @@ extends Control
 @onready var lobby: Panel = $Panel/Lobby
 
 # === CONFIGURACIÓN DEL JUEGO ===
-const MY_PLAYER_NAME := "ene0"          # nombre local (se compara case-insensitive)
+const MY_PLAYER_NAME := "RV"          # nombre local (se compara case-insensitive)
 const MY_GAME_ID := "A"
 const MY_GAME_KEY := "5NLQK3EMIZ"
 

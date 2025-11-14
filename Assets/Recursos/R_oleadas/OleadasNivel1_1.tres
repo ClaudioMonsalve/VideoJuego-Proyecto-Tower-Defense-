@@ -33,6 +33,7 @@ waves = [{
 "spawns": [{
 "enemy1": 3,
 "enemy2": 1,
+"enemy3": 3,
 "path": 1
 }],
 "wave_delay": 15

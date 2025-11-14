@@ -1,11 +1,12 @@
-[gd_scene load_steps=15 format=3 uid="uid://7cho3hc7rrk0"]
+[gd_scene load_steps=16 format=3 uid="uid://7cho3hc7rrk0"]
 
 [ext_resource type="Script" uid="uid://0nhun5tfoha1" path="res://Assets/Escenas/Menues/mapa.gd" id="1_ydl5s"]
 [ext_resource type="Script" uid="uid://dxi3sng1g4wqh" path="res://Assets/Escenas/Menues/reino_button.gd" id="2_h4g45"]
-[ext_resource type="Texture2D" uid="uid://c4gpqo0ptbpk6" path="res://Assets/Fondos/fondo.jpg" id="2_l7s4p"]
+[ext_resource type="Texture2D" uid="uid://driaklfwtvu57" path="res://yggdrasil map wip.jpg" id="2_wrwbp"]
 [ext_resource type="Script" uid="uid://d16xfu1b7tftn" path="res://Assets/Escenas/Menues/info_panel.gd" id="3_jd542"]
-[ext_resource type="Texture2D" uid="uid://cv4mgl5aitl6g" path="res://Assets/Fondos/ChatGPT Image 16 oct 2025, 03_59_25 p.m..png" id="4_veu8e"]
+[ext_resource type="Texture2D" uid="uid://dd2m1e2txhsve" path="res://Assets/sprites/UI/MidgardBadge.png" id="4_jneuy"]
 [ext_resource type="Script" uid="uid://dvbnrqawl4kgs" path="res://Assets/Escenas/Menues/reino_button_2.gd" id="5_e123j"]
+[ext_resource type="Texture2D" uid="uid://cywnmcubo5nhe" path="res://Assets/sprites/UI/MuspelBadge.png" id="6_jneuy"]
 [ext_resource type="FontFile" uid="uid://b1eio0nx46t83" path="res://Assets/Fonts/Mjolnir.otf" id="7_fn0si"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="8_wwe7q"]
 
@@ -57,50 +58,51 @@ drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
 [node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
 custom_minimum_size = Vector2(1151, 648)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -536.0
-offset_top = -464.0
-offset_right = 708.0
-offset_bottom = 496.0
+offset_left = -582.0
+offset_top = -897.0
+offset_right = 578.0
+offset_bottom = 407.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_l7s4p")
+texture = ExtResource("2_wrwbp")
 stretch_mode = 5
 
 [node name="ReinosContainer" type="Node2D" parent="."]
 
 [node name="ReinoButton" type="Area2D" parent="ReinosContainer"]
 modulate = Color(1, 0.894118, 1, 1)
+position = Vector2(-12, -124)
 script = ExtResource("2_h4g45")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReinosContainer/ReinoButton"]
-position = Vector2(-415, 35.5)
 shape = SubResource("RectangleShape2D_jd542")
 debug_color = Color(0, 0, 0, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="ReinosContainer/ReinoButton"]
-position = Vector2(-415, 36)
-scale = Vector2(0.129111, 0.120139)
-texture = ExtResource("4_veu8e")
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_jneuy")
 
 [node name="ReinoButton2" type="Area2D" parent="ReinosContainer"]
 modulate = Color(1, 0.901961, 1, 1)
+position = Vector2(362, -155)
 script = ExtResource("5_e123j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ReinosContainer/ReinoButton2"]
-position = Vector2(490, -119)
 shape = SubResource("RectangleShape2D_jd542")
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="Sprite2D" type="Sprite2D" parent="ReinosContainer/ReinoButton2"]
-position = Vector2(490, -117)
-scale = Vector2(0.129111, 0.120139)
-texture = ExtResource("4_veu8e")
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("6_jneuy")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

@@ -145,7 +145,7 @@ shape = SubResource("SphereShape3D_mkyue")
 
 [node name="enemySprite" type="Sprite3D" parent="RigidBody3D"]
 layers = 513
-pixel_size = 0.2
+pixel_size = 0.1
 billboard = 1
 texture_filter = 0
 texture = ExtResource("3_ve1j7")

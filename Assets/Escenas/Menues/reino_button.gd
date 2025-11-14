@@ -6,7 +6,7 @@ extends Area2D
 @export var id: String = "res://Assets/Escenas/Niveles/Nivel1_1.tscn"
 
 # --- Cámara ---
-@export var cam_offset: Vector2 = Vector2(-470, 70)        # desplazamiento al acercar
+var cam_offset: Vector2     # desplazamiento al acercar
 @export var cam_zoom: Vector2 = Vector2(2, 2)          # zoom al hacer click
 @export var cam_return_offset: Vector2 = Vector2(114, -65) # ajuste al alejar
 
@@ -16,6 +16,7 @@ signal reino_seleccionado(data: Dictionary)
 @onready var sprite: Sprite2D = $Sprite2D
 
 func _ready():
+	cam_offset = Vector2(global_position.x, global_position.y)
 	input_pickable = true
 
 func _input_event(viewport, event, shape_idx):
