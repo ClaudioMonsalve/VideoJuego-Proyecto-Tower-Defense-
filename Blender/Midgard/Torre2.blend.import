@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ryfs4op7bfpm"
-path="res://.godot/imported/Torres1.blend-5ebaaed6b640fe90d25cc173bdac3ecd.scn"
+uid="uid://u3ocwm2ojnp8"
+path="res://.godot/imported/Torre2.blend-5675a084eea521e8e610799599eac321.scn"
 
 [deps]
 
-source_file="res://Blender/Midgard/Torres1.blend"
-dest_files=["res://.godot/imported/Torres1.blend-5ebaaed6b640fe90d25cc173bdac3ecd.scn"]
+source_file="res://Blender/Midgard/Torre2.blend"
+dest_files=["res://.godot/imported/Torre2.blend-5675a084eea521e8e610799599eac321.scn"]
 
 [params]
 

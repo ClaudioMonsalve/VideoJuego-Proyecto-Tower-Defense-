@@ -325,7 +325,6 @@ TowerData = ExtResource("12_kk4qk")
 
 [node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
 layout_mode = 2
-TowerData = ExtResource("12_kk4qk")
 
 [node name="TowerCard3" parent="Player/HBox Cards" instance=ExtResource("11_kk4qk")]
 layout_mode = 2
