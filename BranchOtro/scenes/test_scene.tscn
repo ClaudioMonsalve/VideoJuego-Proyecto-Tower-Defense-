@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://c3u5apsja5mw3"]
+[gd_scene load_steps=43 format=3 uid="uid://c3u5apsja5mw3"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_j8ivh"]
 [ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Blender/Midgard/Salones_de_decoracion.blend" id="2_3jt5h"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="5_qjeyg"]
 [ext_resource type="PackedScene" uid="uid://crus233iapmqd" path="res://Blender/Midgard/Grupo_Arboles.blend" id="5_sasr1"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_wtsjf"]
+[ext_resource type="PackedScene" uid="uid://cu876akkj6as7" path="res://Blender/Midgard/low_poly_rocks.glb" id="6_d6e2f"]
 [ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/rat.tscn" id="7_p7qgw"]
 [ext_resource type="PackedScene" uid="uid://cq2tfyebefk6x" path="res://Assets/Escenas/Enemigos/test_enemy_big.tscn" id="8_p7qgw"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_cwrts"]
@@ -140,6 +141,12 @@ transform = Transform3D(1.9, 0, 0, 0, 1.9, 0, 0, 0, 1.9, 0, 3.2601318, 0)
 [node name="Arboles_de_Decoracion" parent="Map/Decoracion" instance=ExtResource("3_uuoxu")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.65, 3.4, 52.932)
 
+[node name="Arboles_de_Decoracion8" parent="Map/Decoracion" instance=ExtResource("3_uuoxu")]
+transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 1.9411798, 3.4, -51.581142)
+
+[node name="Arboles_de_Decoracion7" parent="Map/Decoracion" instance=ExtResource("3_uuoxu")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 4.65, 3.4, -33.48374)
+
 [node name="Arboles_de_Decoracion2" parent="Map/Decoracion" instance=ExtResource("3_uuoxu")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -3.0363488, 3.4, 46.57351)
 
@@ -162,16 +169,28 @@ transform = Transform3D(-0.70710677, 0, -0.70710665, 0, 1, 0, 0.70710665, 0, -0.
 transform = Transform3D(-0.9953961, 0, 0.09584582, 0, 1, 0, -0.09584582, 0, -0.9953961, -2.2824812, 3.3, 41.35494)
 
 [node name="Salones_de_decoracion4" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
-transform = Transform3D(-0.9953961, 0, 0.09584582, 0, 1, 0, -0.09584582, 0, -0.9953961, 65.85426, 3.3, -5.275696)
+transform = Transform3D(-0.73196036, 0, 0.6813471, 0, 1, 0, -0.6813471, 0, -0.73196036, 71.17604, 3.3, -7.7098026)
+
+[node name="Salones_de_decoracion9" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
+transform = Transform3D(-0.3248254, 0, 0.94577396, 0, 1, 0, -0.94577396, 0, -0.3248254, 6.886051, 3.3, -54.5826)
+
+[node name="Salones_de_decoracion10" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
+transform = Transform3D(-0.9624743, 0, 0.27137327, 0, 1, 0, -0.27137327, 0, -0.9624743, 0.2382927, 3.3, -46.995014)
+
+[node name="Salones_de_decoracion11" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
+transform = Transform3D(-0.9624743, 0, 0.27137327, 0, 1, 0, -0.27137327, 0, -0.9624743, 0.2382927, 3.3, -39.00564)
+
+[node name="Salones_de_decoracion12" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
+transform = Transform3D(-0.8777323, 0, -0.47915155, 0, 1, 0, 0.47915155, 0, -0.8777323, 6.9835205, 3.3, -29.581758)
 
 [node name="Salones_de_decoracion7" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
-transform = Transform3D(-0.052649796, 0, -0.9986129, 0, 1, 0, 0.9986129, 0, -0.052649796, 75.85474, 3.3, 10.32328)
+transform = Transform3D(-0.6061134, 0, -0.7953781, 0, 1, 0, 0.7953781, 0, -0.6061134, 77.90395, 3.3, 12.597054)
 
 [node name="Salones_de_decoracion8" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
-transform = Transform3D(-0.052649796, 0, -0.9986129, 0, 1, 0, 0.9986129, 0, -0.052649796, 84.14822, 3.3, 10.443241)
+transform = Transform3D(0.5994286, 0, -0.80042803, 0, 1, 0, 0.80042803, 0, 0.5994286, 87.83979, 3.3, 10.443241)
 
 [node name="Salones_de_decoracion5" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
-transform = Transform3D(-0.82228297, 0, 0.5690786, 0, 1, 0, -0.5690786, 0, -0.82228297, 68.050934, 3.3, -14.978652)
+transform = Transform3D(0.2209017, 0, 0.9752959, 0, 1, 0, -0.9752959, 0, 0.2209017, 83.81617, 3.3, -8.912073)
 
 [node name="Salones_de_decoracion6" parent="Map/Decoracion" instance=ExtResource("2_3jt5h")]
 transform = Transform3D(-0.7762005, 0, -0.630486, 0, 1, 0, 0.630486, 0, -0.7762005, 67.658, 3.3, 5.687067)
@@ -185,20 +204,74 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 78.38505, 3.4, -22.9510
 [node name="Grupo_Arboles5" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 68.008385, 3.4, -31.683296)
 
+[node name="Grupo_Arboles8" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 51.590218, 3.4, -0.904274)
+
 [node name="Grupo_Arboles3" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 78.38505, 3.4, -41.342464)
+
+[node name="Grupo_Arboles16" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 84.471794, 3.4, 84.893814)
+
+[node name="Grupo_Arboles18" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.49683905, 0, -0.05613337, 0, 0.5, 0, 0.05613337, 0, 0.49683905, 73.29579, 3.4, 84.893814)
+
+[node name="Grupo_Arboles17" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 84.471794, 3.4, 67.568054)
+
+[node name="Grupo_Arboles15" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 78.38505, 3.4, -59.680553)
 
 [node name="Grupo_Arboles6" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -41.102478, 3.4, -78.54889)
 
+[node name="Grupo_Arboles10" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -89.638374, 3.4, -81.19388)
+
+[node name="Grupo_Arboles11" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -90.83949, 3.4, -62.542786)
+
+[node name="Grupo_Arboles12" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.013786383, 0, -0.4998099, 0, 0.5, 0, 0.4998099, 0, 0.013786383, -60.752213, 3.4, 56.628723)
+
+[node name="Grupo_Arboles13" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(-0.42239764, 0, -0.26754496, 0, 0.5, 0, 0.26754496, 0, -0.42239764, -63.468746, 3.4, 41.87455)
+
 [node name="Grupo_Arboles7" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -30.927944, 3.4, -82.441025)
+
+[node name="Grupo_Arboles9" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.02730082, 0, -0.4992541, 0, 0.5, 0, 0.4992541, 0, 0.02730082, 39.8877, 3.4, -89.56466)
 
 [node name="Grupo_Arboles2" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87.3152, 3.4, -30.578123)
 
 [node name="Grupo_Arboles4" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87.3152, 3.4, -49.20874)
+
+[node name="Grupo_Arboles14" parent="Map/Decoracion" instance=ExtResource("5_sasr1")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 87.3152, 3.4, -67.67012)
+
+[node name="Sketchfab_Scene" parent="Map/Decoracion" instance=ExtResource("6_d6e2f")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 66.123, 5.600002, -18.852)
+
+[node name="Sketchfab_Scene6" parent="Map/Decoracion" instance=ExtResource("6_d6e2f")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 70.945145, 5.600002, 64.17339)
+
+[node name="Sketchfab_Scene7" parent="Map/Decoracion" instance=ExtResource("6_d6e2f")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 64.85966, 5.600002, 73.22115)
+
+[node name="Sketchfab_Scene2" parent="Map/Decoracion" instance=ExtResource("6_d6e2f")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 27.642, 5.6, -32.051)
+
+[node name="Sketchfab_Scene3" parent="Map/Decoracion" instance=ExtResource("6_d6e2f")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -35.40798, 5.6, -62.954105)
+
+[node name="Sketchfab_Scene5" parent="Map/Decoracion" instance=ExtResource("6_d6e2f")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -17.648937, 5.6, 1.5211754)
+
+[node name="Sketchfab_Scene4" parent="Map/Decoracion" instance=ExtResource("6_d6e2f")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -75.149765, 5.6, -62.04478)
 
 [node name="Suelo_Nivel1_test2" parent="Map" instance=ExtResource("2_p7qgw")]
 transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, -0.355, -6.165, -12.849)
