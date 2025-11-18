@@ -26,7 +26,6 @@ func _on_body_entered(body: Node) -> void:
 
 		if hp <= 0:
 			print("Base destruida!")
-			queue_free()
 
 
 func _update_bar() -> void:

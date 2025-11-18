@@ -1,11 +1,47 @@
-[gd_scene load_steps=13 format=3 uid="uid://bkg0ttdaecsxt"]
+[gd_scene load_steps=18 format=3 uid="uid://bkg0ttdaecsxt"]
 
 [ext_resource type="Script" uid="uid://bghyx3is0dlmc" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.gd" id="1_ve1j7"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_stpkd"]
-[ext_resource type="Texture2D" uid="uid://fwdru1r4jm03" path="res://Assets/sprites/enemies/mundo1/rat.png" id="3_ve1j7"]
+[ext_resource type="Texture2D" uid="uid://ca1svuqmodvfj" path="res://Assets/sprites/enemies/mundo1/ragnar spawn midgard.png" id="3_12o11"]
 [ext_resource type="FontFile" uid="uid://dtgtlfun2nsdm" path="res://Assets/Fonts/Norse.otf" id="4_63n3a"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mkyue"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_12o11"]
+atlas = ExtResource("3_12o11")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hl06d"]
+atlas = ExtResource("3_12o11")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vur2o"]
+atlas = ExtResource("3_12o11")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jqran"]
+atlas = ExtResource("3_12o11")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jqran"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_12o11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hl06d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vur2o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jqran")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_mkyue"]
 viewport_path = NodePath("SubViewport")
@@ -143,15 +179,17 @@ texture = ExtResource("2_stpkd")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00221169, -0.00684714, 0.000776768)
 shape = SubResource("SphereShape3D_mkyue")
 
-[node name="enemySprite" type="Sprite3D" parent="RigidBody3D"]
+[node name="enemySprite" type="AnimatedSprite3D" parent="RigidBody3D"]
 layers = 513
 pixel_size = 0.1
 billboard = 1
 texture_filter = 0
-texture = ExtResource("3_ve1j7")
+sprite_frames = SubResource("SpriteFrames_jqran")
+autoplay = "default"
+frame_progress = 0.763649
 
 [node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.706632, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02694, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_mkyue")
 

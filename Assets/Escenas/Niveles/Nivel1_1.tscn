@@ -164,18 +164,6 @@ curve = SubResource("Curve3D_kk4qk")
 
 [node name="Plataformas" type="Node3D" parent="Map"]
 
-[node name="TowerPlatform" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8645, 2.97595, 10.9611)
-
-[node name="TowerPlatform2" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.47911, 3.25953, 35.8654)
-
-[node name="TowerPlatform3" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.7174, 3.07235, 24.2025)
-
-[node name="TowerPlatform4" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.0758, 3.13825, 21.5686)
-
 [node name="TowerPlatform5" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.018, 3, -12.1245)
 
@@ -184,6 +172,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5907, 3, -43.4814)
 
 [node name="TowerPlatform8" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3131, 3, -51.4338)
+
+[node name="TowerPlatform9" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3131, 3, -86.5672)
 
 [node name="TowerPlatform7" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5884, 3, -1.29958)
