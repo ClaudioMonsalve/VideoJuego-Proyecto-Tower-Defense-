@@ -25,21 +25,23 @@ var modo := 0
 var match_id: String = ""
 var match_status: String = "WAITING_PLAYERS"
 
+
 # === READY ===
 func _ready():
+	label.text = "Modo Multijugador"
 	lobby.visible = false
 	_limpiar_todo()
 	await get_tree().create_timer(0.2).timeout
 	_conectar_servidor()
 
 	scroll.visible = false
-	label.text = "Modo Multijugador"
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
 
 	btn_enviar.pressed.connect(_on_enviar_pressed)
 	btn_ver.pressed.connect(_on_ver_pressed)
 	volver.pressed.connect(_on_volver_pressed)
+	
 
 # === LOOP PRINCIPAL ===
 func _process(_delta):
@@ -58,6 +60,7 @@ func _process(_delta):
 		print("📩 Recibido:", msg)
 		_on_mensaje_recibido(msg)
 
+
 # === CONEXIÓN ===
 func _conectar_servidor():
 	var url := "ws://cross-game-ucn.martux.cl:4010/?gameId=%s&playerName=%s" % [MY_GAME_ID, MY_PLAYER_NAME]
@@ -71,6 +74,7 @@ func _enviar(dic: Dictionary):
 	if not conectado:
 		return
 	ws.send_text(JSON.stringify(dic))
+
 
 func _crear_panel_estilo(color: Color = Color(0.94, 0.94, 0.94)) -> StyleBoxFlat:
 	var style := StyleBoxFlat.new()
@@ -236,6 +240,7 @@ func _on_mensaje_recibido(msg: String):
 		_:
 			print("ℹ️ Evento no manejado:", evento)
 
+
 # === CUANDO EL RIVAL SALE DEL MATCH ===
 func _finalizar_partida_por_rival():
 	print("🧹 Cierre remoto REAL de la partida")
@@ -250,11 +255,13 @@ func _finalizar_partida_por_rival():
 		for c in box.get_children():
 			c.queue_free()
 
+
 	# Cerrar WebSocket LOCAL para que el server me ponga AVAILABLE
 	if ws and conectado:
 		print("🔌 Cerrando WebSocket local por cierre remoto…")
 		ws.close()
 		conectado = false
+
 
 	# Reconectar y pedir lista actualizada
 	await get_tree().create_timer(0.5).timeout
@@ -264,12 +271,14 @@ func _finalizar_partida_por_rival():
 	if conectado:
 		_enviar({"event": "online-players"})
 
+
 	# Restaurar UI base
 	scroll.visible = false
 	btn_enviar.visible = true
 	btn_ver.visible = true
 	posicion_menu = 0
 	label.text = "Modo Multijugador"
+
 
 # === LOBBY ===
 func _abrir_lobby():
@@ -408,7 +417,7 @@ func _evaluar_listos_y_arrancar():
 
 	if todos_listos:
 		print("🚀 Ambos jugadores listos — iniciando partida…")
-		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/control.tscn")
+		get_tree().change_scene_to_file("res://Multijugador/Escenas/control.tscn")
 
 # === GESTIÓN DE JUGADORES ===
 func _registrar_jugador(info: Dictionary):
@@ -591,6 +600,7 @@ func _actualizar_lista_invitaciones():
 		panel.add_child(margin)
 		lista.add_child(panel)
 
+
 # === VOLVER ===
 func _on_volver_pressed():
 	if lobby.visible:
@@ -630,6 +640,7 @@ func _on_volver_pressed():
 		btn_ver.visible = true
 		posicion_menu = 0
 		label.text = "Modo Multijugador"
+
 
 # === TERMINAR PARTIDA LOCAL (finish + quit + aviso close) ===
 func _salir_partida_completa():
