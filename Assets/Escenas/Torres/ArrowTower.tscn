@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://5efva3jseswa"]
+
+[ext_resource type="Script" uid="uid://5vg0dyb2chbf" path="res://Assets/Escenas/Torres/arrow_tower.gd" id="1_mm4rd"]
+[ext_resource type="PackedScene" uid="uid://u3ocwm2ojnp8" path="res://Assets/modelos/Torres/Torre2.blend" id="2_mm4rd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_6w6ls"]
+height = 30.0
+radius = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mwxkw"]
+transparency = 1
+albedo_color = Color(0, 0.694118, 0.823529, 0.305882)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_av7h5"]
+material = SubResource("StandardMaterial3D_mwxkw")
+top_radius = 20.0
+bottom_radius = 20.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_av7h5"]
+height = 4.0
+radius = 2.0
+
+[node name="Tower" type="Node3D"]
+script = ExtResource("1_mm4rd")
+
+[node name="AttackRange" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AttackRange"]
+shape = SubResource("CylinderShape3D_6w6ls")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AttackRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.0288, 0)
+visible = false
+mesh = SubResource("CylinderMesh_av7h5")
+
+[node name="Interactable" type="Area3D" parent="."]
+
+[node name="Torre2" parent="Interactable" instance=ExtResource("2_mm4rd")]
+transform = Transform3D(0.345, 0, 0, 0, 0.345, 0, 0, 0, 0.345, 0, -2.15268, 0)
+
+[node name="ClickableCollider" type="CollisionShape3D" parent="Interactable"]
+shape = SubResource("CylinderShape3D_av7h5")

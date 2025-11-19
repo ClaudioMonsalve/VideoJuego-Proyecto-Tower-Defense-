@@ -20,6 +20,8 @@ extends Node3D
 #torres
 #============================
 @export var torre_test: PackedScene
+@export var Arrowtower: PackedScene
+@export var Axetower: PackedScene
 
 @export var camera_sens = 0.01
 @export var zoomSens = 2
@@ -118,6 +120,8 @@ func getTower(towerName):
 	match towerName:
 		"Test tower":
 			return torre_test.instantiate()
+		"Arrow Tower":
+			return Arrowtower.instantiate()
 		_:
 			return null
 

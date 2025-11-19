@@ -1,4 +1,5 @@
 extends Node3D
+class_name tower
 
 @onready var enemyColl = $AttackRange
 @onready var clickColl = $Interactable
@@ -17,9 +18,6 @@ func _ready() -> void:
 	add_to_group("torres")
 	enemyColl.body_entered.connect(_on_enemy_enter)
 	enemyColl.body_exited.connect(_on_enemy_exit)
-
-func _process(delta: float) -> void:
-	pass
 
 func _on_enemy_enter(body):
 	print("something at all entered")
@@ -42,12 +40,15 @@ func reanudar():
 		attacking = true
 		attack()
 
+func effect(body):
+	return
+
 func attack() -> void:
 	# Función asíncrona "manual" usando await
 	while creepQueue.size() > 0 and not paused:
 		var target = creepQueue[0]
 		if target != null:
-			target.ouch(damage)
+			effect(target)
 			await get_tree().create_timer(attkSpeedCalculated).timeout
 		else:
 			creepQueue.pop_front()
