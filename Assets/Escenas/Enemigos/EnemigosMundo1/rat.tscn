@@ -181,12 +181,12 @@ shape = SubResource("SphereShape3D_mkyue")
 
 [node name="enemySprite" type="AnimatedSprite3D" parent="RigidBody3D"]
 layers = 513
-pixel_size = 0.1
+pixel_size = 0.05
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_jqran")
 autoplay = "default"
-frame_progress = 0.763649
+frame_progress = 0.496874
 
 [node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02694, 0)
