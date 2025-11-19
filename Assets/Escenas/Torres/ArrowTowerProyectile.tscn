@@ -1,0 +1,72 @@
+[gd_scene load_steps=15 format=3 uid="uid://day66b2ivcaja"]
+
+[ext_resource type="Script" uid="uid://cx5tafnbgvwlx" path="res://Assets/Escenas/Torres/arrow_tower_proyectile.gd" id="1_h2nmv"]
+[ext_resource type="Shader" uid="uid://f8e65foqdclt" path="res://addons/trails/shaders/trail.gdshader" id="2_x11hk"]
+[ext_resource type="Shader" uid="uid://dhajc5ipleo1k" path="res://addons/trails/shaders/trail_draw_pass.gdshader" id="3_8k22d"]
+[ext_resource type="Script" uid="uid://br63k1qytuvv0" path="res://addons/trails/GPUTrail3D.gd" id="4_7bya6"]
+
+[sub_resource type="Curve" id="Curve_64x6n"]
+_data = [Vector2(0, 0.2), 0.0, -0.2, 0, 0, Vector2(1, 0), -0.2, 0.0, 1, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h2nmv"]
+transparency = 1
+cull_mode = 2
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+
+[sub_resource type="RibbonTrailMesh" id="RibbonTrailMesh_64x6n"]
+material = SubResource("StandardMaterial3D_h2nmv")
+sections = 2
+section_length = 0.1
+curve = SubResource("Curve_64x6n")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x11hk"]
+shader = ExtResource("2_x11hk")
+
+[sub_resource type="Gradient" id="Gradient_8k22d"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7bya6"]
+gradient = SubResource("Gradient_8k22d")
+use_hdr = true
+
+[sub_resource type="Curve" id="Curve_xghk2"]
+bake_resolution = 16
+_data = [Vector2(0, 0.0972763), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_f4mf7"]
+curve = SubResource("Curve_xghk2")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m6gox"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("3_8k22d")
+shader_parameter/uv_offset = Vector2(0, 0)
+shader_parameter/color_ramp = SubResource("GradientTexture1D_7bya6")
+shader_parameter/curve = SubResource("CurveTexture_f4mf7")
+shader_parameter/emmission_transform = Projection(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1)
+shader_parameter/flags = 44
+
+[sub_resource type="QuadMesh" id="QuadMesh_gs15j"]
+material = SubResource("ShaderMaterial_m6gox")
+
+[node name="Proyectile" type="MeshInstance3D"]
+mesh = SubResource("RibbonTrailMesh_64x6n")
+script = ExtResource("1_h2nmv")
+
+[node name="GPUTrail3D" type="GPUParticles3D" parent="."]
+amount = 6
+lifetime = 6.0
+explosiveness = 1.0
+fixed_fps = 60
+process_material = SubResource("ShaderMaterial_x11hk")
+draw_pass_1 = SubResource("QuadMesh_gs15j")
+script = ExtResource("4_7bya6")
+length = 6
+length_seconds = 0.1
+color_ramp = SubResource("GradientTexture1D_7bya6")
+curve = SubResource("CurveTexture_f4mf7")
+billboard = true
+_defaults_have_been_set = true

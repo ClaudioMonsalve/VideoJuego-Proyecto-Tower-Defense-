@@ -18,7 +18,7 @@ waves = [{
 "enemy1": 4,
 "path": 1
 }],
-"wave_delay": 15
+"wave_delay": 12
 }, {
 "spawns": [{
 "enemy1": 7,
@@ -37,5 +37,16 @@ waves = [{
 "path": 1
 }],
 "wave_delay": 15
+}, {
+"spawns": [{
+"enemy1": 8,
+"enemy3": 5,
+"path": 0
+}, {
+"enemy2": 5,
+"enemy3": 2,
+"path": 1
+}],
+"wave_delay": 12
 }]
 metadata/_custom_type_script = "uid://te5xx7t3cl07"
