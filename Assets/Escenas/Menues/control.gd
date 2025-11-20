@@ -32,7 +32,6 @@ func _ready():
 	set_process(true)
 
 func _process(delta):
-	print("hi nigga")
 	var status = ResourceLoader.load_threaded_get_status(next_scene, progress)
 	
 	match status:

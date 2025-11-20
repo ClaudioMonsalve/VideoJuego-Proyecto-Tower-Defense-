@@ -48,17 +48,17 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkyue"]
 bg_color = Color(0.216021, 0.00646043, 1.8049e-08, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fpxyv"]
 bg_color = Color(1, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_mkyue"]
 ProgressBar/fonts/font = ExtResource("4_63n3a")
@@ -181,7 +181,7 @@ shape = SubResource("SphereShape3D_mkyue")
 
 [node name="enemySprite" type="AnimatedSprite3D" parent="RigidBody3D"]
 layers = 513
-pixel_size = 0.05
+pixel_size = 0.07
 billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_jqran")
@@ -190,19 +190,19 @@ frame = 2
 frame_progress = 0.876135
 
 [node name="Sprite3D" type="Sprite3D" parent="RigidBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02694, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.601669, 1.02694, 0)
 billboard = 1
 texture = SubResource("ViewportTexture_mkyue")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true
-size = Vector2i(160, 30)
+size = Vector2i(160, 20)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="SubViewport"]
 
 [node name="ProgressBar" type="ProgressBar" parent="SubViewport/CanvasLayer"]
 offset_right = 160.0
-offset_bottom = 30.0
+offset_bottom = 20.0
 theme = SubResource("Theme_mkyue")
 value = 100.0
 show_percentage = false
