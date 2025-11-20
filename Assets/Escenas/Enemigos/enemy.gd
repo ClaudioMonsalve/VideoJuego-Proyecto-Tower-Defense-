@@ -7,6 +7,7 @@ class_name enemy
 @onready var collider = $CollisionShape3D
 @onready var meshOrSprite = $MeshInstance3D
 @onready var barSprite = $Sprite3D
+@onready var rigidbody = $RigidBody3D
 
 @export var worth: int = 4
 @export var maxhp: float = 10.0
@@ -33,7 +34,7 @@ func ouch(damage: float):
 	if hp <= 0:
 		if base:
 			base.muni += worth
-		if animationPlayer and self:
+		if animationPlayer and rigidbody:
 			paused = true
 			collider.queue_free()
 			meshOrSprite.queue_free()

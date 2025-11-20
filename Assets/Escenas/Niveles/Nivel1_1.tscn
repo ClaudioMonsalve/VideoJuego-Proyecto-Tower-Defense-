@@ -1,26 +1,27 @@
-[gd_scene load_steps=41 format=3 uid="uid://bj6ruqrmmh8n2"]
+[gd_scene load_steps=42 format=3 uid="uid://bj6ruqrmmh8n2"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_xhad6"]
 [ext_resource type="PackedScene" uid="uid://b1y4ndm5w6um8" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.blend" id="2_migal"]
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_aj57n"]
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_iaa1h"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_xlml3"]
-[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://BranchOtro/scripts/creep_manager.gd" id="6_8a6pp"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://Assets/scripts/creep_manager.gd" id="6_8a6pp"]
 [ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="7_gsjdr"]
 [ext_resource type="PackedScene" uid="uid://c8vu4hkdw64i0" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/sprite(enemy).tscn" id="8_kuoi0"]
 [ext_resource type="PackedScene" uid="uid://ck6y1vhk1y1xu" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/skeleton.tscn" id="9_2uv88"]
 [ext_resource type="Resource" uid="uid://ttu2vpk7irco" path="res://Assets/Recursos/R_oleadas/OleadasNivel1_1.tres" id="9_hlfkw"]
-[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://BranchOtro/scripts/cam_node.gd" id="9_oecj2"]
+[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="9_oecj2"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_wb18e"]
 [ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="11_ro63v"]
 [ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="12_3y5p2"]
-[ext_resource type="Resource" uid="uid://dhpdqis1lah4j" path="res://Assets/Recursos/Rtorres/Test_tower.tres" id="13_n1unu"]
-[ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://BranchOtro/scripts/node_2d.gd" id="14_qdga2"]
-[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://BranchOtro/scripts/pause.gd" id="15_ovtgn"]
-[ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://BranchOtro/scripts/button.gd" id="16_drqky"]
+[ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="12_rlqd0"]
+[ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://Assets/scripts/node_2d.gd" id="14_qdga2"]
+[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="15_ovtgn"]
+[ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="16_drqky"]
 [ext_resource type="Resource" uid="uid://ctnxddjd8lssq" path="res://Assets/Dialogos/Mundo1/Intro_Nivel_1-1.dialogue" id="16_kuoi0"]
+[ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="16_rlqd0"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="17_oojqn"]
-[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://BranchOtro/scripts/button_2.gd" id="18_64rh3"]
+[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://Assets/scripts/button_2.gd" id="18_64rh3"]
 [ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="19_wo8mp"]
 [ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="20_r5rkq"]
 [ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="21_qa84f"]
@@ -141,9 +142,6 @@ transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, -0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 muni = 12
 
-[node name="testTower" parent="Map" instance=ExtResource("4_iaa1h")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.7682, 5.823, -8.49089)
-
 [node name="Paths" type="Node3D" parent="Map"]
 
 [node name="Path0" type="Path3D" parent="Map/Paths"]
@@ -179,10 +177,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3131, 3, -86.5672)
 [node name="TowerPlatform7" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5884, 3, -1.29958)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Map"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1.0496, 1.18211, -12.7395)
-size = Vector3(1, 6, 10.9789)
-
 [node name="CSGBox3D2" type="CSGBox3D" parent="Map"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.0688, 1.18211, 6.13514)
 size = Vector3(1, 6, 14.6628)
@@ -214,6 +208,7 @@ card4 = NodePath("HBox Cards/TowerCard4")
 card5 = NodePath("HBox Cards/TowerCard5")
 card6 = NodePath("HBox Cards/TowerCard6")
 torre_test = ExtResource("4_iaa1h")
+Arrowtower = ExtResource("12_rlqd0")
 camera_sens = 0.1
 
 [node name="Camera3D" type="Camera3D" parent="Player"]
@@ -266,7 +261,7 @@ grow_vertical = 0
 
 [node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
 layout_mode = 2
-TowerData = ExtResource("13_n1unu")
+TowerData = ExtResource("16_rlqd0")
 
 [node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
 layout_mode = 2

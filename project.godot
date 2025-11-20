@@ -19,7 +19,7 @@ config/icon="res://icon.svg"
 
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 MusicPlayer="*res://Assets/Escenas/Global/MusicPlayer.tscn"
-TestScene="*res://BranchOtro/scripts/test_scene.gd"
+TestScene="*res://Assets/scripts/test_scene.gd"
 ButtonSound="*res://Assets/Escenas/Audios/ButtonSound.tscn"
 Globals="*res://Assets/Escenas/Global/Globals.gd"
 
@@ -34,15 +34,17 @@ window/handheld/orientation=4
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/trails/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
 "res://Assets/": "green",
 "res://Assets/Escenas/Enemigos/": "red",
+"res://Assets/Escenas/Torres/": "purple",
 "res://Assets/sprites/enemies/": "red",
-"res://Multijugador/": "blue"
+"res://Multijugador/": "blue",
+"res://addons/": "pink"
 }
 
 [input_devices]
