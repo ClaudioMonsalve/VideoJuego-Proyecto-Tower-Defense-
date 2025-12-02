@@ -16,7 +16,6 @@ const MY_GAME_KEY := "B2VAFIF18P"
 const MY_GAME_NAME := "Yggdrasil: The Last Stand"
 
 # === VARIABLES ===
-var ws := WebSocketPeer.new()
 var conectado := false
 var jugadores: Dictionary = {}      # otros jugadores
 var invitaciones: Array = []
@@ -48,15 +47,15 @@ func _process(_delta):
 	if not conectado:
 		return
 
-	if ws.get_ready_state() == WebSocketPeer.STATE_CLOSED:
+	if Network.ws.get_ready_state() == WebSocketPeer.STATE_CLOSED:
 		print("⚠️ Conexión cerrada, limpiando todo.")
 		conectado = false
 		_limpiar_todo()
 		return
 
-	ws.poll()
-	while ws.get_available_packet_count() > 0:
-		var msg := ws.get_packet().get_string_from_utf8()
+	Network.ws.poll()
+	while Network.ws.get_available_packet_count() > 0:
+		var msg := Network.ws.get_packet().get_string_from_utf8()
 		print("📩 Recibido:", msg)
 		_on_mensaje_recibido(msg)
 
@@ -65,7 +64,7 @@ func _process(_delta):
 func _conectar_servidor():
 	var url := "ws://cross-game-ucn.martux.cl:4010/?gameId=%s&playerName=%s" % [MY_GAME_ID, MY_PLAYER_NAME]
 	print("🌐 Conectando a:", url)
-	var err := ws.connect_to_url(url)
+	var err := Network.ws.connect_to_url(url)
 	if err == OK:
 		conectado = true
 
@@ -73,7 +72,7 @@ func _conectar_servidor():
 func _enviar(dic: Dictionary):
 	if not conectado:
 		return
-	ws.send_text(JSON.stringify(dic))
+	Network.ws.send_text(JSON.stringify(dic))
 
 
 func _crear_panel_estilo(color: Color = Color(0.94, 0.94, 0.94)) -> StyleBoxFlat:
@@ -257,9 +256,9 @@ func _finalizar_partida_por_rival():
 
 
 	# Cerrar WebSocket LOCAL para que el server me ponga AVAILABLE
-	if ws and conectado:
+	if Network.ws and conectado:
 		print("🔌 Cerrando WebSocket local por cierre remoto…")
-		ws.close()
+		Network.ws.close()
 		conectado = false
 
 
@@ -610,9 +609,9 @@ func _on_volver_pressed():
 		await _salir_partida_completa()
 
 		# 2. cerrar WebSocket local
-		if ws and conectado:
+		if Network.ws and conectado:
 			print("🔌 Cerrando WebSocket local (VOLVER)…")
-			ws.close()
+			Network.apagar()
 			conectado = false
 
 		# 3. reconectar
@@ -630,8 +629,8 @@ func _on_volver_pressed():
 
 	# === VOLVER NORMAL ===
 	if posicion_menu == 0:
-		if ws and conectado:
-			ws.close()
+		if Network.ws and conectado:
+			Network.apagar()
 		_limpiar_todo()
 		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
 	else:
