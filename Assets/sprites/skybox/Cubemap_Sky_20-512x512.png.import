@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxxu5ini1efbl"
-path.s3tc="res://.godot/imported/Untitled.png-b0f951971921c812036d5ccaf37a11c7.s3tc.ctex"
-path.etc2="res://.godot/imported/Untitled.png-b0f951971921c812036d5ccaf37a11c7.etc2.ctex"
+uid="uid://btccj3601vax6"
+path.s3tc="res://.godot/imported/Cubemap_Sky_20-512x512.png-b5f1d726114acbc5e61f63bbcc38d713.s3tc.ctex"
+path.etc2="res://.godot/imported/Cubemap_Sky_20-512x512.png-b5f1d726114acbc5e61f63bbcc38d713.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/modelos/mapas/Untitled.png"
-dest_files=["res://.godot/imported/Untitled.png-b0f951971921c812036d5ccaf37a11c7.s3tc.ctex", "res://.godot/imported/Untitled.png-b0f951971921c812036d5ccaf37a11c7.etc2.ctex"]
+source_file="res://Assets/sprites/skybox/Cubemap_Sky_20-512x512.png"
+dest_files=["res://.godot/imported/Cubemap_Sky_20-512x512.png-b5f1d726114acbc5e61f63bbcc38d713.s3tc.ctex", "res://.godot/imported/Cubemap_Sky_20-512x512.png-b5f1d726114acbc5e61f63bbcc38d713.etc2.ctex"]
 
 [params]
 
