@@ -1,7 +1,7 @@
-[gd_scene load_steps=42 format=3 uid="uid://bj6ruqrmmh8n2"]
+[gd_scene load_steps=45 format=3 uid="uid://bj6ruqrmmh8n2"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_xhad6"]
-[ext_resource type="PackedScene" uid="uid://b1y4ndm5w6um8" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.blend" id="2_migal"]
+[ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="2_rlqd0"]
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_aj57n"]
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_iaa1h"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_xlml3"]
@@ -28,35 +28,41 @@
 [ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="22_x2y2j"]
 [ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="23_ompbk"]
 [ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="24_q3h5k"]
+[ext_resource type="PackedScene" uid="uid://d0es6mv1t5ry1" path="res://Assets/modelos/Decoración/midgard/Arboles_de_Decoracion.blend" id="29_m4ruf"]
+[ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="30_4hbg3"]
+[ext_resource type="PackedScene" uid="uid://cu876akkj6as7" path="res://Assets/modelos/Decoración/midgard/low_poly_rocks.glb" id="31_jglew"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7ddre"]
-sky_top_color = Color(0, 0, 0, 1)
-sky_horizon_color = Color(0, 0, 0, 1)
-ground_bottom_color = Color(0, 0, 0, 1)
-ground_horizon_color = Color(0, 0, 0, 1)
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_m4ruf"]
+turbidity = 1000.0
+sun_disk_scale = 0.0
+ground_color = Color(0.066461, 0.0825229, 0.0497092, 1)
 
-[sub_resource type="Sky" id="Sky_qjeyg"]
-sky_material = SubResource("ProceduralSkyMaterial_7ddre")
+[sub_resource type="Sky" id="Sky_4hbg3"]
+sky_material = SubResource("PhysicalSkyMaterial_m4ruf")
 
 [sub_resource type="Environment" id="Environment_3qnke"]
 background_mode = 2
-sky = SubResource("Sky_qjeyg")
+sky = SubResource("Sky_4hbg3")
+ambient_light_color = Color(0.566516, 0.731209, 0.859579, 1)
+ambient_light_energy = 9.3
 tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_6adnx"]
+lightmap_size_hint = Vector2i(1282, 2002)
+flip_faces = true
 size = Vector2(256, 400)
 
 [sub_resource type="Curve3D" id="Curve3D_6o2bu"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 70.9917, 0, -134.625, 1.94559, 0, -8.02557, -1.94559, 0, 8.02557, 74.6733, 0, -107.25, 4.1578, 0, -6.10735, -4.1578, 0, 6.10735, 64.772, 0, -82.681, 4.94505, 0, -6.48531, -4.94505, 0, 6.48531, 41.8018, 0, -66.2381, 3.48667, 0, -7.25516, -3.48667, 0, 7.25516, 32.6946, 0, -40.6067, 6.79974, 0, -2.01476, -6.79974, 0, 2.01476, 15.8718, 0, -31.2449, 10.8629, 0, -1.86453, -10.8629, 0, 1.86453, -9.41959, 0, -22.207, 2.69468, 0, -6.4497, -2.69468, 0, 6.4497, -22.8554, 0, -11.713, -9.07944, 0, 0.405334, 9.07944, 0, -0.405334, -14.5056, 0, 0.446917, 0, 0, 0, 0, 0, 0, -0.280348, 0, 0.261556),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 68.6863, 0, -151.137, 1.94559, 0, -8.02557, -1.94559, 0, 8.02557, 74.6733, 0, -107.25, 4.1578, 0, -6.10735, -4.1578, 0, 6.10735, 64.772, 0, -82.681, 4.94505, 0, -6.48531, -4.94505, 0, 6.48531, 41.8018, 0, -66.2381, 3.48667, 0, -7.25516, -3.48667, 0, 7.25516, 32.6946, 0, -40.6067, 6.79974, 0, -2.01476, -6.79974, 0, 2.01476, 15.8718, 0, -31.2449, 10.8629, 0, -1.86453, -10.8629, 0, 1.86453, -9.41959, 0, -22.207, 2.69468, 0, -6.4497, -2.69468, 0, 6.4497, -22.8554, 0, -11.713, -9.07944, 0, 0.405334, 9.07944, 0, -0.405334, -14.5056, 0, 0.446917, 0, 0, 0, 0, 0, 0, -0.280348, 0, 0.261556),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 10
 
 [sub_resource type="Curve3D" id="Curve3D_hlfkw"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 2.46709, 0, -136.738, -3.94761, 0, -5.73342, 3.94761, 0, 5.73342, 13.3507, 0, -109.685, -2.40727, 0, -6.51446, 2.40727, 0, 6.51446, 36.3618, 0, -92.6128, 0.375961, 0, -5.82742, -0.375961, 0, 5.82742, 38.7548, 0, -68.1883, 3.05185, 0, -9.36835, -3.05185, 0, 9.36835, 33.1577, 0, -41.2878, 5.51081, 0, -2.82374, -5.51081, 0, 2.82374, 14.1146, 0, -30.4259, 3.6932, 0, -1.31947, -3.6932, 0, 1.31947, -2.41258, 0, -23.2931, 5.04993, 0, -6.54675, -5.04993, 0, 6.54675, -20.8072, 0, -16.6234, -9.30507, 0, 0.18798, 9.30507, 0, -0.18798, -16.6057, 0, 0.13255, 0, 0, 0, 0, 0, 0, 0.0229974, 0, -0.155088),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -4.71931, 0, -158.001, -3.94761, 0, -5.73342, 3.94761, 0, 5.73342, 13.3507, 0, -109.685, -2.40727, 0, -6.51446, 2.40727, 0, 6.51446, 36.3618, 0, -92.6128, 0.375961, 0, -5.82742, -0.375961, 0, 5.82742, 38.7548, 0, -68.1883, 3.05185, 0, -9.36835, -3.05185, 0, 9.36835, 33.1577, 0, -41.2878, 5.51081, 0, -2.82374, -5.51081, 0, 2.82374, 14.1146, 0, -30.4259, 3.6932, 0, -1.31947, -3.6932, 0, 1.31947, -2.41258, 0, -23.2931, 5.04993, 0, -6.54675, -5.04993, 0, 6.54675, -20.8072, 0, -16.6234, -9.30507, 0, 0.18798, 9.30507, 0, -0.18798, -16.6057, 0, 0.13255, 0, 0, 0, 0, 0, 0, 0.0229974, 0, -0.155088),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 10
@@ -128,15 +134,16 @@ animations = [{
 environment = SubResource("Environment_3qnke")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.250001, 0, 0.499998, 0.866026, -0.500003, 0.749999, -0.43301, 0.791145, 12.2761, -32.5975)
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0.235438, 0.087944, 0.967902, -0.441103, 0.897086, 0.0257867, 0.791145, 12.2761, -32.5975)
+light_color = Color(0.725349, 0.805661, 0.903023, 1)
 shadow_enabled = true
 
 [node name="Map" type="MeshInstance3D" parent="."]
 material_override = ExtResource("1_xhad6")
 mesh = SubResource("PlaneMesh_6adnx")
 
-[node name="Suelo_Nivel1_test2" parent="Map" instance=ExtResource("2_migal")]
-transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, -0.355, -6.165, -12.849)
+[node name="Suelo_Nivel1_test" parent="Map" instance=ExtResource("2_rlqd0")]
+transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, -1, -6.3, -13)
 
 [node name="Base" parent="Map" instance=ExtResource("3_aj57n")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -393,3 +400,38 @@ scale = Vector2(2.5, 2.5)
 sprite_frames = SubResource("SpriteFrames_cwrts")
 frame = 1
 frame_progress = 0.0459249
+
+[node name="Decor" type="Node3D" parent="."]
+
+[node name="Arboles_de_Decoracion" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.63204, -3.41289, 18.5299)
+
+[node name="Arboles_de_Decoracion2" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7728, -0.71809, 16.1325)
+
+[node name="Arboles_de_Decoracion3" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2229, 1.24527, 22.278)
+
+[node name="Arboles_de_Decoracion4" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.57637, -3.27665, -41.3998)
+
+[node name="Arboles_de_Decoracion5" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12061, 2.62693, -42.4193)
+
+[node name="Arboles_de_Decoracion6" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98928, 1.66825, -47.7882)
+
+[node name="Arboles_de_Decoracion7" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501671, -1.90735e-06, -48.7168)
+
+[node name="Salones_de_decoracion" parent="Decor" instance=ExtResource("30_4hbg3")]
+transform = Transform3D(-0.143883, 0, -0.725011, 0, 0.702915, 0, 0.352294, 0, -0.296108, -6.43402, 2.88429, 15.6448)
+
+[node name="Salones_de_decoracion2" parent="Decor" instance=ExtResource("30_4hbg3")]
+transform = Transform3D(-0.584958, 0, -0.514104, 0, 0.853, 0, 0.384479, 0, -0.782172, -8.72597, 2.88503, 12.7443)
+
+[node name="Sketchfab_Scene" parent="Decor" instance=ExtResource("31_jglew")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.09525, 3.23575, 17.2612)
+
+[node name="Sketchfab_Scene2" parent="Decor" instance=ExtResource("31_jglew")]
+transform = Transform3D(1.78851, 0, -2.40858, 0, 3, 0, 2.40858, 0, 1.78851, -9.59606, 4.29864, 19.4499)

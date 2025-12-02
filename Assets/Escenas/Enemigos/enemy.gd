@@ -34,11 +34,13 @@ func ouch(damage: float):
 	if hp <= 0:
 		if base:
 			base.muni += worth
-		if animationPlayer and rigidbody:
 			paused = true
-			collider.queue_free()
-			meshOrSprite.queue_free()
-			barSprite.queue_free()
+			if collider:
+				collider.queue_free()
+			if meshOrSprite:
+				meshOrSprite.queue_free()
+			if barSprite:
+				barSprite.queue_free()
 			animationPlayer.play("money")
 			await animationPlayer.animation_finished
 		get_parent().queue_free()
