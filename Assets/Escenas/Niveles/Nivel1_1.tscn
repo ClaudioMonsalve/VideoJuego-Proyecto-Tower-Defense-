@@ -226,10 +226,11 @@ enemy3 = ExtResource("9_2uv88")
 base = NodePath("../Map/Base")
 waves = ExtResource("9_hlfkw")
 
-[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "card1", "card2", "card3", "card4", "card5", "card6")]
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "creepManager", "card1", "card2", "card3", "card4", "card5", "card6")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)
 script = ExtResource("9_oecj2")
 baseobj = NodePath("../Map/Base")
+creepManager = NodePath("../CreepManager")
 card1 = NodePath("HBox Cards/TowerCard")
 card2 = NodePath("HBox Cards/TowerCard2")
 card3 = NodePath("HBox Cards/TowerCard3")
@@ -468,10 +469,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98928, 1.66825, -47.7882)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501671, -1.90735e-06, -48.7168)
 
 [node name="Salones_de_decoracion" parent="Decor" instance=ExtResource("30_4hbg3")]
-transform = Transform3D(-0.143883, 0, -0.725011, 0, 0.702915, 0, 0.352294, 0, -0.296108, -6.43402, 2.88429, 15.6448)
+transform = Transform3D(-0.143883, 0, -0.725011, 0, 0.702915, 0, 0.352294, 0, -0.296107, -6.43402, 2.88429, 15.6448)
 
 [node name="Salones_de_decoracion2" parent="Decor" instance=ExtResource("30_4hbg3")]
-transform = Transform3D(-0.584958, 0, -0.514104, 0, 0.853, 0, 0.384479, 0, -0.782172, -8.72597, 2.88503, 12.7443)
+transform = Transform3D(-0.584958, 0, -0.514103, 0, 0.853, 0, 0.384479, 0, -0.782173, -8.72597, 2.88503, 12.7443)
 
 [node name="Sketchfab_Scene" parent="Decor" instance=ExtResource("31_jglew")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.09525, 3.23575, 17.2612)

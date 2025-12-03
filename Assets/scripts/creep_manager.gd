@@ -68,6 +68,7 @@ func waveManager() -> void:
 			await t
 		
 		await waitWhileNotPaused(wave["wave_delay"])
+		wave_index =+ 1
 	spawning = false
 
 

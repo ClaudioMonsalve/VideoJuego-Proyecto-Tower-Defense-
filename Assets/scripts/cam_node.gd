@@ -2,8 +2,10 @@ extends Node3D
 
 @onready var camera = $Camera3D
 @export var baseobj: Base
+@export var creepManager: CreepManager
 @onready var hpLabel = $"VBox playerdata/HBox Health/Health"
 @onready var mnLabel = $"VBox playerdata/HBox Money/MoneyLabel"
+@onready var wvLabel = $"VBox playerdata/HBoxContainer/wave number"
 @onready var debug = $"../debug"
 
 
@@ -181,6 +183,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	hpLabel.text = str(baseobj.hp)
+	hpLabel.text = str(int(baseobj.hp))
 	mnLabel.text = str(baseobj.muni)
+	wvLabel.text = str(creepManager.wave_index + 1)
 	pass

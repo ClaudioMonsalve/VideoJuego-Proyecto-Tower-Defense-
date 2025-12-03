@@ -15,6 +15,7 @@ class_name enemy
 @export var dmg: int = 1
 var radius: float = 3.0
 
+var died = false
 var hp: float
 var base: Area3D
 var paused: bool = false
@@ -32,8 +33,9 @@ func ouch(damage: float):
 	hp -= damage
 	progBar.value = (hp / maxhp) * 100
 	if hp <= 0:
-		if base:
+		if base and !died:
 			base.muni += worth
+			died = true
 			paused = true
 			if collider:
 				collider.queue_free()
