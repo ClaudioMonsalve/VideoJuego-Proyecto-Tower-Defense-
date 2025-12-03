@@ -12,10 +12,18 @@ var progress := []
 var loader
 
 func _ready():
-	if Globals.nextLevel == "":
-		push_error("q le paso al nextlevel hmno")
+	# === SINGLEPLAYER ===
+	if Globals.nextLevel != "":
+		next_scene = Globals.nextLevel
+	
+	# === MULTIPLAYER ===
+	elif Globals.multiplayer_level_random != "":
+		next_scene = Globals.multiplayer_level_random
+
+	# === NINGÚN NIVEL ASIGNADO ===
+	else:
+		push_error("❌ No existe nextLevel ni multiplayer_level_random.")
 		return
-	next_scene = Globals.nextLevel
 	ResourceLoader.load_threaded_request(next_scene, "PackedScene")
 	
 	label.text = "Cargando"

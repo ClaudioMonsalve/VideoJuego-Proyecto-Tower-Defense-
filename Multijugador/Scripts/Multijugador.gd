@@ -10,26 +10,28 @@ extends Control
 @onready var lobby: Panel = $Panel/Lobby
 
 # === CONFIGURACIÓN DEL JUEGO ===
-const MY_PLAYER_NAME := "pc-ene0"      # cambia esto en cada instancia
+const MY_PLAYER_NAME := "pc-ene0"     # cambia esto en cada instancia
 const MY_GAME_ID := "D"
 const MY_GAME_KEY := "B2VAFIF18P"
-const MY_GAME_NAME := "Yggdrasil: The Last Stand"
+const MY_GAME_NAME := "Yggdrasil: Last Stand"
 
 # === VARIABLES ===
 var conectado := false
-var jugadores: Dictionary = {}      # otros jugadores
+var jugadores: Dictionary = {}        # otros jugadores
 var invitaciones: Array = []
 var posicion_menu := 0
 var modo := 0
 var match_id: String = ""
 var match_status: String = "WAITING_PLAYERS"
+var jugadores_del_match: Array = []
+var invitador_id := ""
 
 
 # === READY ===
 func _ready():
 	label.text = "Modo Multijugador"
 	lobby.visible = false
-	_limpiar_todo()
+	_limpiar_todo()        
 	await get_tree().create_timer(0.2).timeout
 	_conectar_servidor()
 
@@ -56,7 +58,7 @@ func _process(_delta):
 	Network.ws.poll()
 	while Network.ws.get_available_packet_count() > 0:
 		var msg := Network.ws.get_packet().get_string_from_utf8()
-		print("📩 Recibido:", msg)
+		# print("📩 Recibido:", msg)    # Comentado para limpiar logs
 		_on_mensaje_recibido(msg)
 
 
@@ -164,30 +166,89 @@ func _on_mensaje_recibido(msg: String):
 
 		"accept-match":
 			if data.get("status") == "OK":
-				match_id = data.get("data", {}).get("matchId", "")
+				match_id = data["data"].get("matchId", "")
 				print("🤝 Invitación aceptada. Match ID:", match_id)
+
+
+				var rival_id = str(data["data"].get("playerId", ""))
+				var rival_name = str(data["data"].get("playerName", ""))
+
+				# --- CORRECCIÓN: Usar playerId si playerName falla ---
+				if rival_name == "" and rival_id != "":
+					var jugador_info = jugadores.get(rival_id, {})
+					rival_name = jugador_info.get("name", "")
+					if rival_name == "":
+						print("⚠️ Error: El servidor no envió playerName ni se pudo encontrar en jugadores por ID.")
+				# ---------------------------------------------------
+				
+				if rival_name != "":
+					jugadores_del_match = [MY_PLAYER_NAME, rival_name]
+				else:
+					print("⚠️ Error: No se pudo determinar el nombre del rival.")
+
+				print("👥 Jugadores del match (ACEPT):", jugadores_del_match)
+
+				# Pedir lista actualizada para asegurar que el rival esté en 'jugadores' (Sincronización)
+				_enviar({"event": "online-players"})
+				await get_tree().create_timer(0.2).timeout
+
+				# Conectarse al match
 				_enviar({"event": "connect-match", "data": {"matchId": match_id}})
 			else:
 				print("❌ Error en accept-match:", data.get("msg", ""))
 
+
 		"match-accepted":
-			match_id = data.get("data", {}).get("matchId", "")
+			match_id = data["data"].get("matchId", "")
 			print("🎮 El otro jugador aceptó la invitación. Match ID:", match_id)
+
+			jugadores_del_match.clear()
+
+			var rival_id = str(data["data"].get("playerId", ""))
+			var rival_name = str(data["data"].get("playerName", ""))
+			
+			# --- CORRECCIÓN: Usar playerId si playerName falla ---
+			if rival_name == "" and rival_id != "":
+				var jugador_info = jugadores.get(rival_id, {})
+				rival_name = jugador_info.get("name", "")
+				if rival_name == "":
+					print("⚠️ Error: El servidor no envió playerName ni se pudo encontrar en jugadores por ID.")
+			# ---------------------------------------------------
+
+			if rival_name != "":
+				jugadores_del_match = [MY_PLAYER_NAME, rival_name]
+			else:
+				print("⚠️ Error: No se pudo determinar el nombre del rival.")
+
+			print("👥 Jugadores del match (ACCEPTED):", jugadores_del_match)
+
+			# Pedir lista actualizada para asegurar que el rival esté en 'jugadores' (Sincronización)
+			_enviar({"event": "online-players"})
+			await get_tree().create_timer(0.2).timeout
+
+			# conectarse al match
 			_enviar({"event": "connect-match", "data": {"matchId": match_id}})
 
+		
 		"connect-match":
 			if data.get("status") == "OK":
-				match_id = data.get("data", {}).get("matchId", "")
+				match_id = data["data"].get("matchId", "")
 				match_status = "CONNECTED"
+
 				print("🔗 Match conectado:", match_id)
+				print("👥 Jugadores del match (ya guardados):", jugadores_del_match)
+
 				_actualizar_lista()
-			else:
-				print("❌ Error en connect-match:", data.get("msg", ""))
+
 
 		# === READY / LOBBY ===
 		"players-ready":
 			print("🟢 Ambos jugadores READY. Abriendo lobby…")
 			match_status = "READY"
+			
+			# AUMENTO DE ESPERA: Dar tiempo a que la respuesta de 'online-players' se procese.
+			await get_tree().create_timer(0.8).timeout 
+			
 			_abrir_lobby()
 			await get_tree().create_timer(0.3).timeout
 			_enviar({"event": "ping-match", "data": {"matchId": match_id}})
@@ -283,10 +344,6 @@ func _finalizar_partida_por_rival():
 func _abrir_lobby():
 	print("🪩 Mostrando lobby... refrescando datos...")
 
-	# pedir jugadores actualizados al servidor
-	_enviar({"event": "online-players"})
-	await get_tree().create_timer(0.15).timeout
-
 	lobby.visible = true
 
 	var box: VBoxContainer = $Panel/Lobby/VBoxContainer
@@ -317,17 +374,21 @@ func _abrir_lobby():
 	})
 
 	# jugadores remotos SOLO si están en EL MISMO MATCH
-	for id in jugadores.keys():
-
-		var j = jugadores[id]
-
-		# incluir solo jugadores que SIGUEN en match
-		if j.get("status") == "IN_MATCH" or j.get("status") == "BUSY":
+	# Se usa 'jugadores_del_match' (que ahora debe contener el rival) para buscar en el dict global 'jugadores'
+	for pid in jugadores.keys():
+		var j = jugadores[pid]
+		var rival_name = j.get("name", "")
+		
+		# Comprobar si este jugador online es uno de los jugadores del match,
+		# y si no es el jugador local
+		if jugadores_del_match.has(rival_name) and rival_name != MY_PLAYER_NAME:
 			lista_final.append({
-				"name": j.get("name"),
-				"game_name": j.get("game_name"),
+				"name": rival_name,
+				# Usar el nombre del juego guardado previamente en _actualizar_jugadores
+				"game_name": j.get("game_name", "Yggdrasil: Last Stand"),
 				"local": false
 			})
+			break # Asumimos solo hay 2 jugadores, así que salimos al encontrarlo
 
 	print("📌 Jugadores en el lobby del match:", lista_final)
 
@@ -342,7 +403,7 @@ func _abrir_lobby():
 		fila.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 		fila.add_theme_constant_override("separation", 40)
 
-		var texto = "👤 " + str(jugador_nombre) + "   |   🎮 " + str(game_name)
+		var texto = "👤 " + str(jugador_nombre) + "     |     🎮 " + str(game_name)
 		var lbl := _crear_label(texto, 24)
 		lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 		fila.add_child(lbl)
@@ -415,8 +476,15 @@ func _evaluar_listos_y_arrancar():
 					todos_listos = false
 
 	if todos_listos:
-		print("🚀 Ambos jugadores listos — iniciando partida…")
-		get_tree().change_scene_to_file("res://Multijugador/Escenas/control.tscn")
+		# Asume que Globals existe y contiene 'multiplayer_levels'
+		var niveles = Globals.multiplayer_levels 
+		Globals.multiplayer_level_random = niveles.pick_random()
+
+		print("🎲 Nivel elegido:", Globals.multiplayer_level_random)
+
+		# 2. Cargar escena contenedora del multijugador
+		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/control.tscn")
+
 
 # === GESTIÓN DE JUGADORES ===
 func _registrar_jugador(info: Dictionary):
@@ -443,13 +511,21 @@ func _actualizar_estado(info: Dictionary):
 
 	_actualizar_lista()
 
+# [Bloque Completo para reemplazar la función en tu script]
+
+# === GESTIÓN DE JUGADORES ===
 func _actualizar_jugadores(lista_servidor: Array):
-	# ⚠️ IMPORTANTE: limpiar antes para evitar duplicados (incluyendo al local)
+	# ⚠️ Limpiamos el diccionario de jugadores remotos
 	jugadores.clear()
 
+	var mi_nombre_lower = MY_PLAYER_NAME.to_lower()
+
 	for j in lista_servidor:
-		# ignorar al jugador local por nombre
-		if str(j.get("name", "")).to_lower() == MY_PLAYER_NAME.to_lower():
+		var jugador_nombre_server = str(j.get("name", ""))
+		var jugador_nombre_lower = jugador_nombre_server.to_lower()
+
+		# 🛑 REGLA CLAVE: Si el nombre del jugador coincide con el mío, lo ignoramos.
+		if jugador_nombre_lower == mi_nombre_lower:
 			continue
 
 		var id := str(j.get("id", ""))
@@ -457,15 +533,18 @@ func _actualizar_jugadores(lista_servidor: Array):
 			continue
 
 		var game_name := "Juego NO REPORTADO"
+		var match_id_jugador := ""
 		if j.has("game"):
 			var g = j.get("game")
 			if typeof(g) == TYPE_DICTIONARY:
 				game_name = str(g.get("name", "Juego NO REPORTADO"))
+				match_id_jugador = str(g.get("matchId", ""))
 
 		jugadores[id] = {
-			"name": j.get("name", "Sin nombre"),
+			"name": jugador_nombre_server, # Guardamos el nombre tal cual vino para la UI
 			"status": j.get("status", "UNKNOWN"),
-			"game_name": game_name
+			"game_name": game_name,
+			"match_id": match_id_jugador
 		}
 
 	print("📌 Jugadores actualizados con game_name correcto:", jugadores)
@@ -489,10 +568,14 @@ func _on_ver_pressed():
 	label.text = "Invitaciones recibidas"
 	_actualizar_lista_invitaciones()
 
+# [Bloque Completo para reemplazar la función en tu script]
+
 # === LISTA DE JUGADORES (MENÚ PRINCIPAL) ===
 func _actualizar_lista():
+	# --- LA LIMPIEZA DEBE ESTAR AQUÍ ---
 	for c in lista.get_children():
 		c.queue_free()
+	# -----------------------------------
 
 	if jugadores.is_empty():
 		lista.add_child(_crear_label("❌ No hay jugadores conectados", 22))
@@ -539,6 +622,7 @@ func _recibir_invitacion(data: Dictionary):
 	var pid = info.get("playerId", "")
 	var mid = info.get("matchId", "")
 	var nombre = jugadores.get(pid, {}).get("name", "Desconocido")
+	invitador_id = pid
 	invitaciones.append({"playerId": pid, "matchId": mid, "name": nombre})
 	_actualizar_lista_invitaciones()
 
@@ -549,16 +633,35 @@ func _enviar_invitacion(jugador: Dictionary):
 			_enviar({"event": "send-match-request", "data": {"playerId": pid}})
 			return
 
+# === INVITACIONES ===
 func _aceptar_invitacion(info: Dictionary):
 	print("✅ Aceptando invitación...")
-	_enviar({"event": "accept-match"})
-
+	
 	var mid = info.get("matchId", "")
+	
+	# 1. Enviamos la aceptación
+	_enviar({"event": "accept-match"})
+	
+	# 2. Eliminamos la invitación de la lista
 	invitaciones = invitaciones.filter(func(i):
 		return i.get("matchId", "") != mid
 	)
 
 	_actualizar_lista_invitaciones()
+	
+	# --- CORRECCIÓN CLAVE: Llenar jugadores_del_match inmediatamente (LADO INVITADO) ---
+	# El rival es el invitador (cuya ID está en invitador_id, guardada en _recibir_invitacion). 
+	if invitador_id != "":
+		var jugador_info = jugadores.get(invitador_id, {})
+		var rival_name = jugador_info.get("name", "")
+
+		if rival_name != "":
+			# Asignar la lista de jugadores del match (local + rival)
+			jugadores_del_match = [MY_PLAYER_NAME, rival_name] 
+			print("👥 Jugadores del match (ACEPTACIÓN LOCAL):", jugadores_del_match)
+		else:
+			print("⚠️ Error: Rival ID encontrado, pero el nombre del rival está vacío en jugadores. ID:", invitador_id)
+	# -----------------------------------------------------------------------------------
 
 func _rechazar_invitacion(info: Dictionary):
 	_enviar({"event": "reject-match"})
@@ -611,7 +714,8 @@ func _on_volver_pressed():
 		# 2. cerrar WebSocket local
 		if Network.ws and conectado:
 			print("🔌 Cerrando WebSocket local (VOLVER)…")
-			Network.apagar()
+			# Asumiendo que Network.apagar() cierra el WS
+			Network.apagar() 
 			conectado = false
 
 		# 3. reconectar
