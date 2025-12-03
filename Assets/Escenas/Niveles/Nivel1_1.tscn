@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bj6ruqrmmh8n2"]
+[gd_scene load_steps=49 format=3 uid="uid://bj6ruqrmmh8n2"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_xhad6"]
 [ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="2_rlqd0"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="11_ro63v"]
 [ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="12_3y5p2"]
 [ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="12_rlqd0"]
+[ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="13_4hbg3"]
 [ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://Assets/scripts/node_2d.gd" id="14_qdga2"]
 [ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="15_ovtgn"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="16_drqky"]
@@ -80,6 +81,27 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 9
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4ruf"]
+emission_shape_offset = Vector3(0, 10, 0)
+emission_shape_scale = Vector3(20, 20, 10)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, -10)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jglew"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("13_4hbg3")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_sia5n"]
+material = SubResource("StandardMaterial3D_jglew")
+size = Vector2(0.1, 0.1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_qjeyg"]
 font_size = 25
@@ -218,6 +240,14 @@ torre_test = ExtResource("4_iaa1h")
 Arrowtower = ExtResource("12_rlqd0")
 camera_sens = 0.1
 
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 8.35189e-23, 0, 8.35188e-23, 1, 0, 0, 0)
+cast_shadow = 0
+amount = 100
+lifetime = 6.0
+process_material = SubResource("ParticleProcessMaterial_m4ruf")
+draw_pass_1 = SubResource("QuadMesh_sia5n")
+
 [node name="Camera3D" type="Camera3D" parent="Player"]
 transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0)
 
@@ -257,6 +287,19 @@ label_settings = SubResource("LabelSettings_qjeyg")
 layout_mode = 2
 texture = ExtResource("11_ro63v")
 expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/VBox playerdata"]
+layout_mode = 2
+
+[node name="wave" type="Label" parent="Player/VBox playerdata/HBoxContainer"]
+layout_mode = 2
+text = "Wave:"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="wave number" type="Label" parent="Player/VBox playerdata/HBoxContainer"]
+layout_mode = 2
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
 
 [node name="HBox Cards" type="HBoxContainer" parent="Player"]
 anchors_preset = 2
