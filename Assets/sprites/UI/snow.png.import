@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cv01dif2k3nxv"
-path.s3tc="res://.godot/imported/temp_tower_ico.jpg-f70406bb402dd4127321e1cf6612dfb7.s3tc.ctex"
-path.etc2="res://.godot/imported/temp_tower_ico.jpg-f70406bb402dd4127321e1cf6612dfb7.etc2.ctex"
+uid="uid://5ees3n02vbr7"
+path.s3tc="res://.godot/imported/snow.png-bb3c5bce5f7862f2e27f19dbd0e31359.s3tc.ctex"
+path.etc2="res://.godot/imported/snow.png-bb3c5bce5f7862f2e27f19dbd0e31359.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Assets/sprites/UI/temp_tower_ico.jpg"
-dest_files=["res://.godot/imported/temp_tower_ico.jpg-f70406bb402dd4127321e1cf6612dfb7.s3tc.ctex", "res://.godot/imported/temp_tower_ico.jpg-f70406bb402dd4127321e1cf6612dfb7.etc2.ctex"]
+source_file="res://Assets/sprites/UI/snow.png"
+dest_files=["res://.godot/imported/snow.png-bb3c5bce5f7862f2e27f19dbd0e31359.s3tc.ctex", "res://.godot/imported/snow.png-bb3c5bce5f7862f2e27f19dbd0e31359.etc2.ctex"]
 
 [params]
 
