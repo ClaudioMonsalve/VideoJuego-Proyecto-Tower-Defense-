@@ -1,55 +1,89 @@
 extends Button
 
-# Estas variables deben venir del autoload o asignarse desde afuera
-var match_id := ""
-var conectado := false
-
 func _ready():
-	pressed.connect(_cerrar_conexion_con_rival)
+	pressed.connect(_salir_partida)
 
 
-func _cerrar_conexion_con_rival() -> void:
-	print("🚪 Saliendo manualmente de la partida…")
+func _salir_partida() -> void:
+	print("\n🚪 === SALIENDO DE LA PARTIDA ===")
 
-	# Si hay match activo, lo cerramos correctamente
-	if match_id != "":
-		print("🏁 Enviando finish-game (gana el rival)…")
-		Network.ws.send_text(JSON.stringify({
-			"event": "finish-game",
-			"data": {
-				"matchId": match_id,
-				"winner": "RIVAL"
-			}
-		}))
+	# Acceder al autoload exacto: "Multiplayer"
+	var manager = get_node_or_null("/root/Multiplayer")
+
+	if manager == null:
+		print("❌ ERROR: No encontré /root/Multiplayer")
+		Network.apagar()
 		await get_tree().create_timer(0.2).timeout
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
+		return
 
-		print("📤 Enviando quit-match…")
-		Network.ws.send_text(JSON.stringify({
-			"event": "quit-match",
-			"data": {"matchId": match_id}
-		}))
+	var match_id = manager.match_id
+
+	# Si no hay partida, solo salir
+	if match_id == "":
+		print("⚠️ No hay match activo. Solo cambio de escena.")
+		Network.apagar()
 		await get_tree().create_timer(0.2).timeout
+		await get_tree().process_frame
+		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
+		return
 
-		print("📡 Enviando close:true al rival…")
-		Network.ws.send_text(JSON.stringify({
-			"event": "send-game-data",
-			"data": {
-				"matchId": match_id,
-				"payload": {"close": true}
-			}
-		}))
-		await get_tree().create_timer(0.2).timeout
+	# ===============================
+	# 1) finish-game (gana el rival)
+	# ===============================
+	print("🏁 Enviando finish-game…")
 
-	# Cerrar WebSocket local
-	if Network.ws:
-		print("🔌 Cerrando WebSocket local…")
-		Network.ws.close()
-		conectado = false
+	Network.ws.send_text(JSON.stringify({
+		"event": "finish-game",
+		"data": {"matchId": match_id, "winner": "RIVAL"}
+	}))
+	await get_tree().create_timer(0.25).timeout
 
-	# Reset interno
-	match_id = ""
-	print("🧹 Partida limpiada. Regresando al menú.")
+	# ===============================
+	# 2) quit-match
+	# ===============================
+	print("📤 Enviando quit-match…")
 
-	# Cambiar escena
+	Network.ws.send_text(JSON.stringify({
+		"event": "quit-match",
+		"data": {"matchId": match_id}
+	}))
+	await get_tree().create_timer(0.25).timeout
+
+	# ==================================
+	# 3) Avisar al rival → close:true
+	# ==================================
+	print("📡 Enviando close:true al rival…")
+
+	Network.ws.send_text(JSON.stringify({
+		"event": "send-game-data",
+		"data": {
+			"matchId": match_id,
+			"payload": {"close": true}
+		}
+	}))
+	await get_tree().create_timer(0.25).timeout
+
+	# ==================================
+	# 4) Limpiar datos del manager
+	# ==================================
+	manager.match_id = ""
+	manager.match_status = "WAITING_PLAYERS"
+	manager.jugadores_del_match.clear()
+
+	print("🧹 Limpieza local lista.")
+
+	# ==================================
+	# 5) Cerrar WebSocket
+	# ==================================
+	print("🔌 Cerrando WebSocket…")
+	Network.apagar()
+	await get_tree().create_timer(0.3).timeout
+
+	# ==================================
+	# 6) Regresar al menú (con await)
+	# ==================================
+	print("🏠 Volviendo al menú…")
 	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
