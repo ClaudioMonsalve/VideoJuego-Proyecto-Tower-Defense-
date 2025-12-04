@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://dkt8mrj1lx66o"]
+
+[sub_resource type="Gradient" id="Gradient_gbvf7"]
+offsets = PackedFloat32Array(0, 0.227273, 0.663636)
+colors = PackedColorArray(0.976471, 1, 0, 1, 1, 0, 0, 1, 0.027451, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ehibd"]
+gradient = SubResource("Gradient_gbvf7")
+
+[sub_resource type="CurveTexture" id="CurveTexture_rp23n"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1yqm2"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = 1.07288e-05
+angle_max = 1.07288e-05
+gravity = Vector3(0, 3, 0)
+color_ramp = SubResource("GradientTexture1D_ehibd")
+emission_curve = SubResource("CurveTexture_rp23n")
+turbulence_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jf5p8"]
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_g8h0l"]
+material = SubResource("StandardMaterial3D_jf5p8")
+size = Vector3(0.1, 0.1, 0.1)
+
+[node name="OmniLight3D" type="OmniLight3D"]
+light_color = Color(1, 0.545098, 0.219608, 1)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+cast_shadow = 0
+amount = 16
+process_material = SubResource("ParticleProcessMaterial_1yqm2")
+draw_pass_1 = SubResource("BoxMesh_g8h0l")
