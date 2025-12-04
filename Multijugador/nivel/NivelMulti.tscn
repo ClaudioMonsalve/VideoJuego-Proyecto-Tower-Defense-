@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://dukos51e3apci"]
+[gd_scene load_steps=59 format=3 uid="uid://dukos51e3apci"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_cj6di"]
 [ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="2_yxigg"]
@@ -35,6 +35,7 @@
 [ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="31_5d7jf"]
 [ext_resource type="Script" uid="uid://dg6lt2lnwyuxv" path="res://Multijugador/nivel/scripts/regresar.gd" id="31_08lwe"]
 [ext_resource type="PackedScene" uid="uid://cu876akkj6as7" path="res://Assets/modelos/Decoración/midgard/low_poly_rocks.glb" id="32_2w1t0"]
+[ext_resource type="Script" uid="uid://bac11xa47ta07" path="res://Multijugador/nivel/scripts/atacar.gd" id="33_2hcen"]
 [ext_resource type="PackedScene" uid="uid://dwcnuwmsnry3b" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains1.glb" id="33_hasmq"]
 [ext_resource type="PackedScene" uid="uid://bo5alylodsrk5" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains2.glb" id="34_vnie1"]
 
@@ -175,6 +176,13 @@ corner_radius_top_left = 30
 corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hasmq"]
+bg_color = Color(0.169245, 0.169245, 0.169245, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
 
 [node name="Node3D" type="Node3D"]
 
@@ -319,6 +327,7 @@ texture = ExtResource("15_s8p1p")
 expand_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Player/VBox playerdata"]
+visible = false
 layout_mode = 2
 
 [node name="wave" type="Label" parent="Player/VBox playerdata/HBoxContainer"]
@@ -359,6 +368,10 @@ layout_mode = 2
 [node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("16_vgxx3")]
 layout_mode = 2
 
+[node name="Button" type="Button" parent="Player"]
+offset_right = 8.0
+offset_bottom = 8.0
+
 [node name="debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)
 mesh = SubResource("BoxMesh_3qnke")
@@ -371,6 +384,8 @@ offset_left = 20.0
 offset_top = 14.0
 offset_right = 118.0
 offset_bottom = 81.0
+theme_override_fonts/font = ExtResource("22_fu1aa")
+theme_override_font_sizes/font_size = 20
 text = "Regresar
 "
 script = ExtResource("19_st4bw")
@@ -521,6 +536,17 @@ text = "Estas Seguro que deseas salir?
 "
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Atacar" type="Button" parent="Node2D"]
+offset_left = 1018.0
+offset_top = 556.0
+offset_right = 1128.0
+offset_bottom = 635.0
+theme_override_fonts/font = ExtResource("22_fu1aa")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/normal = SubResource("StyleBoxFlat_hasmq")
+text = "Atacar"
+script = ExtResource("33_2hcen")
 
 [node name="Decor" type="Node3D" parent="."]
 
