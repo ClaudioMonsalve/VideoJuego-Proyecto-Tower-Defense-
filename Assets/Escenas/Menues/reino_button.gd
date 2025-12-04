@@ -8,7 +8,7 @@ extends Area2D
 # --- Cámara ---
 var cam_offset: Vector2     # desplazamiento al acercar
 @export var cam_zoom: Vector2 = Vector2(2, 2)          # zoom al hacer click
-@export var cam_return_offset: Vector2 = Vector2(114, -65) # ajuste al alejar
+@export var cam_return_offset: Vector2 = Vector2(-116, 64) # ajuste al alejar
 
 # --- Señal ---
 signal reino_seleccionado(data: Dictionary)

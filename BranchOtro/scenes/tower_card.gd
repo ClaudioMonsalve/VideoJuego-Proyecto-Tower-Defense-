@@ -22,6 +22,8 @@ func _ready() -> void:
 		towerCost = str(TowerData.tower_cost)
 		nameLabel.text = myTowerType
 		costLabel.text = towerCost
+	else:
+		self.visible = false
 	index = get_index()
 	originalPos = global_position
 
