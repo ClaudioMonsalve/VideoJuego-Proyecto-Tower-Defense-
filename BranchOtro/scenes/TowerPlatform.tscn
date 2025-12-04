@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://cpgtyjh50686p" path="res://BranchOtro/materials/PlatformPlaceholder.tres" id="1_ir24i"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_uwcsu"]
-size = Vector3(5, 0.2, 5)
+size = Vector3(5, 1, 5)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ir24i"]
 size = Vector3(5, 0.2, 5)
@@ -17,6 +17,7 @@ collision_layer = 255
 collision_mask = 255
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4, 0)
 material_override = ExtResource("1_ir24i")
 mesh = SubResource("BoxMesh_uwcsu")
 

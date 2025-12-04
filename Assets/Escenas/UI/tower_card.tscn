@@ -1,12 +1,26 @@
-[gd_scene load_steps=3 format=3 uid="uid://b7kgp48jq5afc"]
+[gd_scene load_steps=4 format=3 uid="uid://b7kgp48jq5afc"]
 
 [ext_resource type="Script" uid="uid://cfh87ij8difnx" path="res://BranchOtro/scenes/tower_card.gd" id="1_4ewro"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_jqyac"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jqyac"]
+bg_color = Color(0.401649, 0.30728, 0.171153, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.584737, 0.428223, 0.239362, 1)
+shadow_color = Color(0, 0, 0, 0.768627)
+shadow_offset = Vector2(2, 2)
 
 [node name="TowerCard" type="PanelContainer"]
 custom_minimum_size = Vector2(120, 120)
 size_flags_horizontal = 3
 script = ExtResource("1_4ewro")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jqyac")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
