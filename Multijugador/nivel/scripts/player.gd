@@ -186,3 +186,18 @@ func _process(delta: float) -> void:
 	hpLabel.text = str(int(baseobj.hp))
 	mnLabel.text = str(baseobj.muni)
 	pass
+	
+	
+func recibir_ataque(dmg: float):
+	if baseobj == null:
+		print("❌ No existe baseobj")
+		return
+
+	print("💥 ¡Ataque recibido! Daño:", dmg)
+
+	baseobj.hp -= dmg
+	baseobj.hp = clamp(baseobj.hp, 0, baseobj.maxhp)
+	baseobj._update_bar()
+
+	if baseobj.hp <= 0:
+		print("💀 La base ha sido destruida por un sabotaje enemigo")

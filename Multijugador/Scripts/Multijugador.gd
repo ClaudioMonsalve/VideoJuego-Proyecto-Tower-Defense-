@@ -10,7 +10,7 @@ extends Control
 @onready var lobby: Panel = $Panel/Lobby
 
 # === CONFIGURACIÓN DEL JUEGO ===
-const MY_PLAYER_NAME := "PC-ene0"     # cambia esto en cada instancia
+const MY_PLAYER_NAME := "pc-ene0"     # cambia esto en cada instancia
 const MY_GAME_ID := "D"
 const MY_GAME_KEY := "B2VAFIF18P"
 const MY_GAME_NAME := "Yggdrasil: Last Stand"
@@ -289,6 +289,21 @@ func _on_mensaje_recibido(msg: String):
 			if payload.has("close") and payload["close"] == true:
 				print("🚪 rival envió close — cerrando partida por remoto.")
 				await _finalizar_partida_por_rival()
+				
+			# ======================================================
+			# ⚔️ ATAQUE RECIBIDO
+			# ======================================================
+			if payload.has("type") and payload["type"] == "attack":
+				var dmg = payload.get("damage", 5)
+
+				print("🔥 ATAQUE RECIBIDO → daño:", dmg)
+
+				# Obtener la escena del juego (donde está tu base)
+				var nivel = get_tree().current_scene
+
+				if nivel.has_method("recibir_ataque"):
+					nivel.recibir_ataque(dmg)
+
 
 		"finish-game":
 			print("📤 Respuesta a finish-game:", data)
