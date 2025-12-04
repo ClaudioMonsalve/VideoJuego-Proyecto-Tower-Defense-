@@ -52,13 +52,13 @@ func startWaves():
 		return
 	spawning = true
 	phase = "spawning"
-	wave_index = 0
 	waveManager()
 
 # === Corutinas para spawnear multiples enemigos paralelamente ===
 func waveManager() -> void:
 	for wave in newWavesArr:
 		# Create a list of async tasks for all spawns
+		
 		var spawn_tasks: Array = []
 		for group in wave["spawns"]:
 			spawn_tasks.append(await spawnGroup(group))
@@ -68,7 +68,8 @@ func waveManager() -> void:
 			await t
 		
 		await waitWhileNotPaused(wave["wave_delay"])
-		wave_index =+ 1
+		
+		wave_index = wave_index + 1
 	spawning = false
 
 
