@@ -51,4 +51,5 @@ func _cerrar_conexion_con_rival() -> void:
 	print("🧹 Partida limpiada. Regresando al menú.")
 
 	# Cambiar escena
+	await get_tree().process_frame
 	get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
