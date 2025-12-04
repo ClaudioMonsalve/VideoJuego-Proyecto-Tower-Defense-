@@ -1,15 +1,16 @@
-[gd_scene load_steps=48 format=3 uid="uid://bdhabrj87kpcn"]
+[gd_scene load_steps=57 format=3 uid="uid://bdhabrj87kpcn"]
 
 [ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_cj6di"]
 [ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="2_yxigg"]
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_08lwe"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="4_3c2dj"]
+[ext_resource type="PackedScene" uid="uid://bv6ivqbs434ca" path="res://Assets/modelos/Decoración/midgard/bloqueo.glb" id="5_3c2dj"]
 [ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://Assets/scripts/creep_manager.gd" id="5_3hxrw"]
 [ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="6_hasmq"]
 [ext_resource type="PackedScene" uid="uid://c8vu4hkdw64i0" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/sprite(enemy).tscn" id="7_vnie1"]
 [ext_resource type="PackedScene" uid="uid://ck6y1vhk1y1xu" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/skeleton.tscn" id="8_p8qyq"]
 [ext_resource type="Resource" uid="uid://ttu2vpk7irco" path="res://Assets/Recursos/R_oleadas/OleadasNivel1_1.tres" id="9_g383x"]
-[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="10_joxfu"]
+[ext_resource type="Script" uid="uid://mvfjjuntsmfy" path="res://Multijugador/nivel/scripts/player.gd" id="10_d43yl"]
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="11_fccab"]
 [ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="12_fu686"]
 [ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="13_60js7"]
@@ -17,20 +18,25 @@
 [ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="15_s8p1p"]
 [ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="16_vgxx3"]
 [ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="17_lyut1"]
-[ext_resource type="Script" uid="uid://god6j534g5gy" path="res://Multijugador/nivel/node_2d.gd" id="18_st4bw"]
-[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="20_1bpqd"]
+[ext_resource type="Script" uid="uid://god6j534g5gy" path="res://Multijugador/nivel/scripts/node_2d.gd" id="18_st4bw"]
+[ext_resource type="Script" uid="uid://b5ofpjwjy581y" path="res://Multijugador/nivel/scripts/pauseMulti.gd" id="19_st4bw"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="21_b7x74"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="22_fu1aa"]
-[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://Assets/scripts/button_2.gd" id="23_8ql1o"]
+[ext_resource type="Script" uid="uid://boos4psaciyme" path="res://Multijugador/nivel/scripts/RegresarButton.gd" id="22_st4bw"]
 [ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="24_s2hs4"]
 [ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="25_bs56m"]
 [ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="26_h7cmu"]
 [ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="27_xa5vr"]
 [ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="28_1mp03"]
+[ext_resource type="FontFile" uid="uid://b1eio0nx46t83" path="res://Assets/Fonts/Mjolnir.otf" id="29_cj6di"]
 [ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="29_xys1s"]
 [ext_resource type="PackedScene" uid="uid://d0es6mv1t5ry1" path="res://Assets/modelos/Decoración/midgard/Arboles_de_Decoracion.blend" id="30_ild1d"]
+[ext_resource type="Script" uid="uid://bknbdwqpxemca" path="res://Multijugador/nivel/scripts/continuar.gd" id="30_yxigg"]
 [ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="31_5d7jf"]
+[ext_resource type="Script" uid="uid://dg6lt2lnwyuxv" path="res://Multijugador/nivel/scripts/regresar.gd" id="31_08lwe"]
 [ext_resource type="PackedScene" uid="uid://cu876akkj6as7" path="res://Assets/modelos/Decoración/midgard/low_poly_rocks.glb" id="32_2w1t0"]
+[ext_resource type="PackedScene" uid="uid://dwcnuwmsnry3b" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains1.glb" id="33_hasmq"]
+[ext_resource type="PackedScene" uid="uid://bo5alylodsrk5" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains2.glb" id="34_vnie1"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_m4ruf"]
 turbidity = 1000.0
@@ -149,6 +155,27 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_st4bw"]
+bg_color = Color(0.351563, 0.351563, 0.351563, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yxigg"]
+bg_color = Color(0.114897, 0.114897, 0.114897, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_08lwe"]
+bg_color = Color(0.129558, 0.129559, 0.129558, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Node3D" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -205,17 +232,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3131, 3, -86.5672)
 [node name="TowerPlatform7" parent="Map/Plataformas" instance=ExtResource("4_3c2dj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5884, 3, -1.29958)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Map"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -23.0688, 1.18211, 6.13514)
-size = Vector3(1, 6, 14.6628)
+[node name="bloqueo" parent="Map" instance=ExtResource("5_3c2dj")]
+transform = Transform3D(-0.00203152, 0, 1.2, 0, 1.2, 0, -1.2, 0, -0.00203152, -24.9949, -0.745253, 7.74897)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Map"]
-transform = Transform3D(0.835222, 0, -0.549912, 0, 1, 0, 0.549912, 0, 0.835222, -32.5693, 1.18211, -17.3708)
-size = Vector3(1, 6, 20.4024)
+[node name="bloqueo2" parent="Map" instance=ExtResource("5_3c2dj")]
+transform = Transform3D(0.956994, 0, -1.02184, 0, 1.4, 0, 1.02184, 0, 0.956994, -32.067, -0.812903, -17.1769)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Map"]
-transform = Transform3D(0.998165, 0, -0.0605432, 0, 1, 0, 0.0605432, 0, 0.998165, 27.5969, 1.18211, -65.8189)
-size = Vector3(1, 6, 25.1972)
+[node name="bloqueo3" parent="Map" instance=ExtResource("5_3c2dj")]
+transform = Transform3D(1.39729, 0, 0.0870289, 0, 1.4, 0, -0.0870289, 0, 1.39729, 26.3366, -0.812903, -62.2099)
+
+[node name="bloqueo4" parent="Map" instance=ExtResource("5_3c2dj")]
+transform = Transform3D(-1.30284, 0, 0.512442, 0, 1.4, 0, -0.512442, 0, -1.30284, 23.4458, -0.812903, -69.0484)
+
+[node name="bloqueo5" parent="Map" instance=ExtResource("5_3c2dj")]
+transform = Transform3D(-1.1998, 0, 0.0217176, 0, 1.2, 0, -0.0217176, 0, -1.1998, 19.1738, -0.812905, 1.59213)
 
 [node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
 script = ExtResource("5_3hxrw")
@@ -225,10 +255,11 @@ enemy3 = ExtResource("8_p8qyq")
 base = NodePath("../Map/Base")
 waves = ExtResource("9_g383x")
 
-[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "card1", "card2", "card3", "card4", "card5", "card6")]
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "creepManager", "card1", "card2", "card3", "card4", "card5", "card6")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 56, 30, -11)
-script = ExtResource("10_joxfu")
+script = ExtResource("10_d43yl")
 baseobj = NodePath("../Map/Base")
+creepManager = NodePath("../CreepManager")
 card1 = NodePath("HBox Cards/TowerCard")
 card2 = NodePath("HBox Cards/TowerCard2")
 card3 = NodePath("HBox Cards/TowerCard3")
@@ -310,6 +341,7 @@ grow_vertical = 0
 
 [node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("16_vgxx3")]
 layout_mode = 2
+size_flags_horizontal = 1
 TowerData = ExtResource("17_lyut1")
 
 [node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("16_vgxx3")]
@@ -341,7 +373,7 @@ offset_right = 118.0
 offset_bottom = 81.0
 text = "Regresar
 "
-script = ExtResource("20_1bpqd")
+script = ExtResource("19_st4bw")
 
 [node name="Panel" type="Panel" parent="Node2D"]
 anchors_preset = 8
@@ -400,8 +432,8 @@ offset_top = 329.0
 offset_right = 433.0
 offset_bottom = 394.0
 theme_override_font_sizes/font_size = 20
-text = "Regresar al Mapa"
-script = ExtResource("23_8ql1o")
+text = "Regresar al Menu"
+script = ExtResource("22_st4bw")
 
 [node name="HSlider2" type="HSlider" parent="Node2D/Panel"]
 layout_mode = 0
@@ -445,7 +477,72 @@ sprite_frames = SubResource("SpriteFrames_cwrts")
 frame = 1
 frame_progress = 0.0459249
 
+[node name="SalirMulti" type="Panel" parent="Node2D"]
+offset_left = 347.0
+offset_top = 171.0
+offset_right = 857.0
+offset_bottom = 453.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_st4bw")
+
+[node name="Continuar" type="Button" parent="Node2D/SalirMulti"]
+layout_mode = 0
+offset_left = 271.0
+offset_top = 138.0
+offset_right = 462.0
+offset_bottom = 243.0
+theme_override_fonts/font = ExtResource("29_cj6di")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_yxigg")
+text = "Continuar"
+script = ExtResource("30_yxigg")
+
+[node name="Regresar" type="Button" parent="Node2D/SalirMulti"]
+layout_mode = 0
+offset_left = 42.0
+offset_top = 140.0
+offset_right = 234.0
+offset_bottom = 248.0
+theme_override_fonts/font = ExtResource("29_cj6di")
+theme_override_font_sizes/font_size = 20
+theme_override_styles/normal = SubResource("StyleBoxFlat_08lwe")
+text = "Salir"
+script = ExtResource("31_08lwe")
+
+[node name="Label" type="Label" parent="Node2D/SalirMulti"]
+layout_mode = 0
+offset_left = 59.0
+offset_top = 39.0
+offset_right = 460.0
+offset_bottom = 147.0
+theme_override_fonts/font = ExtResource("22_fu1aa")
+theme_override_font_sizes/font_size = 30
+text = "Estas Seguro que deseas salir?
+(Automaticamente ganará el rival)
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Decor" type="Node3D" parent="."]
+
+[node name="Montañas" type="Node3D" parent="Decor"]
+
+[node name="Mountains1" parent="Decor/Montañas" instance=ExtResource("33_hasmq")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -99.3474, 4.88332, -3.46172)
+
+[node name="Mountains2" parent="Decor/Montañas" instance=ExtResource("33_hasmq")]
+transform = Transform3D(0.212215, 0, -9.99775, 0, 10, 0, 9.99775, 0, 0.212215, -10.4361, 2.86725, -144.293)
+
+[node name="Mountains3" parent="Decor/Montañas" instance=ExtResource("33_hasmq")]
+transform = Transform3D(-0.87573, 0, 9.96158, 0, 10, 0, -9.96158, 0, -0.87573, -14.5598, 2.86723, 116.139)
+
+[node name="Mountains4" parent="Decor/Montañas" instance=ExtResource("34_vnie1")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -94.6502, 2.96744, -67.6097)
+
+[node name="Mountains5" parent="Decor/Montañas" instance=ExtResource("34_vnie1")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -94.2064, 2.96744, 69.0758)
+
+[node name="Mountains6" parent="Decor/Montañas" instance=ExtResource("34_vnie1")]
+transform = Transform3D(6.63613, 0, -7.48076, 0, 10, 0, 7.48076, 0, 6.63613, -75.0295, 4.71037, -127.464)
 
 [node name="Arboles_de_Decoracion" parent="Decor" instance=ExtResource("30_ild1d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.63204, -3.41289, 18.5299)

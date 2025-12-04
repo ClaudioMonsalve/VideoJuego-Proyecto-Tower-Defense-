@@ -6,6 +6,8 @@ extends Node2D
 @onready var volume_slider: HSlider = $Panel/HSlider
 @onready var sfx_slider: HSlider = $Panel/HSlider2
 @export var DIALOGO: DialogueResource
+@onready var salir_multi: Panel = $SalirMulti
+
 
 const MOTORHEAD = preload("res://Assets/Musica/Motörhead - Ace Of Spades (drumless).mp3")
 
@@ -15,7 +17,7 @@ var lista_sonidos: Array = []
 
 
 func _ready() -> void:
-	
+	salir_multi.visible = true
 	# Instanciar escena de enemigos / efectos
 	escena_musica_escena = escena_musica_res.instantiate()
 	# Buscar todos los AudioStreamPlayers dentro
@@ -34,6 +36,7 @@ func _ready() -> void:
 	sfx_slider.value_changed.connect(_on_sfx_changed)
 
 	panel.visible = false
+	salir_multi.visible = false
 
 
 

@@ -34,7 +34,6 @@ func _ready() -> void:
 	sfx_slider.step = 0.01
 	sfx_slider.value = 1.0  # 1 = volumen máximo
 	sfx_slider.value_changed.connect(_on_sfx_changed)
-
 	panel.visible = false
 	escena()
 
