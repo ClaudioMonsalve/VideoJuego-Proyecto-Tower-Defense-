@@ -10,7 +10,7 @@ extends Control
 @onready var lobby: Panel = $Panel/Lobby
 
 # === CONFIGURACIÓN DEL JUEGO ===
-const MY_PLAYER_NAME := "pc-ene0"     # cambia esto en cada instancia
+const MY_PLAYER_NAME := "PC-ene0"     # cambia esto en cada instancia
 const MY_GAME_ID := "D"
 const MY_GAME_KEY := "B2VAFIF18P"
 const MY_GAME_NAME := "Yggdrasil: Last Stand"
@@ -479,6 +479,9 @@ func _evaluar_listos_y_arrancar():
 		# Asume que Globals existe y contiene 'multiplayer_levels'
 		var niveles = Globals.multiplayer_levels 
 		Globals.multiplayer_level_random = niveles.pick_random()
+		
+		Globals.match_id = match_id
+		Globals.my_player_name = MY_PLAYER_NAME
 
 		print("🎲 Nivel elegido:", Globals.multiplayer_level_random)
 
