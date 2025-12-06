@@ -8,6 +8,8 @@ const PING_INTERVAL := 10.0
 var player_name := ""
 var game_id := ""
 var game_key := ""
+var my_id := ""
+
 
 signal mensaje_recibido(msg)
 signal conectado_servidor()
