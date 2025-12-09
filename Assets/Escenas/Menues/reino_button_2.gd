@@ -3,7 +3,7 @@ extends Area2D
 # --- Datos del reino ---
 @export var nombre: String = "Muspellheim"
 @export var niveles: int = 8
-@export var id: String = "reino_id"
+@export var id: String = "res://Assets/Escenas/Niveles/Nivel2_1.tscn"
 
 # --- Cámara ---
 @export var cam_offset: Vector2       # desplazamiento al acercar

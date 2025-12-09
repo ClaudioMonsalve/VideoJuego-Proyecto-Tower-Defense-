@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="wave_data" load_steps=2 format=3 uid="uid://b1k4vn4pyh60g"]
+
+[ext_resource type="Script" uid="uid://te5xx7t3cl07" path="res://Assets/Recursos/R_oleadas/wave_data.gd" id="1_oq278"]
+
+[resource]
+script = ExtResource("1_oq278")
+waves = [{
+"spawns": [{
+"enemy1": 3,
+"path": 0
+}],
+"wave_delay": 10
+}]
+metadata/_custom_type_script = "uid://te5xx7t3cl07"

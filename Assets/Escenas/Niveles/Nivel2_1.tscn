@@ -1,0 +1,521 @@
+[gd_scene load_steps=51 format=3 uid="uid://dl6qpdwwred3h"]
+
+[ext_resource type="Material" uid="uid://djxwq0dfr2hjc" path="res://BranchOtro/materials/ground.tres" id="1_mst15"]
+[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_emvtp"]
+[ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="4_dnsud"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://Assets/scripts/creep_manager.gd" id="6_0q3l3"]
+[ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="7_1r18l"]
+[ext_resource type="PackedScene" uid="uid://c8vu4hkdw64i0" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/sprite(enemy).tscn" id="8_kkkh5"]
+[ext_resource type="PackedScene" uid="uid://ck6y1vhk1y1xu" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/skeleton.tscn" id="9_a7jhn"]
+[ext_resource type="Resource" uid="uid://b1k4vn4pyh60g" path="res://Assets/Recursos/R_oleadas/OleadasNivel2_1.tres" id="9_okq3i"]
+[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="11_omg6y"]
+[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="12_1jrme"]
+[ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="13_8nbls"]
+[ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="14_htqu2"]
+[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="15_i13xg"]
+[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="16_yntxj"]
+[ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="17_y62o6"]
+[ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="18_hjx43"]
+[ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://Assets/scripts/node_2d.gd" id="19_nte5v"]
+[ext_resource type="Resource" uid="uid://ctnxddjd8lssq" path="res://Assets/Dialogos/Mundo1/Intro_Nivel_1-1.dialogue" id="20_tv1pb"]
+[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="21_5ldds"]
+[ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="22_33clb"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="23_dqrqv"]
+[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://Assets/scripts/button_2.gd" id="24_83en5"]
+[ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="25_p8vmu"]
+[ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="26_i1uam"]
+[ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="27_nh3rp"]
+[ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="28_xcvci"]
+[ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="29_np67e"]
+[ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="30_oa4kv"]
+[ext_resource type="PackedScene" uid="uid://dkt8mrj1lx66o" path="res://Assets/modelos/Decoración/torchfire.tscn" id="34_2k5ua"]
+[ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="35_b15sj"]
+[ext_resource type="PackedScene" uid="uid://daiyv4wtse7kg" path="res://Assets/modelos/Decoración/midgard/Hall2.glb" id="37_gglkk"]
+[ext_resource type="PackedScene" uid="uid://fxoh1452412h" path="res://Assets/modelos/Decoración/midgard/Hall1.glb" id="38_4o0mg"]
+[ext_resource type="PackedScene" uid="uid://cvpahina4d3bx" path="res://Assets/modelos/mapas/Suelo_Nivel2.glb" id="40_ql62o"]
+[ext_resource type="PackedScene" uid="uid://dow1e68l7p4qg" path="res://Assets/modelos/blender/Muspelheim/ColumnasDe_Basalto_2.blend" id="41_c1sdb"]
+[ext_resource type="PackedScene" uid="uid://eppjp5jqtisj" path="res://Assets/modelos/blender/Muspelheim/ColumnasDe_Basalto.blend" id="42_n446x"]
+[ext_resource type="PackedScene" uid="uid://xtgen7cwiiry" path="res://Assets/modelos/blender/Muspelheim/Piedras_punteagudas.blend" id="43_cltmv"]
+[ext_resource type="PackedScene" uid="uid://dvn4vdjuabrck" path="res://Assets/modelos/blender/Muspelheim/Arbol_quemado.blend" id="44_dogce"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_m4ruf"]
+rayleigh_color = Color(0.533924, 0.35686, 0.292635, 1)
+turbidity = 1000.0
+sun_disk_scale = 0.0
+ground_color = Color(0.066461, 0.0825229, 0.0497092, 1)
+
+[sub_resource type="Sky" id="Sky_4hbg3"]
+sky_material = SubResource("PhysicalSkyMaterial_m4ruf")
+
+[sub_resource type="Environment" id="Environment_3qnke"]
+background_mode = 2
+sky = SubResource("Sky_4hbg3")
+ambient_light_color = Color(0.901361, 0.637309, 0.52217, 1)
+ambient_light_energy = 9.3
+tonemap_mode = 1
+glow_enabled = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6adnx"]
+lightmap_size_hint = Vector2i(1282, 2002)
+flip_faces = true
+size = Vector2(256, 400)
+
+[sub_resource type="Curve3D" id="Curve3D_h3wld"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 120.435, 0, -47.3838, 9.00555, 0, 0.838093, -9.00555, 0, -0.838093, 92.3562, 0, -49.1054, 3.28754, 0, 2.24433, -3.28754, 0, -2.24433, 71.0617, 0, -56.3181, 5.50413, -1.363, 0.9006, -5.50413, 1.363, -0.9006, 60.4144, 0, -60.6114, 5.0839, -2.30627, -0.264473, -5.0839, 2.30627, 0.264473, 46.7482, 6.53792, -58.7026, 1.91269, -0.857049, -3.77265, -1.91269, 0.857049, 3.77265, 31.0485, 10.3246, -53.0552, -0.0207157, -0.0878181, -2.91081, 0.0207157, 0.0878181, 2.91081, 26.5674, 11.7735, -36.9961, -2.03545, 1.8488, -3.78157, 2.03545, -1.8488, 3.78157, 27.9412, 9.24174, -20.6817, -3.26281, 0.93744, -2.04358, 3.26281, -0.93744, 2.04358, 43.6985, 3.56442, -8.17296, -2.19313, 0.270967, -4.69201, 2.19313, -0.270967, 4.69201, 54.6892, 0, -0.616821, 0.152798, -0.0369257, -1.93429, -0.152798, 0.0369257, 1.93429, 57.2652, 0, 8.48489, 1.92266, -0.0408343, -2.56476, -1.92266, 0.0408343, 2.56476, 55.7196, 0, 15.3541, 3.61459, -0.210032, -0.636641, -3.61459, 0.210032, 0.636641, 47.1331, 0, 20.6777, 3.50423, -1.70258, 1.46488, -3.50423, 1.70258, -1.46488, 26.8689, 5.69549, 16.3845, 5.01685, -1.43642, 1.50258, -5.01685, 1.43642, -1.50258, 7.55229, 13.1936, 9.23025, 4.58303, -1.7975, -1.23917, -4.58303, 1.7975, 1.23917, -11.8532, 19.3153, 7.34121, 4.68573, -1.70265, -0.898878, -4.68573, 1.70265, 0.898878, -21.5309, 23.8417, 11.5507, 3.16242, -0.360151, 0.0692444, -3.16242, 0.360151, -0.0692444, -36.9836, 27.4307, 12.813, 0, 0, 0, 0, 0, 0, -50.6161, 28.5547, 12.6868),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 19
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4ruf"]
+emission_shape_offset = Vector3(0, 10, -10)
+emission_shape_scale = Vector3(40, 20, 20)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, -10)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jglew"]
+transparency = 1
+cull_mode = 2
+albedo_color = Color(0.596722, 0.159643, 1.92523e-07, 1)
+albedo_texture = ExtResource("14_htqu2")
+emission_enabled = true
+emission = Color(0.827086, 0.149647, 1.92523e-07, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_sia5n"]
+material = SubResource("StandardMaterial3D_jglew")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qjeyg"]
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_3qnke"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkxxp"]
+corner_radius_top_left = 50
+corner_radius_top_right = 50
+corner_radius_bottom_right = 50
+corner_radius_bottom_left = 50
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_frwph"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("25_p8vmu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_i1uam")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_nh3rp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_xcvci")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cwrts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("29_np67e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_oa4kv")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3qnke")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.25, 0.235438, 0.0879439, 0.967902, -0.441103, 0.897086, 0.0257868, 0.791145, 45.3342, -32.5975)
+visible = false
+light_color = Color(0.798413, 0.793624, 0.808427, 1)
+shadow_enabled = true
+
+[node name="Map" type="MeshInstance3D" parent="."]
+material_override = ExtResource("1_mst15")
+mesh = SubResource("PlaneMesh_6adnx")
+
+[node name="Base" parent="Map" instance=ExtResource("3_emvtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -50.6116, 30.6905, 12.1206)
+muni = 6
+
+[node name="Paths" type="Node3D" parent="Map"]
+
+[node name="Path0" type="Path3D" parent="Map/Paths"]
+curve = SubResource("Curve3D_h3wld")
+
+[node name="Plataformas" type="Node3D" parent="Map"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.90943, 20.6606, 24.8051)
+
+[node name="TowerPlatform" parent="Map/Plataformas" instance=ExtResource("4_dnsud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.241128, 0.669611, -3.28824)
+
+[node name="TowerPlatform4" parent="Map/Plataformas" instance=ExtResource("4_dnsud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.8052, -4.02148, -50.7297)
+
+[node name="TowerPlatform3" parent="Map/Plataformas" instance=ExtResource("4_dnsud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.0285, -14.3644, -20.5698)
+
+[node name="TowerPlatform2" parent="Map/Plataformas" instance=ExtResource("4_dnsud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.3526, 9.7387, -1.49023)
+
+[node name="Suelo_Nivel2" parent="Map" instance=ExtResource("40_ql62o")]
+transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, 9.41, -1.698, 0)
+
+[node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
+script = ExtResource("6_0q3l3")
+enemy1 = ExtResource("7_1r18l")
+enemy2 = ExtResource("8_kkkh5")
+enemy3 = ExtResource("9_a7jhn")
+base = NodePath("../Map/Base")
+waves = ExtResource("9_okq3i")
+
+[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "creepManager", "card1", "card2", "card3", "card4", "card5", "card6")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -31.2158, 45.8557, 13.0742)
+script = ExtResource("11_omg6y")
+baseobj = NodePath("../Map/Base")
+creepManager = NodePath("../CreepManager")
+card1 = NodePath("HBox Cards/TowerCard")
+card2 = NodePath("HBox Cards/TowerCard2")
+card3 = NodePath("HBox Cards/TowerCard3")
+card4 = NodePath("HBox Cards/TowerCard4")
+card5 = NodePath("HBox Cards/TowerCard5")
+card6 = NodePath("HBox Cards/TowerCard6")
+torre_test = ExtResource("12_1jrme")
+Arrowtower = ExtResource("13_8nbls")
+camera_sens = 0.1
+minH = 30
+maxH = 60
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 8.35189e-23, 0, 8.35188e-23, 1, 0, 0, 0)
+cast_shadow = 0
+amount = 100
+lifetime = 6.0
+process_material = SubResource("ParticleProcessMaterial_m4ruf")
+draw_pass_1 = SubResource("QuadMesh_sia5n")
+
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0)
+
+[node name="VBox playerdata" type="VBoxContainer" parent="Player"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="HBox Money" type="HBoxContainer" parent="Player/VBox playerdata"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MoneyLabel" type="Label" parent="Player/VBox playerdata/HBox Money"]
+layout_mode = 2
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Money"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("15_i13xg")
+expand_mode = 2
+
+[node name="HBox Health" type="HBoxContainer" parent="Player/VBox playerdata"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Health" type="Label" parent="Player/VBox playerdata/HBox Health"]
+layout_mode = 2
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Health"]
+layout_mode = 2
+texture = ExtResource("16_yntxj")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Player/VBox playerdata"]
+layout_mode = 2
+
+[node name="wave" type="Label" parent="Player/VBox playerdata/HBoxContainer"]
+layout_mode = 2
+text = "Wave:"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="wave number" type="Label" parent="Player/VBox playerdata/HBoxContainer"]
+layout_mode = 2
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="HBox Cards" type="HBoxContainer" parent="Player"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_right = 740.0
+grow_vertical = 0
+
+[node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("17_y62o6")]
+layout_mode = 2
+size_flags_horizontal = 1
+TowerData = ExtResource("18_hjx43")
+
+[node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("17_y62o6")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard3" parent="Player/HBox Cards" instance=ExtResource("17_y62o6")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard4" parent="Player/HBox Cards" instance=ExtResource("17_y62o6")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard5" parent="Player/HBox Cards" instance=ExtResource("17_y62o6")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("17_y62o6")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="debug" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)
+mesh = SubResource("BoxMesh_3qnke")
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("19_nte5v")
+DIALOGO = ExtResource("20_tv1pb")
+
+[node name="Pause" type="Button" parent="Node2D"]
+offset_left = 20.0
+offset_top = 14.0
+offset_right = 118.0
+offset_bottom = 81.0
+text = "Regresar
+"
+script = ExtResource("21_5ldds")
+
+[node name="Panel" type="Panel" parent="Node2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 265.0
+offset_top = 65.0
+offset_right = 920.0
+offset_bottom = 555.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkxxp")
+
+[node name="Button" type="Button" parent="Node2D/Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -95.5
+offset_top = -87.0
+offset_right = 103.5
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 20
+text = "Continuar"
+script = ExtResource("22_33clb")
+
+[node name="HSlider" type="HSlider" parent="Node2D/Panel"]
+layout_mode = 0
+offset_left = 211.0
+offset_top = 170.0
+offset_right = 412.0
+offset_bottom = 192.0
+scale = Vector2(2, 2)
+max_value = 1.0
+step = 0.1
+
+[node name="Label" type="Label" parent="Node2D/Panel/HSlider"]
+layout_mode = 0
+offset_left = -82.5
+offset_top = -1.0
+offset_right = -27.5
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("23_dqrqv")
+text = "Musica"
+
+[node name="Button2" type="Button" parent="Node2D/Panel"]
+layout_mode = 0
+offset_left = 230.0
+offset_top = 329.0
+offset_right = 433.0
+offset_bottom = 394.0
+theme_override_font_sizes/font_size = 20
+text = "Regresar al Mapa"
+script = ExtResource("24_83en5")
+
+[node name="HSlider2" type="HSlider" parent="Node2D/Panel"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 97.0
+offset_right = 413.0
+offset_bottom = 123.0
+scale = Vector2(2, 2)
+max_value = 1.0
+step = 0.1
+
+[node name="Label" type="Label" parent="Node2D/Panel/HSlider2"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = 5.0
+offset_right = -34.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("23_dqrqv")
+text = "SFX
+"
+
+[node name="Sprites" type="Control" parent="Node2D"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Sprite1" type="AnimatedSprite2D" parent="Node2D/Sprites"]
+position = Vector2(967, 693)
+scale = Vector2(0.3, 0.3)
+sprite_frames = SubResource("SpriteFrames_frwph")
+frame_progress = 0.0577059
+
+[node name="Sprite2" type="AnimatedSprite2D" parent="Node2D/Sprites"]
+position = Vector2(224, 390)
+scale = Vector2(2.5, 2.5)
+sprite_frames = SubResource("SpriteFrames_cwrts")
+frame = 1
+frame_progress = 0.0459249
+
+[node name="Decor" type="Node3D" parent="."]
+
+[node name="Nivel2 mockup" type="Node3D" parent="."]
+
+[node name="ColumnasDe_Basalto_2" parent="Nivel2 mockup" instance=ExtResource("41_c1sdb")]
+transform = Transform3D(-0.767277, 0, -0.641316, 0, 1, 0, 0.641316, 0, -0.767277, -64.3853, 28.231, 8.63859)
+
+[node name="ColumnasDe_Basalto" parent="Nivel2 mockup" instance=ExtResource("42_n446x")]
+transform = Transform3D(-0.320464, 0, 0.947261, 0, 2.74814, 0, -0.947261, 0, -0.320464, -60.9178, 30.3851, 18.5102)
+
+[node name="ColumnasDe_Basalto2" parent="Nivel2 mockup" instance=ExtResource("42_n446x")]
+transform = Transform3D(-0.984905, 0, 0.173098, 0, 2.13826, 0, -0.173098, 0, -0.984905, -57.0646, 27.7517, 20.6822)
+
+[node name="ColumnasDe_Basalto6" parent="Nivel2 mockup" instance=ExtResource("42_n446x")]
+transform = Transform3D(-0.822293, 0, 0.569064, 0, 2.13826, 0, -0.569064, 0, -0.822293, -59.2446, 22.6908, -5.52983)
+
+[node name="ColumnasDe_Basalto4" parent="Nivel2 mockup" instance=ExtResource("42_n446x")]
+transform = Transform3D(-0.082582, 0, 0.996584, 0, 2.13826, 0, -0.996584, 0, -0.082582, -64.6641, 33.2006, 14.0292)
+
+[node name="ColumnasDe_Basalto5" parent="Nivel2 mockup" instance=ExtResource("42_n446x")]
+transform = Transform3D(0.759884, 0, 0.650058, 0, 2.13826, 0, -0.650058, 0, 0.759884, -62.4887, 33.2006, 8.55516)
+
+[node name="ColumnasDe_Basalto3" parent="Nivel2 mockup" instance=ExtResource("42_n446x")]
+transform = Transform3D(0.923806, 0, 0.382861, 0, 2.13826, 0, -0.382861, 0, 0.923806, -35.2828, 25.0165, 28.8126)
+
+[node name="Piedras_punteagudas" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.5288, 26.6847, 15.5682)
+
+[node name="Piedras_punteagudas6" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1.0061, 0, 0, 0, 2.14043, 0, 0, 0, 1.0061, -62.097, 33.8855, 5.05117)
+
+[node name="Piedras_punteagudas2" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.4184, 26.6847, 29.5132)
+
+[node name="Piedras_punteagudas3" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.8553, 28.4685, 29.3682)
+
+[node name="Piedras_punteagudas4" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.1448, 27.8761, 28.6682)
+
+[node name="Piedras_punteagudas7" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.3506, 24.5587, -5.96083)
+
+[node name="Piedras_punteagudas8" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.1114, 23.3221, -7.51484)
+
+[node name="Piedras_punteagudas9" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1.94926, 0, 0, 0, 1, -62.8687, 23.5128, -7.20784)
+
+[node name="Piedras_punteagudas5" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.6196, 27.3579, 28.3726)
+
+[node name="Arbol_quemado" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5812, 29.4031, 25.6422)
+
+[node name="Arbol_quemado5" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.701693, 0, 0.712479, 0, 1, 0, -0.712479, 0, 0.701693, -64.4573, 36.8625, 13.1492)
+
+[node name="Arbol_quemado7" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.692269, 0.163343, 0.70291, -0.114617, 0.986569, -0.116379, -0.712479, 0, 0.701693, -58.8384, 31.2345, 2.58516)
+
+[node name="Arbol_quemado6" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.729612, 0.504405, 0.461782, -0.503509, 0.85316, -0.136367, -0.462758, -0.133017, 0.876448, -62.0523, 34.9411, 18.8472)
+
+[node name="Arbol_quemado2" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(-0.00684165, 0, -0.999977, 0, 1, 0, 0.999977, 0, -0.00684165, -41.6255, 30.9099, 20.8082)
+
+[node name="Arbol_quemado8" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(-0.00684165, 0, -0.999977, 0, 1, 0, 0.999977, 0, -0.00684165, -39.8066, 28.7571, 2.42217)
+
+[node name="Arbol_quemado4" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(-0.875431, 0, 0.483344, 0, 1, 0, -0.483344, 0, -0.875431, -32.9402, 29.8092, 19.1098)
+
+[node name="Arbol_quemado9" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(-0.875431, 0, 0.483344, 0, 1, 0, -0.483344, 0, -0.875431, -33.2106, 23.8877, -4.15137)
+
+[node name="Arbol_quemado3" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.901644, 0, 0.432479, 0, 1, 0, -0.432479, 0, 0.901644, -49.0572, 23.5952, -6.09184)
+
+[node name="Arbol_quemado10" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.901644, 0, 0.432479, 0, 1, 0, -0.432479, 0, 0.901644, -41.3755, 27.7693, 32.4662)
+
+[node name="Hall1" parent="Nivel2 mockup" instance=ExtResource("38_4o0mg")]
+transform = Transform3D(1.06689, 0, -2.80388, 0, 3, 0, 2.80388, 0, 1.06689, -61.8385, 26.7292, 15.1414)
+
+[node name="Hall2" parent="Nivel2 mockup" instance=ExtResource("38_4o0mg")]
+transform = Transform3D(-1.56263, 0, -2.5609, 0, 3, 0, 2.5609, 0, -1.56263, -61.5068, 26.7292, 10.7679)
+
+[node name="Hall3" parent="Nivel2 mockup" instance=ExtResource("38_4o0mg")]
+transform = Transform3D(-0.00497431, 0, -3, 0, 3, 0, 3, 0, -0.00497431, -62.3538, 26.7292, 13.1331)
+
+[node name="Hall4" parent="Nivel2 mockup" instance=ExtResource("38_4o0mg")]
+transform = Transform3D(-1.82005, 0, -2.38483, 0, 3, 0, 2.38483, 0, -1.82005, -55.2836, 26.8726, 2.39757)
+
+[node name="Hall6" parent="Nivel2 mockup" instance=ExtResource("38_4o0mg")]
+transform = Transform3D(2.11658, 0, -2.12605, 0, 3, 0, 2.12605, 0, 2.11658, -59.2374, 26.8726, 18.3742)
+
+[node name="Hall5" parent="Nivel2 mockup" instance=ExtResource("37_gglkk")]
+transform = Transform3D(1.87156, 0, -2.34463, 0, 3, 0, 2.34463, 0, 1.87156, -52.6383, 25.6406, 20.5622)
+
+[node name="Salones_de_decoracion" parent="Nivel2 mockup" instance=ExtResource("35_b15sj")]
+transform = Transform3D(-0.371082, 0, 0.33511, 0, 0.5, 0, -0.33511, 0, -0.371082, -60.591, 26.7358, 5.22746)
+
+[node name="OmniLight3D" parent="Nivel2 mockup" instance=ExtResource("34_2k5ua")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9759, 30.0058, 13.2539)
