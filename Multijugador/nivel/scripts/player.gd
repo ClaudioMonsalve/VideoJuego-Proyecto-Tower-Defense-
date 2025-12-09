@@ -86,7 +86,6 @@ func detect_tower_card_over_platform(tower_card):
 			success = true
 			break
 	
-	print(success)
 	if success and !is_hovered:
 		is_hovered = true
 		
@@ -111,7 +110,6 @@ func _on_tower_card_input(event: InputEvent, card):
 
 func buyTower(towerName):
 	var tower = getTower(towerName)
-	print(baseobj.muni)
 	if  tower and tower.price <= baseobj.muni:
 		baseobj.muni -= tower.price
 		return tower
@@ -143,7 +141,6 @@ func handle_click_or_tap(event_pos: Vector2):
 		var interactPos = result.position
 		var interactedObjct = result.collider
 		debug.position = interactPos
-		print("clicked at:", interactPos, "on:", interactedObjct.get_parent())
 
 	pass
 

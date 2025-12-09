@@ -12,6 +12,7 @@ extends Node2D
 
 const MOTÖRHEAD___ACE_OF_SPADES__DRUMLESS_ = preload("res://Assets/Musica/Viking l Medieval Nordic Valhalla Throat Singing Meditative l 30 min l By Vadym Kuznietsov [sRuib4auqQw].mp3")
 static var first_time := true
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 func _ready():
@@ -19,6 +20,7 @@ func _ready():
 	if MusicPlayer.stream != MOTÖRHEAD___ACE_OF_SPADES__DRUMLESS_:
 		MusicPlayer.stream = MOTÖRHEAD___ACE_OF_SPADES__DRUMLESS_
 		MusicPlayer.play()
+		
 
 	# Señales botones
 	button.pressed.connect(Callable(self, "_on_button_pressed"))

@@ -7,6 +7,13 @@ extends Node2D
 @onready var sfx_slider: HSlider = $Panel/HSlider2
 @export var DIALOGO: DialogueResource
 @onready var salir_multi: Panel = $SalirMulti
+@onready var player: Node3D = $"../Player"
+@onready var base: Base = $"../Map/Base"
+@onready var pause: Button = $Pause
+@onready var color_rect: ColorRect = $"../ColorRect"
+@onready var atacar: Button = $Atacar
+@onready var v_box_playerdata: VBoxContainer = $"../Player/VBox playerdata"
+
 
 
 const MOTORHEAD = preload("res://Assets/Musica/Motörhead - Ace Of Spades (drumless).mp3")
@@ -16,8 +23,14 @@ var escena_musica_escena: Node = null
 var lista_sonidos: Array = []
 
 
+
+
 func _ready() -> void:
+	color_rect.visible = false
 	salir_multi.visible = true
+	if not Network.mensaje_recibido.is_connected(_on_receive):
+		Network.mensaje_recibido.connect(_on_receive)
+
 	# Instanciar escena de enemigos / efectos
 	escena_musica_escena = escena_musica_res.instantiate()
 	# Buscar todos los AudioStreamPlayers dentro
@@ -38,6 +51,11 @@ func _ready() -> void:
 	panel.visible = false
 	salir_multi.visible = false
 
+
+func _process(delta: float) -> void:
+		if base.hp == 0:
+			_MenuDerrota()
+			return
 
 
 # 🔍 Busca todos los AudioStreamPlayers dentro de la escena
@@ -66,3 +84,44 @@ func _on_sfx_changed(value: float) -> void:
 	if sfx_bus == -1:
 		sfx_bus = AudioServer.get_bus_index("Master")
 	AudioServer.set_bus_volume_db(sfx_bus, db)
+
+func _on_receive(msg: String):
+
+#IMPORTANTE
+	var data = JSON.parse_string(msg)
+
+
+#IMPROTNTE
+	var evento : String = data.get("event", "")
+
+#IMPORTANTE 2
+	var data_interna = data.get("data", {})
+	var payload = data_interna.get("payload", {})
+
+
+#IMPORTANTE
+	var tipo = payload.get("type", "")
+	if tipo == "attack":
+		var dmg = payload.get("damage", 0)
+		player.recibir_ataque(10)
+
+
+	return
+	
+	
+	
+func _MenuDerrota():
+	var fade := $"../ColorRect"
+	v_box_playerdata.visible = false
+	fade.visible = true
+	atacar.visible = false
+	# Animación simple: aumentar opacidad de 0 a 0.8 en 1.2s
+	var tween = get_tree().create_tween()
+	tween.tween_property(fade, "modulate:a", 0.8, 1.2).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+	pause.visible = false
+	Cartas.visible = false
+	MusicPlayer.stream_paused = true
+	
+	
+	
+	

@@ -2,6 +2,7 @@ extends Area3D
 class_name Base
 
 @onready var prog_bar: ProgressBar = $SubViewport/CanvasLayer/ProgressBar
+@onready var creep_manager: CreepManager = $"../../CreepManager"
 
 @export var muni: int = 0
 @export var maxhp: float = 30.0
@@ -25,9 +26,16 @@ func _on_body_entered(body: Node) -> void:
 		body.get_parent().call_deferred("queue_free")
 
 		if hp <= 0:
+			_derrota()
 			print("Base destruida!")
 
 
 func _update_bar() -> void:
 	if is_instance_valid(prog_bar):
 		prog_bar.value = (hp / maxhp) * 100
+
+
+func _derrota():
+		get_tree().call_group("torres", "pausar")
+		creep_manager.pausar()
+	
