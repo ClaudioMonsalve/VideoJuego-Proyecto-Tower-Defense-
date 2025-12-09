@@ -9,7 +9,7 @@ extends Node2D
 @onready var sfx_slider: HSlider = $Panel/HSlider2
 @export var DIALOGO: DialogueResource
 
-const MOTORHEAD = preload("res://Assets/Musica/Motörhead - Ace Of Spades (drumless).mp3")
+const MOTORHEAD = preload("res://Assets/Musica/19 2000 instrumental low quality.mp3")
 
 var escena_musica_res = preload("res://Assets/Escenas/Enemigos/big_bertha.tscn")
 var escena_musica_escena: Node = null

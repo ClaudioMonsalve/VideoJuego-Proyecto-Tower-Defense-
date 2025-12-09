@@ -30,6 +30,7 @@ size = Vector3(0.1, 0.1, 0.1)
 
 [node name="OmniLight3D" type="OmniLight3D"]
 light_color = Color(1, 0.545098, 0.219608, 1)
+light_bake_mode = 1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 cast_shadow = 0

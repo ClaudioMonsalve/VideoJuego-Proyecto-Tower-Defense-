@@ -43,8 +43,9 @@ func ouch(damage: float):
 				meshOrSprite.queue_free()
 			if barSprite:
 				barSprite.queue_free()
-			animationPlayer.play("money")
-			await animationPlayer.animation_finished
+			if animationPlayer:
+				animationPlayer.play("money")
+				await animationPlayer.animation_finished
 		get_parent().queue_free()
 
 func _process(delta: float) -> void:
