@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://dl6qpdwwred3h"]
+[gd_scene load_steps=58 format=3 uid="uid://dl6qpdwwred3h"]
 
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_emvtp"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="4_dnsud"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="30_oa4kv"]
 [ext_resource type="Texture2D" uid="uid://cyrgxyo4sm7os" path="res://Assets/Decals/muspelheim/LavaEmmision1.png" id="30_v5e71"]
 [ext_resource type="Texture2D" uid="uid://kmplk07dey2y" path="res://Assets/Decals/muspelheim/lava2Normals.png" id="31_owvy1"]
+[ext_resource type="PackedScene" uid="uid://dpwadmk5mjemk" path="res://Assets/modelos/Decoración/muspelheim/montañas/MountainsMuspel2.glb" id="33_mst15"]
 [ext_resource type="PackedScene" uid="uid://dkt8mrj1lx66o" path="res://Assets/modelos/Decoración/torchfire.tscn" id="34_2k5ua"]
 [ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="35_b15sj"]
 [ext_resource type="PackedScene" uid="uid://daiyv4wtse7kg" path="res://Assets/modelos/Decoración/midgard/Hall2.glb" id="37_gglkk"]
@@ -41,7 +42,9 @@
 [ext_resource type="PackedScene" uid="uid://dow1e68l7p4qg" path="res://Assets/modelos/blender/Muspelheim/ColumnasDe_Basalto_2.blend" id="41_c1sdb"]
 [ext_resource type="PackedScene" uid="uid://eppjp5jqtisj" path="res://Assets/modelos/blender/Muspelheim/ColumnasDe_Basalto.blend" id="42_n446x"]
 [ext_resource type="PackedScene" uid="uid://xtgen7cwiiry" path="res://Assets/modelos/blender/Muspelheim/Piedras_punteagudas.blend" id="43_cltmv"]
+[ext_resource type="PackedScene" uid="uid://xq2qwejqo84l" path="res://Assets/modelos/Decoración/muspelheim/montañas/MountainsMuspel1.glb" id="43_dhrs6"]
 [ext_resource type="PackedScene" uid="uid://dvn4vdjuabrck" path="res://Assets/modelos/blender/Muspelheim/Arbol_quemado.blend" id="44_dogce"]
+[ext_resource type="PackedScene" uid="uid://cj737otyxt3br" path="res://Assets/modelos/Decoración/muspelheim/montañas/CaveEntranceMuspelheim.glb" id="45_yyxx3"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_m4ruf"]
 rayleigh_color = Color(0.533924, 0.35686, 0.292635, 1)
@@ -143,9 +146,8 @@ animations = [{
 environment = SubResource("Environment_3qnke")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866024, -0.433016, 0.25, 0.235438, 0.0879439, 0.967902, -0.441103, 0.897086, 0.0257868, 0.791145, 45.3342, -32.5975)
-light_color = Color(0.543776, 0.498471, 0.485261, 1)
-light_energy = 0.4
+transform = Transform3D(-0.866024, -0.433016, 0.25, 0.235438, 0.0879438, 0.967902, -0.441103, 0.897086, 0.0257869, -3.84452, 50.9571, -32.5975)
+light_color = Color(0.616894, 0.472887, 0.409196, 1)
 shadow_enabled = true
 
 [node name="Map" type="Node3D" parent="."]
@@ -427,42 +429,34 @@ transform = Transform3D(-0.595976, 0.0564999, 0.801012, -0.0309513, 0.995164, -0
 size = Vector3(40, 10, 40)
 
 [node name="Decal5" type="Decal" parent="Decor"]
-transform = Transform3D(-0.207007, 0, 0.978339, 0, 1, 0, -0.978339, 0, -0.207007, -6.78113, 16.1257, 37.0475)
+transform = Transform3D(-0.207007, 0, 0.978339, 0, 1, 0, -0.978339, 0, -0.207007, -6.78113, 17.5753, 37.0475)
 size = Vector3(18.8084, 21.5466, 19.2295)
 texture_emission = ExtResource("30_v5e71")
 normal_fade = 0.8
 upper_fade = 1e-05
 lower_fade = 0.023898
 
-[node name="Decal8" type="Decal" parent="Decor"]
-transform = Transform3D(-0.207007, 0, 0.978339, 0, 1, 0, -0.978339, 0, -0.207007, -16.3195, 3.34945, 63.2978)
-size = Vector3(18.8084, 21.5466, 19.2295)
+[node name="Decal10" type="Decal" parent="Decor"]
+transform = Transform3D(0.237448, 0, 0.9714, 0, 1, 0, -0.9714, 0, 0.237448, -67.5768, 33.9548, 88.3182)
+size = Vector3(35.6591, 74.1734, 34.0624)
 texture_emission = ExtResource("30_v5e71")
-normal_fade = 0.8
-upper_fade = 1e-05
-lower_fade = 0.023898
-
-[node name="Decal9" type="Decal" parent="Decor"]
-transform = Transform3D(0.384021, 0, 0.923324, 0, 1, 0, -0.923324, 0, 0.384021, -3.42163, 3.34945, 59.1008)
-size = Vector3(18.8084, 21.5466, 19.2295)
-texture_emission = ExtResource("30_v5e71")
-normal_fade = 0.8
+normal_fade = 0.529
 upper_fade = 1e-05
 lower_fade = 0.023898
 
 [node name="Decal6" type="Decal" parent="Decor"]
-transform = Transform3D(-0.207007, 0, 0.978339, 0, 1, 0, -0.978339, 0, -0.207007, -48.315, 17.8206, -11.533)
-size = Vector3(18.8084, 21.5466, 19.2295)
+transform = Transform3D(-0.207007, 0, 0.978339, 0, 1, 0, -0.978339, 0, -0.207007, -55.0893, 17.8206, -12.5068)
+size = Vector3(23.5186, 21.5466, 32.0815)
 texture_emission = ExtResource("30_v5e71")
 normal_fade = 0.8
 upper_fade = 1e-05
 lower_fade = 0.023898
 
-[node name="Decal7" type="Decal" parent="Decor"]
-transform = Transform3D(-0.871411, 0, 0.490554, 0, 1, 0, -0.490554, 0, -0.871411, -59.9904, 17.8206, -17.9782)
-size = Vector3(18.8084, 21.5466, 19.2295)
+[node name="Decal11" type="Decal" parent="Decor"]
+transform = Transform3D(-0.871411, 0, 0.490554, 0, 1, 0, -0.490554, 0, -0.871411, -72.6711, 27.6794, -102.781)
+size = Vector3(35.9343, 24.3738, 37.918)
 texture_emission = ExtResource("30_v5e71")
-normal_fade = 0.8
+normal_fade = 0.69
 upper_fade = 1e-05
 lower_fade = 0.023898
 
@@ -471,6 +465,23 @@ transform = Transform3D(-1.64611, 0, 1.13592, 0, 2, 0, -1.13592, 0, -1.64611, -6
 
 [node name="Volcano_Small2" parent="Decor" instance=ExtResource("39_v5e71")]
 transform = Transform3D(-0.270298, 0, -0.962777, 0, 1.55985, 0, 0.962777, 0, -0.270298, -53.7078, 17.3603, -13.7272)
+
+[node name="Volcano_Small3" parent="Decor" instance=ExtResource("39_v5e71")]
+transform = Transform3D(-0.887011, 0, -0.461749, 0, 1.55985, 0, 0.461749, 0, -0.887011, -60.7629, 10.2499, 93.3911)
+
+[node name="Mountains" type="Node3D" parent="Decor"]
+
+[node name="MountainsMuspel1" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
+transform = Transform3D(9.76383, 0, 2.16048, 0, 10, 0, -2.16048, 0, 9.76383, -74.2415, 1.47798, 90.7468)
+
+[node name="MountainsMuspel2" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
+transform = Transform3D(9.91866, 0, 1.2729, 0, 10, 0, -1.2729, 0, 9.91866, -89.2421, 16.112, -1.61577)
+
+[node name="MountainsMuspel4" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
+transform = Transform3D(3.25155, 0, -9.45661, 0, 10, 0, 9.45661, 0, 3.25155, -31.6636, 0.955532, -130.462)
+
+[node name="MountainsMuspel3" parent="Decor/Mountains" instance=ExtResource("33_mst15")]
+transform = Transform3D(9.95127, 0, -0.986077, 0, 10, 0, 0.986077, 0, 9.95127, -79.622, 9.65808, -95.4068)
 
 [node name="Nivel2 mockup" type="Node3D" parent="."]
 
@@ -522,8 +533,35 @@ transform = Transform3D(1, 0, 0, 0, 1.94926, 0, 0, 0, 1, -62.8687, 23.5128, -7.2
 [node name="Piedras_punteagudas5" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.9193, 28.5741, 28.5082)
 
+[node name="ColumnasDe_Basalto7" parent="Nivel2 mockup" instance=ExtResource("42_n446x")]
+transform = Transform3D(-0.272163, 0, -0.962251, 0, 1.56793, 0, 0.962251, 0, -0.272163, -60.8713, 24.1368, 48.6745)
+
+[node name="Piedras_punteagudas10" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(-0.619834, 0, -0.784733, 0, 1, 0, 0.784733, 0, -0.619834, -61.9555, 24.3148, 47.3051)
+
+[node name="Piedras_punteagudas11" parent="Nivel2 mockup" instance=ExtResource("43_cltmv")]
+transform = Transform3D(-0.619834, 0, -0.784733, 0, 1, 0, 0.784733, 0, -0.619834, -58.7839, 25.4997, 49.9791)
+
 [node name="Arbol_quemado" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.5812, 30.5058, 25.6422)
+
+[node name="Arbol_quemado11" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.259139, 0, -0.96584, 0, 1, 0, 0.96584, 0, 0.259139, -60.4428, 25.1443, 41.8295)
+
+[node name="Arbol_quemado16" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(-0.934906, 0, -0.354895, 0, 1, 0, 0.354895, 0, -0.934906, -65.0031, 27.0407, 30.4368)
+
+[node name="Arbol_quemado13" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(-0.306443, 0, 0.951889, 0, 1, 0, -0.951889, 0, -0.306443, -63.7187, 22.2985, 53.7966)
+
+[node name="Arbol_quemado14" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.706885, 0, 0.707329, 0, 1, 0, -0.707329, 0, 0.706885, -56.0164, 23.496, 60.5211)
+
+[node name="Arbol_quemado15" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(0.982297, 0, -0.18733, 0, 1, 0, 0.18733, 0, 0.982297, -67.0067, 20.6055, 61.1387)
+
+[node name="Arbol_quemado12" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
+transform = Transform3D(-0.722786, 0, -0.691072, 0, 1, 0, 0.691072, 0, -0.722786, -54.4586, 25.7989, 46.9335)
 
 [node name="Arbol_quemado5" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
 transform = Transform3D(0.701693, 0, 0.712479, 0, 1, 0, -0.712479, 0, 0.701693, -64.4573, 36.8625, 13.1492)
@@ -544,7 +582,7 @@ transform = Transform3D(-0.316688, 0.0606574, -0.946589, 0.191901, 0.981413, -0.
 transform = Transform3D(-0.875431, 0, 0.483344, 0, 1, 0, -0.483344, 0, -0.875431, -32.9402, 29.8092, 19.1098)
 
 [node name="Arbol_quemado9" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
-transform = Transform3D(-0.875431, 0, 0.483344, 0, 1, 0, -0.483344, 0, -0.875431, -33.2106, 21.4857, -4.15137)
+transform = Transform3D(-0.875431, 0, 0.483344, 0, 1, 0, -0.483344, 0, -0.875431, -33.2106, 22.1765, -4.15137)
 
 [node name="Arbol_quemado3" parent="Nivel2 mockup" instance=ExtResource("44_dogce")]
 transform = Transform3D(0.901644, 0, 0.432479, -0.104458, 0.970393, 0.217776, -0.419675, -0.241532, 0.874949, -49.0572, 24.4078, -6.09184)
@@ -571,13 +609,13 @@ transform = Transform3D(2.11658, 0, -2.12605, 0, 3, 0, 2.12605, 0, 2.11658, -59.
 transform = Transform3D(1.87156, 0, -2.34463, 0, 3, 0, 2.34463, 0, 1.87156, -52.6383, 25.6406, 20.5622)
 
 [node name="Salones_de_decoracion" parent="Nivel2 mockup" instance=ExtResource("35_b15sj")]
-transform = Transform3D(-0.371082, 0, 0.33511, 0, 0.5, 0, -0.33511, 0, -0.371082, -60.591, 26.7358, 5.22746)
+transform = Transform3D(-0.371082, 0, 0.33511, 0, 0.5, 0, -0.33511, 0, -0.371082, -60.3223, 27.1822, 5.36047)
 
 [node name="OmniLight3D" parent="Nivel2 mockup" instance=ExtResource("34_2k5ua")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.9759, 30.0058, 13.2539)
 
 [node name="kevin" parent="." instance=ExtResource("40_5g1gj")]
-transform = Transform3D(1.71915, 0, -1.02202, 0, 2, 0, 1.02202, 0, 1.71915, 68.1853, 6.26371, 47.3269)
+transform = Transform3D(1.7017, 0.170543, -1.03689, 0.00789832, 1.97135, 0.337203, 1.05079, -0.291004, 1.67665, 68.1853, 8.01892, 47.3269)
 
 [node name="Decal" type="Decal" parent="kevin"]
 transform = Transform3D(0.921226, 0, -0.389028, 0, 1, 0, 0.389028, 0, 0.921226, 0.953598, -0.874913, -0.677317)
@@ -590,7 +628,7 @@ normal_fade = 0.765
 upper_fade = 1e-05
 
 [node name="OmniLight3D" type="OmniLight3D" parent="kevin"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0122385, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0122385, 0)
 light_color = Color(0.609317, 0.246625, 0.989605, 1)
 light_energy = 16.0
 light_volumetric_fog_energy = 7.303
@@ -598,3 +636,9 @@ light_size = 0.152
 light_specular = 2.763
 light_bake_mode = 1
 omni_range = 20.9279
+
+[node name="CaveEntranceMuspelheim" parent="." instance=ExtResource("45_yyxx3")]
+transform = Transform3D(0.53965, 0, -4.97079, 0, 5, 0, 4.97079, 0, 0.53965, -49.6754, 2.39577, -102.724)
+
+[node name="CaveEntranceMuspelheim2" parent="." instance=ExtResource("45_yyxx3")]
+transform = Transform3D(6.59615, 0, -0.812492, 0, 5, 0, 0.779772, 0, 6.87294, 14.7378, 15.9397, -40.7771)

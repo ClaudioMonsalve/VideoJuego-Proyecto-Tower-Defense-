@@ -5,10 +5,6 @@
 [ext_resource type="Texture2D" uid="uid://kmplk07dey2y" path="res://Assets/Decals/muspelheim/lava2Normals.png" id="2_nqips"]
 [ext_resource type="Script" uid="uid://dl31ww8wcqalm" path="res://Assets/Decals/muspelheim/lava_decal_1.gd" id="4_nqips"]
 
-[sub_resource type="Animation" id="Animation_kdu03"]
-resource_name = "modulate"
-loop_mode = 2
-
 [sub_resource type="Animation" id="Animation_govla"]
 length = 0.001
 tracks/0/type = "value"
@@ -41,6 +37,10 @@ tracks/0/keys = {
 "values": [0.5, 2.0]
 }
 
+[sub_resource type="Animation" id="Animation_kdu03"]
+resource_name = "modulate"
+loop_mode = 2
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_sernp"]
 _data = {
 &"RESET": SubResource("Animation_govla"),
@@ -49,7 +49,6 @@ _data = {
 }
 
 [node name="LavaDecal1" type="Decal"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 size = Vector3(1, 1, 1)
 texture_albedo = ExtResource("1_vkxjo")
 texture_normal = ExtResource("2_nqips")

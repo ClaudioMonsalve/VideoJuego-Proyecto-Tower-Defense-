@@ -469,6 +469,12 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -99.3474, 4.88332, -3.4617
 [node name="Mountains2" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
 transform = Transform3D(0.212215, 0, -9.99775, 0, 10, 0, 9.99775, 0, 0.212215, -10.4361, 2.86725, -144.293)
 
+[node name="Mountains13" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
+transform = Transform3D(-0.78894, 0, 9.96883, 0, 10, 0, -9.96883, 0, -0.78894, -3.3258, 2.86725, -185.387)
+
+[node name="Mountains11" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
+transform = Transform3D(-3.16113, 0, -9.48722, 0, 10, 0, 9.48722, 0, -3.16113, 107.609, 2.86726, -139.52)
+
 [node name="Mountains3" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
 transform = Transform3D(-0.87573, 0, 9.96158, 0, 10, 0, -9.96158, 0, -0.87573, -14.5598, 2.86723, 116.139)
 
@@ -477,6 +483,9 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -94.6502, 2.96744, -67.609
 
 [node name="Mountains8" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
 transform = Transform3D(0.222512, 0, -9.99752, 0, 10, 0, 9.99752, 0, 0.222512, 52.5559, 2.96744, -140.301)
+
+[node name="Mountains12" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+transform = Transform3D(-5.14529, 0, 8.57472, 0, 10, 0, -8.57472, 0, -5.14529, -85.0546, 2.96744, -171.638)
 
 [node name="Mountains9" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
 transform = Transform3D(-4.32511, 0, 9.01629, 0, 10, 0, -9.01629, 0, -4.32511, 38.723, 2.96742, 112.848)
@@ -489,6 +498,9 @@ transform = Transform3D(6.63613, 0, -7.48076, 0, 10, 0, 7.48076, 0, 6.63613, -75
 
 [node name="Mountains7" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
 transform = Transform3D(-1.15995, 0, -9.9325, 0, 10, 0, 9.9325, 0, -1.15995, -63.2289, 4.71037, 119.354)
+
+[node name="Mountains10" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+transform = Transform3D(-3.21506, 0, -9.46908, 0, 10, 0, 9.46908, 0, -3.21506, -22.3024, 4.71037, 154.932)
 
 [node name="CaveEntrance" parent="Decor/Montañas" instance=ExtResource("33_pqunp")]
 transform = Transform3D(1.35292, 0, -4.81348, 0, 5, 0, 4.81348, 0, 1.35292, 71.3732, 0, -135.992)
@@ -663,6 +675,33 @@ transform = Transform3D(-2.99055, 0, -0.237935, 0, 3, 0, 0.237935, 0, -2.99055, 
 
 [node name="Hall7" parent="Decor" instance=ExtResource("37_tr5od")]
 transform = Transform3D(0.603388, 0, -2.93869, 0, 3, 0, 2.93869, 0, 0.603388, -0.230744, 2.87723, -45.5496)
+
+[node name="Arboles_de_Decoracion37" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -79.6153, -0.836042, -49.7261)
+
+[node name="Arboles_de_Decoracion38" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -88.2754, 2.77309, -46.9063)
+
+[node name="Arboles_de_Decoracion39" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -81.4356, 1.66825, -57.4691)
+
+[node name="Arboles_de_Decoracion40" parent="Decor" instance=ExtResource("29_m4ruf")]
+transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -85.9033, -1.90735e-06, -51.3849)
+
+[node name="Salones_de_decoracion5" parent="Decor" instance=ExtResource("30_4hbg3")]
+transform = Transform3D(-0.673858, 0, -0.253406, 0, 0.853, 0, 0.189514, 0, -0.901044, -80.0866, 2.88503, -53.4315)
+
+[node name="Salones_de_decoracion6" parent="Decor" instance=ExtResource("30_4hbg3")]
+transform = Transform3D(0.602557, 0, -0.476379, 0, 0.853, 0, 0.356266, 0, 0.805703, -82.5923, 2.88503, -53.7164)
+
+[node name="Sketchfab_Scene5" parent="Decor" instance=ExtResource("31_jglew")]
+transform = Transform3D(1.33447, 0, -2.68686, 0, 3, 0, 2.68686, 0, 1.33447, -80.4852, 4.16565, -47.4804)
+
+[node name="Hall9" parent="Decor" instance=ExtResource("36_jof18")]
+transform = Transform3D(-2.31929, 0, -3.25898, 0, 4, 0, 3.25898, 0, -2.31929, -83.7387, 0.605815, -46.784)
+
+[node name="Hall10" parent="Decor" instance=ExtResource("37_tr5od")]
+transform = Transform3D(2.85924, 0, -0.908155, 0, 3, 0, 0.908155, 0, 2.85924, -83.0069, 2.87723, -50.0751)
 
 [node name="Hall4" parent="Decor" instance=ExtResource("37_tr5od")]
 transform = Transform3D(2.14854, 0, -2.09375, 0, 3, 0, 2.09375, 0, 2.14854, -48.791, 2.87723, 10.7472)
