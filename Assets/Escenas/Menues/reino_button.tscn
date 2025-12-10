@@ -1,0 +1,181 @@
+[gd_scene load_steps=15 format=3 uid="uid://cbc7jkoolcbr5"]
+
+[ext_resource type="Script" uid="uid://dxi3sng1g4wqh" path="res://Assets/Escenas/Menues/reino_button.gd" id="1_hej1a"]
+[ext_resource type="Texture2D" uid="uid://dd2m1e2txhsve" path="res://Assets/sprites/UI/MidgardBadge.png" id="2_emp7a"]
+[ext_resource type="Texture2D" uid="uid://cmkl8wgafwq21" path="res://Assets/sprites/UI/map menu.jpg" id="2_ryr1x"]
+[ext_resource type="FontFile" uid="uid://b1eio0nx46t83" path="res://Assets/Fonts/Mjolnir.otf" id="4_l4ut5"]
+[ext_resource type="Texture2D" uid="uid://cjplcou3wred6" path="res://Assets/sprites/UI/IncompleteLevelBanner.png" id="4_ryr1x"]
+[ext_resource type="Theme" uid="uid://vmp27cq7u4sr" path="res://Assets/Fonts/selectorTheme.tres" id="6_as8oc"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="6_gloyt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd542"]
+size = Vector2(72, 69)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4ut5"]
+
+[sub_resource type="Theme" id="Theme_gloyt"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 4
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 40
+Label/fonts/font = ExtResource("4_l4ut5")
+Label/styles/normal = SubResource("StyleBoxEmpty_l4ut5")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ut5"]
+size = Vector2(49, 75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gloyt"]
+size = Vector2(48, 76)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_as8oc"]
+size = Vector2(52, 76)
+
+[sub_resource type="Theme" id="Theme_as8oc"]
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/line_spacing = 3
+Label/constants/outline_size = 3
+Label/constants/shadow_offset_x = 1
+Label/constants/shadow_offset_y = 1
+Label/constants/shadow_outline_size = 1
+Label/font_sizes/font_size = 25
+Label/fonts/font = ExtResource("6_gloyt")
+Label/styles/normal = SubResource("StyleBoxEmpty_l4ut5")
+
+[node name="ReinoButton" type="Area2D"]
+script = ExtResource("1_hej1a")
+fondo = ExtResource("2_ryr1x")
+
+[node name="ReinoIco" type="CollisionShape2D" parent="."]
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_jd542")
+debug_color = Color(0, 0, 0, 0.42)
+
+[node name="Sprite2D" type="Sprite2D" parent="ReinoIco"]
+texture_filter = 1
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_emp7a")
+
+[node name="OpenMap" type="Node2D" parent="."]
+
+[node name="Panel" type="Panel" parent="OpenMap"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="TextureRect" type="TextureRect" parent="OpenMap/Panel"]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -150.0
+offset_right = 300.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ryr1x")
+
+[node name="ReinoLabel" type="Label" parent="OpenMap/Panel"]
+layout_mode = 2
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -78.0
+offset_top = 14.0
+offset_right = 79.0
+offset_bottom = 54.0
+grow_horizontal = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_gloyt")
+text = "Reino X"
+
+[node name="areaLevel1" type="Area2D" parent="OpenMap"]
+position = Vector2(-180, -15)
+
+[node name="level1col" type="CollisionShape2D" parent="OpenMap/areaLevel1"]
+position = Vector2(-1.5, 0.5)
+shape = SubResource("RectangleShape2D_l4ut5")
+
+[node name="level1" type="Sprite2D" parent="OpenMap/areaLevel1"]
+texture_filter = 1
+position = Vector2(0, 9.53674e-07)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ryr1x")
+
+[node name="areaLevel2" type="Area2D" parent="OpenMap"]
+position = Vector2(-18, -15)
+
+[node name="level2col" type="CollisionShape2D" parent="OpenMap/areaLevel2"]
+position = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_gloyt")
+
+[node name="level2" type="Sprite2D" parent="OpenMap/areaLevel2"]
+texture_filter = 1
+position = Vector2(-1.52588e-05, 0)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ryr1x")
+
+[node name="areaLevel3" type="Area2D" parent="OpenMap"]
+position = Vector2(156, -12)
+
+[node name="level3col" type="CollisionShape2D" parent="OpenMap/areaLevel3"]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_as8oc")
+
+[node name="level3" type="Sprite2D" parent="OpenMap/areaLevel3"]
+texture_filter = 1
+position = Vector2(-1.52588e-05, 0)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("4_ryr1x")
+
+[node name="jugar" type="Button" parent="OpenMap"]
+offset_left = -274.0
+offset_top = 96.0
+offset_right = -233.0
+offset_bottom = 127.0
+theme = ExtResource("6_as8oc")
+text = "jugar
+"
+
+[node name="cerrar" type="Button" parent="OpenMap"]
+offset_left = -211.0
+offset_top = 96.0
+offset_right = -155.0
+offset_bottom = 127.0
+theme = ExtResource("6_as8oc")
+text = "volver
+"
+
+[node name="Label" type="Label" parent="OpenMap"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -78.0
+offset_top = 96.0
+offset_right = 84.0
+offset_bottom = 124.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_as8oc")
+text = "nivel seleccionado:"

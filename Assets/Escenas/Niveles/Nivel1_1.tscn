@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://bj6ruqrmmh8n2"]
+[gd_scene load_steps=57 format=3 uid="uid://bj6ruqrmmh8n2"]
 
 [ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="2_rlqd0"]
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_aj57n"]
@@ -19,6 +19,7 @@
 [ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://Assets/scripts/node_2d.gd" id="14_qdga2"]
 [ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="15_ovtgn"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="16_drqky"]
+[ext_resource type="Resource" uid="uid://ctnxddjd8lssq" path="res://Assets/Dialogos/Mundo1/Intro_Nivel_1-1.dialogue" id="16_kuoi0"]
 [ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="16_rlqd0"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="17_oojqn"]
 [ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://Assets/scripts/button_2.gd" id="18_64rh3"]
@@ -348,6 +349,7 @@ mesh = SubResource("BoxMesh_3qnke")
 
 [node name="Node2D" type="Node2D" parent="."]
 script = ExtResource("14_qdga2")
+DIALOGO = ExtResource("16_kuoi0")
 
 [node name="Pause" type="Button" parent="Node2D"]
 offset_left = 20.0
