@@ -112,7 +112,8 @@ func send_game_data(payload: Dictionary):
 		"event": "send-game-data",
 		"data": {
 			"matchId": Globals.match_id,
-			"payload": payload
+			"payload": payload,
+			"damage": 10
 		}
 	}
 

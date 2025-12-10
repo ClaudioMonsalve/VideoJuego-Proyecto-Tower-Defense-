@@ -13,6 +13,16 @@ extends Node2D
 @onready var color_rect: ColorRect = $"../ColorRect"
 @onready var atacar: Button = $Atacar
 @onready var v_box_playerdata: VBoxContainer = $"../Player/VBox playerdata"
+@onready var mensaje: Label = $Derrota/Mensaje
+
+@onready var salir_2: Button = $Derrota/Salir2
+@onready var reiniciar_2: Button = $Derrota/Reiniciar2
+@onready var creep_manager: CreepManager = $"../CreepManager"
+
+
+
+
+var partida_terminada := false
 
 
 
@@ -26,6 +36,9 @@ var lista_sonidos: Array = []
 
 
 func _ready() -> void:
+	mensaje.visible = false
+	salir_2.visible = false
+	reiniciar_2.visible = false
 	color_rect.visible = false
 	salir_multi.visible = true
 	if not Network.mensaje_recibido.is_connected(_on_receive):
@@ -53,9 +66,17 @@ func _ready() -> void:
 
 
 func _process(delta: float) -> void:
-		if base.hp == 0:
-			_MenuDerrota()
-			return
+	if partida_terminada:
+		return  # ❌ Evita que el proceso siga ejecutando lógica después
+
+	if base.hp == 0:
+		partida_terminada = true  # Marca que ya terminó
+		Network.send_game_data({
+			"type": "defeat",
+			"player": Globals.my_player_name
+		})
+		_MenuDerrota(false)            # Muestra menú de derrota
+
 
 
 # 🔍 Busca todos los AudioStreamPlayers dentro de la escena
@@ -87,30 +108,56 @@ func _on_sfx_changed(value: float) -> void:
 
 func _on_receive(msg: String):
 
-#IMPORTANTE
 	var data = JSON.parse_string(msg)
+	if typeof(data) != TYPE_DICTIONARY:
+		return
 
-
-#IMPROTNTE
 	var evento : String = data.get("event", "")
 
-#IMPORTANTE 2
-	var data_interna = data.get("data", {})
-	var payload = data_interna.get("payload", {})
+	# VALIDAR QUE DATA SEA UN DICCIONARIO
+	var data_interna = data.get("data")
+	if typeof(data_interna) != TYPE_DICTIONARY:
+		return  # este evento no trae data, no seguir
 
+	# VALIDAR QUE PAYLOAD SEA DICCIONARIO
+	var payload = data_interna.get("payload")
+	if typeof(payload) != TYPE_DICTIONARY:
+		return
 
-#IMPORTANTE
 	var tipo = payload.get("type", "")
+
+	# ----------------------------
+	# ATAQUE RECIBIDO
 	if tipo == "attack":
-		var dmg = payload.get("damage", 0)
-		player.recibir_ataque(10)
+		player.recibir_ataque(20)
+		return
+
+	# ----------------------------
+	# RIVAL DERROTADO → GANÉ YO
+	if tipo == "defeat":
+		var p = payload.get("player", "")
+
+		# 💥 SI EL QUE ENVÍA SOY YO → IGNORAR
+		if p == Globals.my_player_name:
+			print("🛑 Ignorando defeat propio (yo cerré la partida).")
+			return
+
+		# 🏆 SI LO ENVÍA EL RIVAL → YO GANÉ
+		print("🏆 El rival perdió. ¡Yo gané!")
+		Network.ws.send_text(JSON.stringify({
+			"event": "finish-game",
+			"data": {"matchId": Globals.match_id}
+		}))
+		_MenuDerrota(true)
+		return
 
 
-	return
 	
-	
-	
-func _MenuDerrota():
+func _MenuDerrota(valor: bool) -> void:
+	panel.visible = false
+	get_tree().call_group("torres", "pausar")
+	creep_manager.pausar()
+	# --- ENVIAR USANDO NETWORK ---
 	var fade := $"../ColorRect"
 	v_box_playerdata.visible = false
 	fade.visible = true
@@ -121,6 +168,11 @@ func _MenuDerrota():
 	pause.visible = false
 	Cartas.visible = false
 	MusicPlayer.stream_paused = true
+	mensaje.visible = true
+	salir_2.visible = true
+	reiniciar_2.visible = true
+	mensaje.mostrar_resultado(valor)
+	
 	
 	
 	

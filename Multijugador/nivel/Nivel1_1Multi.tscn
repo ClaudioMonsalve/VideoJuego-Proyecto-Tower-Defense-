@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://urqkod824h5l"]
+[gd_scene load_steps=68 format=3 uid="uid://urqkod824h5l"]
 
 [ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="1_63jav"]
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="2_2rvo7"]
@@ -18,7 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="16_pjcsu"]
 [ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="17_v2qxj"]
 [ext_resource type="Script" uid="uid://god6j534g5gy" path="res://Multijugador/nivel/scripts/node_2d_multi.gd" id="18_4x560"]
-[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="19_132no"]
+[ext_resource type="Script" uid="uid://b5ofpjwjy581y" path="res://Multijugador/nivel/scripts/pauseMulti.gd" id="19_fox6q"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="20_q1ogg"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="21_eo27y"]
 [ext_resource type="Script" uid="uid://boos4psaciyme" path="res://Multijugador/nivel/scripts/RegresarButton_multi.gd" id="22_fox6q"]
@@ -37,7 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://d0es6mv1t5ry1" path="res://Assets/modelos/Decoración/midgard/Arboles_de_Decoracion.blend" id="32_jrftn"]
 [ext_resource type="Script" uid="uid://bac11xa47ta07" path="res://Multijugador/nivel/scripts/atacar.gd" id="32_txkfy"]
 [ext_resource type="PackedScene" uid="uid://dkt8mrj1lx66o" path="res://Assets/modelos/Decoración/torchfire.tscn" id="33_1j8d1"]
-[ext_resource type="Script" uid="uid://dbpnum6icgqt2" path="res://Multijugador/nivel/scripts/derrota.gd" id="33_fox6q"]
+[ext_resource type="Script" uid="uid://6jk41ix6hj4l" path="res://Multijugador/nivel/mensaje.gd" id="33_fox6q"]
+[ext_resource type="Script" uid="uid://bio4lq6e7ciir" path="res://Multijugador/nivel/scripts/salir_2.gd" id="34_b234q"]
 [ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="34_g3qro"]
 [ext_resource type="PackedScene" uid="uid://cu876akkj6as7" path="res://Assets/modelos/Decoración/midgard/low_poly_rocks.glb" id="35_wsif0"]
 [ext_resource type="PackedScene" uid="uid://daiyv4wtse7kg" path="res://Assets/modelos/Decoración/midgard/Hall2.glb" id="36_o3vuv"]
@@ -186,7 +187,27 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7klt6"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nr6qh"]
+bg_color = Color(0.219608, 0.219608, 0.219608, 1)
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
 [node name="Node3D" type="Node3D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_right = 1153.0
+offset_bottom = 648.0
+color = Color(0, 0, 0, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_3qnke")
@@ -390,7 +411,7 @@ offset_right = 118.0
 offset_bottom = 81.0
 text = "Regresar
 "
-script = ExtResource("19_132no")
+script = ExtResource("19_fox6q")
 
 [node name="Panel" type="Panel" parent="Node2D"]
 anchors_preset = 8
@@ -551,19 +572,43 @@ text = "Atacar"
 script = ExtResource("32_txkfy")
 
 [node name="Derrota" type="Node" parent="Node2D"]
+
+[node name="Mensaje" type="Label" parent="Node2D/Derrota"]
+offset_left = 162.0
+offset_top = 105.0
+offset_right = 1026.0
+offset_bottom = 250.0
+theme_override_colors/font_color = Color(0.92549, 0.917647, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 70
+theme_override_fonts/font = ExtResource("29_hhelj")
+theme_override_font_sizes/font_size = 90
+text = "Mensaje"
+horizontal_alignment = 1
+vertical_alignment = 1
 script = ExtResource("33_fox6q")
 
-[node name="Label" type="Label" parent="Node2D/Derrota"]
-offset_right = 40.0
-offset_bottom = 23.0
+[node name="Salir2" type="Button" parent="Node2D/Derrota"]
+offset_left = 295.0
+offset_top = 360.0
+offset_right = 549.0
+offset_bottom = 490.0
+theme_override_fonts/font = ExtResource("21_eo27y")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_7klt6")
+text = "Salir"
+script = ExtResource("34_b234q")
 
-[node name="Button" type="Button" parent="Node2D/Derrota"]
-offset_right = 8.0
-offset_bottom = 8.0
-
-[node name="Button2" type="Button" parent="Node2D/Derrota"]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="Reiniciar2" type="Button" parent="Node2D/Derrota"]
+offset_left = 619.0
+offset_top = 360.0
+offset_right = 875.0
+offset_bottom = 493.0
+theme_override_fonts/font = ExtResource("21_eo27y")
+theme_override_font_sizes/font_size = 50
+theme_override_styles/normal = SubResource("StyleBoxFlat_nr6qh")
+text = "Revancha
+"
 
 [node name="Decor" type="Node3D" parent="."]
 
@@ -837,9 +882,3 @@ light_size = 0.152
 light_specular = 2.763
 light_bake_mode = 1
 omni_range = 20.9279
-
-[node name="ColorRect" type="ColorRect" parent="."]
-modulate = Color(0, 0, 0, 1)
-offset_right = 1153.0
-offset_bottom = 648.0
-color = Color(0, 0, 0, 1)
