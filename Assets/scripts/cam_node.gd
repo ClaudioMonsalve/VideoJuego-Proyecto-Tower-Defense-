@@ -8,6 +8,10 @@ extends Node3D
 @onready var wvLabel = $"VBox playerdata/HBoxContainer/wave number"
 @onready var debug = $"../debug"
 
+#Menu de torre
+#============================
+
+
 
 #tarjetas de torres
 #============================

@@ -1,8 +1,7 @@
-[gd_scene load_steps=61 format=3 uid="uid://bj6ruqrmmh8n2"]
+[gd_scene load_steps=48 format=3 uid="uid://bj6ruqrmmh8n2"]
 
 [ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="2_rlqd0"]
 [ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_aj57n"]
-[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_iaa1h"]
 [ext_resource type="PackedScene" uid="uid://bv6ivqbs434ca" path="res://Assets/modelos/Decoración/midgard/bloqueo.glb" id="5_sia5n"]
 [ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_xlml3"]
 [ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://Assets/scripts/creep_manager.gd" id="6_8a6pp"]
@@ -10,21 +9,13 @@
 [ext_resource type="PackedScene" uid="uid://c8vu4hkdw64i0" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/sprite(enemy).tscn" id="8_kuoi0"]
 [ext_resource type="PackedScene" uid="uid://ck6y1vhk1y1xu" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/skeleton.tscn" id="9_2uv88"]
 [ext_resource type="Resource" uid="uid://ttu2vpk7irco" path="res://Assets/Recursos/R_oleadas/OleadasNivel1_1.tres" id="9_hlfkw"]
-[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="9_oecj2"]
-[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_wb18e"]
-[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="11_ro63v"]
-[ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="12_3y5p2"]
-[ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="12_rlqd0"]
-[ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="13_4hbg3"]
-[ext_resource type="PackedScene" uid="uid://ci3rcuc03a2kd" path="res://Assets/Escenas/Torres/IceWizTower/IceWizTower.tscn" id="13_sijf6"]
+[ext_resource type="PackedScene" uid="uid://dh1qc3apm1sx4" path="res://Assets/Escenas/player.tscn" id="10_jglew"]
 [ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://Assets/scripts/node_2d.gd" id="14_qdga2"]
 [ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="15_ovtgn"]
 [ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="16_drqky"]
 [ext_resource type="Resource" uid="uid://ctnxddjd8lssq" path="res://Assets/Dialogos/Mundo1/Intro_Nivel_1-1.dialogue" id="16_kuoi0"]
-[ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="16_rlqd0"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="17_oojqn"]
 [ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://Assets/scripts/button_2.gd" id="18_64rh3"]
-[ext_resource type="Resource" uid="uid://d06ev0177dxib" path="res://Assets/Recursos/Rtorres/IceWizTower.tres" id="18_305lw"]
 [ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="19_wo8mp"]
 [ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="20_r5rkq"]
 [ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="21_qa84f"]
@@ -107,32 +98,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 34
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4ruf"]
-emission_shape_offset = Vector3(0, 10, 0)
-emission_shape_scale = Vector3(20, 20, 10)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
-direction = Vector3(0, 0, -10)
-initial_velocity_min = 1.0
-initial_velocity_max = 1.0
-gravity = Vector3(0, 0, 0)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jglew"]
-transparency = 1
-cull_mode = 2
-shading_mode = 0
-albedo_texture = ExtResource("13_4hbg3")
-billboard_mode = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_sia5n"]
-material = SubResource("StandardMaterial3D_jglew")
-size = Vector2(0.1, 0.1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_qjeyg"]
-font_size = 25
-outline_size = 10
-outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_3qnke"]
 
@@ -262,116 +227,8 @@ enemy3 = ExtResource("9_2uv88")
 base = NodePath("../Map/Base")
 waves = ExtResource("9_hlfkw")
 
-[node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "creepManager", "card1", "card2", "card3", "card4", "card5", "card6")]
+[node name="Player" parent="." instance=ExtResource("10_jglew")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 27.44, 30, -1.49813)
-script = ExtResource("9_oecj2")
-baseobj = NodePath("../Map/Base")
-creepManager = NodePath("../CreepManager")
-card1 = NodePath("HBox Cards/TowerCard")
-card2 = NodePath("HBox Cards/TowerCard2")
-card3 = NodePath("HBox Cards/TowerCard3")
-card4 = NodePath("HBox Cards/TowerCard4")
-card5 = NodePath("HBox Cards/TowerCard5")
-card6 = NodePath("HBox Cards/TowerCard6")
-torre_test = ExtResource("4_iaa1h")
-Arrowtower = ExtResource("12_rlqd0")
-IceWiztower = ExtResource("13_sijf6")
-camera_sens = 0.1
-
-[node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 1, 8.35189e-23, 0, 8.35188e-23, 1, 0, 0, 0)
-cast_shadow = 0
-amount = 100
-lifetime = 6.0
-process_material = SubResource("ParticleProcessMaterial_m4ruf")
-draw_pass_1 = SubResource("QuadMesh_sia5n")
-
-[node name="Camera3D" type="Camera3D" parent="Player"]
-transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0)
-
-[node name="VBox playerdata" type="VBoxContainer" parent="Player"]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
-grow_horizontal = 0
-
-[node name="HBox Money" type="HBoxContainer" parent="Player/VBox playerdata"]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="MoneyLabel" type="Label" parent="Player/VBox playerdata/HBox Money"]
-layout_mode = 2
-text = "dih"
-label_settings = SubResource("LabelSettings_qjeyg")
-
-[node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Money"]
-texture_filter = 1
-layout_mode = 2
-texture = ExtResource("10_wb18e")
-expand_mode = 2
-
-[node name="HBox Health" type="HBoxContainer" parent="Player/VBox playerdata"]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="Health" type="Label" parent="Player/VBox playerdata/HBox Health"]
-layout_mode = 2
-text = "dih"
-label_settings = SubResource("LabelSettings_qjeyg")
-
-[node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Health"]
-layout_mode = 2
-texture = ExtResource("11_ro63v")
-expand_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Player/VBox playerdata"]
-layout_mode = 2
-
-[node name="wave" type="Label" parent="Player/VBox playerdata/HBoxContainer"]
-layout_mode = 2
-text = "Wave:"
-label_settings = SubResource("LabelSettings_qjeyg")
-
-[node name="wave number" type="Label" parent="Player/VBox playerdata/HBoxContainer"]
-layout_mode = 2
-text = "dih"
-label_settings = SubResource("LabelSettings_qjeyg")
-
-[node name="HBox Cards" type="HBoxContainer" parent="Player"]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -120.0
-offset_right = 740.0
-grow_vertical = 0
-
-[node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
-layout_mode = 2
-size_flags_horizontal = 1
-TowerData = ExtResource("16_rlqd0")
-
-[node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
-layout_mode = 2
-size_flags_horizontal = 1
-TowerData = ExtResource("18_305lw")
-
-[node name="TowerCard3" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
-layout_mode = 2
-size_flags_horizontal = 1
-
-[node name="TowerCard4" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
-layout_mode = 2
-size_flags_horizontal = 1
-
-[node name="TowerCard5" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
-layout_mode = 2
-size_flags_horizontal = 1
-
-[node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
-layout_mode = 2
-size_flags_horizontal = 1
 
 [node name="debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)

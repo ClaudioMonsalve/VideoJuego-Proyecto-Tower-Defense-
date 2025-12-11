@@ -1,0 +1,176 @@
+[gd_scene load_steps=15 format=3 uid="uid://dh1qc3apm1sx4"]
+
+[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="1_q1pgm"]
+[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="2_5dxwj"]
+[ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="3_n4uvr"]
+[ext_resource type="PackedScene" uid="uid://ci3rcuc03a2kd" path="res://Assets/Escenas/Torres/IceWizTower/IceWizTower.tscn" id="4_1ubfj"]
+[ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="5_g210u"]
+[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="6_lcmbs"]
+[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="7_d2gq5"]
+[ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="8_vya26"]
+[ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="9_8adtq"]
+[ext_resource type="Resource" uid="uid://d06ev0177dxib" path="res://Assets/Recursos/Rtorres/IceWizTower.tres" id="10_m5wu2"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4ruf"]
+emission_shape_offset = Vector3(0, 10, 0)
+emission_shape_scale = Vector3(20, 20, 10)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(0, 0, -10)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jglew"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("5_g210u")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_sia5n"]
+material = SubResource("StandardMaterial3D_jglew")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_qjeyg"]
+font_size = 25
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
+[node name="Player" type="Node3D" node_paths=PackedStringArray("card1", "card2", "card3", "card4", "card5", "card6")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+script = ExtResource("1_q1pgm")
+card1 = NodePath("HBox Cards/TowerCard")
+card2 = NodePath("HBox Cards/TowerCard2")
+card3 = NodePath("HBox Cards/TowerCard3")
+card4 = NodePath("HBox Cards/TowerCard4")
+card5 = NodePath("HBox Cards/TowerCard5")
+card6 = NodePath("HBox Cards/TowerCard6")
+torre_test = ExtResource("2_5dxwj")
+Arrowtower = ExtResource("3_n4uvr")
+IceWiztower = ExtResource("4_1ubfj")
+camera_sens = 0.1
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 8.35189e-23, 0, 8.35188e-23, 1, 0, 0, 0)
+cast_shadow = 0
+amount = 100
+lifetime = 6.0
+process_material = SubResource("ParticleProcessMaterial_m4ruf")
+draw_pass_1 = SubResource("QuadMesh_sia5n")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866026, -0.5, 0, 0.5, 0.866026, 0, 0, 0)
+
+[node name="VBox playerdata" type="VBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="HBox Money" type="HBoxContainer" parent="VBox playerdata"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="MoneyLabel" type="Label" parent="VBox playerdata/HBox Money"]
+layout_mode = 2
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="TextureRect" type="TextureRect" parent="VBox playerdata/HBox Money"]
+texture_filter = 1
+layout_mode = 2
+texture = ExtResource("6_lcmbs")
+expand_mode = 2
+
+[node name="HBox Health" type="HBoxContainer" parent="VBox playerdata"]
+layout_mode = 2
+size_flags_horizontal = 8
+
+[node name="Health" type="Label" parent="VBox playerdata/HBox Health"]
+layout_mode = 2
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="TextureRect" type="TextureRect" parent="VBox playerdata/HBox Health"]
+layout_mode = 2
+texture = ExtResource("7_d2gq5")
+expand_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox playerdata"]
+layout_mode = 2
+
+[node name="wave" type="Label" parent="VBox playerdata/HBoxContainer"]
+layout_mode = 2
+text = "Wave:"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="wave number" type="Label" parent="VBox playerdata/HBoxContainer"]
+layout_mode = 2
+text = "dih"
+label_settings = SubResource("LabelSettings_qjeyg")
+
+[node name="HBox Cards" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -120.0
+offset_right = 740.0
+grow_vertical = 0
+
+[node name="TowerCard" parent="HBox Cards" instance=ExtResource("8_vya26")]
+layout_mode = 2
+size_flags_horizontal = 1
+TowerData = ExtResource("9_8adtq")
+
+[node name="TowerCard2" parent="HBox Cards" instance=ExtResource("8_vya26")]
+layout_mode = 2
+size_flags_horizontal = 1
+TowerData = ExtResource("10_m5wu2")
+
+[node name="TowerCard3" parent="HBox Cards" instance=ExtResource("8_vya26")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard4" parent="HBox Cards" instance=ExtResource("8_vya26")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard5" parent="HBox Cards" instance=ExtResource("8_vya26")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard6" parent="HBox Cards" instance=ExtResource("8_vya26")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="TowerMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = -15.5
+offset_right = 53.0
+offset_bottom = 15.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "vender torre"

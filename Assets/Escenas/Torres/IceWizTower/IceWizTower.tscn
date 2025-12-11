@@ -1,9 +1,37 @@
-[gd_scene load_steps=9 format=3 uid="uid://ci3rcuc03a2kd"]
+[gd_scene load_steps=13 format=3 uid="uid://ci3rcuc03a2kd"]
 
 [ext_resource type="Script" uid="uid://b8ivagok2cfr4" path="res://Assets/Escenas/Torres/IceWizTower/ice_wiz_tower.gd" id="1_bgmhf"]
 [ext_resource type="PackedScene" uid="uid://cvf0k6ftvdiw4" path="res://Assets/Escenas/Torres/IceWizTower/IceWizTowerProyectile.tscn" id="2_uv2xn"]
 [ext_resource type="PackedScene" uid="uid://dvwr31boo46as" path="res://Assets/Escenas/Torres/IceWizTower/IceWizTowerExplosion.tscn" id="3_gj8o8"]
 [ext_resource type="PackedScene" uid="uid://dw7pg2tkh8yhq" path="res://Assets/modelos/Torres/iceWizTorre.glb" id="3_uv2xn"]
+[ext_resource type="Texture2D" uid="uid://njw3n8mhyvd" path="res://Assets/sprites/TowerTroops/IceWiz.png" id="4_uoqao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uv8jq"]
+atlas = ExtResource("4_uoqao")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_up2mb"]
+atlas = ExtResource("4_uoqao")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_acls7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uv8jq")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_up2mb")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 2.0
+}]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6w6ls"]
 height = 30.0
@@ -26,12 +54,19 @@ radius = 2.0
 script = ExtResource("1_bgmhf")
 arrowtrail = ExtResource("2_uv2xn")
 explosion = ExtResource("3_gj8o8")
-price = 12.0
+price = 1.0
 damage = 4.0
 attkspeed = 0.8
 
 [node name="ArcherPos" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27321, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.4117, 0)
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-3.72513e-08, -0.523198, 0.852211, -2.28697e-08, 0.852211, 0.523198, -1, 0, -4.37114e-08, -0.321828, 3.44267, 0)
+pixel_size = 0.05
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_acls7")
+animation = &"Idle"
 
 [node name="AttackRange" type="Area3D" parent="."]
 collision_layer = 2
