@@ -54,7 +54,7 @@ radius = 2.0
 script = ExtResource("1_bgmhf")
 arrowtrail = ExtResource("2_uv2xn")
 explosion = ExtResource("3_gj8o8")
-price = 1.0
+price = 12.0
 damage = 4.0
 attkspeed = 0.8
 

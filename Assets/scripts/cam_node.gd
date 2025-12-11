@@ -6,11 +6,14 @@ extends Node3D
 @onready var hpLabel = $"VBox playerdata/HBox Health/Health"
 @onready var mnLabel = $"VBox playerdata/HBox Money/MoneyLabel"
 @onready var wvLabel = $"VBox playerdata/HBoxContainer/wave number"
-@onready var debug = $"../debug"
 
 #Menu de torre
 #============================
-
+@onready var menuTorre = $TowerMenu
+@onready var botonVenta = $TowerMenu/Vender
+@onready var Cerrar = $TowerMenu/Cerrar
+var selectedTower: tower
+var screen_pos
 
 
 #tarjetas de torres
@@ -47,6 +50,9 @@ var is_hovered = false
 var detectedPlatform = null
 
 func _ready() -> void:
+	botonVenta.connect("pressed", Callable(self,"venderTorre"))
+	Cerrar.connect("pressed", Callable(self,"cerrarMenuTorre"))
+	menuTorre.visible = false
 	card1.connect("gui_input", Callable(self, "_on_tower_card_input").bind(card1))
 	card2.connect("gui_input", Callable(self, "_on_tower_card_input").bind(card2))
 	card3.connect("gui_input", Callable(self, "_on_tower_card_input").bind(card3))
@@ -149,8 +155,9 @@ func handle_click_or_tap(event_pos: Vector2):
 	if result:
 		var interactPos = result.position
 		var interactedObjct = result.collider
-		debug.position = interactPos
-		print("clicked at:", interactPos, "on:", interactedObjct.get_parent())
+		if interactedObjct.get_parent() is tower:
+			selectedTower = interactedObjct.get_parent()
+			menuTorre.visible = visible
 
 	pass
 
@@ -186,11 +193,20 @@ func _unhandled_input(event: InputEvent) -> void:
 
 		translate(Vector3(-dx,dy,0))
 
+func venderTorre():
+	baseobj.muni += selectedTower.price
+	selectedTower.queue_free()
+	menuTorre.visible = false
 
+func cerrarMenuTorre():
+	selectedTower = null
+	menuTorre.visible = false	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	hpLabel.text = str(int(baseobj.hp))
 	mnLabel.text = str(baseobj.muni)
 	wvLabel.text = str(creepManager.wave_index + 1)
-	pass
+	if selectedTower:
+		screen_pos = camera.unproject_position(selectedTower.global_transform.origin) - menuTorre.size/2
+		menuTorre.position = screen_pos

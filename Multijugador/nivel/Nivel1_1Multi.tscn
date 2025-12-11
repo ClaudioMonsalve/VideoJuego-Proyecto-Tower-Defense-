@@ -224,7 +224,8 @@ transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, -1,
 
 [node name="Base" parent="Map" instance=ExtResource("2_2rvo7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-muni = 8
+muni = 100
+maxhp = 100.0
 
 [node name="Paths" type="Node3D" parent="Map"]
 
@@ -396,6 +397,48 @@ size_flags_horizontal = 1
 [node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("16_pjcsu")]
 layout_mode = 2
 size_flags_horizontal = 1
+
+[node name="TowerMenu" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -50.0
+offset_right = 50.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(50, 50)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Vender" type="Button" parent="Player/TowerMenu"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -53.0
+offset_right = 53.0
+offset_bottom = 31.0
+grow_horizontal = 2
+text = "vender torre"
+
+[node name="Cerrar" type="Button" parent="Player/TowerMenu"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -28.0
+offset_top = -31.0
+offset_right = 28.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "cerrar"
 
 [node name="debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)

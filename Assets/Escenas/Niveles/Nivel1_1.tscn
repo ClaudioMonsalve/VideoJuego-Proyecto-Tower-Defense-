@@ -227,8 +227,10 @@ enemy3 = ExtResource("9_2uv88")
 base = NodePath("../Map/Base")
 waves = ExtResource("9_hlfkw")
 
-[node name="Player" parent="." instance=ExtResource("10_jglew")]
+[node name="Player" parent="." node_paths=PackedStringArray("baseobj", "creepManager") instance=ExtResource("10_jglew")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 27.44, 30, -1.49813)
+baseobj = NodePath("../Map/Base")
+creepManager = NodePath("../CreepManager")
 
 [node name="debug" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)
