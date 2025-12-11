@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dh1qc3apm1sx4"]
+[gd_scene load_steps=16 format=3 uid="uid://dh1qc3apm1sx4"]
 
 [ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="1_q1pgm"]
 [ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="2_5dxwj"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="8_vya26"]
 [ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="9_8adtq"]
 [ext_resource type="Resource" uid="uid://d06ev0177dxib" path="res://Assets/Recursos/Rtorres/IceWizTower.tres" id="10_m5wu2"]
+[ext_resource type="Theme" uid="uid://vmp27cq7u4sr" path="res://Assets/Fonts/selectorTheme.tres" id="11_5dxwj"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m4ruf"]
 emission_shape_offset = Vector3(0, 10, 0)
@@ -162,6 +163,7 @@ grow_vertical = 2
 pivot_offset = Vector2(50, 50)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("11_5dxwj")
 
 [node name="Vender" type="Button" parent="TowerMenu"]
 layout_mode = 1

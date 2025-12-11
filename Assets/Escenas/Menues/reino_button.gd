@@ -4,11 +4,11 @@ extends Area2D
 @export var nombre: String = "Nombre del reino"
 @export var niveles: int = 1
 @export var nombreNivel1: String = "nivel1"
-@export var rutaNivel1: String = "vacio"
+@export var rutaNivel1: String = ""
 @export var nombreNivel2: String = "nivel2"
-@export var rutaNivel2: String = "vacio"
+@export var rutaNivel2: String = ""
 @export var nombreNivel3: String = "nivel3"
-@export var rutaNivel3: String = "vacio"
+@export var rutaNivel3: String = ""
 @export var fondo: Texture2D
 @export var ico: Texture2D
 
@@ -51,6 +51,7 @@ func _ready():
 	cam_target = cam_origin + cam_offset
 	
 	reinoLabel.text = nombre
+	reinoLabel.pivot_offset = reinoLabel.size/2
 	
 	if fondo:
 		nodoFondo.set_texture(fondo)
@@ -115,20 +116,25 @@ func _level_banner_input_event(viewport, event, shape_idx, banner):
 			banner1:
 				nivelSeleccionado.text = "Nivel Seleccionado: " + nombreNivel1
 				rutaNivelSeleccionado = rutaNivel1
-				if jugarBtn.disabled == true:
+				if jugarBtn.disabled == true and rutaNivelSeleccionado != "":
 					jugarBtn.disabled = false
-					
+				else:
+					jugarBtn.disabled = true
 				return
 			banner2:
 				nivelSeleccionado.text = "Nivel Seleccionado: " + nombreNivel2
 				rutaNivelSeleccionado = rutaNivel2
-				if jugarBtn.disabled == true:
+				if jugarBtn.disabled == true and rutaNivelSeleccionado != "":
 					jugarBtn.disabled = false
+				else:
+					jugarBtn.disabled = true
 				return
 			banner3:
 				nivelSeleccionado.text = "Nivel Seleccionado: " + nombreNivel3
 				rutaNivelSeleccionado = rutaNivel3
-				if jugarBtn.disabled == true:
+				if jugarBtn.disabled == true and rutaNivelSeleccionado != "":
 					jugarBtn.disabled = false
+				else:
+					jugarBtn.disabled = true
 				return
 		pass

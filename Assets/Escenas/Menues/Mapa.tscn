@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://7cho3hc7rrk0"]
+[gd_scene load_steps=10 format=3 uid="uid://7cho3hc7rrk0"]
 
 [ext_resource type="Script" uid="uid://0nhun5tfoha1" path="res://Assets/Escenas/Menues/mapa.gd" id="1_ydl5s"]
 [ext_resource type="Texture2D" uid="uid://driaklfwtvu57" path="res://yggdrasil map wip.jpg" id="2_wrwbp"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://c6di1baksa8xn" path="res://Assets/sprites/UI/map menu midgard.png" id="4_fiayx"]
 [ext_resource type="Texture2D" uid="uid://dd2m1e2txhsve" path="res://Assets/sprites/UI/MidgardBadge.png" id="5_wrwbp"]
 [ext_resource type="Texture2D" uid="uid://cywnmcubo5nhe" path="res://Assets/sprites/UI/MuspelBadge.png" id="6_jneuy"]
+[ext_resource type="Texture2D" uid="uid://bvw8wf2ys24vl" path="res://Assets/sprites/UI/map menu muspel.png" id="6_wrwbp"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="8_wwe7q"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e123j"]
@@ -38,12 +39,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -582.0
-offset_top = -897.0
-offset_right = 578.0
-offset_bottom = 407.0
+offset_left = -1161.0
+offset_top = -1548.0
+offset_right = -1.0
+offset_bottom = -244.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 texture = ExtResource("2_wrwbp")
 stretch_mode = 5
 
@@ -53,6 +55,8 @@ stretch_mode = 5
 position = Vector2(-12, -124)
 nombre = "Midgard"
 rutaNivel1 = "res://Assets/Escenas/Niveles/Nivel1_1.tscn"
+nombreNivel2 = "bloqueado"
+nombreNivel3 = "bloqueado"
 fondo = ExtResource("4_fiayx")
 ico = ExtResource("5_wrwbp")
 cam = NodePath("../../Camera2D")
@@ -62,7 +66,9 @@ cam_zoom = Vector2(1.5, 1.5)
 position = Vector2(362, -155)
 nombre = "Muspelheim"
 rutaNivel1 = "res://Assets/Escenas/Niveles/Nivel2_1.tscn"
-fondo = ExtResource("4_fiayx")
+nombreNivel2 = "bloqueado"
+nombreNivel3 = "bloqueado"
+fondo = ExtResource("6_wrwbp")
 ico = ExtResource("6_jneuy")
 cam = NodePath("../../Camera2D")
 cam_zoom = Vector2(1.5, 1.5)

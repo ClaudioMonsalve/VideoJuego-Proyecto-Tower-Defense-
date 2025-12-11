@@ -14,7 +14,7 @@ size = Vector2(72, 69)
 [sub_resource type="LabelSettings" id="LabelSettings_as8oc"]
 font = ExtResource("4_l4ut5")
 font_size = 36
-outline_size = 5
+outline_size = 9
 outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ut5"]
@@ -89,14 +89,16 @@ grow_vertical = 2
 texture = ExtResource("2_ryr1x")
 
 [node name="ReinoLabel" type="Label" parent="OpenMap/Panel"]
-layout_mode = 2
+layout_mode = 1
+anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -78.0
-offset_top = 14.0
-offset_right = 79.0
-offset_bottom = 54.0
+offset_left = -88.0
+offset_top = 13.0
+offset_right = 89.0
+offset_bottom = 53.0
 grow_horizontal = 2
+pivot_offset = Vector2(1, 1)
 size_flags_horizontal = 4
 text = "Reino X"
 label_settings = SubResource("LabelSettings_as8oc")

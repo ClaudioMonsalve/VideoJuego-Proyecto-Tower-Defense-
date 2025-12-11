@@ -12,10 +12,11 @@ func effect(body):
 	get_tree().current_scene.add_child(arrow)
 	animation()
 	await arrow.tree_exited
-	var kboom = explosion.instantiate()
-	kboom.mainTarget = body
-	kboom.towerDamage = damage
-	get_tree().current_scene.add_child(kboom)
+	if body:
+		var kboom = explosion.instantiate()
+		kboom.mainTarget = body
+		kboom.towerDamage = damage
+		get_tree().current_scene.add_child(kboom)
 
 func animation():
 	animatedsprite.play("Shoot")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dui6pduprwsc"]
+[gd_scene load_steps=7 format=3 uid="uid://dui6pduprwsc"]
 
 [ext_resource type="Script" uid="uid://mkjsw3g607hd" path="res://Assets/Escenas/Menues/main_menu.gd" id="1_vw44o"]
 [ext_resource type="Texture2D" uid="uid://b8u6uoxfuntud" path="res://Assets/Fondos/mi_imagen_redimensionada.png" id="2_axdlp"]
@@ -11,6 +11,8 @@ corner_radius_top_left = 20
 corner_radius_top_right = 20
 corner_radius_bottom_right = 20
 corner_radius_bottom_left = 20
+
+[sub_resource type="LabelSettings" id="LabelSettings_axdlp"]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource("1_vw44o")
@@ -93,3 +95,15 @@ theme_override_font_sizes/font_size = 45
 text = "The Last Stand"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 585.0
+offset_right = 40.0
+offset_bottom = 608.0
+grow_vertical = 0
+text = "closed alpha v1"
+label_settings = SubResource("LabelSettings_axdlp")
