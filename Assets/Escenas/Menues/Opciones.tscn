@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=3 uid="uid://dl1bfm8de3k50"]
+
+[ext_resource type="Script" uid="uid://dy4r6d1fjoscv" path="res://Assets/Escenas/Menues/opciones.gd" id="1_pc2hp"]
+[ext_resource type="Texture2D" uid="uid://b8u6uoxfuntud" path="res://Assets/Fondos/mi_imagen_redimensionada.png" id="1_tg4yp"]
+[ext_resource type="FontFile" uid="uid://b1eio0nx46t83" path="res://Assets/Fonts/Mjolnir.otf" id="2_pbpoo"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="4_cbxwd"]
+[ext_resource type="Script" uid="uid://bp8mi5hty6xva" path="res://Assets/Escenas/Menues/BUttonOp.gd" id="5_cbxwd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3y6j"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 0.831373)
+corner_radius_top_left = 40
+corner_radius_top_right = 40
+corner_radius_bottom_right = 40
+corner_radius_bottom_left = 40
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_61pgq"]
+bg_color = Color(0.729412, 0.729412, 0.729412, 1)
+corner_radius_top_left = 20
+corner_radius_top_right = 20
+corner_radius_bottom_right = 20
+corner_radius_bottom_left = 20
+
+[node name="Opciones" type="Node2D"]
+script = ExtResource("1_pc2hp")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+modulate = Color(0.277527, 0.277528, 0.277527, 1)
+custom_minimum_size = Vector2(648, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_tg4yp")
+
+[node name="Panel" type="Panel" parent="."]
+offset_left = 238.0
+offset_top = 159.0
+offset_right = 919.0
+offset_bottom = 566.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_a3y6j")
+
+[node name="HSlider2" type="HSlider" parent="Panel"]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 183.0
+offset_right = 431.0
+offset_bottom = 209.0
+scale = Vector2(2, 2)
+max_value = 1.0
+step = 0.1
+
+[node name="Label" type="Label" parent="Panel/HSlider2"]
+layout_mode = 0
+offset_left = -74.0
+offset_top = 5.0
+offset_right = -34.0
+offset_bottom = 54.0
+theme_override_fonts/font = ExtResource("4_cbxwd")
+text = "SFX
+"
+
+[node name="Label" type="Label" parent="."]
+offset_left = 177.0
+offset_top = 64.0
+offset_right = 1001.0
+offset_bottom = 251.0
+theme_override_colors/font_color = Color(0.92549, 0.917647, 0, 1)
+theme_override_constants/outline_size = 70
+theme_override_fonts/font = ExtResource("2_pbpoo")
+theme_override_font_sizes/font_size = 100
+text = "OPciones"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Button2" type="Button" parent="."]
+offset_left = 49.0
+offset_top = 38.0
+offset_right = 181.0
+offset_bottom = 132.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_cbxwd")
+theme_override_font_sizes/font_size = 34
+theme_override_styles/normal = SubResource("StyleBoxFlat_61pgq")
+text = "VOlver"
+script = ExtResource("5_cbxwd")
+
+[node name="HSlider" type="HSlider" parent="."]
+offset_left = 466.0
+offset_top = 269.0
+offset_right = 667.0
+offset_bottom = 291.0
+scale = Vector2(2, 2)
+max_value = 1.0
+step = 0.1
+
+[node name="Label" type="Label" parent="HSlider"]
+layout_mode = 0
+offset_left = -82.5
+offset_top = -1.0
+offset_right = -27.5
+offset_bottom = 22.0
+theme_override_fonts/font = ExtResource("4_cbxwd")
+text = "Musica"

@@ -8,12 +8,6 @@ func _ready():
 func _salir_partida() -> void:
 	print("\n🚪 === ABANDONANDO PARTIDA ===")
 
-	# 1) Verificar que realmente estamos en partida
-	if Globals.match_id == "":
-		print("⚠️ No hay match activo, solo regreso al menú.")
-		get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Main menu.tscn")
-		return
-
 	# 2) ENVIAR 'defeat' AL RIVAL (avisamos que nosotros perdimos)
 	var payload := {
 		"type": "defeat",

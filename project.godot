@@ -23,6 +23,7 @@ TestScene="*res://Assets/scripts/test_scene.gd"
 ButtonSound="*res://Assets/Escenas/Audios/ButtonSound.tscn"
 Globals="*res://Assets/Escenas/Global/Globals.gd"
 Network="*res://Multijugador/Scripts/Network.gd"
+Settings="*res://Assets/Escenas/Global/settings.gd"
 
 [dialogue_manager]
 

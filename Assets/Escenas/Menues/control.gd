@@ -12,32 +12,35 @@ var progress := []
 var loader
 
 func _ready():
-	# === SINGLEPLAYER ===
-	if Globals.nextLevel != "":
-		next_scene = Globals.nextLevel
-	
-	# === MULTIPLAYER ===
-	elif Globals.multiplayer_level_random != "":
+	# 1) Si hay un nivel multijugador elegido → usar ese
+	if Globals.multiplayer_level_random != "":
 		next_scene = Globals.multiplayer_level_random
-
-	# === NINGÚN NIVEL ASIGNADO ===
-	else:
-		push_error("❌ No existe nextLevel ni multiplayer_level_random.")
-		return
-	ResourceLoader.load_threaded_request(next_scene, "PackedScene")
 	
+	# 2) Si no, usar el nivel normal de singleplayer
+	elif Globals.nextLevel != "":
+		next_scene = Globals.nextLevel
+		
+	else:
+		push_error("❌ ERROR: No hay ninguna escena asignada para cargar.")
+		return
+
+	# 3) Iniciar carga asíncrona
+	ResourceLoader.load_threaded_request(next_scene, "PackedScene")
+
 	label.text = "Cargando"
 	progress_bar.value = 0
 	progress_bar.max_value = max
-	
-	# Crear un Timer para animar los puntos
+
+	# Crear animación de puntos
 	dot_timer = Timer.new()
-	dot_timer.wait_time = 0.5  # cada medio segundo cambia
+	dot_timer.wait_time = 0.5
 	dot_timer.one_shot = false
 	add_child(dot_timer)
 	dot_timer.start()
 	dot_timer.timeout.connect(_on_dot_timer_timeout)
+	
 	set_process(true)
+
 
 func _process(delta):
 	var status = ResourceLoader.load_threaded_get_status(next_scene, progress)

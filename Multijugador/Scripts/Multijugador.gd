@@ -243,13 +243,16 @@ func _on_mensaje_recibido(msg: String):
 
 ##Cambio
 		"match-start":
+			# 1) Elegir mapa solo una vez
+			if Globals.multiplayer_level_random == "":
+				var niveles = Globals.multiplayer_levels
+				Globals.multiplayer_level_random = niveles.pick_random()
 
-			var niveles = Globals.multiplayer_levels
-			Globals.multiplayer_level_random = niveles.pick_random()
-
+			# 2) Guardar datos globales del match
 			Globals.match_id = match_id
 			Globals.my_player_name = MY_PLAYER_NAME
 
+			# 3) Cargar la pantalla de carga
 			await get_tree().process_frame
 			get_tree().change_scene_to_file("res://Assets/Escenas/Menues/control.tscn")
 

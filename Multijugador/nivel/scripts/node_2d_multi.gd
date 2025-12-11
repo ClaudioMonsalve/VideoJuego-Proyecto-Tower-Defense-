@@ -170,7 +170,6 @@ func _MenuDerrota(valor: bool) -> void:
 	MusicPlayer.stream_paused = true
 	mensaje.visible = true
 	salir_2.visible = true
-	reiniciar_2.visible = true
 	mensaje.mostrar_resultado(valor)
 	
 	

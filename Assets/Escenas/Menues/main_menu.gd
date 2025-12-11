@@ -96,8 +96,7 @@ func _on_button_pressed():
 
 func _on_button_opciones():
 	ButtonSound.play()   # o ButtonSound._play() si usas versión custom
-	# Aquí puedes cargar la escena de opciones si tienes una
-	print("Opciones aún no implementado")
+	get_tree().change_scene_to_file("res://Assets/Escenas/Menues/Opciones.tscn")
 
 
 func _on_button_multijugador():
