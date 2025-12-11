@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=3 uid="uid://c8vu4hkdw64i0"]
+[gd_scene load_steps=18 format=3 uid="uid://c8vu4hkdw64i0"]
 
 [ext_resource type="Script" uid="uid://bghyx3is0dlmc" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.gd" id="1_bv54i"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_xrrps"]
 [ext_resource type="Texture2D" uid="uid://dap1j1vaytv0w" path="res://Assets/sprites/enemies/mundo1/sprite.png" id="3_8474c"]
 [ext_resource type="FontFile" uid="uid://dtgtlfun2nsdm" path="res://Assets/Fonts/Norse.otf" id="4_8g3wx"]
-[ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="4_8iltd"]
+[ext_resource type="Material" uid="uid://o2h0oais485j" path="res://Assets/sprites/enemies/mundo1/spriteFiremat.tres" id="4_8iltd"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_mkyue"]
 
@@ -49,20 +49,11 @@ spread = 10.0
 initial_velocity_min = 0.5
 initial_velocity_max = 1.0
 gravity = Vector3(0, 0, 0)
+scale_max = 2.0
 scale_curve = SubResource("CurveTexture_kum5n")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bo884"]
-transparency = 1
-vertex_color_use_as_albedo = true
-albedo_color = Color(1, 0.60191, 0.895685, 1)
-albedo_texture = ExtResource("4_8iltd")
-emission_enabled = true
-emission = Color(0.768294, 0.212137, 1, 1)
-emission_energy_multiplier = 5.0
-billboard_mode = 1
-
-[sub_resource type="QuadMesh" id="QuadMesh_1lnv8"]
-material = SubResource("StandardMaterial3D_bo884")
+[sub_resource type="QuadMesh" id="QuadMesh_kum5n"]
+material = ExtResource("4_8iltd")
 size = Vector2(0.1, 0.1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mkyue"]
@@ -120,10 +111,11 @@ billboard = 1
 texture = SubResource("ViewportTexture_mkyue")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="RigidBody3D"]
+cast_shadow = 0
 amount = 6
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_kum5n")
-draw_pass_1 = SubResource("QuadMesh_1lnv8")
+draw_pass_1 = SubResource("QuadMesh_kum5n")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 transparent_bg = true

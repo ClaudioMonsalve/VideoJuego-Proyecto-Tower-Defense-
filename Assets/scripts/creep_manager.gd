@@ -79,7 +79,7 @@ func waitWhileNotPaused(seconds: float) -> void:
 	while elapsed < seconds:
 		if not pausa:
 			elapsed += get_process_delta_time()
-		await get_tree().process_frame #<<<<<===== error
+		await get_tree().process_frame
 
 
 # === Spawns a group of enemies (one path) ===

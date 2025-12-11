@@ -11,20 +11,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jd542"]
 size = Vector2(72, 69)
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4ut5"]
-
-[sub_resource type="Theme" id="Theme_gloyt"]
-Label/colors/font_color = Color(1, 1, 1, 1)
-Label/colors/font_outline_color = Color(0, 0, 0, 1)
-Label/colors/font_shadow_color = Color(0, 0, 0, 0)
-Label/constants/line_spacing = 3
-Label/constants/outline_size = 4
-Label/constants/shadow_offset_x = 1
-Label/constants/shadow_offset_y = 1
-Label/constants/shadow_outline_size = 1
-Label/font_sizes/font_size = 40
-Label/fonts/font = ExtResource("4_l4ut5")
-Label/styles/normal = SubResource("StyleBoxEmpty_l4ut5")
+[sub_resource type="LabelSettings" id="LabelSettings_as8oc"]
+font = ExtResource("4_l4ut5")
+font_size = 36
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l4ut5"]
 size = Vector2(49, 75)
@@ -34,6 +25,8 @@ size = Vector2(48, 76)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_as8oc"]
 size = Vector2(52, 76)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l4ut5"]
 
 [sub_resource type="Theme" id="Theme_as8oc"]
 Label/colors/font_color = Color(1, 1, 1, 1)
@@ -53,16 +46,16 @@ script = ExtResource("1_hej1a")
 fondo = ExtResource("2_ryr1x")
 
 [node name="ReinoIco" type="CollisionShape2D" parent="."]
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_jd542")
 debug_color = Color(0, 0, 0, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="ReinoIco"]
+[node name="Ico" type="Sprite2D" parent="ReinoIco"]
 texture_filter = 1
 scale = Vector2(2.5, 2.5)
 texture = ExtResource("2_emp7a")
 
 [node name="OpenMap" type="Node2D" parent="."]
+visible = false
 
 [node name="Panel" type="Panel" parent="OpenMap"]
 self_modulate = Color(1, 1, 1, 0)
@@ -105,8 +98,9 @@ offset_right = 79.0
 offset_bottom = 54.0
 grow_horizontal = 2
 size_flags_horizontal = 4
-theme = SubResource("Theme_gloyt")
 text = "Reino X"
+label_settings = SubResource("LabelSettings_as8oc")
+horizontal_alignment = 1
 
 [node name="areaLevel1" type="Area2D" parent="OpenMap"]
 position = Vector2(-180, -15)

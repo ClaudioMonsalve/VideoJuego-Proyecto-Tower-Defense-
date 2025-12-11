@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://b7kgp48jq5afc"]
+[gd_scene load_steps=5 format=3 uid="uid://b7kgp48jq5afc"]
 
 [ext_resource type="Script" uid="uid://cfh87ij8difnx" path="res://BranchOtro/scenes/tower_card.gd" id="1_4ewro"]
 [ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="2_jqyac"]
@@ -12,6 +12,9 @@ border_width_bottom = 2
 border_color = Color(0.584737, 0.428223, 0.239362, 1)
 shadow_color = Color(0, 0, 0, 0.768627)
 shadow_offset = Vector2(2, 2)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_jqyac"]
+load_path = "res://.godot/imported/Screenshot_2.jpg-adc5e5421f3a727aaaf264202a46695f.ctex"
 
 [node name="TowerCard" type="PanelContainer"]
 custom_minimum_size = Vector2(120, 120)
@@ -48,3 +51,6 @@ horizontal_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 4
+texture = SubResource("CompressedTexture2D_jqyac")
+expand_mode = 2

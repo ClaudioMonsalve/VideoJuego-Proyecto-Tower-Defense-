@@ -1,8 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dqdc4d0a6watr"]
+[gd_scene load_steps=8 format=3 uid="uid://dqdc4d0a6watr"]
 
 [ext_resource type="Script" uid="uid://cgk6ddcibxnkv" path="res://Assets/scripts/base.gd" id="1_gbvf7"]
 [ext_resource type="PackedScene" uid="uid://sx0cb75tnwlt" path="res://Assets/modelos/Base/BaseHall.glb" id="2_gbvf7"]
-[ext_resource type="PackedScene" uid="uid://dkt8mrj1lx66o" path="res://Assets/modelos/Decoración/torchfire.tscn" id="3_ehibd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ddre"]
 size = Vector3(7, 7, 7)
@@ -55,15 +54,3 @@ value = 100.0
 
 [node name="BaseHall" parent="." instance=ExtResource("2_gbvf7")]
 transform = Transform3D(4.29296e-08, 0, -3.6, 0, 3.6, 0, 3.6, 0, 4.29296e-08, 0, -3.61457, 0)
-
-[node name="OmniLight3D" parent="." instance=ExtResource("3_ehibd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4502, -1.17478, 3.4823)
-
-[node name="OmniLight3D2" parent="." instance=ExtResource("3_ehibd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5011, -1.17478, 3.4823)
-
-[node name="OmniLight3D3" parent="." instance=ExtResource("3_ehibd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5011, -1.17478, -3.62177)
-
-[node name="OmniLight3D4" parent="." instance=ExtResource("3_ehibd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49678, -1.17478, -3.62177)

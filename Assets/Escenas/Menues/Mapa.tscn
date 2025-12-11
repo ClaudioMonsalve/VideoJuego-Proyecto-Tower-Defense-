@@ -1,15 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://7cho3hc7rrk0"]
+[gd_scene load_steps=9 format=3 uid="uid://7cho3hc7rrk0"]
 
 [ext_resource type="Script" uid="uid://0nhun5tfoha1" path="res://Assets/Escenas/Menues/mapa.gd" id="1_ydl5s"]
 [ext_resource type="Texture2D" uid="uid://driaklfwtvu57" path="res://yggdrasil map wip.jpg" id="2_wrwbp"]
 [ext_resource type="PackedScene" uid="uid://cbc7jkoolcbr5" path="res://Assets/Escenas/Menues/reino_button.tscn" id="3_wrwbp"]
 [ext_resource type="Texture2D" uid="uid://c6di1baksa8xn" path="res://Assets/sprites/UI/map menu midgard.png" id="4_fiayx"]
-[ext_resource type="Script" uid="uid://dvbnrqawl4kgs" path="res://Assets/Escenas/Menues/reino_button_2.gd" id="5_e123j"]
+[ext_resource type="Texture2D" uid="uid://dd2m1e2txhsve" path="res://Assets/sprites/UI/MidgardBadge.png" id="5_wrwbp"]
 [ext_resource type="Texture2D" uid="uid://cywnmcubo5nhe" path="res://Assets/sprites/UI/MuspelBadge.png" id="6_jneuy"]
 [ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="8_wwe7q"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jd542"]
-size = Vector2(72, 69)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e123j"]
 corner_radius_top_left = 20
@@ -57,22 +54,18 @@ position = Vector2(-12, -124)
 nombre = "Midgard"
 rutaNivel1 = "res://Assets/Escenas/Niveles/Nivel1_1.tscn"
 fondo = ExtResource("4_fiayx")
+ico = ExtResource("5_wrwbp")
 cam = NodePath("../../Camera2D")
 cam_zoom = Vector2(1.5, 1.5)
 
-[node name="ReinoButton2" type="Area2D" parent="ReinosContainer"]
-modulate = Color(1, 0.901961, 1, 1)
+[node name="ReinoButton3" parent="ReinosContainer" node_paths=PackedStringArray("cam") instance=ExtResource("3_wrwbp")]
 position = Vector2(362, -155)
-script = ExtResource("5_e123j")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ReinosContainer/ReinoButton2"]
-shape = SubResource("RectangleShape2D_jd542")
-debug_color = Color(1, 1, 1, 0.42)
-
-[node name="Sprite2D" type="Sprite2D" parent="ReinosContainer/ReinoButton2"]
-texture_filter = 1
-scale = Vector2(2.5, 2.5)
-texture = ExtResource("6_jneuy")
+nombre = "Muspelheim"
+rutaNivel1 = "res://Assets/Escenas/Niveles/Nivel2_1.tscn"
+fondo = ExtResource("4_fiayx")
+ico = ExtResource("6_jneuy")
+cam = NodePath("../../Camera2D")
+cam_zoom = Vector2(1.5, 1.5)
 
 [node name="Button" type="Button" parent="."]
 offset_left = -553.0

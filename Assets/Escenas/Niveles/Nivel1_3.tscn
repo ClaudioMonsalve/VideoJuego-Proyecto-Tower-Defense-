@@ -1,45 +1,45 @@
-[gd_scene load_steps=59 format=3 uid="uid://bj6ruqrmmh8n2"]
+[gd_scene load_steps=59 format=3 uid="uid://brqthlm7lv3cg"]
 
-[ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="2_rlqd0"]
-[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="3_aj57n"]
-[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="4_iaa1h"]
-[ext_resource type="PackedScene" uid="uid://bv6ivqbs434ca" path="res://Assets/modelos/Decoración/midgard/bloqueo.glb" id="5_sia5n"]
-[ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="5_xlml3"]
-[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://Assets/scripts/creep_manager.gd" id="6_8a6pp"]
-[ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="7_gsjdr"]
-[ext_resource type="PackedScene" uid="uid://c8vu4hkdw64i0" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/sprite(enemy).tscn" id="8_kuoi0"]
-[ext_resource type="PackedScene" uid="uid://ck6y1vhk1y1xu" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/skeleton.tscn" id="9_2uv88"]
-[ext_resource type="Resource" uid="uid://ttu2vpk7irco" path="res://Assets/Recursos/R_oleadas/OleadasNivel1_1.tres" id="9_hlfkw"]
-[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="9_oecj2"]
-[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="10_wb18e"]
-[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="11_ro63v"]
-[ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="12_3y5p2"]
-[ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="12_rlqd0"]
-[ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="13_4hbg3"]
-[ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://Assets/scripts/node_2d.gd" id="14_qdga2"]
-[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="15_ovtgn"]
-[ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="16_drqky"]
-[ext_resource type="Resource" uid="uid://ctnxddjd8lssq" path="res://Assets/Dialogos/Mundo1/Intro_Nivel_1-1.dialogue" id="16_kuoi0"]
-[ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="16_rlqd0"]
-[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="17_oojqn"]
-[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://Assets/scripts/button_2.gd" id="18_64rh3"]
-[ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="19_wo8mp"]
-[ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="20_r5rkq"]
-[ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="21_qa84f"]
-[ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="22_x2y2j"]
-[ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="23_ompbk"]
-[ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="24_q3h5k"]
-[ext_resource type="PackedScene" uid="uid://d0es6mv1t5ry1" path="res://Assets/modelos/Decoración/midgard/Arboles_de_Decoracion.blend" id="29_m4ruf"]
-[ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="30_4hbg3"]
-[ext_resource type="PackedScene" uid="uid://dwcnuwmsnry3b" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains1.glb" id="30_jglew"]
-[ext_resource type="PackedScene" uid="uid://cu876akkj6as7" path="res://Assets/modelos/Decoración/midgard/low_poly_rocks.glb" id="31_jglew"]
-[ext_resource type="PackedScene" uid="uid://bo5alylodsrk5" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains2.glb" id="32_ps1d3"]
-[ext_resource type="PackedScene" uid="uid://yda13ksqk5vt" path="res://Assets/modelos/Decoración/midgard/Montañas/CaveEntrance.glb" id="33_pqunp"]
-[ext_resource type="PackedScene" uid="uid://daiyv4wtse7kg" path="res://Assets/modelos/Decoración/midgard/Hall2.glb" id="36_jof18"]
-[ext_resource type="PackedScene" uid="uid://fxoh1452412h" path="res://Assets/modelos/Decoración/midgard/Hall1.glb" id="37_tr5od"]
-[ext_resource type="PackedScene" uid="uid://cqlkux8kfhi2e" path="res://Assets/modelos/Decoración/kevin_the_cube.glb" id="39_clu6e"]
-[ext_resource type="Texture2D" uid="uid://d23tqiawmdmtm" path="res://Assets/Decals/muspelheim/lava2diffuse.png" id="40_305lw"]
-[ext_resource type="Texture2D" uid="uid://kmplk07dey2y" path="res://Assets/Decals/muspelheim/lava2Normals.png" id="41_sijf6"]
+[ext_resource type="PackedScene" uid="uid://ce1bhkea83j5" path="res://Assets/modelos/mapas/Suelo_Nivel1_test.glb" id="1_8ujh4"]
+[ext_resource type="PackedScene" uid="uid://dqdc4d0a6watr" path="res://BranchOtro/scenes/Base.tscn" id="2_hcgwm"]
+[ext_resource type="PackedScene" uid="uid://c41bsewnspn04" path="res://BranchOtro/scenes/TowerPlatform.tscn" id="3_qgb2p"]
+[ext_resource type="PackedScene" uid="uid://bv6ivqbs434ca" path="res://Assets/modelos/Decoración/midgard/bloqueo.glb" id="4_nyiwu"]
+[ext_resource type="Script" uid="uid://5rg3368nnud7" path="res://Assets/scripts/creep_manager.gd" id="5_hq26o"]
+[ext_resource type="PackedScene" uid="uid://bkg0ttdaecsxt" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/rat.tscn" id="6_dplub"]
+[ext_resource type="PackedScene" uid="uid://c8vu4hkdw64i0" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/sprite(enemy).tscn" id="7_oeqba"]
+[ext_resource type="PackedScene" uid="uid://ck6y1vhk1y1xu" path="res://Assets/Escenas/Enemigos/EnemigosMundo1/skeleton.tscn" id="8_htwhm"]
+[ext_resource type="Resource" uid="uid://ttu2vpk7irco" path="res://Assets/Recursos/R_oleadas/OleadasNivel1_1.tres" id="9_qdqc0"]
+[ext_resource type="Script" uid="uid://kt1ochgax3bk" path="res://Assets/scripts/cam_node.gd" id="10_4vc65"]
+[ext_resource type="PackedScene" uid="uid://bbc4j71oom35u" path="res://BranchOtro/scenes/test_tower.tscn" id="11_pte7h"]
+[ext_resource type="PackedScene" uid="uid://5efva3jseswa" path="res://Assets/Escenas/Torres/ArrowTower.tscn" id="12_30hfr"]
+[ext_resource type="Texture2D" uid="uid://5ees3n02vbr7" path="res://Assets/sprites/UI/snow.png" id="13_nrpu4"]
+[ext_resource type="Texture2D" uid="uid://5q1t5myqg1du" path="res://Assets/sprites/UI/temp_money.png" id="14_0vohl"]
+[ext_resource type="Texture2D" uid="uid://d08fpsibwidtf" path="res://Assets/sprites/UI/life.png" id="15_jqq1j"]
+[ext_resource type="PackedScene" uid="uid://b7kgp48jq5afc" path="res://Assets/Escenas/UI/tower_card.tscn" id="16_f1xxd"]
+[ext_resource type="Resource" uid="uid://b16t10qs8ulw" path="res://Assets/Recursos/Rtorres/Arrow_tower.tres" id="17_espd3"]
+[ext_resource type="Script" uid="uid://8awogjrrnrlt" path="res://Assets/scripts/node_2d.gd" id="18_tcxcp"]
+[ext_resource type="Resource" uid="uid://ctnxddjd8lssq" path="res://Assets/Dialogos/Mundo1/Intro_Nivel_1-1.dialogue" id="19_xrgww"]
+[ext_resource type="Script" uid="uid://cnjux4fj4ogoh" path="res://Assets/scripts/pause.gd" id="20_psce3"]
+[ext_resource type="Script" uid="uid://c7hotl88wfmxe" path="res://Assets/scripts/button.gd" id="21_ohnsf"]
+[ext_resource type="FontFile" uid="uid://bw868yku4df3t" path="res://Assets/Fonts/Norsebold.otf" id="22_n0kas"]
+[ext_resource type="Script" uid="uid://7ig7owsufdwn" path="res://Assets/scripts/button_2.gd" id="23_gy7jj"]
+[ext_resource type="Texture2D" uid="uid://byl240c5hw8aw" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_0.png" id="24_gt2vi"]
+[ext_resource type="Texture2D" uid="uid://baetfcaj62yni" path="res://Assets/Dialogos/Sprites/Jaime/sprite_1.png" id="25_2jysj"]
+[ext_resource type="Texture2D" uid="uid://d1ox0gvju4sad" path="res://Assets/Escenas/Sprites (Dialogue)/Jaime/sprite_2.png" id="26_ioxw2"]
+[ext_resource type="Texture2D" uid="uid://ctegm7xenfuwn" path="res://Assets/Dialogos/Sprites/Jaime/sprite_3.png" id="27_7e0sb"]
+[ext_resource type="Texture2D" uid="uid://dp6revsy5pcrd" path="res://Assets/Dialogos/Sprites/Player/bababa_0001.png" id="28_77clg"]
+[ext_resource type="Texture2D" uid="uid://cwxhqnjc3ukhj" path="res://Assets/Dialogos/Sprites/Player/bababa_0002.png" id="29_i5p2n"]
+[ext_resource type="PackedScene" uid="uid://dwcnuwmsnry3b" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains1.glb" id="30_4uflh"]
+[ext_resource type="PackedScene" uid="uid://bo5alylodsrk5" path="res://Assets/modelos/Decoración/midgard/Montañas/Mountains2.glb" id="31_sd1od"]
+[ext_resource type="PackedScene" uid="uid://yda13ksqk5vt" path="res://Assets/modelos/Decoración/midgard/Montañas/CaveEntrance.glb" id="32_eo30l"]
+[ext_resource type="PackedScene" uid="uid://d0es6mv1t5ry1" path="res://Assets/modelos/Decoración/midgard/Arboles_de_Decoracion.blend" id="33_aoffy"]
+[ext_resource type="PackedScene" uid="uid://dahlkuapwu415" path="res://Assets/modelos/Decoración/midgard/Salones_de_decoracion.blend" id="34_uklp2"]
+[ext_resource type="PackedScene" uid="uid://cu876akkj6as7" path="res://Assets/modelos/Decoración/midgard/low_poly_rocks.glb" id="35_civjy"]
+[ext_resource type="PackedScene" uid="uid://daiyv4wtse7kg" path="res://Assets/modelos/Decoración/midgard/Hall2.glb" id="36_fm8gl"]
+[ext_resource type="PackedScene" uid="uid://fxoh1452412h" path="res://Assets/modelos/Decoración/midgard/Hall1.glb" id="37_u7t5n"]
+[ext_resource type="PackedScene" uid="uid://cqlkux8kfhi2e" path="res://Assets/modelos/Decoración/kevin_the_cube.glb" id="38_pa73q"]
+[ext_resource type="Texture2D" uid="uid://d23tqiawmdmtm" path="res://Assets/Decals/muspelheim/lava2diffuse.png" id="39_0mstq"]
+[ext_resource type="Texture2D" uid="uid://kmplk07dey2y" path="res://Assets/Decals/muspelheim/lava2Normals.png" id="40_o10yb"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_m4ruf"]
 turbidity = 1000.0
@@ -120,7 +120,7 @@ gravity = Vector3(0, 0, 0)
 transparency = 1
 cull_mode = 2
 shading_mode = 0
-albedo_texture = ExtResource("13_4hbg3")
+albedo_texture = ExtResource("13_nrpu4")
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_sia5n"]
@@ -144,16 +144,16 @@ corner_radius_bottom_left = 50
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("19_wo8mp")
+"texture": ExtResource("24_gt2vi")
 }, {
 "duration": 1.0,
-"texture": ExtResource("20_r5rkq")
+"texture": ExtResource("25_2jysj")
 }, {
 "duration": 1.0,
-"texture": ExtResource("21_qa84f")
+"texture": ExtResource("26_ioxw2")
 }, {
 "duration": 1.0,
-"texture": ExtResource("22_x2y2j")
+"texture": ExtResource("27_7e0sb")
 }],
 "loop": true,
 "name": &"default",
@@ -164,10 +164,10 @@ animations = [{
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("23_ompbk")
+"texture": ExtResource("28_77clg")
 }, {
 "duration": 1.0,
-"texture": ExtResource("24_q3h5k")
+"texture": ExtResource("29_i5p2n")
 }],
 "loop": true,
 "name": &"default",
@@ -186,10 +186,10 @@ shadow_enabled = true
 
 [node name="Map" type="Node3D" parent="."]
 
-[node name="Suelo_Nivel1_test" parent="Map" instance=ExtResource("2_rlqd0")]
+[node name="Suelo_Nivel1_test" parent="Map" instance=ExtResource("1_8ujh4")]
 transform = Transform3D(-2.18557e-06, 0, 50, 0, 50, 0, -50, 0, -2.18557e-06, -1, -6.3, -13)
 
-[node name="Base" parent="Map" instance=ExtResource("3_aj57n")]
+[node name="Base" parent="Map" instance=ExtResource("2_hcgwm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 muni = 8
 
@@ -225,44 +225,41 @@ curve = SubResource("Curve3D_sijf6")
 
 [node name="Plataformas" type="Node3D" parent="Map"]
 
-[node name="TowerPlatform5" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
+[node name="TowerPlatform5" parent="Map/Plataformas" instance=ExtResource("3_qgb2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.018, 3.12974, -12.1245)
 
-[node name="TowerPlatform6" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
+[node name="TowerPlatform6" parent="Map/Plataformas" instance=ExtResource("3_qgb2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.5907, 3.19263, -43.4814)
 
-[node name="TowerPlatform8" parent="Map/Plataformas" instance=ExtResource("5_xlml3")]
+[node name="TowerPlatform8" parent="Map/Plataformas" instance=ExtResource("3_qgb2p")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3131, 3.15048, -51.4338)
 
-[node name="bloqueo" parent="Map" instance=ExtResource("5_sia5n")]
+[node name="TowerPlatform9" parent="Map/Plataformas" instance=ExtResource("3_qgb2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 48.3131, 3.21765, -86.5672)
+
+[node name="TowerPlatform7" parent="Map/Plataformas" instance=ExtResource("3_qgb2p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.5884, 3.24902, -1.29958)
+
+[node name="bloqueo" parent="Map" instance=ExtResource("4_nyiwu")]
 transform = Transform3D(-0.00203152, 0, 1.2, 0, 1.2, 0, -1.2, 0, -0.00203152, -24.9949, -0.745253, 7.74897)
 
-[node name="bloqueo2" parent="Map" instance=ExtResource("5_sia5n")]
+[node name="bloqueo2" parent="Map" instance=ExtResource("4_nyiwu")]
 transform = Transform3D(0.956994, 0, -1.02184, 0, 1.4, 0, 1.02184, 0, 0.956994, -32.067, -0.812903, -17.1769)
 
-[node name="bloqueo3" parent="Map" instance=ExtResource("5_sia5n")]
-transform = Transform3D(1.39729, 0, 0.0870289, 0, 1.4, 0, -0.0870289, 0, 1.39729, 26.3366, -0.812903, -62.2099)
-
-[node name="bloqueo4" parent="Map" instance=ExtResource("5_sia5n")]
-transform = Transform3D(-1.30284, 0, 0.512442, 0, 1.4, 0, -0.512442, 0, -1.30284, 23.4458, -0.812903, -69.0484)
-
-[node name="bloqueo5" parent="Map" instance=ExtResource("5_sia5n")]
-transform = Transform3D(-1.1998, 0, 0.0217176, 0, 1.2, 0, -0.0217176, 0, -1.1998, 19.1738, -0.812905, 1.59213)
-
-[node name="bloqueo6" parent="Map" instance=ExtResource("5_sia5n")]
+[node name="bloqueo6" parent="Map" instance=ExtResource("4_nyiwu")]
 transform = Transform3D(-0.393986, 0, 1.13348, 0, 1.2, 0, -1.13348, 0, -0.393986, 1.08646, -1.44869, 6.81338)
 
 [node name="CreepManager" type="Node3D" parent="." node_paths=PackedStringArray("base")]
-script = ExtResource("6_8a6pp")
-enemy1 = ExtResource("7_gsjdr")
-enemy2 = ExtResource("8_kuoi0")
-enemy3 = ExtResource("9_2uv88")
+script = ExtResource("5_hq26o")
+enemy1 = ExtResource("6_dplub")
+enemy2 = ExtResource("7_oeqba")
+enemy3 = ExtResource("8_htwhm")
 base = NodePath("../Map/Base")
-waves = ExtResource("9_hlfkw")
+waves = ExtResource("9_qdqc0")
 
 [node name="Player" type="Node3D" parent="." node_paths=PackedStringArray("baseobj", "creepManager", "card1", "card2", "card3", "card4", "card5", "card6")]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 27.44, 30, -1.49813)
-script = ExtResource("9_oecj2")
+script = ExtResource("10_4vc65")
 baseobj = NodePath("../Map/Base")
 creepManager = NodePath("../CreepManager")
 card1 = NodePath("HBox Cards/TowerCard")
@@ -271,8 +268,8 @@ card3 = NodePath("HBox Cards/TowerCard3")
 card4 = NodePath("HBox Cards/TowerCard4")
 card5 = NodePath("HBox Cards/TowerCard5")
 card6 = NodePath("HBox Cards/TowerCard6")
-torre_test = ExtResource("4_iaa1h")
-Arrowtower = ExtResource("12_rlqd0")
+torre_test = ExtResource("11_pte7h")
+Arrowtower = ExtResource("12_30hfr")
 camera_sens = 0.1
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Player"]
@@ -306,7 +303,7 @@ label_settings = SubResource("LabelSettings_qjeyg")
 [node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Money"]
 texture_filter = 1
 layout_mode = 2
-texture = ExtResource("10_wb18e")
+texture = ExtResource("14_0vohl")
 expand_mode = 2
 
 [node name="HBox Health" type="HBoxContainer" parent="Player/VBox playerdata"]
@@ -320,7 +317,7 @@ label_settings = SubResource("LabelSettings_qjeyg")
 
 [node name="TextureRect" type="TextureRect" parent="Player/VBox playerdata/HBox Health"]
 layout_mode = 2
-texture = ExtResource("11_ro63v")
+texture = ExtResource("15_jqq1j")
 expand_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Player/VBox playerdata"]
@@ -344,28 +341,28 @@ offset_top = -120.0
 offset_right = 740.0
 grow_vertical = 0
 
-[node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
+[node name="TowerCard" parent="Player/HBox Cards" instance=ExtResource("16_f1xxd")]
 layout_mode = 2
 size_flags_horizontal = 1
-TowerData = ExtResource("16_rlqd0")
+TowerData = ExtResource("17_espd3")
 
-[node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
-layout_mode = 2
-size_flags_horizontal = 1
-
-[node name="TowerCard3" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
+[node name="TowerCard2" parent="Player/HBox Cards" instance=ExtResource("16_f1xxd")]
 layout_mode = 2
 size_flags_horizontal = 1
 
-[node name="TowerCard4" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
+[node name="TowerCard3" parent="Player/HBox Cards" instance=ExtResource("16_f1xxd")]
 layout_mode = 2
 size_flags_horizontal = 1
 
-[node name="TowerCard5" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
+[node name="TowerCard4" parent="Player/HBox Cards" instance=ExtResource("16_f1xxd")]
 layout_mode = 2
 size_flags_horizontal = 1
 
-[node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("12_3y5p2")]
+[node name="TowerCard5" parent="Player/HBox Cards" instance=ExtResource("16_f1xxd")]
+layout_mode = 2
+size_flags_horizontal = 1
+
+[node name="TowerCard6" parent="Player/HBox Cards" instance=ExtResource("16_f1xxd")]
 layout_mode = 2
 size_flags_horizontal = 1
 
@@ -374,8 +371,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.0919, 4.5017, -19.6287)
 mesh = SubResource("BoxMesh_3qnke")
 
 [node name="Node2D" type="Node2D" parent="."]
-script = ExtResource("14_qdga2")
-DIALOGO = ExtResource("16_kuoi0")
+script = ExtResource("18_tcxcp")
+DIALOGO = ExtResource("19_xrgww")
 
 [node name="Pause" type="Button" parent="Node2D"]
 offset_left = 20.0
@@ -384,7 +381,7 @@ offset_right = 118.0
 offset_bottom = 81.0
 text = "Regresar
 "
-script = ExtResource("15_ovtgn")
+script = ExtResource("20_psce3")
 
 [node name="Panel" type="Panel" parent="Node2D"]
 anchors_preset = 8
@@ -415,7 +412,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme_override_font_sizes/font_size = 20
 text = "Continuar"
-script = ExtResource("16_drqky")
+script = ExtResource("21_ohnsf")
 
 [node name="HSlider" type="HSlider" parent="Node2D/Panel"]
 layout_mode = 0
@@ -433,7 +430,7 @@ offset_left = -82.5
 offset_top = -1.0
 offset_right = -27.5
 offset_bottom = 22.0
-theme_override_fonts/font = ExtResource("17_oojqn")
+theme_override_fonts/font = ExtResource("22_n0kas")
 text = "Musica"
 
 [node name="Button2" type="Button" parent="Node2D/Panel"]
@@ -444,7 +441,7 @@ offset_right = 433.0
 offset_bottom = 394.0
 theme_override_font_sizes/font_size = 20
 text = "Regresar al Mapa"
-script = ExtResource("18_64rh3")
+script = ExtResource("23_gy7jj")
 
 [node name="HSlider2" type="HSlider" parent="Node2D/Panel"]
 layout_mode = 0
@@ -462,7 +459,7 @@ offset_left = -74.0
 offset_top = 5.0
 offset_right = -34.0
 offset_bottom = 54.0
-theme_override_fonts/font = ExtResource("17_oojqn")
+theme_override_fonts/font = ExtResource("22_n0kas")
 text = "SFX
 "
 
@@ -489,254 +486,254 @@ frame_progress = 0.0459249
 
 [node name="Montañas" type="Node3D" parent="Decor"]
 
-[node name="Mountains1" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
+[node name="Mountains1" parent="Decor/Montañas" instance=ExtResource("30_4uflh")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -99.3474, 4.88332, -3.46172)
 
-[node name="Mountains2" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
+[node name="Mountains2" parent="Decor/Montañas" instance=ExtResource("30_4uflh")]
 transform = Transform3D(0.212215, 0, -9.99775, 0, 10, 0, 9.99775, 0, 0.212215, -10.4361, 2.86725, -144.293)
 
-[node name="Mountains13" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
+[node name="Mountains13" parent="Decor/Montañas" instance=ExtResource("30_4uflh")]
 transform = Transform3D(-0.78894, 0, 9.96883, 0, 10, 0, -9.96883, 0, -0.78894, -3.3258, 2.86725, -185.387)
 
-[node name="Mountains11" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
+[node name="Mountains11" parent="Decor/Montañas" instance=ExtResource("30_4uflh")]
 transform = Transform3D(-3.16113, 0, -9.48722, 0, 10, 0, 9.48722, 0, -3.16113, 107.609, 2.86726, -139.52)
 
-[node name="Mountains3" parent="Decor/Montañas" instance=ExtResource("30_jglew")]
+[node name="Mountains3" parent="Decor/Montañas" instance=ExtResource("30_4uflh")]
 transform = Transform3D(-0.87573, 0, 9.96158, 0, 10, 0, -9.96158, 0, -0.87573, -14.5598, 2.86723, 116.139)
 
-[node name="Mountains4" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains4" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -94.6502, 2.96744, -67.6097)
 
-[node name="Mountains8" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains8" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(0.222512, 0, -9.99752, 0, 10, 0, 9.99752, 0, 0.222512, 52.5559, 2.96744, -140.301)
 
-[node name="Mountains12" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains12" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(-5.14529, 0, 8.57472, 0, 10, 0, -8.57472, 0, -5.14529, -85.0546, 2.96744, -171.638)
 
-[node name="Mountains9" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains9" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(-4.32511, 0, 9.01629, 0, 10, 0, -9.01629, 0, -4.32511, 38.723, 2.96742, 112.848)
 
-[node name="Mountains5" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains5" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -94.2064, 2.96744, 69.0758)
 
-[node name="Mountains6" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains6" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(6.63613, 0, -7.48076, 0, 10, 0, 7.48076, 0, 6.63613, -75.0295, 4.71037, -127.464)
 
-[node name="Mountains7" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains7" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(-1.15995, 0, -9.9325, 0, 10, 0, 9.9325, 0, -1.15995, -63.2289, 4.71037, 119.354)
 
-[node name="Mountains10" parent="Decor/Montañas" instance=ExtResource("32_ps1d3")]
+[node name="Mountains10" parent="Decor/Montañas" instance=ExtResource("31_sd1od")]
 transform = Transform3D(-3.21506, 0, -9.46908, 0, 10, 0, 9.46908, 0, -3.21506, -22.3024, 4.71037, 154.932)
 
-[node name="CaveEntrance" parent="Decor/Montañas" instance=ExtResource("33_pqunp")]
+[node name="CaveEntrance" parent="Decor/Montañas" instance=ExtResource("32_eo30l")]
 transform = Transform3D(1.35292, 0, -4.81348, 0, 5, 0, 4.81348, 0, 1.35292, 71.3732, 0, -135.992)
 
-[node name="CaveEntrance2" parent="Decor/Montañas" instance=ExtResource("33_pqunp")]
+[node name="CaveEntrance2" parent="Decor/Montañas" instance=ExtResource("32_eo30l")]
 transform = Transform3D(1.35292, 0, -4.81348, 0, 5, 0, 4.81348, 0, 1.35292, 4.63023, 0, -135.296)
 
-[node name="CaveEntrance3" parent="Decor/Montañas" instance=ExtResource("33_pqunp")]
+[node name="CaveEntrance3" parent="Decor/Montañas" instance=ExtResource("32_eo30l")]
 transform = Transform3D(0.617142, 0, -4.96177, 0, 5, 0, 4.96177, 0, 0.617142, -51.6357, -1.90735e-06, -132.424)
 
-[node name="CaveEntrance4" parent="Decor/Montañas" instance=ExtResource("33_pqunp")]
+[node name="CaveEntrance4" parent="Decor/Montañas" instance=ExtResource("32_eo30l")]
 transform = Transform3D(4.99709, 0, 0.17066, 0, 5, 0, -0.17066, 0, 4.99709, -86.6475, -3.8147e-06, -33.4397)
 
-[node name="CaveEntrance6" parent="Decor/Montañas" instance=ExtResource("33_pqunp")]
+[node name="CaveEntrance6" parent="Decor/Montañas" instance=ExtResource("32_eo30l")]
 transform = Transform3D(0.307246, 0, 4.99055, 0, 5, 0, -4.99055, 0, 0.307246, 1.43048, -3.8147e-06, 100.777)
 
-[node name="CaveEntrance5" parent="Decor/Montañas" instance=ExtResource("33_pqunp")]
+[node name="CaveEntrance5" parent="Decor/Montañas" instance=ExtResource("32_eo30l")]
 transform = Transform3D(8.38361, 0, 3.81964, 0, 6, 0, -3.94771, 0, 8.11162, -91.0515, -3.8147e-06, 59.6273)
 
-[node name="Arboles_de_Decoracion" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.63204, -3.41289, 18.5299)
 
-[node name="Arboles_de_Decoracion2" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion2" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7728, -0.71809, 16.1325)
 
-[node name="Arboles_de_Decoracion29" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion29" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.6969, -3.94392, -8.23042)
 
-[node name="Arboles_de_Decoracion3" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion3" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.2229, 1.24527, 22.278)
 
-[node name="Arboles_de_Decoracion8" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion8" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.60197, -0.601482, 30.4979)
 
-[node name="Arboles_de_Decoracion9" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion9" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.14443, 1.52516, 25.4259)
 
-[node name="Arboles_de_Decoracion10" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion10" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.92296, -3.19201, 29.0227)
 
-[node name="Arboles_de_Decoracion11" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion11" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.9842, -3.10779, 28.6515)
 
-[node name="Arboles_de_Decoracion12" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion12" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.21694, -2.09742, 26.2066)
 
-[node name="Arboles_de_Decoracion14" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion14" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.249956, 0.50056, 23.6319)
 
-[node name="Arboles_de_Decoracion15" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion15" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -51.7682, 0.854945, 10.1511)
 
-[node name="Arboles_de_Decoracion23" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion23" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -53.926, 0.854944, -0.314264)
 
-[node name="Arboles_de_Decoracion24" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion24" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -56.2095, -1.3253, 4.38499)
 
-[node name="Arboles_de_Decoracion25" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion25" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -50.5971, -1.3253, -2.48646)
 
-[node name="Arboles_de_Decoracion26" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion26" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -47.9319, -5.63262, 6.23139)
 
-[node name="Arboles_de_Decoracion27" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion27" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -46.6667, -4.55179, 0.0468137)
 
-[node name="Arboles_de_Decoracion30" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion30" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -38.0315, 0.178933, 18.7991)
 
-[node name="Arboles_de_Decoracion36" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion36" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -38.2556, -2.43119, 21.2956)
 
-[node name="Arboles_de_Decoracion33" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion33" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -52.886, -3.16929, 20.3506)
 
-[node name="Arboles_de_Decoracion34" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion34" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -52.694, 1.62902, 23.0492)
 
-[node name="Arboles_de_Decoracion35" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion35" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -54.2793, -1.34635, 21.8354)
 
-[node name="Arboles_de_Decoracion31" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion31" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -42.1952, -2.34415, 19.1305)
 
-[node name="Arboles_de_Decoracion32" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion32" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -40.1217, -4.09997, 16.2641)
 
-[node name="Arboles_de_Decoracion18" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion18" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.635472, 0, -0.772124, 0, 1, 0, 0.772124, 0, 0.635472, -92.676, 0.555659, 19.0253)
 
-[node name="Arboles_de_Decoracion19" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion19" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(-0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, -0.120778, -94.4874, 1.80828, 23.2834)
 
-[node name="Arboles_de_Decoracion20" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion20" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(-0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, -0.120778, -93.4428, -0.337159, 33.2001)
 
-[node name="Arboles_de_Decoracion21" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion21" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(-0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, -0.120778, -94.9589, 0.426342, 29.0789)
 
-[node name="Arboles_de_Decoracion22" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion22" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(-0.120778, 0, -0.99268, 0, 1, 0, 0.99268, 0, -0.120778, -92.8457, -2.92503, 26.6029)
 
-[node name="Arboles_de_Decoracion16" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion16" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.282526, 0, -0.95926, 0, 1, 0, 0.95926, 0, 0.282526, -53.4772, -0.496323, 6.16471)
 
-[node name="Arboles_de_Decoracion17" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion17" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(-0.509417, 0, -0.86052, 0, 1, 0, 0.86052, 0, -0.509417, -50.6791, -3.08629, 6.71917)
 
-[node name="Arboles_de_Decoracion13" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion13" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.19935, -2.03693, 21.0793)
 
-[node name="Arboles_de_Decoracion4" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion4" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.89784, -3.27665, -43.462)
 
-[node name="Arboles_de_Decoracion5" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion5" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.12061, -0.836042, -42.4193)
 
-[node name="Arboles_de_Decoracion28" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion28" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56842, 2.77309, -48.6004)
 
-[node name="Arboles_de_Decoracion6" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion6" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.98928, 1.66825, -47.7882)
 
-[node name="Arboles_de_Decoracion7" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion7" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.501671, -1.90735e-06, -48.7168)
 
-[node name="Salones_de_decoracion" parent="Decor" instance=ExtResource("30_4hbg3")]
+[node name="Salones_de_decoracion" parent="Decor" instance=ExtResource("34_uklp2")]
 transform = Transform3D(-0.143883, 0, -0.725011, 0, 0.702915, 0, 0.352294, 0, -0.296107, -6.43402, 2.88429, 15.6448)
 
-[node name="Salones_de_decoracion2" parent="Decor" instance=ExtResource("30_4hbg3")]
+[node name="Salones_de_decoracion2" parent="Decor" instance=ExtResource("34_uklp2")]
 transform = Transform3D(-0.584958, 0, -0.514103, 0, 0.853, 0, 0.384479, 0, -0.782173, -8.72597, 2.88503, 12.7443)
 
-[node name="Salones_de_decoracion3" parent="Decor" instance=ExtResource("30_4hbg3")]
+[node name="Salones_de_decoracion3" parent="Decor" instance=ExtResource("34_uklp2")]
 transform = Transform3D(-0.494387, 0, 0.662638, 0, 0.853, 0, -0.495562, 0, -0.661065, 4.12428, 2.88503, -44.6397)
 
-[node name="Salones_de_decoracion4" parent="Decor" instance=ExtResource("30_4hbg3")]
+[node name="Salones_de_decoracion4" parent="Decor" instance=ExtResource("34_uklp2")]
 transform = Transform3D(-0.0167364, 0, -0.935732, 0, 0.853, 0, 0.6998, 0, -0.0223799, 3.14953, 2.88503, -46.9656)
 
-[node name="Sketchfab_Scene" parent="Decor" instance=ExtResource("31_jglew")]
+[node name="Sketchfab_Scene" parent="Decor" instance=ExtResource("35_civjy")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -9.09525, 3.23575, 17.2612)
 
-[node name="Sketchfab_Scene2" parent="Decor" instance=ExtResource("31_jglew")]
+[node name="Sketchfab_Scene2" parent="Decor" instance=ExtResource("35_civjy")]
 transform = Transform3D(1.78851, 0, -2.40858, 0, 3, 0, 2.40858, 0, 1.78851, -9.59606, 4.29864, 19.4499)
 
-[node name="Sketchfab_Scene3" parent="Decor" instance=ExtResource("31_jglew")]
+[node name="Sketchfab_Scene3" parent="Decor" instance=ExtResource("35_civjy")]
 transform = Transform3D(-1.69335, 0, -2.47641, 0, 3, 0, 2.47641, 0, -1.69335, -1.26398, 4.16565, -42.0821)
 
-[node name="Sketchfab_Scene4" parent="Decor" instance=ExtResource("31_jglew")]
+[node name="Sketchfab_Scene4" parent="Decor" instance=ExtResource("35_civjy")]
 transform = Transform3D(-1.69335, 0, -2.47641, 0, 3, 0, 2.47641, 0, -1.69335, -4.92079, 1.0142, -12.077)
 
-[node name="Hall2" parent="Decor" instance=ExtResource("36_jof18")]
+[node name="Hall2" parent="Decor" instance=ExtResource("36_fm8gl")]
 transform = Transform3D(3.5055, 0, -1.92653, 0, 4, 0, 1.92653, 0, 3.5055, -3.14664, 0.605815, 19.714)
 
-[node name="Hall6" parent="Decor" instance=ExtResource("36_jof18")]
+[node name="Hall6" parent="Decor" instance=ExtResource("36_fm8gl")]
 transform = Transform3D(-2.1131, 0, -3.39629, 0, 4, 0, 3.39629, 0, -2.1131, -49.8698, 0.605815, 2.43088)
 
-[node name="Hall8" parent="Decor" instance=ExtResource("36_jof18")]
+[node name="Hall8" parent="Decor" instance=ExtResource("36_fm8gl")]
 transform = Transform3D(-3.9765, 0, 0.432969, 0, 4, 0, -0.432969, 0, -3.9765, -3.46017, 0.605815, -44.5815)
 
-[node name="Hall1" parent="Decor" instance=ExtResource("37_tr5od")]
+[node name="Hall1" parent="Decor" instance=ExtResource("37_u7t5n")]
 transform = Transform3D(2.55128, 0, -1.57829, 0, 3, 0, 1.57829, 0, 2.55128, 4.43145, 2.87723, 22.5071)
 
-[node name="Hall3" parent="Decor" instance=ExtResource("37_tr5od")]
+[node name="Hall3" parent="Decor" instance=ExtResource("37_u7t5n")]
 transform = Transform3D(-2.99055, 0, -0.237935, 0, 3, 0, 0.237935, 0, -2.99055, -49.8242, 2.45332, 6.10737)
 
-[node name="Hall7" parent="Decor" instance=ExtResource("37_tr5od")]
+[node name="Hall7" parent="Decor" instance=ExtResource("37_u7t5n")]
 transform = Transform3D(0.603388, 0, -2.93869, 0, 3, 0, 2.93869, 0, 0.603388, -0.230744, 2.87723, -45.5496)
 
-[node name="Arboles_de_Decoracion37" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion37" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -79.6153, -0.836042, -49.7261)
 
-[node name="Arboles_de_Decoracion38" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion38" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -88.2754, 2.77309, -46.9063)
 
-[node name="Arboles_de_Decoracion39" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion39" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -81.4356, 1.66825, -57.4691)
 
-[node name="Arboles_de_Decoracion40" parent="Decor" instance=ExtResource("29_m4ruf")]
+[node name="Arboles_de_Decoracion40" parent="Decor" instance=ExtResource("33_aoffy")]
 transform = Transform3D(0.488225, 0, 0.872718, 0, 1, 0, -0.872718, 0, 0.488225, -85.9033, -1.90735e-06, -51.3849)
 
-[node name="Salones_de_decoracion5" parent="Decor" instance=ExtResource("30_4hbg3")]
+[node name="Salones_de_decoracion5" parent="Decor" instance=ExtResource("34_uklp2")]
 transform = Transform3D(-0.673858, 0, -0.253406, 0, 0.853, 0, 0.189514, 0, -0.901044, -80.0866, 2.88503, -53.4315)
 
-[node name="Salones_de_decoracion6" parent="Decor" instance=ExtResource("30_4hbg3")]
+[node name="Salones_de_decoracion6" parent="Decor" instance=ExtResource("34_uklp2")]
 transform = Transform3D(0.602557, 0, -0.476379, 0, 0.853, 0, 0.356266, 0, 0.805703, -82.5923, 2.88503, -53.7164)
 
-[node name="Sketchfab_Scene5" parent="Decor" instance=ExtResource("31_jglew")]
+[node name="Sketchfab_Scene5" parent="Decor" instance=ExtResource("35_civjy")]
 transform = Transform3D(1.33447, 0, -2.68686, 0, 3, 0, 2.68686, 0, 1.33447, -80.4852, 4.16565, -47.4804)
 
-[node name="Hall9" parent="Decor" instance=ExtResource("36_jof18")]
+[node name="Hall9" parent="Decor" instance=ExtResource("36_fm8gl")]
 transform = Transform3D(-2.31929, 0, -3.25898, 0, 4, 0, 3.25898, 0, -2.31929, -83.7387, 0.605815, -46.784)
 
-[node name="Hall10" parent="Decor" instance=ExtResource("37_tr5od")]
+[node name="Hall10" parent="Decor" instance=ExtResource("37_u7t5n")]
 transform = Transform3D(2.85924, 0, -0.908155, 0, 3, 0, 0.908155, 0, 2.85924, -83.0069, 2.87723, -50.0751)
 
-[node name="Hall4" parent="Decor" instance=ExtResource("37_tr5od")]
+[node name="Hall4" parent="Decor" instance=ExtResource("37_u7t5n")]
 transform = Transform3D(2.14854, 0, -2.09375, 0, 3, 0, 2.09375, 0, 2.14854, -48.791, 2.87723, 10.7472)
 
-[node name="Hall5" parent="Decor" instance=ExtResource("37_tr5od")]
+[node name="Hall5" parent="Decor" instance=ExtResource("37_u7t5n")]
 transform = Transform3D(0.668219, 0, -2.92463, 0, 3, 0, 2.92463, 0, 0.668219, -49.9548, 2.87723, 8.12556)
 
-[node name="kevin" parent="." instance=ExtResource("39_clu6e")]
+[node name="kevin" parent="." instance=ExtResource("38_pa73q")]
 transform = Transform3D(1.71915, 0, -1.02202, 0, 2, 0, 1.02202, 0, 1.71915, 57.596, 4.65548, -121.224)
 
 [node name="Decal" type="Decal" parent="kevin"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0568466, -0.780866, -0.416267)
 size = Vector3(10.3187, 2, 12.2139)
-texture_albedo = ExtResource("40_305lw")
-texture_normal = ExtResource("41_sijf6")
+texture_albedo = ExtResource("39_0mstq")
+texture_normal = ExtResource("40_o10yb")
 emission_energy = 1.75
 modulate = Color(0.736151, 0.21421, 1, 1)
 normal_fade = 0.765

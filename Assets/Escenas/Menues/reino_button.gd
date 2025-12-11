@@ -10,8 +10,10 @@ extends Area2D
 @export var nombreNivel3: String = "nivel3"
 @export var rutaNivel3: String = "vacio"
 @export var fondo: Texture2D
+@export var ico: Texture2D
 
 # --- Selector de Nivel ---
+@onready var nodoIco = $ReinoIco/Ico
 @onready var nivelSeleccionado: Label = $OpenMap/Label
 var rutaNivelSeleccionado: String
 @onready var nodoFondo = $OpenMap/Panel/TextureRect
@@ -52,6 +54,9 @@ func _ready():
 	
 	if fondo:
 		nodoFondo.set_texture(fondo)
+	if ico:
+		nodoIco.set_texture(ico)
+		
 	openMap.visible = false
 	input_pickable = true
 	

@@ -42,3 +42,6 @@ transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, -2.02062, 0)
 
 [node name="ClickableCollider" type="CollisionShape3D" parent="Interactable"]
 shape = SubResource("CylinderShape3D_av7h5")
+
+[node name="BomberPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.46038, 0)
