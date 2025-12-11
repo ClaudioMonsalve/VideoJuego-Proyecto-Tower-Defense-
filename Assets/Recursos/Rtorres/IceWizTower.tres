@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="tower_data" load_steps=2 format=3 uid="uid://d06ev0177dxib"]
+
+[ext_resource type="Script" uid="uid://dcufo4sr3q55w" path="res://Assets/Recursos/Rtorres/tower_data.gd" id="1_pqflc"]
+
+[resource]
+script = ExtResource("1_pqflc")
+tower_name = "Ice Tower"
+tower_cost = 12
+metadata/_custom_type_script = "uid://dcufo4sr3q55w"

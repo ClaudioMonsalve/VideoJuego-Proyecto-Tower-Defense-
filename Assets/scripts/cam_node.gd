@@ -24,6 +24,7 @@ extends Node3D
 @export var torre_test: PackedScene
 @export var Arrowtower: PackedScene
 @export var Axetower: PackedScene
+@export var IceWiztower: PackedScene
 
 @export var camera_sens = 0.01
 @export var zoomSens = 2
@@ -124,6 +125,8 @@ func getTower(towerName):
 			return torre_test.instantiate()
 		"Arrow Tower":
 			return Arrowtower.instantiate()
+		"Ice Tower":
+			return IceWiztower.instantiate()
 		_:
 			return null
 

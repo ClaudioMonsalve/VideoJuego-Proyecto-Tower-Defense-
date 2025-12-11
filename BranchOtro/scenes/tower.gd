@@ -7,7 +7,7 @@ class_name tower
 @export var price = 5.0
 @export var damage = 2.0
 @export var attkspeed = 2.0
-var attkSpeedCalculated = 1.0 / attkspeed
+var attkSpeedCalculated
 
 var attacking = false
 var paused = false
@@ -15,12 +15,12 @@ var paused = false
 var creepQueue = []
 
 func _ready() -> void:
+	attkSpeedCalculated = 1.0 / attkspeed
 	add_to_group("torres")
 	enemyColl.body_entered.connect(_on_enemy_enter)
 	enemyColl.body_exited.connect(_on_enemy_exit)
 
 func _on_enemy_enter(body):
-	print("something at all entered")
 	if body is enemy:
 		creepQueue.append(body)
 		if not attacking and not paused:

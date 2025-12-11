@@ -5,7 +5,7 @@ class_name enemy
 @onready var progBar: ProgressBar = $"../SubViewport/CanvasLayer/ProgressBar"
 @onready var animationPlayer: AnimationPlayer = $"../AnimationPlayer"
 @onready var collider = $CollisionShape3D
-@onready var meshOrSprite = $MeshInstance3D
+@onready var meshOrSprite
 @onready var barSprite = $Sprite3D
 @onready var rigidbody = $RigidBody3D
 

@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://sog0dl2gwji8"]
+[gd_scene load_steps=9 format=3 uid="uid://ci3rcuc03a2kd"]
 
-[ext_resource type="Script" uid="uid://sivc7eqbsqeb" path="res://Assets/Escenas/Torres/axe_thrower.gd" id="1_o88d2"]
-[ext_resource type="PackedScene" uid="uid://buer1o71wjtrl" path="res://Assets/modelos/Torres/Torre1.blend" id="2_o88d2"]
+[ext_resource type="Script" uid="uid://b8ivagok2cfr4" path="res://Assets/Escenas/Torres/IceWizTower/ice_wiz_tower.gd" id="1_bgmhf"]
+[ext_resource type="PackedScene" uid="uid://cvf0k6ftvdiw4" path="res://Assets/Escenas/Torres/IceWizTower/IceWizTowerProyectile.tscn" id="2_uv2xn"]
+[ext_resource type="PackedScene" uid="uid://dvwr31boo46as" path="res://Assets/Escenas/Torres/IceWizTower/IceWizTowerExplosion.tscn" id="3_gj8o8"]
+[ext_resource type="PackedScene" uid="uid://dw7pg2tkh8yhq" path="res://Assets/modelos/Torres/iceWizTorre.glb" id="3_uv2xn"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_6w6ls"]
 height = 30.0
@@ -21,7 +23,15 @@ height = 4.0
 radius = 2.0
 
 [node name="Tower" type="Node3D"]
-script = ExtResource("1_o88d2")
+script = ExtResource("1_bgmhf")
+arrowtrail = ExtResource("2_uv2xn")
+explosion = ExtResource("3_gj8o8")
+price = 12.0
+damage = 4.0
+attkspeed = 0.8
+
+[node name="ArcherPos" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.27321, 0)
 
 [node name="AttackRange" type="Area3D" parent="."]
 collision_layer = 2
@@ -37,8 +47,8 @@ mesh = SubResource("CylinderMesh_av7h5")
 
 [node name="Interactable" type="Area3D" parent="."]
 
-[node name="Torre1" parent="Interactable" instance=ExtResource("2_o88d2")]
-transform = Transform3D(0.32, 0, 0, 0, 0.32, 0, 0, 0, 0.32, 0, -2.02062, 0)
-
 [node name="ClickableCollider" type="CollisionShape3D" parent="Interactable"]
 shape = SubResource("CylinderShape3D_av7h5")
+
+[node name="iceWizTorre" parent="Interactable" instance=ExtResource("3_uv2xn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -1.75262, 0)

@@ -477,8 +477,17 @@ transform = Transform3D(9.76383, 0, 2.16048, 0, 10, 0, -2.16048, 0, 9.76383, -74
 [node name="MountainsMuspel2" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
 transform = Transform3D(9.91866, 0, 1.2729, 0, 10, 0, -1.2729, 0, 9.91866, -89.2421, 16.112, -1.61577)
 
+[node name="MountainsMuspel7" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
+transform = Transform3D(-1.18577, 0, -9.92945, 0, 10, 0, 9.92945, 0, -1.18577, 58.0762, -5.57117, -131.445)
+
+[node name="MountainsMuspel5" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
+transform = Transform3D(-0.706969, 0, 9.97498, 0, 10, 0, -9.97498, 0, -0.706969, -20.9948, 2.9018, 137.171)
+
 [node name="MountainsMuspel4" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
 transform = Transform3D(3.25155, 0, -9.45661, 0, 10, 0, 9.45661, 0, 3.25155, -31.6636, 0.955532, -130.462)
+
+[node name="MountainsMuspel6" parent="Decor/Mountains" instance=ExtResource("43_dhrs6")]
+transform = Transform3D(3.25155, 0, -9.45661, 0, 10, 0, 9.45661, 0, 3.25155, 59.5913, -9.49559, 141.818)
 
 [node name="MountainsMuspel3" parent="Decor/Mountains" instance=ExtResource("33_mst15")]
 transform = Transform3D(9.95127, 0, -0.986077, 0, 10, 0, 0.986077, 0, 9.95127, -79.622, 9.65808, -95.4068)
@@ -639,6 +648,9 @@ omni_range = 20.9279
 
 [node name="CaveEntranceMuspelheim" parent="." instance=ExtResource("45_yyxx3")]
 transform = Transform3D(0.53965, 0, -4.97079, 0, 5, 0, 4.97079, 0, 0.53965, -49.6754, 2.39577, -102.724)
+
+[node name="CaveEntranceMuspelheim3" parent="." instance=ExtResource("45_yyxx3")]
+transform = Transform3D(1.59372, 0, 4.7392, 0, 5, 0, -4.7392, 0, 1.59372, -38.8951, 2.39577, 110.558)
 
 [node name="CaveEntranceMuspelheim2" parent="." instance=ExtResource("45_yyxx3")]
 transform = Transform3D(6.59615, 0, -0.812492, 0, 5, 0, 0.779772, 0, 6.87294, 14.7378, 15.9397, -40.7771)

@@ -3,7 +3,7 @@ extends MeshInstance3D
 var enemy: enemy
 var start_position: Vector3
 var end_position: Vector3
-var speed := 40.0
+@export var speed := 40.0
 var done := false
 
 func _ready():
