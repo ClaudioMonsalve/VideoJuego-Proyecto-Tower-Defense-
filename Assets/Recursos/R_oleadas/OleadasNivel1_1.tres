@@ -1,0 +1,41 @@
+[gd_resource type="Resource" script_class="wave_data" load_steps=2 format=3 uid="uid://ttu2vpk7irco"]
+
+[ext_resource type="Script" uid="uid://te5xx7t3cl07" path="res://Assets/Recursos/R_oleadas/wave_data.gd" id="1_f625c"]
+
+[resource]
+script = ExtResource("1_f625c")
+waves = [{
+"spawns": [{
+"enemy1": 2,
+"path": 0
+}],
+"wave_delay": 10
+}, {
+"spawns": [{
+"enemy1": 5,
+"path": 0
+}, {
+"enemy1": 4,
+"path": 1
+}],
+"wave_delay": 15
+}, {
+"spawns": [{
+"enemy1": 7,
+"enemy2": 5,
+"path": 1
+}, {
+"enemy1": 4,
+"path": 1
+}],
+"wave_delay": 10
+}, {
+"spawns": [{
+"enemy1": 3,
+"enemy2": 1,
+"enemy3": 3,
+"path": 1
+}],
+"wave_delay": 15
+}]
+metadata/_custom_type_script = "uid://te5xx7t3cl07"

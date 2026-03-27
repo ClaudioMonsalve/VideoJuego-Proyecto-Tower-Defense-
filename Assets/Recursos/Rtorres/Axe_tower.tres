@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="tower_data" load_steps=2 format=3 uid="uid://cyhg076ce4f41"]
+
+[ext_resource type="Script" uid="uid://dcufo4sr3q55w" path="res://Assets/Recursos/Rtorres/tower_data.gd" id="1_anc5b"]
+
+[resource]
+script = ExtResource("1_anc5b")
+tower_name = ""
+tower_cost = 0
+metadata/_custom_type_script = "uid://dcufo4sr3q55w"
